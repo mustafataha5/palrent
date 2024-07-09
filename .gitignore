@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+/home/user/Axsos/palrent/src/main/resources/application.properties
+!**/src/test/resources/application.properties
+!**/src/main/resources/application.properties
 ### STS ###
 .apt_generated
 .classpath
