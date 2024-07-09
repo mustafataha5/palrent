@@ -32,7 +32,7 @@ public class User {
 	private String firstName;
 	
 	@NotEmpty(message = "")
-	@Size(min=3,message ="First Name must be at least 2 character")
+	@Size(min=3,message ="Last Name must be at least 2 character")
 	private String lastName;
 	
 	
@@ -46,10 +46,11 @@ public class User {
 	@Size(min = 8, max = 128, message = "User Password Must be at least 8 charachters")
 	private String password;
 	
+	@NotNull(message = "Date of Birth should not be null")
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	private Date dateOfBirth ;
 	
-	@NotNull
+	@NotNull(message = "UrlImage should not be null")
 	private String urlImage ; 
 	
 	@NotEmpty(message = "")
