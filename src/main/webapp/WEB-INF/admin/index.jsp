@@ -28,7 +28,7 @@
 				<div class="card-body">
 					<div	class="d-flex flex-column justify-content-even ">
 						<a href="/admins/user" class="my-2 btn btn-outline-primary"> User</a>
-						<a href="/admins/department" class="my-2 btn btn-outline-primary"> Department</a>
+						<a href="/admins/apartment" class="my-2 btn btn-outline-primary"> Department</a>
 						<a href="/admins/rule" class="my-2 btn btn-outline-primary"> Rule</a>
 						<a href="/admins/offer" class="my-2 btn btn-outline-primary"> Offer</a>
 						<a href="/admins/address" class="my-2 btn btn-outline-primary"> Address</a>
