@@ -21,7 +21,7 @@
 	<div class="row d-flex justify-content-center mx-5 mt-3">
 		<div class="col-md-8">
 			<div class="card border-light">
-			
+
 				<div class="d-flex justify-content-between my-2">
 					<h4 class="card-title mx-3">New A Apartment</h4>
 					<a href="/admins/apartment"><h4
@@ -30,9 +30,9 @@
 				<div class="card-body">
 
 
-					<form:form action="/admins/apartment/new" method="post"
-						modelAttribute="Apartment">
-
+					<form:form action="/admins/apartment/edit/${Apartment.id}"
+						method="post" modelAttribute="Apartment">
+						<input type="hidden" name="_method" value="patch">
 
 						<p>
 							<form:errors path="numOfRoom"></form:errors>
@@ -65,25 +65,30 @@
 							<tbody>
 								<tr>
 									<td><form:label path="numOfRoom">Number Of Rooms:</form:label></td>
-									<td><form:input type="number" value="1" min="1" path="numOfRoom" /></td>
+									<td><form:input type="number"  min="1"
+											path="numOfRoom" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="numOfBath">Number Of Baths:</form:label></td>
-									<td><form:input type="number" value="1" min="1" path="numOfBath" /></td>
+									<td><form:input type="number"  min="1"
+											path="numOfBath" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="numOfBed">Number Of Beds:</form:label></td>
-									<td><form:input type="number" value="1" min="1" path="numOfBed" /></td>
+									<td><form:input type="number"  min="1"
+											path="numOfBed" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="area">Apartment Space:</form:label></td>
-									<td><form:input path="area" type="number" value="1" min="1" /></td>
+									<td><form:input path="area" type="number"
+											min="1" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="numOfGuest">Number Of Guests:</form:label></td>
-									<td><form:input path="numOfGuest" type="number" value="1" min="1"/></td>
+									<td><form:input path="numOfGuest" type="number" 
+											min="1" /></td>
 								</tr>
-							<tr>
+								<tr>
 									<td><form:label path="approval">Approval:</form:label></td>
 									<td><form:select path="approval">
 									<form:option value="false" >False</form:option>
@@ -92,7 +97,7 @@
 								</tr>
 								<tr>
 									<td><form:label path="price">Price:</form:label></td>
-									<td><form:input type="double" value="0" path="price" /></td>
+									<td><form:input type="double" min="0" path="price" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="title">Title:</form:label></td>
@@ -107,7 +112,7 @@
 									<td></td>
 									<td>
 										<button type="submit" class="btn btn-outline-primary">
-											Create Apartment</button>
+											Edit Apartment</button>
 									</td>
 								</tr>
 
