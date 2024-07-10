@@ -21,6 +21,7 @@
 </head>
 <body>
 
+	<p class="success">${success}</p>
 	<div class="row d-flex justify-content-center mx-5 mt-3">
 		<div class="col-md-8">
 			<div class="card border-light">

@@ -1,5 +1,6 @@
 package com.palrent.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,10 +38,20 @@ public class UserService {
 	public void deleteUser(Long id) {
 		userRepository.deleteById(id);
 	}
-	public User updateUser(User user) {
-		Optional<User> optional = userRepository.findById(user.getId());
+	public User updateUser(Long id,User userDetails) {
+		Optional<User> optional = userRepository.findById(id);
 		if(optional.isPresent()) {
-			return userRepository.save(user);
+			
+			User user = optional.get();
+			user.setFirstName(userDetails.getFirstName());
+            user.setLastName(userDetails.getLastName());
+            user.setEmail(userDetails.getEmail());
+            user.setDateOfBirth(userDetails.getDateOfBirth());
+            user.setUrlImage(userDetails.getUrlImage());
+            user.setConfirm("password");
+            user.setPhone(userDetails.getPhone());
+            user.setUpdatedAt(new Date()); // Set the updated date
+            return userRepository.save(user);
 		}
 		return null ;
 	}

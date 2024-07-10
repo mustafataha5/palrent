@@ -40,7 +40,6 @@ public class MustafaController {
 	@GetMapping("/admins/user/{id}/edit")
 	public String showEditUser(@PathVariable("id")Long id ,Model model){
 		User editUser = userService.findUser(id);
-		editUser.setConfirm("test");
 		model.addAttribute("editUser",editUser );
 		return "admin/user/edit_user.jsp";
 	}
@@ -74,7 +73,7 @@ public class MustafaController {
 	
 		
 		redirectAttributes.addAttribute("success", "Successfully update user");
-		userService.updateUser(editUser);
+		userService.updateUser(id,editUser);
 		return "redirect:/admins/user";
 	}
 	
