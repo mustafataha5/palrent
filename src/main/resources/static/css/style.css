@@ -93,6 +93,7 @@
 }
 
 .burger-menu a:hover {
+    background: black;
     color: #bba270;
 }
 
@@ -384,6 +385,11 @@ button[type="submit"]:hover {
     .search-bar {
         flex-direction: column;
         gap: 5px;
+    }
+
+    /* Show nav-links below hamburger menu */
+    .nav-links.show {
+        display: flex;
     }
 }
 

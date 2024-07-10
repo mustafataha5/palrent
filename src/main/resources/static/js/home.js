@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Initialize the panorama viewer
+$(document).ready(function() {
+    // Initialize Pannellum viewer
     pannellum.viewer('panorama', {
         type: 'equirectangular',
         panorama: 'img/shot-panoramic-composition-living-room.jpg',
@@ -9,88 +9,81 @@ document.addEventListener('DOMContentLoaded', function () {
         autoRotate: -2,
     });
 
-    // Show the navbar and search bar with a delay
-    const navbar = document.querySelector('.navbar');
-    const searchBar = document.querySelector('.search-bar');
-
+    // Show navbar and search bar after delay
+    const navbar = $('.navbar');
+    const searchBar = $('.search-bar');
     setTimeout(() => {
-        navbar.style.opacity = 1;
-        searchBar.style.opacity = 1;
-        searchBar.classList.add('show');
+        navbar.css('opacity', 1);
+        searchBar.css('opacity', 1);
+        searchBar.addClass('show');
     }, 1000);
 
-    // Toggle navigation links visibility on burger menu click
-    const burgerMenu = document.querySelector('.hamburger-menu');
-    const navLinks = document.querySelector('.nav-links');
-
-    burgerMenu.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
+    // Toggle nav-links visibility on hamburger-menu click
+    $('.hamburger-menu').click(function() {
+        $('.nav-links').toggleClass('show');
     });
 
-    // Toggle user menu visibility
-    const userIconContainer = document.querySelector('.user-icon-container');
-    const userBurgerMenu = document.querySelector('.burger-menu');
-
-    userIconContainer.addEventListener('click', function () {
-        userBurgerMenu.classList.toggle('show');
+    // Toggle burger-menu visibility on user-icon-container click
+    $('.user-icon-container').click(function() {
+        $('.burger-menu').toggleClass('show');
     });
 
-    // Functions to show and hide login and signup forms
+    // Function to show login form
     function showLoginForm() {
-        document.querySelector('.form-popup').style.display = 'block';
-        document.querySelector('.form-box.login').style.display = 'block';
-        document.querySelector('.form-box.signup').style.display = 'none';
-        document.querySelector('.blur-bg-overlay').style.display = 'block';
+        $('.form-popup').css('display', 'block');
+        $('.form-box.login').css('display', 'block');
+        $('.form-box.signup').css('display', 'none');
+        $('.blur-bg-overlay').css('display', 'block');
     }
 
+    // Function to show signup form
     function showSignupForm() {
-        document.querySelector('.form-popup').style.display = 'block';
-        document.querySelector('.form-box.signup').style.display = 'block';
-        document.querySelector('.form-box.login').style.display = 'none';
-        document.querySelector('.blur-bg-overlay').style.display = 'block';
+        $('.form-popup').css('display', 'block');
+        $('.form-box.signup').css('display', 'block');
+        $('.form-box.login').css('display', 'none');
+        $('.blur-bg-overlay').css('display', 'block');
     }
 
+    // Function to hide forms and overlay
     function hideForms() {
-        document.querySelector('.form-popup').style.display = 'none';
-        document.querySelector('.blur-bg-overlay').style.display = 'none';
+        $('.form-popup').css('display', 'none');
+        $('.blur-bg-overlay').css('display', 'none');
     }
 
-    // Event listeners for form buttons and links
-    document.getElementById('login-btn').addEventListener('click', (e) => {
+    // Event listeners for showing forms
+    $('#login-btn').click(function(e) {
         e.preventDefault();
         showLoginForm();
     });
 
-    document.getElementById('register-btn').addEventListener('click', (e) => {
+    $('#register-btn').click(function(e) {
         e.preventDefault();
         showSignupForm();
     });
 
-    document.getElementById('signup-link').addEventListener('click', (e) => {
+    $('#signup-link').click(function(e) {
         e.preventDefault();
         showSignupForm();
     });
 
-    document.getElementById('login-link').addEventListener('click', (e) => {
+    $('#login-link').click(function(e) {
         e.preventDefault();
         showLoginForm();
     });
 
-    document.querySelectorAll('.close-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            hideForms();
-        });
+    $('.close-btn').click(function(e) {
+        e.preventDefault();
+        hideForms();
     });
 
-    document.querySelector('.blur-bg-overlay').addEventListener('click', hideForms);
+    $('.blur-bg-overlay').click(hideForms);
 
-    // Search functionality
-    document.getElementById('search-btn').addEventListener('click', () => {
-        const location = document.getElementById('location').value;
-        const checkin = document.getElementById('checkin').value;
-        const checkout = document.getElementById('checkout').value;
-        const guests = document.getElementById('guests').value;
+    // Search button click handler
+    $('#search-btn').click(function() {
+        const location = $('#location').val();
+        const checkin = $('#checkin').val();
+        const checkout = $('#checkout').val();
+        const guests = $('#guests').val();
 
         if (location && checkin && checkout && guests) {
             console.log(`Searching for apartments in ${location} from ${checkin} to ${checkout} for ${guests} guests.`);
