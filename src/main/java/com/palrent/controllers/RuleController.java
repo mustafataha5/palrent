@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.palrent.models.Offer;
+
 import com.palrent.models.Rule;
 import com.palrent.services.RuleServices;
 

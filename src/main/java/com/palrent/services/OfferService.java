@@ -12,7 +12,7 @@ import com.palrent.repositories.OfferRepository;
 
 @Service
 public class OfferService {
-	@Autowired
+
 	OfferRepository offerrepository;
 	
 	public List<Offer> allOffers(){
