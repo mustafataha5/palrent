@@ -52,7 +52,11 @@
 									<td>
 									    <div class="d-flex">
 									    	<a href="/admins/user/${userX.id}/edit" class="btn btn-outline-warning btn-sm" >Edit</a>
-									    	<a href="/admins/user/${userX.id}/edit" class="btn btn-outline-danger btn-sm" >Delete</a>
+									    	<form action="/admins/user/${userX.id}/delete" method="post" >
+									    		<input type="hidden" name="_method" value="delete">
+									    		<button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
+									    	</form>
+									    	
 									    </div>
 									</td>
 								</tr>

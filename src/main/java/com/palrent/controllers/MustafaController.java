@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -74,6 +75,13 @@ public class MustafaController {
 		
 		redirectAttributes.addAttribute("success", "Successfully update user");
 		userService.updateUser(editUser);
+		return "redirect:/admins/user";
+	}
+	
+	@DeleteMapping("/admins/user/{id}/delete")
+	public String deleteUser(@PathVariable("id")Long id) {
+		
+		userService.deleteUser(id);
 		return "redirect:/admins/user";
 	}
 	

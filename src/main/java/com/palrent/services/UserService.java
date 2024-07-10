@@ -33,6 +33,10 @@ public class UserService {
 		return null ;
 	}
 	
+	
+	public void deleteUser(Long id) {
+		userRepository.deleteById(id);
+	}
 	public User updateUser(User user) {
 		Optional<User> optional = userRepository.findById(user.getId());
 		if(optional.isPresent()) {
