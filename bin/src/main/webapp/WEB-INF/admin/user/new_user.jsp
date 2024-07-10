@@ -36,7 +36,10 @@
 						<p class="error"> <form:errors path="lastName"></form:errors> </p>
 						<p class="error"><form:errors path="email"></form:errors></p>
 						<p class="error"><form:errors path="password"></form:errors></p>
+<<<<<<< HEAD
 						<p class="error"><form:errors path="confirm"></form:errors></p>
+=======
+>>>>>>> 95bf5173e42b3d5ee4050db8706afe106c1e25bf
 						<p class="error"><form:errors path="phone"></form:errors></p>
 						<p class="error"><form:errors path="dateOfBirth"></form:errors></p>
 						<p class="error"><form:errors path="urlImage"></form:errors></p>
@@ -60,10 +63,13 @@
 									<td><form:input type="password" path="password"/></td>
 								</tr>
 								<tr> 
+<<<<<<< HEAD
 									<td><form:label path="confirm">Confirm PW:</form:label></td>
 									<td><form:input type="password" path="confirm"/></td>
 								</tr>
 								<tr> 
+=======
+>>>>>>> 95bf5173e42b3d5ee4050db8706afe106c1e25bf
 									<td><form:label path="phone">Phone:</form:label></td>
 									<td><form:input path="phone"/></td>
 								</tr>

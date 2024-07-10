@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!-- c:out ; c:forEach etc. -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Formatting (dates) -->
@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin User Edit </title>
+<title>Admin User Edit</title>
 
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -20,7 +20,11 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-
+	<div class="d-flex justify-content-between my-2">
+					<h4 class="card-title mx-3">New A Apartment</h4>
+					<a href="/admins/apartment"><h4
+							class="card-title mx-3 btn btn-outline-primary ">Go back</h4></a>
+				</div>
 	<div class="row d-flex justify-content-center mx-5 mt-3">
 		<div class="col-md-8">
 			<div class="card border-light">
@@ -32,56 +36,76 @@
 						modelAttribute="editUser">
 
 						<input type="hidden" name="_method" value="patch">
-						<form:hidden path="confirm" value="testpassword"/>
-						<p class="error"> <form:errors path="firstName"></form:errors> </p>
-						<p class="error"> <form:errors path="lastName"></form:errors> </p>
-						<p class="error"><form:errors path="email"></form:errors></p>
-						<%-- <p class="error"><form:errors path="password"></form:errors></p> --%>
-						<p class="error"><form:errors path="confirm"></form:errors></p>
-						<p class="error"><form:errors path="phone"></form:errors></p>
-						<p class="error"><form:errors path="dateOfBirth"></form:errors></p>
-						<p class="error"><form:errors path="urlImage"></form:errors></p>
+						<form:hidden path="confirm" value="testpassword" /> 
+						<form:hidden path="password" value="testpassword" />
+						<p class="error">
+							<form:errors path="firstName"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="lastName"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="email"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="password"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="confirm"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="phone"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="dateOfBirth"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="urlImage"></form:errors>
+						</p>
 						<table class="table">
 							<tbody>
-								<tr> 
-								
+								<tr>
+
 									<td><form:label path="firstName">First Name:</form:label></td>
-									<td><form:input path="firstName"/></td>
+									<td><form:input path="firstName" /></td>
 								</tr>
-								<tr> 
+								<tr>
 									<td><form:label path="lastName">Last Name:</form:label></td>
-									<td><form:input path="lastName"/></td>
+									<td><form:input path="lastName" /></td>
 								</tr>
-								<tr> 
+								<tr>
 									<td><form:label path="email">Email:</form:label></td>
-									<td><form:input path="email"/></td>
+									<td><form:input path="email" /></td>
 								</tr>
-							<%-- 	<tr> 
+								<%-- <tr>
 									<td><form:label path="password">Password:</form:label></td>
-									<td><form:input type="password" path="password"/></td>
+									<td><form:input type="password" path="password" /></td>
 								</tr>
-								<tr> 
+								<tr>
 									<td><form:label path="confirm">Confirm PW:</form:label></td>
-									<td><form:input type="password" path="confirm"/></td>
+									<td><form:input type="password" path="confirm" value="password" /></td>
 								</tr> --%>
-								<tr> 
+								<tr>
 									<td><form:label path="phone">Phone:</form:label></td>
-									<td><form:input path="phone"/></td>
+									<td><form:input path="phone" /></td>
 								</tr>
-								<tr> 
+								<tr>
 									<td><form:label path="dateOfBirth">Date Of Birth:</form:label></td>
-									<td><form:input type="date"  path="dateOfBirth"/></td>
+									<td><form:input type="date" path="dateOfBirth" /></td>
 								</tr>
-								<tr> 
+								<tr>
 									<td><form:label path="urlImage">Url Image:</form:label></td>
-									<td><form:input path="urlImage"/></td>
+									<td><form:input path="urlImage" /></td>
 								</tr>
-								
-								<tr> 
+
+								<tr>
 									<td></td>
-									<td> <button type="submit" class="btn btn-outline-primary" > Edit User</button> </td>
+									<td>
+										<button type="submit" class="btn btn-outline-primary">
+											Edit User</button>
+									</td>
 								</tr>
-								
+
 							</tbody>
 						</table>
 					</form:form>

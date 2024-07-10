@@ -83,9 +83,12 @@
 									<td><form:label path="numOfGuest">Number Of Guests:</form:label></td>
 									<td><form:input path="numOfGuest" type="number" value="1" min="1"/></td>
 								</tr>
-								<tr>
+							<tr>
 									<td><form:label path="approval">Approval:</form:label></td>
-									<td><form:input type="boolean" path="approval" /></td>
+									<td><form:select path="approval">
+									<form:option value="false" >False</form:option>
+									<form:option value="true">True</form:option>
+									</form:select> </td>
 								</tr>
 								<tr>
 									<td><form:label path="price">Price:</form:label></td>

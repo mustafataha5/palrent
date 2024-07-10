@@ -21,6 +21,7 @@
 </head>
 <body>
 
+	<p class="success">${success}</p>
 	<div class="row d-flex justify-content-center mx-5 mt-3">
 		<div class="col-md-8">
 			<div class="card border-light">
@@ -52,7 +53,11 @@
 									<td>
 									    <div class="d-flex">
 									    	<a href="/admins/user/${userX.id}/edit" class="btn btn-outline-warning btn-sm" >Edit</a>
-									    	<a href="/admins/user/${userX.id}/edit" class="btn btn-outline-danger btn-sm" >Delete</a>
+									    	<form action="/admins/user/${userX.id}/delete" method="post" >
+									    		<input type="hidden" name="_method" value="delete">
+									    		<button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
+									    	</form>
+									    	
 									    </div>
 									</td>
 								</tr>

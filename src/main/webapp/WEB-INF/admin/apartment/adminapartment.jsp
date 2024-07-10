@@ -52,11 +52,11 @@
 									<td>${apartment.area}</td>
 									<td>${apartment.numOfGuest}</td>
 									<td>${apartment.approval}</td>
-									<td>${apartment.price}</td>
-									<td><a class=" btn btn-outline-secondary"
-										href="/admins/apartment/edit">Edit</a> <a
-										class=" btn btn-outline-secondary"
-										href="/admins/apartment/delete">Delete</a></td>
+									<td>$ ${apartment.price} </td>
+									<td><a class=" btn btn-outline-warning"
+										href="/admins/apartment/edit/${apartment.id}">Edit</a> <a
+										class=" btn btn-outline-danger"
+										href="/admins/apartment/delete/${apartment.id}">Delete</a></td>
 
 
 								</tr>
@@ -64,7 +64,7 @@
 						</tbody>
 					</table>
 					<div class="my-4">
-						<a href="/admins/apartment/new" class=" btn btn-outline-secondary">
+						<a href="/admins/apartment/new" class=" btn btn-outline-primary">
 							+ New Apartment </a>
 					</div>
 				</div>
