@@ -51,8 +51,8 @@
 									<td> ${userX.dateOfBirth}</td>
 									<td>
 									    <div class="d-flex">
-									    	<a href="/admins/user/{userX.id}/edit" class="btn btn-outline-warning btn-sm" >Edit</a>
-									    	<a href="/admins/user/{userX.id}/edit" class="btn btn-outline-danger btn-sm" >Delete</a>
+									    	<a href="/admins/user/${userX.id}/edit" class="btn btn-outline-warning btn-sm" >Edit</a>
+									    	<a href="/admins/user/${userX.id}/edit" class="btn btn-outline-danger btn-sm" >Delete</a>
 									    </div>
 									</td>
 								</tr>
