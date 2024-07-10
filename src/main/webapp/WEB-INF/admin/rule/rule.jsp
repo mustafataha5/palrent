@@ -23,32 +23,33 @@
 		<div class="col-ld-11">
 			<div class="card border-light ">
 				<div class="d-flex justify-content-between my-2">
-					<h4 class="card-title mx-3">Offer</h4>
+					<h4 class="card-title mx-3">Rule</h4>
 					<a href="/admin"><h4
 							class="card-title mx-3 btn btn-outline-secondary ">Go back</h4></a>
 				</div>
+				<p class="success">${success}</p>
 				<div class="card-body">
 					<table class="table  text-center">
 						<thead class="table-primary">
 							<th>Id</th>
-							<th>Offer Name</th>
+							<th>Rule Name</th>
 
 							<th>Action</th>
 						</thead>
 						<tbody>
-							<c:forEach var="offer" items="${offers}">
+							<c:forEach var="rule" items="${rules}">
 								<tr>
-									<td>${offer.id}</td>
-									<td>${offer.name}</td>
+									<td>${rule.id}</td>
+									<td>${rule.name}</td>
 
 									<%-- <td><a class=" btn btn-outline-secondary"
 										href="/admins/offer/${offer.id}/edit">Edit</a> <a
 										class=" btn btn-outline-secondary" href="/admins/offer/${offer.id}/delete">Delete</a></td> --%>
-									<td><div class="d-flex justify-content-center"" >
-                                            <a href="/admins/offer/${offer.id}/edit"" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
-                                            <form action="/admins/offer/${offer.id}/delete" method="post" >
+									<td><div class="d-flex justify-content-center">
+                                            <a href="/admins/rule/${rule.id}/edit"" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
+                                            <form action="/admins/rule/${rule.id}/delete" method="post" >
                                                 <input type="hidden" name="_method" value="delete">
-                                                <button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" >Delete</button>
                                             </form>
 
                                         </div></td>
@@ -58,8 +59,8 @@
 						</tbody>
 					</table>
 					<div class="my-4">
-						<a href="/admins/offer/new" class=" btn btn-outline-secondary">
-							+ New Offer </a>
+						<a href="/admins/rule/new" class=" btn btn-outline-secondary">
+							+ New Rule </a>
 					</div>
 				</div>
 			</div>
