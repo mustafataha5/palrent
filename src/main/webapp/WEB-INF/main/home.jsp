@@ -11,16 +11,21 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>PalRent</title>
+    <title>PalRen</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->
-    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/home.js"></script><!-- change to match your file/naming structure -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css"><!-- change to match your file/naming structure -->
+     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/home.js"></script>change to match your file/naming structure 
 </head>
+<style>
+
+</style>
 <body>
+
+	
     <div class="navbar">
         <div class="logo">
-            <img src="images/palrent-logo.png" alt="Logo">
+            <img src="img/palrent-logo.png" alt="Logo">
         </div>
         <div class="hamburger-menu" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -31,7 +36,7 @@
             <li><a href="#">User</a></li>
         </ul>
         <div class="user-icon-container">
-            <img src="user-image" alt="Image not found" onerror="this.src='images/profile.png';" class="user-icon" />
+            <img src="user-image" alt="Image not found" onerror="this.src='/img/profile.png';" class="user-icon" />
             <div class="burger-menu">
                 <a href="#">Register</a>
                 <a href="#">Log In</a>
@@ -58,9 +63,9 @@
         <p>&copy; 2024 Apartment Rental. All rights reserved.</p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
-    <script src="main.js"></script>
+    <script src="main.js"></script> -->
 </body>
 </html>

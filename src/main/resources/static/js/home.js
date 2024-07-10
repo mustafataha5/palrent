@@ -1,7 +1,7 @@
 $(document).ready(function () {
     pannellum.viewer('panorama', {
         "type": "equirectangular",
-        "panorama": "images/shot-panoramic-composition-living-room.jpg",
+        "panorama": "img/shot-panoramic-composition-living-room.jpg",
         "autoLoad": true,
         "showControls": false,
     });
