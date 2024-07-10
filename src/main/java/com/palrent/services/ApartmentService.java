@@ -41,7 +41,12 @@ public class ApartmentService {
 
 
 	public Department updateApartment(Department editedApartment) {
-		return apartmentRepository.save(editedApartment);
+		Optional<Department> optional = apartmentRepository.findById(editedApartment.getId());
+		if(optional.isPresent()){
+			return apartmentRepository.save(editedApartment);
+		}
+				
+				return null;
 		
 	}
 
