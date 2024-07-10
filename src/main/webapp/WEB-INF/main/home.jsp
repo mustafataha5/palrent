@@ -14,12 +14,12 @@
     <title>PalRen</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css"><!-- change to match your file/naming structure -->
-     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/home.js"></script>change to match your file/naming structure 
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
+ <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
-<style>
 
-</style>
 <body>
 
 	
@@ -62,10 +62,9 @@
         </div>
         <p>&copy; 2024 Apartment Rental. All rights reserved.</p>
     </footer>
-
-<!--     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
-    <script src="main.js"></script> -->
+    
+  
+     <script type="text/javascript" src="/js/home.js"></script>
 </body>
+
 </html>
