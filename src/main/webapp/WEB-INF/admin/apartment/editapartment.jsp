@@ -17,16 +17,17 @@
 </head>
 <body>
 
+	<div class="d-flex justify-content-between my-4 mx-5">
+		<h4 class="card-title mx-3">New A Apartment</h4>
+		<a href="/admins/apartment"><h4
+				class="card-title mx-3 btn btn-outline-primary ">Go back</h4></a>
+	</div>
 
 	<div class="row d-flex justify-content-center mx-5 mt-3">
 		<div class="col-md-8">
 			<div class="card border-light">
 
-				<div class="d-flex justify-content-between my-2">
-					<h4 class="card-title mx-3">New A Apartment</h4>
-					<a href="/admins/apartment"><h4
-							class="card-title mx-3 btn btn-outline-primary ">Go back</h4></a>
-				</div>
+
 				<div class="card-body">
 
 
@@ -34,7 +35,7 @@
 						method="post" modelAttribute="Apartment">
 						<input type="hidden" name="_method" value="patch">
 
-						
+
 						<p class="error">
 							<form:errors path="numOfRoom"></form:errors>
 						</p>
@@ -78,40 +79,49 @@
 							<tbody>
 								<tr>
 									<td><form:label path="numOfRoom">Number Of Rooms:</form:label></td>
-									<td><form:input type="number" value="1" min="1" path="numOfRoom" /></td>
+									<td><form:input type="number" value="1" min="1"
+											path="numOfRoom" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="numOfBath">Number Of Baths:</form:label></td>
-									<td><form:input type="number" value="1" min="1" path="numOfBath" /></td>
+									<td><form:input type="number" value="1" min="1"
+											path="numOfBath" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="numOfBed">Number Of Beds:</form:label></td>
-									<td><form:input type="number" value="1" min="1" path="numOfBed" /></td>
+									<td><form:input type="number" value="1" min="1"
+											path="numOfBed" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="area">Apartment Space:</form:label></td>
-									<td><form:input path="area" type="number" value="1" min="1" /></td>
+									<td><form:input path="area" type="number" value="1"
+											min="1" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="numOfGuest">Number Of Guests:</form:label></td>
-									<td><form:input path="numOfGuest" type="number" value="1" min="1"/></td>
+									<td><form:input path="numOfGuest" type="number" value="1"
+											min="1" /></td>
 								</tr>
-							<tr>
+								<tr>
 									<td><form:label path="approval">Approval:</form:label></td>
 									<td><form:select path="approval">
-									<form:option value="false" >False</form:option>
-									<form:option value="true">True</form:option>
-									</form:select> </td>
+											<form:option value="false">False</form:option>
+											<form:option value="true">True</form:option>
+										</form:select></td>
 								</tr>
 								<tr>
 									<td><form:label path="price">Price:</form:label></td>
-									<td><form:input type="double" value="0" path="price" /></td>
+									<td><form:input type="double" value="5" path="price" /></td>
 								</tr>
-								
+
 								<tr>
 									<td><form:label path="">address:</form:label></td>
-									<td><form:input type="text" path="departmentNum" placeholder="department number" />  <form:input type="text" path="buildingNum" placeholder="Building Number" /> <form:input type="text" path="street"  placeholder="Street"/> <form:input type="text" path="city" placeholder="City" /></td>
-					
+									<td><form:input type="text" path="departmentNum"
+											placeholder="department number" /> <form:input type="text"
+											path="buildingNum" placeholder="Building Number" /> <form:input
+											type="text" path="street" placeholder="Street" /> <form:input
+											type="text" path="city" placeholder="City" /></td>
+
 								</tr>
 								<tr>
 									<td><form:label path="title">Title:</form:label></td>
@@ -136,6 +146,47 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="col-md d-flex flex-column">
+
+			<div class="card">
+				<h2 class="card-title">All Offer:</h2>
+				<div class="card-body">
+					<c:forEach var="apaOffer" items="${Apartment.offers}">
+						<div class="d-flex justify-content-start">
+							<h4 class="mx-3">${apaOffer.name}</h4>
+							<form action="/admins/apartmet/${Apartment.id}/DelOffer"
+								method="post">
+								<input type="hidden" name="_method" value="delete">
+								<input type="hidden" name="offerId" value="${apaOffer.id}">
+								<button type="submit" class="btn btn-danger btn-sm">delete</button>
+							</form>
+						</div>
+
+					</c:forEach>
+				</div>
+			</div>
+
+			<div class="card">
+				<h2 class="card-title">Add Offer:</h2>
+				<div class="card-body">
+				<form action="/admins/apartmet/${Apartment.id}/AddOffer"
+					method="post">
+					<input type="hidden" name="_method" value="patch"> <select
+						name="offerId">
+						<c:forEach var="apaoffer" items="${exOffer}">
+							<option value=${apaoffer.id}>${apaoffer.name}</option>
+						</c:forEach>
+
+					</select>
+					<button type="submit" class="btn btn-outline-primary">Add Offer</button>
+				</form>
+				</div>
+			</div>
+
+
+		</div>
+
 	</div>
 
 </body>

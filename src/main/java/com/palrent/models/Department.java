@@ -111,6 +111,7 @@ public class Department {
 	public Department() {
 		this.approval = false;
 		this.images = new ArrayList<>();
+		this.offers = new ArrayList<>();
 	}
 	
 	@ManyToMany(fetch = FetchType.LAZY)

@@ -12,7 +12,7 @@ import com.palrent.repositories.OfferRepository;
 
 @Service
 public class OfferService {
-
+	@Autowired
 	OfferRepository offerrepository;
 	
 	public List<Offer> allOffers(){
@@ -42,5 +42,8 @@ public class OfferService {
 		offerrepository.deleteById(id);
 	}
 	
+	public List<Offer> allOffernotIn(Long ApaId){
+		return offerrepository.findAllOfferexclude(ApaId);
+	}
 
 }

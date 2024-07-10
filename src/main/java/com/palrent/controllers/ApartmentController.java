@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.palrent.models.Department;
+import com.palrent.models.Offer;
 import com.palrent.services.ApartmentService;
+import com.palrent.services.OfferService;
 
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +24,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ApartmentController {
 	@Autowired
 	ApartmentService apartmentService;
-
+	@Autowired
+	OfferService offerService ; 
+	
+	
 	@GetMapping("/admins/apartment")
 	public String adminApartment(Model model) {
 		model.addAttribute("apartments", apartmentService.findall());
@@ -51,6 +56,7 @@ public class ApartmentController {
 
 		Department apartment = apartmentService.findById(id);
 		model.addAttribute("Apartment", apartment);
+		model.addAttribute("exOffer",offerService.allOffernotIn(id));
 
 		return "admin/apartment/editapartment.jsp";
 
@@ -60,6 +66,7 @@ public class ApartmentController {
 	public String adminApartmentPatchPosting(@Valid @ModelAttribute("Apartment") Department apartment,
 			BindingResult result, @PathVariable("id") Long id, Model model) {
 		if (result.hasErrors()) {
+			model.addAttribute("exOffer",offerService.allOffernotIn(id));
 			return "admin/apartment/editapartment.jsp";
 		}
 		Department EditedApartment = apartmentService.findById(id);
@@ -72,6 +79,10 @@ public class ApartmentController {
 		EditedApartment.setPrice(apartment.getPrice());
 		EditedApartment.setTitle(apartment.getTitle());
 		EditedApartment.setDescription(apartment.getDescription());
+		EditedApartment.setDepartmentNum(apartment.getDepartmentNum());
+		EditedApartment.setBuildingNum(apartment.getBuildingNum());
+		EditedApartment.setStreet(apartment.getStreet());
+		EditedApartment.setCity(apartment.getCity());
 		apartmentService.updateApartment(EditedApartment);
 
 		return "redirect:/admins/apartment";
@@ -81,6 +92,29 @@ public class ApartmentController {
 	public String deleteApartment(@PathVariable("id")Long id) {
 		apartmentService.deleteApartment(id);
 		return"redirect:/admins/apartment";
+	}
+	
+	
+	@PatchMapping("/admins/apartmet/{id}/AddOffer")
+	public String addOffer(@PathVariable("id") Long Id ,@RequestParam("offerId")Long offerId ,Model model)
+	{
+		Department department = apartmentService.findById(Id);
+		Offer offer = offerService.findOffer(offerId);
+		department.getOffers().add(offer);
+		apartmentService.updateApartment(department);
+						
+		return "redirect:/admins/apartment/"+Id+"/edit";
+	}
+	
+	@DeleteMapping("/admins/apartmet/{id}/DelOffer")
+	public String delOffer(@PathVariable("id") Long Id ,@RequestParam("offerId")Long offerId ,Model model)
+	{
+		Department department = apartmentService.findById(Id);
+		Offer offer = offerService.findOffer(offerId);
+		department.getOffers().remove(offer);
+		apartmentService.updateApartment(department);
+						
+		return "redirect:/admins/apartment/"+Id+"/edit";
 	}
 	
 

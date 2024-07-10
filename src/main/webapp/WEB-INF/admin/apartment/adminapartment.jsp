@@ -55,10 +55,21 @@
 									<td>${apartment.numOfGuest}</td>
 									<td>${apartment.approval}</td>
 									<td>$ ${apartment.price}</td>
-									<td><a class=" btn btn-outline-warning"
-										href="/admins/apartment/${apartment.id}/edit">Edit</a> <a
-										class=" btn btn-outline-danger"
-										href="/admins/apartment/delete/${apartment.id}">Delete</a></td>
+<!-- 									<td><a class=" btn btn-outline-warning" -->
+<%-- 										href="/admins/apartment/${apartment.id}/edit">Edit</a> <a --%>
+<!-- 										class=" btn btn-outline-danger" -->
+<%-- 										href="/admins/apartment/delete/${apartment.id}">Delete</a></td> --%>
+
+
+
+									<td><div class="d-flex justify-content-center"" >
+                                            <a href="/admins/apartment/${apartment.id}/edit" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
+                                            <form action="/admins/apartment/${apartment.id}/delete" method="post" >
+                                                <input type="hidden" name="_method" value="delete">
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
+                                            </form>
+
+                                        </div></td>
 
 
 								</tr>
