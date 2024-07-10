@@ -43,11 +43,7 @@ public class Image {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="department_id")
-	private Department department ;
-	
+
 	public Image() {
 		// TODO Auto-generated constructor stub
 	}
@@ -83,15 +79,6 @@ public class Image {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-	
 	
 	
 }

@@ -7,17 +7,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -46,9 +42,7 @@ public class Address {
 	@Size(min=4,message = "City Name must be at least 2 character.")
 	private String city;
 	
-	@NotNull
 	private Double locationX;
-	@NotNull
 	private Double locationY;
 	
 	@Column(updatable = false)
@@ -67,10 +61,10 @@ public class Address {
 		this.updatedAt = new Date();
 	}
 	
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="department_id")
-	private Department department;
+//	
+//	@OneToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name="department_id")
+//	private Department department;
 	public Address() {
 		// TODO Auto-generated constructor stub
 	}
@@ -146,16 +140,5 @@ public class Address {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-	
-
-	
 
 }

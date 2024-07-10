@@ -61,6 +61,14 @@
         </div>
         <p>&copy; 2024 Apartment Rental. All rights reserved.</p>
     </footer>
+<<<<<<< HEAD
+    
+  
+     <script type="text/javascript" src="/js/home.js"></script>
+</body>
+
+</html>
+=======
 
     <div class="blur-bg-overlay"></div>
     <div class="form-popup">
@@ -160,3 +168,4 @@
      <script type="text/javascript" src="/js/home.js"></script>
 </body>
 </html>
+>>>>>>> master

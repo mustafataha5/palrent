@@ -1,5 +1,6 @@
 package com.palrent.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -53,7 +55,7 @@ public class Department {
 	private Integer numOfGuest;
 
 	@NotNull
-	@Min(value = 1)
+	@Min(value = 1,message = "Price must be greater than 1 ")
 	private Double price;
 
 	@NotNull
@@ -64,8 +66,32 @@ public class Department {
 	@Size(min = 3)
 	private String description;
 
+	@NotEmpty(message = "")
+	@Size(min=1,message = "Department Number must be at least 1 digit.")
+	private String departmentNum;
+	
+	@NotEmpty(message = "")
+	@Size(min=1,message = "Building Number must be at least 1 digit.")
+	private String buildingNum;
+	
+	
+	@NotEmpty(message = "")
+	@Size(min=2,message = "Street Name must be at least 2 character.")
+	private String street;
+	
+	@NotEmpty(message = "")
+	@Size(min=4,message = "City Name must be at least 2 character.")
+	private String city;
+	
+	private Double locationX;
+	private Double locationY;
+	
 	private Boolean approval;
 
+	
+	
+	
+	private List<String> images; ;
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
@@ -82,6 +108,11 @@ public class Department {
 		this.updatedAt = new Date();
 	}
 
+	public Department() {
+		this.approval = false;
+		this.images = new ArrayList<>();
+	}
+	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "department_offer", joinColumns = @JoinColumn(name = "department_id"), inverseJoinColumns = @JoinColumn(name = "offer_id"))
 	List<Offer> offers;
@@ -98,41 +129,6 @@ public class Department {
 
 	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
 	List<ReviewDep> reviewers;
-	
-	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
-	List<Image> images;
-	
-	@OneToOne(mappedBy = "department",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	private Address address ; 
-
-	public List<DepRule> getRules() {
-		return rules;
-	}
-
-	public List<Image> getImages() {
-		return images;
-	}
-
-	public void setImages(List<Image> images) {
-		this.images = images;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-	public void setRules(List<DepRule> rules) {
-		this.rules = rules;
-	}
-
-	public Department() {
-		this.approval = false;
-
-	}
 
 	public Long getId() {
 		return id;
@@ -156,22 +152,6 @@ public class Department {
 
 	public void setNumOfBath(Integer numOfBath) {
 		this.numOfBath = numOfBath;
-	}
-
-	public User getOwner() {
-		return owner;
-	}
-
-	public void setOwner(User owner) {
-		this.owner = owner;
-	}
-
-	public List<UserBookDep> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<UserBookDep> users) {
-		this.users = users;
 	}
 
 	public Integer getNumOfBed() {
@@ -222,12 +202,68 @@ public class Department {
 		this.description = description;
 	}
 
+	public String getDepartmentNum() {
+		return departmentNum;
+	}
+
+	public void setDepartmentNum(String departmentNum) {
+		this.departmentNum = departmentNum;
+	}
+
+	public String getBuildingNum() {
+		return buildingNum;
+	}
+
+	public void setBuildingNum(String buildingNum) {
+		this.buildingNum = buildingNum;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public Double getLocationX() {
+		return locationX;
+	}
+
+	public void setLocationX(Double locationX) {
+		this.locationX = locationX;
+	}
+
+	public Double getLocationY() {
+		return locationY;
+	}
+
+	public void setLocationY(Double locationY) {
+		this.locationY = locationY;
+	}
+
 	public Boolean getApproval() {
 		return approval;
 	}
 
 	public void setApproval(Boolean approval) {
 		this.approval = approval;
+	}
+
+	public List<String> getImages() {
+		return images;
+	}
+
+	public void setImages(List<String> images) {
+		this.images = images;
 	}
 
 	public Date getCreatedAt() {
@@ -254,6 +290,30 @@ public class Department {
 		this.offers = offers;
 	}
 
+	public List<DepRule> getRules() {
+		return rules;
+	}
+
+	public void setRules(List<DepRule> rules) {
+		this.rules = rules;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
+
+	public List<UserBookDep> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<UserBookDep> users) {
+		this.users = users;
+	}
+
 	public List<ReviewDep> getReviewers() {
 		return reviewers;
 	}
@@ -261,5 +321,7 @@ public class Department {
 	public void setReviewers(List<ReviewDep> reviewers) {
 		this.reviewers = reviewers;
 	}
+	
+	
 
 }
