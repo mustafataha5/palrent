@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Edit Offer</title>
+<title>Edit Rule</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
@@ -22,22 +22,22 @@
 	<div class="row d-flex justify-content-center mx-5 mt-3">
 		<div class="col-md-8">
 			<div class="card border-light">
-				<h4 class="card-title mx-3">Edit Offer:</h4>
+				<h4 class="card-title mx-3">Edit Rule:</h4>
 				<div class="card-body">
-					<form:form action="/admins/offer/${editOffer.id}/edit" method="post"
-						modelAttribute="editOffer">
+					<form:form action="/admins/rule/${editRule.id}/edit" method="post"
+						modelAttribute="editRule">
 						<input type="hidden" name="_method" value="patch">
 						<p class="error" > <form:errors path="name"></form:errors> </p>
 						<tr>
 
-							<td><form:label path="name">t Name:</form:label></td>
+							<td><form:label path="name">Name:</form:label></td>
 							<td><form:input path="name" /></td>
 						</tr>
 						<tr>
 							<td></td>
 							<td>
 								<button type="submit" class="btn btn-outline-primary">
-									Edit Offer</button>
+									Edit Rule</button>
 							</td>
 						</tr>
 

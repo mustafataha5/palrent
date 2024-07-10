@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Edit Offer</title>
+<title>New Rule</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
@@ -22,27 +22,23 @@
 	<div class="row d-flex justify-content-center mx-5 mt-3">
 		<div class="col-md-8">
 			<div class="card border-light">
-				<h4 class="card-title mx-3">Edit Offer:</h4>
+				<h4 class="card-title mx-3">Add New Rule:</h4>
 				<div class="card-body">
-					<form:form action="/admins/offer/${editOffer.id}/edit" method="post"
-						modelAttribute="editOffer">
-						<input type="hidden" name="_method" value="patch">
-						<p class="error" > <form:errors path="name"></form:errors> </p>
-						<tr>
+					<tbody>
+						<form:form action="/admins/rule/new" method="post"
+							modelAttribute="newRule">
+							<p class="error"> <form:errors path="name"></form:errors> </p>
+							<tr>
 
-							<td><form:label path="name">t Name:</form:label></td>
-							<td><form:input path="name" /></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>
-								<button type="submit" class="btn btn-outline-primary">
-									Edit Offer</button>
-							</td>
-						</tr>
-
-						</tbody>
-						</table>
+								<td><form:label path="name"> Name:</form:label></td>
+								<td><form:input path="name" /></td>
+							</tr>
+							<tr> 
+									<td></td>
+									<td> <button type="submit" class="btn btn-outline-primary"> Create Rule</button> </td>
+								</tr>
+					</tbody>
+					</table>
 					</form:form>
 				</div>
 			</div>
