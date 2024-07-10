@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!-- c:out ; c:forEach etc. --> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- Formatting (dates) --> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<!-- form:form -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!-- for rendering errors on PUT routes -->
+
 <%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
@@ -13,7 +10,7 @@
     <meta charset="UTF-8">
     <title>PalRen</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css"><!-- change to match your file/naming structure -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -43,12 +40,18 @@
 </div>
 <div class="panorama-container">
     <div id="panorama"></div>
+    <div class="overlay-text">
+        <h1>Find Your Perfect Stay, Anytime, Anywhere</h1>
+    </div>
     <div class="search-bar">
         <input type="text" id="location" placeholder="Location">
-        <input type="date" id="checkin" placeholder="Check-in Date">
-        <input type="date" id="checkout" placeholder="Check-out Date">
+        <input type="date" id="checkin" placeholder="Check-in ">
+        <input type="date" id="checkout" placeholder="Check-out">
         <input type="number" id="guests" placeholder="Number of Guests">
         <button id="search-btn">Search</button>
+    </div>
+    <div class="call-to-action">
+        <p>Explore our top-rated apartments now!</p>
     </div>
 </div>
 <footer>
@@ -130,7 +133,6 @@
                     <form:errors path="phone" cssClass="error"/>
                 </div>
                 <div class="input-field">
-                    <%-- <form:label path="dateOfBirth">Date Of Birth:</form:label> --%>
                     <form:input type="date" path="dateOfBirth" />
                     <form:errors path="dateOfBirth" cssClass="error"/>
                 </div>
