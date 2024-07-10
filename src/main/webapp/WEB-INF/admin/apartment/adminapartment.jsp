@@ -13,6 +13,8 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <title>Admin Apartment</title>
 
 </head>
@@ -45,30 +47,30 @@
 						<tbody>
 							<c:forEach var="apartment" items="${apartments}">
 								<tr>
-									<td>${apartment.id}</td>
+									<td id="apartmentcart">${apartment.id}</td>
 									<td>${apartment.numOfRoom}</td>
 									<td>${apartment.numOfBath}</td>
 									<td>${apartment.numOfBed}</td>
 									<td>${apartment.area}</td>
 									<td>${apartment.numOfGuest}</td>
 									<td>${apartment.approval}</td>
-									<td>$ ${apartment.price} </td>
-								 <%-- <td>
-									
-									
-									<a class=" btn btn-outline-warning"
-										href="/admins/apartment/edit/${apartment.id}">Edit</a> <a
-										class=" btn btn-outline-danger"
-										href="/admins/apartment/delete/${apartment.id}">Delete</a></td> --%> 
+									<td>$ ${apartment.price}</td>
+<!-- 									<td><a class=" btn btn-outline-warning" -->
+<%-- 										href="/admins/apartment/${apartment.id}/edit">Edit</a> <a --%>
+<!-- 										class=" btn btn-outline-danger" -->
+<%-- 										href="/admins/apartment/delete/${apartment.id}">Delete</a></td> --%>
+
+
 
 									<td><div class="d-flex justify-content-center"" >
                                             <a href="/admins/apartment/${apartment.id}/edit" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
-                                            <form action="/admins/apartment/${apartment.id}/edit" method="post" >
+                                            <form action="/admins/apartment/${apartment.id}/delete" method="post" >
                                                 <input type="hidden" name="_method" value="delete">
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
                                             </form>
 
                                         </div></td>
+
 
 								</tr>
 							</c:forEach>
@@ -81,5 +83,11 @@
 				</div>
 			</div>
 		</div>
+
+		<div style="width: 800px;">
+			<canvas id="acquisitions"></canvas>
+		</div>
+
+		<script type="text/javascript" src="/js/chart.js"></script>
 </body>
 </html>
