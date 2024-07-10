@@ -86,6 +86,7 @@ public class User {
 	
 	public User() {
 		// TODO Auto-generated constructor stub
+		this.urlImage ="/img/profile.png";
 	}
 
 	public Long getId() {
