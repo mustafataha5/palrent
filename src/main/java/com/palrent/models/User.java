@@ -183,8 +183,22 @@ public class User {
 	public void setDepartments(List<UserBookDep> departments) {
 		this.departments = departments;
 	}
-	
-	
+
+	public String getConfirm() {
+		return confirm;
+	}
+
+	public void setConfirm(String confirm) {
+		this.confirm = confirm;
+	}
+
+	public List<ReviewDep> getReviewDeps() {
+		return reviewDeps;
+	}
+
+	public void setReviewDeps(List<ReviewDep> reviewDeps) {
+		this.reviewDeps = reviewDeps;
+	}
 	
 
 }
