@@ -63,7 +63,7 @@
 
 									<td><div class="d-flex justify-content-center"" >
                                             <a href="/admins/apartment/${apartment.id}/edit" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
-                                            <form action="/admins/apartment/${apartment.id}/edit" method="post" >
+                                            <form action="/admins/apartment/${apartment.id}/delete" method="post" >
                                                 <input type="hidden" name="_method" value="delete">
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
                                             </form>
