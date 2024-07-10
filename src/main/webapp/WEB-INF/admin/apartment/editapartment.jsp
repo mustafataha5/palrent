@@ -30,65 +30,73 @@
 				<div class="card-body">
 
 
-					<form:form action="/admins/apartment/edit/${Apartment.id}"
+					<form:form action="/admins/apartment/${Apartment.id}/edit"
 						method="post" modelAttribute="Apartment">
 						<input type="hidden" name="_method" value="patch">
 
-						<p>
+						
+						<p class="error">
 							<form:errors path="numOfRoom"></form:errors>
 						</p>
-						<p>
+						<p class="error">
 							<form:errors path="numOfBath"></form:errors>
 						</p>
-						<p>
+						<p class="error">
 							<form:errors path="numOfBed"></form:errors>
 						</p>
-						<p>
+						<p class="error">
 							<form:errors path="area"></form:errors>
 						</p>
-						<p>
+						<p lass="error">
 							<form:errors path="numOfGuest"></form:errors>
 						</p>
-						<p>
+						<p class="error">
 							<form:errors path="approval"></form:errors>
 						</p>
-						<p>
+						<p lass="error">
 							<form:errors path="price"></form:errors>
 						</p>
-						<p>
+						<p class="error">
+							<form:errors path="departmentNum"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="buildingNum"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="street"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="city"></form:errors>
+						</p>
+						<p class="error">
 							<form:errors path="title"></form:errors>
 						</p>
-						<p>
+						<p class="error">
 							<form:errors path="description"></form:errors>
 						</p>
 						<table class="table">
 							<tbody>
 								<tr>
 									<td><form:label path="numOfRoom">Number Of Rooms:</form:label></td>
-									<td><form:input type="number"  min="1"
-											path="numOfRoom" /></td>
+									<td><form:input type="number" value="1" min="1" path="numOfRoom" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="numOfBath">Number Of Baths:</form:label></td>
-									<td><form:input type="number"  min="1"
-											path="numOfBath" /></td>
+									<td><form:input type="number" value="1" min="1" path="numOfBath" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="numOfBed">Number Of Beds:</form:label></td>
-									<td><form:input type="number"  min="1"
-											path="numOfBed" /></td>
+									<td><form:input type="number" value="1" min="1" path="numOfBed" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="area">Apartment Space:</form:label></td>
-									<td><form:input path="area" type="number"
-											min="1" /></td>
+									<td><form:input path="area" type="number" value="1" min="1" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="numOfGuest">Number Of Guests:</form:label></td>
-									<td><form:input path="numOfGuest" type="number" 
-											min="1" /></td>
+									<td><form:input path="numOfGuest" type="number" value="1" min="1"/></td>
 								</tr>
-								<tr>
+							<tr>
 									<td><form:label path="approval">Approval:</form:label></td>
 									<td><form:select path="approval">
 									<form:option value="false" >False</form:option>
@@ -97,7 +105,13 @@
 								</tr>
 								<tr>
 									<td><form:label path="price">Price:</form:label></td>
-									<td><form:input type="double" min="0" path="price" /></td>
+									<td><form:input type="double" value="0" path="price" /></td>
+								</tr>
+								
+								<tr>
+									<td><form:label path="">address:</form:label></td>
+									<td><form:input type="text" path="departmentNum" placeholder="department number" />  <form:input type="text" path="buildingNum" placeholder="Building Number" /> <form:input type="text" path="street"  placeholder="Street"/> <form:input type="text" path="city" placeholder="City" /></td>
+					
 								</tr>
 								<tr>
 									<td><form:label path="title">Title:</form:label></td>

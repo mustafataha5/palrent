@@ -32,7 +32,7 @@
 						<a href="/admins/rule" class="my-2 btn btn-outline-primary"> Rule</a>
 						<a href="/admins/offer" class="my-2 btn btn-outline-primary"> Offer</a>
 						<a href="/admins/address" class="my-2 btn btn-outline-primary"> Address</a>
-						<a href="/admins/images" class="my-2 btn btn-outline-primary"> Imagess</a>
+						<a href="/admins/image" class="my-2 btn btn-outline-primary"> Imagess</a>
 						
 						
 					</div>

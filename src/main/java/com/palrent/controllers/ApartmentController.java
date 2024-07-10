@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -45,7 +46,7 @@ public class ApartmentController {
 		return "redirect:/admins/apartment";
 	}
 
-	@GetMapping("/admins/apartment/edit/{id}")
+	@GetMapping("/admins/apartment/{id}/edit")
 	public String adminApartmentPutMapping(@PathVariable("id") Long id, Model model) {
 
 		Department apartment = apartmentService.findById(id);
@@ -55,7 +56,7 @@ public class ApartmentController {
 
 	}
 
-	@PatchMapping("/admins/apartment/edit/{id}")
+	@PatchMapping("/admins/apartment/{id}/edit")
 	public String adminApartmentPatchPosting(@Valid @ModelAttribute("Apartment") Department apartment,
 			BindingResult result, @PathVariable("id") Long id, Model model) {
 		if (result.hasErrors()) {
@@ -76,7 +77,7 @@ public class ApartmentController {
 		return "redirect:/admins/apartment";
 
 	}
-	@GetMapping("admins/apartment/delete/{id}")
+	@DeleteMapping("/admins/apartment/{id}/delete")
 	public String deleteApartment(@PathVariable("id")Long id) {
 		apartmentService.deleteApartment(id);
 		return"redirect:/admins/apartment";

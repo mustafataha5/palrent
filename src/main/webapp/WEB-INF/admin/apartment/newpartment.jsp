@@ -14,6 +14,7 @@
 <title>New Apartment</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -34,31 +35,43 @@
 						modelAttribute="Apartment">
 
 
-						<p>
+						<p class="error">
 							<form:errors path="numOfRoom"></form:errors>
 						</p>
-						<p>
+						<p class="error">
 							<form:errors path="numOfBath"></form:errors>
 						</p>
-						<p>
+						<p class="error">
 							<form:errors path="numOfBed"></form:errors>
 						</p>
-						<p>
+						<p class="error">
 							<form:errors path="area"></form:errors>
 						</p>
-						<p>
+						<p lass="error">
 							<form:errors path="numOfGuest"></form:errors>
 						</p>
-						<p>
+						<p class="error">
 							<form:errors path="approval"></form:errors>
 						</p>
-						<p>
+						<p lass="error">
 							<form:errors path="price"></form:errors>
 						</p>
-						<p>
+						<p class="error">
+							<form:errors path="departmentNum"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="buildingNum"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="street"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="city"></form:errors>
+						</p>
+						<p class="error">
 							<form:errors path="title"></form:errors>
 						</p>
-						<p>
+						<p class="error">
 							<form:errors path="description"></form:errors>
 						</p>
 						<table class="table">
@@ -93,6 +106,12 @@
 								<tr>
 									<td><form:label path="price">Price:</form:label></td>
 									<td><form:input type="double" value="0" path="price" /></td>
+								</tr>
+								
+								<tr>
+									<td><form:label path="">address:</form:label></td>
+									<td><form:input type="text" path="departmentNum" placeholder="department number" />  <form:input type="text" path="buildingNum" placeholder="Building Number" /> <form:input type="text" path="street"  placeholder="Street"/> <form:input type="text" path="city" placeholder="City" /></td>
+					
 								</tr>
 								<tr>
 									<td><form:label path="title">Title:</form:label></td>

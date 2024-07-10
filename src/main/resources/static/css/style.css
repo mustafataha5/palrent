@@ -428,3 +428,8 @@ button[type="submit"]:hover {
         font-size: 0.6rem;
     }
 }
+
+.error{
+	color: #e01b24; 
+	font-size: 12px;
+}
