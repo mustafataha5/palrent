@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Initialize the panorama viewer
     pannellum.viewer('panorama', {
         type: 'equirectangular',
         panorama: 'img/shot-panoramic-composition-living-room.jpg',
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         autoRotate: -2,
     });
 
+    // Show the navbar and search bar with a delay
     const navbar = document.querySelector('.navbar');
     const searchBar = document.querySelector('.search-bar');
 
@@ -17,24 +19,29 @@ document.addEventListener('DOMContentLoaded', function () {
         searchBar.classList.add('show');
     }, 1000);
 
-    document.querySelector('.hamburger-menu').addEventListener('click', function () {
-        const navLinks = document.querySelector('.nav-links');
-        navLinks.classList.toggle('show');
+    // Toggle navigation links visibility on burger menu click
+    const burgerMenu = document.querySelector('.hamburger-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    burgerMenu.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
     });
 
-    document.querySelector('.user-icon-container').addEventListener('click', function () {
-        const burgerMenu = document.querySelector('.burger-menu');
-        burgerMenu.classList.toggle('show');
+    // Toggle user menu visibility
+    const userIconContainer = document.querySelector('.user-icon-container');
+    const userBurgerMenu = document.querySelector('.burger-menu');
+
+    userIconContainer.addEventListener('click', function () {
+        userBurgerMenu.classList.toggle('show');
     });
 
-
+    // Functions to show and hide login and signup forms
     function showLoginForm() {
         document.querySelector('.form-popup').style.display = 'block';
         document.querySelector('.form-box.login').style.display = 'block';
         document.querySelector('.form-box.signup').style.display = 'none';
         document.querySelector('.blur-bg-overlay').style.display = 'block';
     }
-
 
     function showSignupForm() {
         document.querySelector('.form-popup').style.display = 'block';
@@ -43,13 +50,12 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.blur-bg-overlay').style.display = 'block';
     }
 
-
     function hideForms() {
         document.querySelector('.form-popup').style.display = 'none';
         document.querySelector('.blur-bg-overlay').style.display = 'none';
     }
 
- 
+    // Event listeners for form buttons and links
     document.getElementById('login-btn').addEventListener('click', (e) => {
         e.preventDefault();
         showLoginForm();
@@ -60,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
         showSignupForm();
     });
 
-  
     document.getElementById('signup-link').addEventListener('click', (e) => {
         e.preventDefault();
         showSignupForm();
@@ -71,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function () {
         showLoginForm();
     });
 
-    
     document.querySelectorAll('.close-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -79,10 +83,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
     document.querySelector('.blur-bg-overlay').addEventListener('click', hideForms);
 
-
+    // Search functionality
     document.getElementById('search-btn').addEventListener('click', () => {
         const location = document.getElementById('location').value;
         const checkin = document.getElementById('checkin').value;
@@ -91,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (location && checkin && checkout && guests) {
             console.log(`Searching for apartments in ${location} from ${checkin} to ${checkout} for ${guests} guests.`);
-          
             window.location.href = `/search?location=${location}&checkin=${checkin}&checkout=${checkout}&guests=${guests}`;
         } else {
             alert('Please fill in all search fields.');

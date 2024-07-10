@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css"><!-- change to match your file/naming structure -->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
  <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
@@ -30,8 +31,8 @@
             <i class="fas fa-bars"></i>
         </div>
         <ul class="nav-links">
-            <li><a href="#">Rent a Car</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact us</a></li>
             <li><a href="#">User</a></li>
         </ul>
         <div class="user-icon-container">
