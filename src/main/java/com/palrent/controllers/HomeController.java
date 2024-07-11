@@ -31,6 +31,17 @@ public class HomeController {
 	@GetMapping("/apartment")
 	public String getMethodName() {
 		return "apartment/apartmentdetails.jsp";
+		
+	}
+	@GetMapping("/register")
+	public String register() {
+		
+		return "main/register.jsp";
+	}
+	@GetMapping("/login")
+	public String logIn() {
+		
+		return "main/login.jsp";
 	}
 
 }

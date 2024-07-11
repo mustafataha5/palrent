@@ -27,7 +27,7 @@
 		<div class="col-ld-11">
 			<div class="card border-light ">
 				<div class="d-flex justify-content-between my-2">
-					<h4 class="card-title mx-3">Apartment</h4>
+					<h4 class="card-title mx-3">My Apartment</h4>
 					<a href="/"><h4 class="card-title mx-3 btn btn-outline-secondary ">Go back</h4></a>
 				</div>
 				<div class="card-body">
@@ -44,7 +44,7 @@
 							<th>Action</th>
 						</thead>
 						<tbody>
-							<c:forEach var="apartment" items="${user.departments}">
+							<c:forEach var="apartment" items="${user.ownedDeparment}">
 								<tr>
 									<td id="apartmentcart">${apartment.id}</td>
 									<td>${apartment.numOfRoom}</td>
@@ -62,8 +62,8 @@
 
 
 									<td><div class="d-flex justify-content-center"" >
-                                            <a href="/apartment/${apartment.id}/edit" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
-                                            <form action="/apartment/${apartment.id}/delete" method="post" >
+                                            <a href="/user/apartment/${apartment.id}/edit" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
+                                            <form action="/user/apartment/${apartment.id}/delete" method="post" >
                                                 <input type="hidden" name="_method" value="delete">
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
                                             </form>

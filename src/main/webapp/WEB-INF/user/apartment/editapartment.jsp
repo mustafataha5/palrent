@@ -11,15 +11,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>New Apartment</title>
+<title>Edit Apartment</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 	<div class="d-flex justify-content-between my-4 mx-5">
-		<h4 class="card-title mx-3">New A Apartment</h4>
-		<a href="/admins/apartment"><h4
+		<h4 class="card-title mx-3">Edit Apartment</h4>
+		<a href="/user/apartment"><h4
 				class="card-title mx-3 btn btn-outline-primary ">Go back</h4></a>
 	</div>
 
@@ -31,7 +31,7 @@
 				<div class="card-body">
 
 
-					<form:form action="/admins/apartment/${Apartment.id}/edit"
+					<form:form action="/user/apartment/${Apartment.id}/edit"
 						method="post" modelAttribute="Apartment">
 						<input type="hidden" name="_method" value="patch">
 
