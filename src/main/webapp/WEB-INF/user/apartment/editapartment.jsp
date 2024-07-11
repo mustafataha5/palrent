@@ -149,16 +149,16 @@
 
 		<div class="col-md d-flex flex-column">
 
-			<div class="card">
+			<div class="card my-3">
 				<h2 class="card-title">All Offer:</h2>
 				<div class="card-body">
 					<c:forEach var="apaOffer" items="${Apartment.offers}">
 						<div class="d-flex justify-content-start">
 							<h4 class="mx-3">${apaOffer.name}</h4>
-							<form action="/admins/apartmet/${Apartment.id}/DelOffer"
+							<form action="/user/apartmet/${Apartment.id}/DelOffer"
 								method="post">
-								<input type="hidden" name="_method" value="delete">
-								<input type="hidden" name="offerId" value="${apaOffer.id}">
+								<input type="hidden" name="_method" value="delete"> <input
+									type="hidden" name="offerId" value="${apaOffer.id}">
 								<button type="submit" class="btn btn-danger btn-sm">delete</button>
 							</form>
 						</div>
@@ -167,27 +167,66 @@
 				</div>
 			</div>
 
-			<div class="card">
+			<div class="card my-3">
 				<h2 class="card-title">Add Offer:</h2>
 				<div class="card-body">
-				<form action="/admins/apartmet/${Apartment.id}/AddOffer"
-					method="post">
-					<input type="hidden" name="_method" value="patch"> <select
-						name="offerId">
-						<c:forEach var="apaoffer" items="${exOffer}">
-							<option value=${apaoffer.id}>${apaoffer.name}</option>
-						</c:forEach>
+					<form action="/user/apartment/${Apartment.id}/AddOffer"
+						method="post">
+						<input type="hidden" name="_method" value="patch"> <select
+							name="offerId">
+							<c:forEach var="apaoffer" items="${exOffer}">
+								<option value=${apaoffer.id}>${apaoffer.name}</option>
+							</c:forEach>
 
-					</select>
-					<button type="submit" class="btn btn-outline-primary">Add Offer</button>
-				</form>
+						</select>
+						<button type="submit" class="btn btn-outline-primary">Add
+							Offer</button>
+					</form>
 				</div>
 			</div>
 
 
 		</div>
+		<div class="col-md d-flex flex-column">
+		
+		<div class="card my-3">
+				<h2 class="card-title">All Rule:</h2>
+				<div class="card-body">
+					<c:forEach var="apaRule" items="${Apartment.rules}">
+						<div class="d-flex justify-content-start">
+							<h4 class="mx-3">${apaRule.name}</h4>
+							<form action="/user/apartmet/${Apartment.id}/DelRule"
+								method="post">
+								<input type="hidden" name="_method" value="delete">
+								<input type="hidden" name="ruleId" value="${apaRule.id}">
+								<button type="submit" class="btn btn-danger btn-sm">delete</button>
+							</form>
+						</div>
 
-	</div>
+					</c:forEach>
+				</div>
+			</div>
 
+			<div class="card  my-3">
+				<h2 class="card-title">Add Rule:</h2>
+				<div class="card-body">
+				<form action="/user/apartmet/${Apartment.id}/AddRule"
+					method="post">
+					<input type="hidden" name="_method" value="patch"> <select
+						name="ruleId">
+						<c:forEach var="aparule" items="${exRule}">
+							<option value=${aparule.id}>${aparule.name}</option>
+						</c:forEach>
+
+					</select>
+					<button type="submit" class="btn btn-outline-primary">Add Rule</button>
+				</form>
+				</div>
+			</div>
+
+		
+		
+		
+		</div>
 </body>
 </html>
