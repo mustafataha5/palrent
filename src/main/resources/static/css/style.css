@@ -224,7 +224,7 @@ footer .social-icons {
     font-size: 0.8rem;
 }
 
-.blur-bg-overlay {
+/* .blur-bg-overlay {
     position: fixed;
     display: none;
     top: 0;
@@ -250,8 +250,14 @@ footer .social-icons {
     max-width: 30rem;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+} */
+.blur-bg-overlay {
+    display: none;
 }
 
+.form-popup {
+    display: none;
+}
 .form-box {
     display: none;
     background: white;
