@@ -81,32 +81,45 @@
 .user-icon-container {
     position: relative;
     margin-right: 6%;
+}
+
+.user-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
     cursor: pointer;
 }
-.user-icon-container :hover .user-icon{
-	border-radius:50%;
-	border:3px solid #bba270;
+
+.user-icon-wrapper:hover .user-icon {
+    border-radius: 50%;
+    border: 3px solid #bba270;
 }
+
 .user-icon {
     width: 40px;
     border-radius: 50%;
     border: 2px solid white;
-    cursor: pointer;
 }
 
 .burger-menu {
     display: none;
     position: absolute;
-    right: 0px;
-    top: 60px;
+    top: 100%;
+    right: 0;
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: 10px;
+    margin-top: 10px;
+    z-index: 2000;
 }
 
 .burger-menu.show {
     display: block;
+width: 9rem;
+text-align: center;
+font-size: 1.1rem;
+font-weight: 600;
 }
 
 .burger-menu a {
@@ -114,6 +127,7 @@
     color: black;
     padding: 10px 0;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 .burger-menu a:hover {
@@ -270,7 +284,7 @@ footer .social-icons {
     margin-bottom: 20px;
 }
 
-.input-field {
+ .input-field {
     position: relative;
     margin-bottom: 20px;
 }
@@ -299,7 +313,7 @@ footer .social-icons {
     left: 10px;
     font-size: 12px;
     color: blue;
-}
+} 
 
 .forgot-pass-link {
     display: block;

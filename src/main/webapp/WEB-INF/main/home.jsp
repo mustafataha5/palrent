@@ -31,12 +31,14 @@
         <li><a href="#">User</a></li>
     </ul>
     <div class="user-icon-container">
+    <div class="user-icon-wrapper">
         <img src="user-image" alt="Image not found" onerror="this.src='img/profile.png';" class="user-icon" />
         <div class="burger-menu" id="user-menu">
             <a href="#" id="register-btn">Register</a>
             <a href="#" id="login-btn">Log In</a>
         </div>
     </div>
+</div>
 </div>
 <div class="panorama-container">
     <div id="panorama"></div>
