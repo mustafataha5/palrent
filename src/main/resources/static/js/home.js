@@ -29,8 +29,16 @@ $(document).ready(function() {
     });
 
     // Toggle burger-menu visibility on user-icon-container click
-    $('.user-icon-container').click(function() {
+    $('.user-icon-wrapper').click(function(event) {
+        event.stopPropagation();
         $('.burger-menu').toggleClass('show');
+    });
+
+    // Hide burger-menu if clicking outside
+    $(document).click(function(event) {
+        if (!$(event.target).closest('.user-icon-container').length) {
+            $('.burger-menu').removeClass('show');
+        }
     });
 
     // Function to show login form

@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- c:out ; c:forEach etc. -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!-- Formatting (dates) -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!-- form:form -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!-- for rendering errors on PUT routes -->
+
 <%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +12,6 @@
 <title>PalRen</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-<!-- change to match your file/naming structure -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet"
@@ -37,44 +33,62 @@
 			<li><a href="#">Contact us</a></li>
 			<li><a href="#">User</a></li>
 		</ul>
+		<!-- 	<div class="user-icon-container">
+			<div class="user-icon-wrapper">
+				<img src="user-image" alt="Image not found"
+					onerror="this.src='img/profile.png';" class="user-icon" />
+				<div class="burger-menu" id="user-menu">
+					<a href="#" id="register-btn">Register</a> <a href="#"
+						id="login-btn">Log In</a>
+				</div>
+			</div>
+		</div> -->
 		<c:choose>
 			<c:when test="${ userId == null}">
 				<div class="user-icon-container">
-					<img src="user-image" alt="Image not found"
-						onerror="this.src='img/profile.png';" class="user-icon" />
-					<div class="burger-menu" id="user-menu">
-						<a href="#" id="register-btn">Register</a> <a href="#"
-							id="login-btn">Log In</a>
+					<div class="user-icon-wrapper">
+						<img src="user-image" alt="Image not found"
+							onerror="this.src='img/profile.png';" class="user-icon" />
+						<div class="burger-menu" id="user-menu">
+							<a href="#" id="register-btn">Register</a> <a href="#"
+								id="login-btn">Log In</a>
+						</div>
 					</div>
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class="d-flex align-items-center mx-3" >
-					<h4 class="text-light mx-2" > ${user.firstName}</h4>
+				<div class="d-flex align-items-center mx-3">
+					<h4 class="text-light mx-2">${user.firstName}</h4>
 					<div class="user-icon-container">
+					<div class="user-icon-wrapper">
 						<img src="user-image" alt="Image not found"
 							onerror="this.src='img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
-							<a href="/apartment/new" >Booking</a>
-							 <a href="/apartment/new" >Create Apartment</a>
-							 <a href="/logout" >LogOut</a>
+							<a href="#" >New apartment</a> <a href="/logout"
+								>Log out</a>
 						</div>
 					</div>
-					
+				</div>
+
 				</div>
 
 			</c:otherwise>
 		</c:choose>
-
 	</div>
 	<div class="panorama-container">
 		<div id="panorama"></div>
+		<div class="overlay-text">
+			<h1>Find Your Perfect Stay, Anytime, Anywhere</h1>
+		</div>
 		<div class="search-bar">
 			<input type="text" id="location" placeholder="Location"> <input
-				type="date" id="checkin" placeholder="Check-in Date"> <input
-				type="date" id="checkout" placeholder="Check-out Date"> <input
+				type="date" id="checkin" placeholder="Check-in "> <input
+				type="date" id="checkout" placeholder="Check-out"> <input
 				type="number" id="guests" placeholder="Number of Guests">
 			<button id="search-btn">Search</button>
+		</div>
+		<div class="call-to-action">
+			<p>Explore our top-rated apartments now!</p>
 		</div>
 	</div>
 	<footer>
@@ -110,7 +124,6 @@
 								placeholder="Enter your Password" />
 							<form:errors path="password" cssClass="error" />
 						</div>
-						<a href="#" class="forgot-pass-link">Forgot password?</a>
 						<button type="submit">Log In</button>
 					</form:form>
 				</c:if>
@@ -132,12 +145,12 @@
 				<form:form action="/user/new" method="post" modelAttribute="newUser">
 					<div class="input-field">
 						<%-- <form:label path="firstName">First Name:</form:label> --%>
-						<form:input path="firstName" placeholder="LastName:" />
+						<form:input path="firstName" placeholder="First Name:" />
 						<form:errors path="firstName" cssClass="error" />
 					</div>
 					<div class="input-field">
 						<%-- <form:label path="lastName">Last Name:</form:label> --%>
-						<form:input path="lastName" placeholder="LastName:" />
+						<form:input path="lastName" placeholder="Last Name:" />
 						<form:errors path="lastName" cssClass="error" />
 					</div>
 					<div class="input-field">

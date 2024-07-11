@@ -26,10 +26,11 @@ public class UserController {
 	@PostMapping("/user/new")
 	public String addNewUser(@Valid @ModelAttribute("newUser") User newUser 
 			,BindingResult result
-			,HttpSession session 
+			,HttpSession session, Model model 
 			,RedirectAttributes redirectAttributes){
 		newUser = userService.prepareUser(newUser,result);
 		if(result.hasErrors()) {
+			model.addAttribute("newLogin", new LoginUser());
 			return "main/home.jsp";
 		}
 //		redirectAttributes.addAttribute("success", "Successfully added user");
