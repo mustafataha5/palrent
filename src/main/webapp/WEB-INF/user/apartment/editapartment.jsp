@@ -149,13 +149,13 @@
 
 		<div class="col-md d-flex flex-column">
 
-			<div class="card">
+			<div class="card my-3">
 				<h2 class="card-title">All Offer:</h2>
 				<div class="card-body">
 					<c:forEach var="apaOffer" items="${Apartment.offers}">
 						<div class="d-flex justify-content-start">
 							<h4 class="mx-3">${apaOffer.name}</h4>
-							<form action="/admins/apartmet/${Apartment.id}/DelOffer"
+							<form action="/user/apartmet/${Apartment.id}/DelOffer"
 								method="post">
 								<input type="hidden" name="_method" value="delete">
 								<input type="hidden" name="offerId" value="${apaOffer.id}">
@@ -167,10 +167,10 @@
 				</div>
 			</div>
 
-			<div class="card">
+			<div class="card my-3">
 				<h2 class="card-title">Add Offer:</h2>
 				<div class="card-body">
-				<form action="/admins/apartmet/${Apartment.id}/AddOffer"
+				<form action="/user/apartment/${Apartment.id}/AddOffer"
 					method="post">
 					<input type="hidden" name="_method" value="patch"> <select
 						name="offerId">
