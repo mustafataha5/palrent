@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.palrent.models.Department;
 import com.palrent.models.Offer;
+import com.palrent.models.Rule;
 import com.palrent.models.User;
 import com.palrent.services.ApartmentService;
 import com.palrent.services.OfferService;
@@ -135,4 +136,31 @@ public class ApartmentController {
 		return "redirect:/user/apartment/" + Id + "/edit";
 	}
 
+
+	@PatchMapping("/user/apartmet/{id}/AddRule")
+	public String addRule(@PathVariable("id") Long Id ,@RequestParam(value ="ruleId", required = false)Long ruleId ,Model model)
+	{
+		if (ruleId == null) {
+			return "redirect:/user/apartment/" + Id + "/edit";
+		}
+		Department department = apartmentService.findById(Id);
+		Rule rule = ruleServices.findRule(ruleId);
+		department.getRules().add(rule);
+		apartmentService.updateApartment(department);
+						
+		return "redirect:/user/apartment/"+Id+"/edit";
+	}
+	
+	@DeleteMapping("/user/apartmet/{id}/DelRule")
+	public String delRule(@PathVariable("id") Long Id ,@RequestParam("ruleId")Long ruleId ,Model model)
+	{
+		Department department = apartmentService.findById(Id);
+		Rule rule = ruleServices.findRule(ruleId);
+		department.getRules().remove(rule);
+		apartmentService.updateApartment(department);
+						
+		return "redirect:/user/apartment/"+Id+"/edit";
+	}
+	
+	
 }
