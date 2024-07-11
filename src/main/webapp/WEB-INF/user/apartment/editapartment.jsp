@@ -184,41 +184,6 @@
 				</div>
 			</div>
 
-		<div class="card mt-4">
-				<h2 class="card-title">All Rule:</h2>
-				<div class="card-body">
-					<c:forEach var="apaRule" items="${Apartment.rules}">
-						<div class="d-flex justify-content-start">
-							<h4 class="mx-3">${apaRule.name}</h4>
-							<form action="/admins/apartmet/${Apartment.id}/DelRule"
-								method="post">
-								<input type="hidden" name="_method" value="delete">
-								<input type="hidden" name="ruleId" value="${apaRule.id}">
-								<button type="submit" class="btn btn-danger btn-sm">Del</button>
-							</form>
-						</div>
-
-					</c:forEach>
-				</div>
-			</div>
-
-			<div class="card">
-				<h2 class="card-title">Add Rule:</h2>
-				<div class="card-body">
-				<form action="/admins/apartmet/${Apartment.id}/AddRule"
-					method="post">
-					<input type="hidden" name="_method" value="patch"> <select
-						name="ruleId">
-						<c:forEach var="aparule" items="${exRule}">
-							<option value=${aparule.id}>${aparule.name}</option>
-						</c:forEach>
-
-					</select>
-					<button type="submit" class="btn btn-outline-primary">Add Rule</button>
-				</form>
-				</div>
-			</div>
-
 
 		</div>
 

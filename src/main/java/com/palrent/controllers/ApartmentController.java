@@ -13,10 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.palrent.models.Department;
 import com.palrent.models.Offer;
+import com.palrent.models.Rule;
+import com.palrent.models.User;
 import com.palrent.services.ApartmentService;
 import com.palrent.services.OfferService;
+import com.palrent.services.RuleServices;
+import com.palrent.services.UserService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import jakarta.websocket.Session;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -26,6 +33,10 @@ public class ApartmentController {
 	ApartmentService apartmentService;
 	@Autowired
 	OfferService offerService ; 
+	@Autowired
+	UserService userService ; 
+	@Autowired
+	RuleServices ruleServices ; 
 	
 	
 	@GetMapping("/admins/apartment")
@@ -51,12 +62,44 @@ public class ApartmentController {
 		return "redirect:/admins/apartment";
 	}
 
+	@GetMapping("apartment/new")
+	public String getApartment(@ModelAttribute("Apartment") Department apartment,HttpSession session) {
+		if(session.getAttribute("userId")==null) {
+			return "redirect:/";
+		}
+		return "user/apartment/newpartment.jsp";
+	}
+
+	@PostMapping("/apartment/new")
+	public String addApartmentPosting(@Valid @ModelAttribute("Apartment") Department apartment,
+			BindingResult result
+			,HttpSession session) {
+		if (result.hasErrors()) {
+			return "user/apartment/newpartment.jsp";
+		}
+		User user = userService.findUser((Long) session.getAttribute("userId"));
+		apartment.setOwner(user);
+		System.out.println(">>>>>>>>>>"+user.getEmail());
+		apartmentService.creatAdminApartment(apartment);
+
+		return "redirect:/user/apartment";
+	}
+	
+	@GetMapping("/user/apartment")
+	public String showUserApartment(HttpSession session,Model model){
+		if(session.getAttribute("userId")==null) {
+			return "redirect:/";
+		}
+		model.addAttribute("user", userService.findUser((Long)session.getAttribute("userIds") ));
+		return "user/apartment/apartment.jsp";
+	}
 	@GetMapping("/admins/apartment/{id}/edit")
 	public String adminApartmentPutMapping(@PathVariable("id") Long id, Model model) {
 
 		Department apartment = apartmentService.findById(id);
 		model.addAttribute("Apartment", apartment);
 		model.addAttribute("exOffer",offerService.allOffernotIn(id));
+		model.addAttribute("exRule",ruleServices.allRulenotIn(id));
 
 		return "admin/apartment/editapartment.jsp";
 
@@ -117,5 +160,27 @@ public class ApartmentController {
 		return "redirect:/admins/apartment/"+Id+"/edit";
 	}
 	
+	
+	@PatchMapping("/admins/apartmet/{id}/AddRule")
+	public String addRule(@PathVariable("id") Long Id ,@RequestParam("ruleId")Long ruleId ,Model model)
+	{
+		Department department = apartmentService.findById(Id);
+		Rule rule = ruleServices.findRule(ruleId);
+		department.getRules().add(rule);
+		apartmentService.updateApartment(department);
+						
+		return "redirect:/admins/apartment/"+Id+"/edit";
+	}
+	
+	@DeleteMapping("/admins/apartmet/{id}/DelRule")
+	public String delRule(@PathVariable("id") Long Id ,@RequestParam("ruleId")Long ruleId ,Model model)
+	{
+		Department department = apartmentService.findById(Id);
+		Rule rule = ruleServices.findRule(ruleId);
+		department.getRules().remove(rule);
+		apartmentService.updateApartment(department);
+						
+		return "redirect:/admins/apartment/"+Id+"/edit";
+	}
 
 }

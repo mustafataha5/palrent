@@ -11,6 +11,9 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -49,10 +52,16 @@ public class Rule {
 		
 	}
 
-	 @OneToMany(mappedBy="rule", fetch=FetchType.LAZY)
-	    private List<DepRule> departments;
+	/*
+	 * @OneToMany(mappedBy="rule", fetch=FetchType.LAZY) private List<DepRule>
+	 * departments;
+	 */
 	    
-	 
+	 @ManyToMany(fetch = FetchType.LAZY)
+		@JoinTable(name = "department_rule",
+		joinColumns = @JoinColumn(name = "rule_id"),
+		inverseJoinColumns = @JoinColumn(name = "department_id"))
+		List<Department> departments;
 	 
 	 @Column(updatable = false)
 		@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -65,11 +74,13 @@ public class Rule {
 			this.createdAt = new Date();
 		}
 
-		public List<DepRule> getDepartments() {
+		
+
+		public List<Department> getDepartments() {
 			return departments;
 		}
 
-		public void setDepartments(List<DepRule> departments) {
+		public void setDepartments(List<Department> departments) {
 			this.departments = departments;
 		}
 
