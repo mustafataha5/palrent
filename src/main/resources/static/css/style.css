@@ -13,7 +13,7 @@
     justify-content: space-between;
     align-items: center;
     background: rgba(0, 0, 0, 0.4);
-    padding-top:20px;
+    padding-top:0px;
     z-index: 100;
     top: 0;
     transition: all 0.3s;
@@ -21,6 +21,7 @@
 
 .navbar .logo img {
     width: 80px;
+    margin-left:32%;
 }
 
 .navbar .hamburger-menu {
@@ -56,13 +57,36 @@
     color: #bba270;
     font-weight: 700;
 }
-
+.overlay-text {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.call-to-action {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
 .user-icon-container {
     position: relative;
-    margin-right: 20px;
+    margin-right: 6%;
     cursor: pointer;
 }
-
+.user-icon-container :hover .user-icon{
+	border-radius:50%;
+	border:3px solid #bba270;
+}
 .user-icon {
     width: 40px;
     border-radius: 50%;
@@ -93,7 +117,6 @@
 }
 
 .burger-menu a:hover {
-    background: black;
     color: #bba270;
 }
 
@@ -116,10 +139,12 @@
     display: flex;
     gap: 10px;
     background: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    border-radius: 5px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: opacity 1s, transform 1s;
 }
+
 
 .search-bar.show {
     opacity: 1;
@@ -127,21 +152,20 @@
 }
 
 .search-bar input, .search-bar button {
-    padding: 10px;
+    padding: 15px;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
 }
 
 .search-bar button {
-    background: #bba270;
+    background-color: #bba270;
     color: white;
     cursor: pointer;
-    transition: background 0.3s;
 }
 
+
 .search-bar button:hover {
-    background: #388E3C;
+    background-color: #a68850;
 }
 
 footer {
@@ -353,7 +377,7 @@ button[type="submit"]:hover {
     color: black;
 }
 
-
+/* Ensure the nav-links are hidden by default on smaller screens */
 @media (max-width: 1024px) {
     .navbar .logo img {
         width: 60px;
@@ -373,7 +397,7 @@ button[type="submit"]:hover {
         display: block;
     }
 
-    .navbar .nav-links.active {
+    .navbar .nav-links.show {
         display: flex;
     }
 
@@ -434,6 +458,7 @@ button[type="submit"]:hover {
         font-size: 0.6rem;
     }
 }
+
 
 .error{
 	color: #e01b24; 
