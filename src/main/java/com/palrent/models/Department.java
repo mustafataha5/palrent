@@ -109,11 +109,14 @@ public class Department {
 	}
 
 	public Department() {
-		this.approval = false;
-		this.images = new ArrayList<>();
-		this.offers = new ArrayList<>();
-		this.rules = new ArrayList<>();
-	}
+        this.approval = false;
+        this.images = new ArrayList<>();
+        this.offers = new ArrayList<>();
+        this.rules = new ArrayList<>();
+        this.images.add("https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+        this.images.add("https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" );
+        this.images.add("https://images.pexels.com/photos/5502218/pexels-photo-5502218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 ");
+    }
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "department_offer", joinColumns = @JoinColumn(name = "department_id"), inverseJoinColumns = @JoinColumn(name = "offer_id"))
