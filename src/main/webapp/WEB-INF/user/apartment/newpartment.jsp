@@ -31,7 +31,7 @@
 				<div class="card-body">
 
 
-					<form:form action="/admins/apartment/new" method="post"
+					<form:form action="/apartment/new" method="post"
 						modelAttribute="Apartment">
 
 
@@ -50,9 +50,9 @@
 						<p lass="error">
 							<form:errors path="numOfGuest"></form:errors>
 						</p>
-						<p class="error">
+						<%-- <p class="error">
 							<form:errors path="approval"></form:errors>
-						</p>
+						</p> --%>
 						<p lass="error">
 							<form:errors path="price"></form:errors>
 						</p>
@@ -96,13 +96,13 @@
 									<td><form:label path="numOfGuest">Number Of Guests:</form:label></td>
 									<td><form:input path="numOfGuest" type="number" value="1" min="1"/></td>
 								</tr>
-							<tr>
+							<%-- <tr>
 									<td><form:label path="approval">Approval:</form:label></td>
 									<td><form:select path="approval">
 									<form:option value="false" >False</form:option>
 									<form:option value="true">True</form:option>
 									</form:select> </td>
-								</tr>
+								</tr> --%>
 								<tr>
 									<td><form:label path="price">Price:</form:label></td>
 									<td><form:input type="double" value="0" path="price" /></td>
@@ -125,7 +125,7 @@
 								<tr>
 									<td></td>
 									<td>
-										<button type="submit" class="btn btn-outline-primary">
+										<button type="submit" class="btn w-25 btn-outline-primary">
 											Create Apartment</button>
 									</td>
 								</tr>

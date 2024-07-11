@@ -15,7 +15,7 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<title>Admin Apartment</title>
+<title>User Apartment</title>
 
 </head>
 <body>
@@ -28,8 +28,7 @@
 			<div class="card border-light ">
 				<div class="d-flex justify-content-between my-2">
 					<h4 class="card-title mx-3">Apartment</h4>
-					<a href="/admin"><h4
-							class="card-title mx-3 btn btn-outline-secondary ">Go back</h4></a>
+					<a href="/"><h4 class="card-title mx-3 btn btn-outline-secondary ">Go back</h4></a>
 				</div>
 				<div class="card-body">
 					<table class="table  text-center">
@@ -45,7 +44,7 @@
 							<th>Action</th>
 						</thead>
 						<tbody>
-							<c:forEach var="apartment" items="${apartments}">
+							<c:forEach var="apartment" items="${user.departments}">
 								<tr>
 									<td id="apartmentcart">${apartment.id}</td>
 									<td>${apartment.numOfRoom}</td>
@@ -63,8 +62,8 @@
 
 
 									<td><div class="d-flex justify-content-center"" >
-                                            <a href="/admins/apartment/${apartment.id}/edit" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
-                                            <form action="/admins/apartment/${apartment.id}/delete" method="post" >
+                                            <a href="/apartment/${apartment.id}/edit" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
+                                            <form action="/apartment/${apartment.id}/delete" method="post" >
                                                 <input type="hidden" name="_method" value="delete">
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
                                             </form>
@@ -77,7 +76,7 @@
 						</tbody>
 					</table>
 					<div class="my-4">
-						<a href="/admins/apartment/new" class=" btn btn-outline-primary">
+						<a href="apartment/new" class=" btn btn-outline-primary">
 							+ New Apartment </a>
 					</div>
 				</div>

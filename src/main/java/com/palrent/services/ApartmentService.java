@@ -21,14 +21,8 @@ public class ApartmentService {
 
 
 	public Department creatAdminApartment(Department apartment) {
-
-		return apartmentRepository.save(apartment);
-		
-		
+		return apartmentRepository.save(apartment);		
 	}
-
-
-	
 
 
 	public Department findById(Long id) {
@@ -49,7 +43,6 @@ public class ApartmentService {
 				return null;
 		
 	}
-
 
 	public void deleteApartment(Long id) {
 		apartmentRepository.deleteById(id);

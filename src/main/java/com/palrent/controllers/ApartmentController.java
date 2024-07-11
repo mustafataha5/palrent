@@ -77,13 +77,22 @@ public class ApartmentController {
 		if (result.hasErrors()) {
 			return "user/apartment/newpartment.jsp";
 		}
-		User user = userService.findUser((long) session.getAttribute("userId"));
+		User user = userService.findUser((Long) session.getAttribute("userId"));
 		apartment.setOwner(user);
+		System.out.println(">>>>>>>>>>"+user.getEmail());
 		apartmentService.creatAdminApartment(apartment);
 
 		return "redirect:/user/apartment";
 	}
 	
+	@GetMapping("/user/apartment")
+	public String showUserApartment(HttpSession session,Model model){
+		if(session.getAttribute("userId")==null) {
+			return "redirect:/";
+		}
+		model.addAttribute("user", userService.findUser((Long)session.getAttribute("userIds") ));
+		return "user/apartment/apartment.jsp";
+	}
 	@GetMapping("/admins/apartment/{id}/edit")
 	public String adminApartmentPutMapping(@PathVariable("id") Long id, Model model) {
 
