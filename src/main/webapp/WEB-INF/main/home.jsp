@@ -54,8 +54,9 @@
 						<img src="user-image" alt="Image not found"
 							onerror="this.src='img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
-							<a href="/new-apartment" >New apartment</a> 
-							<a href="/logout">Log out</a>
+
+							<a href="user/apartment" > apartment</a> <a href="/logout"
+								>Log out</a>
 						</div>
 					</div>
 				</div>
