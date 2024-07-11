@@ -41,42 +41,16 @@ $(document).ready(function() {
         }
     });
 
-    // Function to show login form
-    function showLoginForm() {
-        $('.form-popup').fadeIn();
-        $('.form-box.login').fadeIn();
-        $('.form-box.signup').hide();
-        $('.blur-bg-overlay').show();
-    }
-
-    // Function to show signup form
-    function showSignupForm() {
-        $('.form-popup').fadeIn();
-        $('.form-box.signup').fadeIn();
-        $('.form-box.login').hide();
-        $('.blur-bg-overlay').show();
-    }
-
-    // Function to hide forms and overlay
-    function hideForms() {
-        $('.form-popup').fadeOut();
-        $('.blur-bg-overlay').fadeOut();
-    }
-
-    // Event listeners for showing forms
-    $('#login-btn, #login-link').click(function(e) {
+    // Redirect to login page
+    $('#login-btn').click(function(e) {
         e.preventDefault();
-        showLoginForm();
+        window.location.href = "/login";
     });
 
-    $('#register-btn, #signup-link').click(function(e) {
+    // Redirect to register page
+    $('#register-btn').click(function(e) {
         e.preventDefault();
-        showSignupForm();
-    });
-
-    $('.close-btn, .blur-bg-overlay').click(function(e) {
-        e.preventDefault();
-        hideForms();
+        window.location.href = "/register";
     });
 
     // Search button click handler
