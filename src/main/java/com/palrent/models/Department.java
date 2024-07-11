@@ -55,7 +55,7 @@ public class Department {
 	private Integer numOfGuest;
 
 	@NotNull
-	@Min(value = 1,message = "Price must be greater than 1 ")
+	@Min(value = 1, message = "Price must be greater than 1 ")
 	private Double price;
 
 	@NotNull
@@ -67,31 +67,26 @@ public class Department {
 	private String description;
 
 	@NotEmpty(message = "")
-	@Size(min=1,message = "Department Number must be at least 1 digit.")
+	@Size(min = 1, message = "Department Number must be at least 1 digit.")
 	private String departmentNum;
-	
+
 	@NotEmpty(message = "")
-	@Size(min=1,message = "Building Number must be at least 1 digit.")
+	@Size(min = 1, message = "Building Number must be at least 1 digit.")
 	private String buildingNum;
-	
-	
+
 	@NotEmpty(message = "")
-	@Size(min=2,message = "Street Name must be at least 2 character.")
+	@Size(min = 2, message = "Street Name must be at least 2 character.")
 	private String street;
-	
+
 	@NotEmpty(message = "")
-	@Size(min=4,message = "City Name must be at least 2 character.")
+	@Size(min = 4, message = "City Name must be at least 2 character.")
 	private String city;
-	
+
 	private Double locationX;
 	private Double locationY;
-	
+
 	private Boolean approval;
 
-	
-	
-	
-	private List<String> images; ;
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
@@ -113,8 +108,13 @@ public class Department {
 		this.images = new ArrayList<>();
 		this.offers = new ArrayList<>();
 		this.rules = new ArrayList<>();
+
+		
 	}
-	
+//	@Column(columnDefinition = "Text")
+	@OneToMany(mappedBy ="department",fetch = FetchType.LAZY)
+	private List<Image> images;
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "department_offer", joinColumns = @JoinColumn(name = "department_id"), inverseJoinColumns = @JoinColumn(name = "offer_id"))
 	List<Offer> offers;
@@ -124,12 +124,9 @@ public class Department {
 	 * List<DepRule> rules;
 	 */
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "department_rule",
-	joinColumns = @JoinColumn(name = "department_id"),
-	inverseJoinColumns = @JoinColumn(name = "rule_id"))
+	@JoinTable(name = "department_rule", joinColumns = @JoinColumn(name = "department_id"), inverseJoinColumns = @JoinColumn(name = "rule_id"))
 	List<Rule> rules;
-	
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "owner_id")
 	private User owner;
@@ -268,13 +265,7 @@ public class Department {
 		this.approval = approval;
 	}
 
-	public List<String> getImages() {
-		return images;
-	}
-
-	public void setImages(List<String> images) {
-		this.images = images;
-	}
+	
 
 	public Date getCreatedAt() {
 		return createdAt;
@@ -299,8 +290,6 @@ public class Department {
 	public void setOffers(List<Offer> offers) {
 		this.offers = offers;
 	}
-
-	
 
 	public List<Rule> getRules() {
 		return rules;
@@ -333,7 +322,13 @@ public class Department {
 	public void setReviewers(List<ReviewDep> reviewers) {
 		this.reviewers = reviewers;
 	}
-	
-	
 
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+	
 }

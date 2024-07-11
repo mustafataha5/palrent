@@ -13,10 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.palrent.models.Department;
+import com.palrent.models.Image;
+
 import com.palrent.models.Offer;
 import com.palrent.models.Rule;
+
 import com.palrent.models.User;
+import com.palrent.repositories.ImageRepository;
 import com.palrent.services.ApartmentService;
+import com.palrent.services.ImageSerivce;
 import com.palrent.services.OfferService;
 import com.palrent.services.RuleServices;
 import com.palrent.services.UserService;
@@ -33,7 +38,14 @@ public class ApartmentController {
 	@Autowired
 	UserService userService;
 	@Autowired
-	RuleServices ruleServices;
+	RuleServices ruleServices ; 
+	@Autowired
+	ImageSerivce imageSerivce ; 
+	
+	
+
+	
+
 
 	@GetMapping("/user/apartment/new")
 	public String getApartment(@ModelAttribute("Apartment") Department apartment, HttpSession session) {
@@ -51,8 +63,21 @@ public class ApartmentController {
 		}
 		User user = userService.findUser((Long) session.getAttribute("userId"));
 		apartment.setOwner(user);
-		System.out.println(">>>>>>>>>>" + user.getEmail());
+
 		apartmentService.creatAdminApartment(apartment);
+		Image img = new Image("https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+		img.setDepartment(apartment);
+		imageSerivce.createImage(img);
+		
+		img = (new Image("https://images.pexels.com/photos/5502218/pexels-photo-5502218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"));
+		img.setDepartment(apartment);
+		imageSerivce.createImage(img);
+		
+		img = (new Image("https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"));
+		img.setDepartment(apartment);
+		imageSerivce.createImage(img);
+		
+		
 
 		return "redirect:/user/apartment";
 	}

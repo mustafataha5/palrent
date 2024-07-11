@@ -34,7 +34,7 @@ public class HomeController {
 		
 	}
 	@GetMapping("/register")
-	public String register() {
+	public String register(@ModelAttribute("newUser") User newUser) {
 		
 		return "main/register.jsp";
 	}
