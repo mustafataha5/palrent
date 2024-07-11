@@ -112,15 +112,24 @@ public class Department {
 		this.approval = false;
 		this.images = new ArrayList<>();
 		this.offers = new ArrayList<>();
+		this.rules = new ArrayList<>();
 	}
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "department_offer", joinColumns = @JoinColumn(name = "department_id"), inverseJoinColumns = @JoinColumn(name = "offer_id"))
 	List<Offer> offers;
 
-	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
-	private List<DepRule> rules;
-
+	/*
+	 * @OneToMany(mappedBy = "department", fetch = FetchType.LAZY) private
+	 * List<DepRule> rules;
+	 */
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "department_rule",
+	joinColumns = @JoinColumn(name = "department_id"),
+	inverseJoinColumns = @JoinColumn(name = "rule_id"))
+	List<Rule> rules;
+	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "owner_id")
 	private User owner;
@@ -291,11 +300,13 @@ public class Department {
 		this.offers = offers;
 	}
 
-	public List<DepRule> getRules() {
+	
+
+	public List<Rule> getRules() {
 		return rules;
 	}
 
-	public void setRules(List<DepRule> rules) {
+	public void setRules(List<Rule> rules) {
 		this.rules = rules;
 	}
 

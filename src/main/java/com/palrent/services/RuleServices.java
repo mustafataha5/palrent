@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.palrent.models.Offer;
 import com.palrent.models.Rule;
 import com.palrent.repositories.RuleRepositories;
 
@@ -38,6 +40,10 @@ public class RuleServices {
 	}
 	public void deleteRule(Long id) {
 		rulerepositories.deleteById(id);
+	}
+	
+	public List<Rule> allRulenotIn(Long ApaId){
+		return rulerepositories.findAllRulwexclude(ApaId);
 	}
 
 }
