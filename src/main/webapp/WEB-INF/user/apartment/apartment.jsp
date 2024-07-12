@@ -27,7 +27,7 @@
 
 	<div class="navbar">
 		<div class="logo">
-			<img src="/img/palrent-logo.png" alt="Logo">
+			<a href="/"> <img src="/img/palrent-logo.png" alt="Logo"></a>
 		</div>
 		<div class="hamburger-menu" onclick="toggleMenu()">
 			<i class="fas fa-bars"></i>

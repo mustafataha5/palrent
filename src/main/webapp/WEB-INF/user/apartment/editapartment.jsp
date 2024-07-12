@@ -24,9 +24,9 @@
 </head>
 <body>
 
-<div class="navbar">
+	<div class="navbar">
 		<div class="logo">
-			<img src="/img/palrent-logo.png" alt="Logo">
+			<a href="/"> <img src="/img/palrent-logo.png" alt="Logo"></a>
 		</div>
 		<div class="hamburger-menu" onclick="toggleMenu()">
 			<i class="fas fa-bars"></i>
@@ -244,8 +244,8 @@
 
 		</div>
 		<div class="col-md d-flex flex-column">
-		
-		<div class="card my-3">
+
+			<div class="card my-3">
 				<h2 class="card-title">All Rule:</h2>
 				<div class="card-body">
 					<c:forEach var="apaRule" items="${Apartment.rules}">
@@ -253,8 +253,8 @@
 							<h4 class="mx-3">${apaRule.name}</h4>
 							<form action="/user/apartmet/${Apartment.id}/DelRule"
 								method="post">
-								<input type="hidden" name="_method" value="delete">
-								<input type="hidden" name="ruleId" value="${apaRule.id}">
+								<input type="hidden" name="_method" value="delete"> <input
+									type="hidden" name="ruleId" value="${apaRule.id}">
 								<button type="submit" class="btn btn-danger btn-sm">delete</button>
 							</form>
 						</div>
@@ -266,23 +266,23 @@
 			<div class="card  my-3">
 				<h2 class="card-title">Add Rule:</h2>
 				<div class="card-body">
-				<form action="/user/apartmet/${Apartment.id}/AddRule"
-					method="post">
-					<input type="hidden" name="_method" value="patch"> <select
-						name="ruleId">
-						<c:forEach var="aparule" items="${exRule}">
-							<option value=${aparule.id}>${aparule.name}</option>
-						</c:forEach>
+					<form action="/user/apartmet/${Apartment.id}/AddRule" method="post">
+						<input type="hidden" name="_method" value="patch"> <select
+							name="ruleId">
+							<c:forEach var="aparule" items="${exRule}">
+								<option value=${aparule.id}>${aparule.name}</option>
+							</c:forEach>
 
-					</select>
-					<button type="submit" class="btn btn-outline-primary">Add Rule</button>
-				</form>
+						</select>
+						<button type="submit" class="btn btn-outline-primary">Add
+							Rule</button>
+					</form>
 				</div>
 			</div>
 
-		
-		<script type="text/javascript" src="/js/apartment.js"></script>
-		
+
+			<script type="text/javascript" src="/js/apartment.js"></script>
+
 		</div>
 </body>
 </html>

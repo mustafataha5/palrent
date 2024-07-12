@@ -50,10 +50,11 @@ public class ApartmentController {
 
 
 	@GetMapping("/user/apartment/new")
-	public String getApartment(@ModelAttribute("Apartment") Department apartment, HttpSession session) {
+	public String getApartment(@ModelAttribute("Apartment") Department apartment, HttpSession session,Model model) {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/";
 		}
+		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
 		return "user/apartment/newpartment.jsp";
 	}
 
