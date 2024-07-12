@@ -10,15 +10,24 @@
 <head>
 <meta charset="UTF-8">
 <title>PalRen</title>
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+	rel="stylesheet" />
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </head>
 <body>
 	<div class="navbar">
@@ -37,11 +46,11 @@
 			<c:when test="${ userId == null}">
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
-						<img src="user-image" alt="Image not found"
+						<img src="img.png" alt="Image not found"
 							onerror="this.src='img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
-							<a href="/register" id="register-btn">Register</a> 
-							<a href="/login" id="login-btn">Log In</a>
+							<a href="/register" id="register-btn">Register</a> <a
+								href="/login" id="login-btn">Log In</a>
 						</div>
 					</div>
 				</div>
@@ -50,6 +59,15 @@
 				<div class="d-flex align-items-center mx-3">
 					<h4 class="text-light mx-2">${user.firstName}</h4>
 					<div class="user-icon-container">
+<!-- <<<<<<< HEAD -->
+<!-- 						<div class="user-icon-wrapper"> -->
+<!-- 							<img src="user-image" alt="Image not found" -->
+<!-- 								onerror="this.src='img/profile.png';" class="user-icon" /> -->
+<!-- 							<div class="burger-menu" id="user-menu"> -->
+<!-- 								<a href="user/apartment">Apartment</a> <a href="/logout">Log -->
+<!-- 									out</a> -->
+<!-- 							</div> -->
+<!-- ======= -->
 					<div class="user-icon-wrapper">
 						<img src="user-image" alt="Image not found" onerror="this.src='img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
@@ -58,12 +76,10 @@
 							<a href="user/apartment" > apartment</a> 
 							<a href="/logout"> Log out</a>
 
+
 						</div>
 					</div>
 				</div>
-
-				</div>
-
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -73,22 +89,64 @@
 			<h1>Find Your Perfect Stay, Anytime, Anywhere</h1>
 		</div>
 		<div class="search-bar">
-			<input type="text" id="location" placeholder="Location"> 
-			<input type="date" id="checkin" placeholder="Check-in "> 
-			<input type="date" id="checkout" placeholder="Check-out"> 
-			<input type="number" id="guests" placeholder="Number of Guests">
-			<button id="search-btn">Search</button>
+			<input type="text" id="location" placeholder="Location"> <input
+				type="date" id="checkin" placeholder="Check-in "> <input
+				type="date" id="checkout" placeholder="Check-out"> <input
+				type="number" id="guests" placeholder="Number of Guests">
+			<button id="open-modal-btn">Search</button>
 		</div>
 		<div class="call-to-action">
 			<p>Explore our top-rated apartments now!</p>
 		</div>
 	</div>
+<div id="myModal" class="modal">
+   <span class="close-btn" id="close-modal">&times;</span>
+    <div class="container">
+         <span class="close-btn" id="close-modal">&times;</span>
+        <!-- Repeat this structure for each card -->
+        <div class="modal-content">
+           <!--  <span class="close-btn">&times;</span> -->
+            <img src="img_avatar.png" alt="Avatar">
+            <div>
+                <h4><b>Tabakhna Apartment</b></h4>
+                <p>Ramallah, City Center, Rukab's St</p>
+                <p>$300</p>
+                
+            </div>
+            <a href="/apartment">View Details</a>
+        </div>
+
+        <div class="modal-content">
+       
+            <img src="img_avatar.png" alt="Avatar">
+            <div>
+                <h4><b>Tabakhna Apartment</b></h4>
+                <p>Ramallah, City Center, Rukab's St</p>
+                <p>$300</p>
+              
+            </div>
+             <a href="/apartment">View Details</a>
+        </div>
+
+        <div class="modal-content">
+            
+            <img src="img_avatar.png" alt="Avatar">
+            <div>
+                <h4><b>Tabakhna Apartment</b></h4>
+                <p>Ramallah, City Center, Rukab's St</p>
+                <p>$300</p>
+               
+            </div>
+           <a href="/apartment">View Details</a>
+        </div>
+    </div>
+</div>
 	<footer>
 		<div class="social-icons">
-			<a href="#"><i class="fab fa-facebook-f"></i></a> 
-			<a href="#"><i class="fab fa-instagram"></i></a> 
-			<a href="#"><i class="fab fa-linkedin-in"></i></a> 
-			<a href="#"><i class="fab fa-whatsapp"></i></a>
+			<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+				class="fab fa-instagram"></i></a> <a href="#"><i
+				class="fab fa-linkedin-in"></i></a> <a href="#"><i
+				class="fab fa-whatsapp"></i></a>
 		</div>
 		<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
 	</footer>
