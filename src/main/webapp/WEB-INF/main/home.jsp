@@ -10,15 +10,24 @@
 <head>
 <meta charset="UTF-8">
 <title>PalRen</title>
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+	rel="stylesheet" />
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </head>
 <body>
 	<div class="navbar">
@@ -37,7 +46,7 @@
 			<c:when test="${ user == null}">
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
-						<img src="user-image" alt="Image not found"
+						<img src="img.png" alt="Image not found"
 							onerror="this.src='img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
 							<a href="/register" id="register-btn">Register</a> <a
@@ -83,12 +92,54 @@
 				type="date" id="checkin" placeholder="Check-in "> <input
 				type="date" id="checkout" placeholder="Check-out"> <input
 				type="number" id="guests" placeholder="Number of Guests">
-			<button id="search-btn">Search</button>
+			<button id="open-modal-btn">Search</button>
 		</div>
 		<div class="call-to-action">
 			<p>Explore our top-rated apartments now!</p>
 		</div>
 	</div>
+<div id="myModal" class="modal">
+   <span class="close-btn" id="close-modal">&times;</span>
+    <div class="container">
+         <span class="close-btn" id="close-modal">&times;</span>
+        <!-- Repeat this structure for each card -->
+        <div class="modal-content">
+           <!--  <span class="close-btn">&times;</span> -->
+            <img src="img_avatar.png" alt="Avatar">
+            <div>
+                <h4><b>Tabakhna Apartment</b></h4>
+                <p>Ramallah, City Center, Rukab's St</p>
+                <p>$300</p>
+                
+            </div>
+            <a href="/apartment">View Details</a>
+        </div>
+
+        <div class="modal-content">
+       
+            <img src="img_avatar.png" alt="Avatar">
+            <div>
+                <h4><b>Tabakhna Apartment</b></h4>
+                <p>Ramallah, City Center, Rukab's St</p>
+                <p>$300</p>
+              
+            </div>
+             <a href="/apartment">View Details</a>
+        </div>
+
+        <div class="modal-content">
+            
+            <img src="img_avatar.png" alt="Avatar">
+            <div>
+                <h4><b>Tabakhna Apartment</b></h4>
+                <p>Ramallah, City Center, Rukab's St</p>
+                <p>$300</p>
+               
+            </div>
+           <a href="/apartment">View Details</a>
+        </div>
+    </div>
+</div>
 	<footer>
 		<div class="social-icons">
 			<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i

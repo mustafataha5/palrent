@@ -1,11 +1,11 @@
-
+/* Ensure global styles reset properly */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
+/* Navbar styles */
 .navbar {
     position: fixed;
     width: 100%;
@@ -13,7 +13,7 @@
     justify-content: space-between;
     align-items: center;
     background: rgba(0, 0, 0, 0.4);
-    padding-top:0px;
+    padding-top: 0px;
     z-index: 100;
     top: 0;
     transition: all 0.3s;
@@ -21,7 +21,7 @@
 
 .navbar .logo img {
     width: 80px;
-    margin-left:32%;
+    margin-left: 32%;
 }
 
 .navbar .hamburger-menu {
@@ -57,6 +57,8 @@
     color: #bba270;
     font-weight: 700;
 }
+
+/* Overlay text styles */
 .overlay-text {
     position: absolute;
     top: 30%;
@@ -68,6 +70,8 @@
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
+
+/* Call to action styles */
 .call-to-action {
     position: absolute;
     top: 60%;
@@ -78,6 +82,8 @@
     font-size: 1.2rem;
     margin-top: 10px;
 }
+
+/* User icon container styles */
 .user-icon-container {
     position: relative;
     margin-right: 6%;
@@ -116,10 +122,10 @@
 
 .burger-menu.show {
     display: block;
-width: 9rem;
-text-align: center;
-font-size: 1.1rem;
-font-weight: 600;
+    width: 9rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .burger-menu a {
@@ -134,10 +140,10 @@ font-weight: 600;
     color: #bba270;
 }
 
+/* Panorama container styles */
 .panorama-container {
     width: 100%;
     height: 100vh;
-    position: relative;
 }
 
 #panorama {
@@ -145,6 +151,7 @@ font-weight: 600;
     height: 100%;
 }
 
+/* Search bar styles */
 .search-bar {
     position: absolute;
     top: 50%;
@@ -158,7 +165,6 @@ font-weight: 600;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: opacity 1s, transform 1s;
 }
-
 
 .search-bar.show {
     opacity: 1;
@@ -177,16 +183,101 @@ font-weight: 600;
     cursor: pointer;
 }
 
-
 .search-bar button:hover {
     background-color: #a68850;
 }
 
+/* Main content styles */
+#close-modal{
+	color:white;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.modal .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.modal .container .modal-content {
+    background-color: #fefefe;
+    border: 1px solid #888;
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.modal .container .modal-content:hover {
+    transform: scale(1.05);
+}
+
+.modal .container .modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    max-width: 600px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Media queries for responsive design */
+@media only screen and (max-width: 1000px) {
+    .card {
+        grid-column-end: span 6;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    main {
+        grid-gap: 20px;
+    }
+    .card {
+        grid-column-end: span 12;
+    }
+}
+
+/* Footer styles */
 footer {
     background: #333;
     color: white;
     text-align: center;
-    position: fixed;
+   /*  position: fixed; */
     width: 100%;
     bottom: 0;
     height: 68px;
@@ -224,166 +315,7 @@ footer .social-icons {
     font-size: 0.8rem;
 }
 
-/* .blur-bg-overlay {
-    position: fixed;
-    display: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-}
-
-.form-popup {
-    display: none;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 2rem;
-    z-index: 1000;
-    width: 90%;
-    max-width: 30rem;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-} */
-.blur-bg-overlay {
-    display: none;
-}
-
-.form-popup {
-    display: none;
-}
-.form-box {
-    display: none;
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-box.active {
-    display: block;
-}
-
-.form-details {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.form-details h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.form-details p {
-    font-size: 14px;
-    color: #777;
-}
-
-.form-content h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
- .input-field {
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.input-field input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.input-field label {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: #777;
-    transition: 0.3s;
-}
-
-.input-field input:focus + label,
-.input-field input:not(:placeholder-shown) + label {
-    top: 0;
-    left: 10px;
-    font-size: 12px;
-    color: blue;
-} 
-
-.forgot-pass-link {
-    display: block;
-    margin-bottom: 20px;
-    text-align: right;
-    color: black;
-    text-decoration: none;
-}
-
-.forgot-pass-link:hover {
-    text-decoration: underline;
-}
-
-button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    background: #bba270;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button[type="submit"]:hover {
-    background: #388E3C;
-}
-
-.bottom-link {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.bottom-link a {
-    color: blue;
-    text-decoration: none;
-}
-
-.bottom-link a:hover {
-    text-decoration: underline;
-}
-
-.policy-text {
-    margin-bottom: 20px;
-}
-
-.policy-text input {
-    margin-right: 10px;
-}
-
-.policy-text label {
-    font-size: 14px;
-}
-
-.option {
-    color: #388E3C;
-    text-decoration: none;
-}
-
-.option:hover {
-    text-decoration: underline;
-}
-
+/* Hide fullscreen toggle button in Pannellum */
 .pnlm-fullscreen-toggle-button {
     display: none !important;
 }
@@ -397,7 +329,7 @@ button[type="submit"]:hover {
     color: black;
 }
 
-/* Ensure the nav-links are hidden by default on smaller screens */
+/* Responsive navbar styles */
 @media (max-width: 1024px) {
     .navbar .logo img {
         width: 60px;
@@ -424,63 +356,41 @@ button[type="submit"]:hover {
     .navbar .nav-links li {
         width: 100%;
         text-align: center;
-    }
-
-    .search-bar {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    /* Show nav-links below hamburger menu */
-    .nav-links.show {
-        display: flex;
-    }
-}
-
-@media (max-width: 768px) {
-    .navbar .hamburger-menu i {
-        font-size: 20px;
-    }
-
-    .navbar .nav-links li {
-        margin: 0;
+        margin: 10px 0;
     }
 
     .navbar .nav-links a {
         font-size: 18px;
     }
 
-    .footer .social-icons a {
-        width: 30px;
-        height: 30px;
+    .overlay-text {
+        font-size: 1.8rem;
     }
 
-    .footer p {
-        font-size: 0.7rem;
+    .call-to-action {
+        font-size: 1rem;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .search-bar input, .search-bar button {
+        width: 100%;
+        margin-bottom: 10px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .navbar .logo img {
         width: 50px;
     }
 
-    .navbar .nav-links a {
-        font-size: 16px;
+    .overlay-text {
+        font-size: 1.5rem;
     }
 
-    .footer .social-icons a {
-        width: 25px;
-        height: 25px;
+    .call-to-action {
+        font-size: 0.9rem;
     }
-
-    .footer p {
-        font-size: 0.6rem;
-    }
-}
-
-
-.error{
-	color: #e01b24; 
-	font-size: 12px;
 }

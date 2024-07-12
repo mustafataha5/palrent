@@ -34,6 +34,7 @@ private UserService userService;
     }
 	
 	
+<<<<<<< HEAD
 //	@PostMapping("/user/new")
 //	public String addNewUser(@Valid @ModelAttribute("newUser") User newUser 
 //			,BindingResult result
@@ -52,6 +53,25 @@ private UserService userService;
 //	}
 	@GetMapping("/register")
 	public String register(@ModelAttribute("newUser") User newUser) {
+=======
+	@PostMapping("/user/new")
+	public String addNewUser(@Valid @ModelAttribute("newUser") User newUser 
+			,BindingResult result
+			,HttpSession session, Model model 
+			,RedirectAttributes redirectAttributes){
+		newUser = userService.prepareUser(newUser,result);
+		if(result.hasErrors()) {
+			model.addAttribute("newLogin", new LoginUser());
+
+			return "main/register.jsp";
+
+
+		}
+//		redirectAttributes.addAttribute("success", "Successfully added user");
+		User user = userService.createUser(newUser);
+		session.setAttribute("userId", user.getId());
+		return "redirect:/";
+>>>>>>> master
 		
 		return "main/register.jsp";
 	}
