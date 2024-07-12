@@ -12,27 +12,27 @@
 <link rel="stylesheet" href="/css/userinfo.css">
 </head>
 <body>
-	<div class="navbar">
-		<div class="logo">
-			<img src="img/palrent-logo.png" alt="Logo">
-		</div>
-		<div class="hamburger-menu" onclick="toggleMenu()">
-			<i class="fas fa-bars"></i>
-		</div>
-		<ul class="nav-links">
-			<li><a href="#">About us</a></li>
-			<li><a href="#">Contact us</a></li>
-			<li><a href="#">User</a></li>
-		</ul>
-		<div class="user-icon-container">
-			<img src="user-image" alt="Image not found"
-				onerror="this.src='img/profile.png';" class="user-icon" />
-			<div class="burger-menu">
-				<a href="#" id="register-btn">Register</a> <a href="#"
-					id="login-btn">Log In</a>
-			</div>
-		</div>
-	</div>
+<!-- 	<div class="navbar"> -->
+<!-- 		<div class="logo"> -->
+<!-- 			<img src="img/palrent-logo.png" alt="Logo"> -->
+<!-- 		</div> -->
+<!-- 		<div class="hamburger-menu" onclick="toggleMenu()"> -->
+<!-- 			<i class="fas fa-bars"></i> -->
+<!-- 		</div> -->
+<!-- 		<ul class="nav-links"> -->
+<!-- 			<li><a href="#">About us</a></li> -->
+<!-- 			<li><a href="#">Contact us</a></li> -->
+<!-- 			<li><a href="#">User</a></li> -->
+<!-- 		</ul> -->
+<!-- 		<div class="user-icon-container"> -->
+<!-- 			<img src="user-image" alt="Image not found" -->
+<!-- 				onerror="this.src='img/profile.png';" class="user-icon" /> -->
+<!-- 			<div class="burger-menu"> -->
+<!-- 				<a href="#" id="register-btn">Register</a> <a href="#" -->
+<!-- 					id="login-btn">Log In</a> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	
 	<div class="profile-page">
 		<div class="content">
@@ -47,7 +47,7 @@
 			</div>
 			<div class="content__title">
 				<h1>User name</h1>
-				<span> adress :ramallah, batata street</span>
+				<span> </span>
 			</div>
 			<div class="content__description">
 				<p>Email:</p>

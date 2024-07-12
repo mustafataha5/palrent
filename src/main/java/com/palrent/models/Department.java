@@ -59,7 +59,7 @@ public class Department {
 	private Double price;
 
 	@NotNull
-	@Size(min = 3)
+	@Size(min = 3 ,max =10)
 	private String title;
 
 	@NotNull
