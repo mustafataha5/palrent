@@ -37,7 +37,7 @@
 			<li><a href="#">User</a></li>
 		</ul>
 		<c:choose>
-			<c:when test="${ userId == null}">
+			<c:when test="${ user == null}">
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
 						<img src="user-image" alt="Image not found"
@@ -80,7 +80,7 @@
 	</div>
 
 	<div class="row d-flex justify-content-center mx-5 mt-3">
-		<div class="col-md-8">
+		<div class="col-md-6">
 			<div class="card border-light">
 
 
@@ -203,7 +203,7 @@
 			</div>
 		</div>
 
-		<div class="col-md d-flex flex-column">
+		<div class="col-md-3 d-flex flex-column">
 
 			<div class="card my-3">
 				<h2 class="card-title">All Offer:</h2>
@@ -213,6 +213,8 @@
 							<h4 class="mx-3">${apaOffer.name}</h4>
 							<form action="/user/apartmet/${Apartment.id}/DelOffer"
 								method="post">
+								<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
 								<input type="hidden" name="_method" value="delete"> <input
 									type="hidden" name="offerId" value="${apaOffer.id}">
 								<button type="submit" class="btn btn-danger btn-sm">delete</button>
@@ -228,6 +230,8 @@
 				<div class="card-body">
 					<form action="/user/apartment/${Apartment.id}/AddOffer"
 						method="post">
+						<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
 						<input type="hidden" name="_method" value="patch"> <select
 							name="offerId">
 							<c:forEach var="apaoffer" items="${exOffer}">
@@ -253,7 +257,10 @@
 							<h4 class="mx-3">${apaRule.name}</h4>
 							<form action="/user/apartmet/${Apartment.id}/DelRule"
 								method="post">
-								<input type="hidden" name="_method" value="delete"> <input
+								<input type="hidden" name="_method" value="delete">
+								<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+								 <input
 									type="hidden" name="ruleId" value="${apaRule.id}">
 								<button type="submit" class="btn btn-danger btn-sm">delete</button>
 							</form>
@@ -267,7 +274,10 @@
 				<h2 class="card-title">Add Rule:</h2>
 				<div class="card-body">
 					<form action="/user/apartmet/${Apartment.id}/AddRule" method="post">
-						<input type="hidden" name="_method" value="patch"> <select
+						<input type="hidden" name="_method" value="patch">
+						<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+						 <select
 							name="ruleId">
 							<c:forEach var="aparule" items="${exRule}">
 								<option value=${aparule.id}>${aparule.name}</option>
