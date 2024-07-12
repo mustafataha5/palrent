@@ -1,5 +1,7 @@
 package com.palrent.controllers;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -133,6 +135,14 @@ public class ApartmentController {
 
 	@DeleteMapping("/user/apartment/{id}/delete")
 	public String deleteUserApartment(@PathVariable("id") Long id) {
+		Department dep1=apartmentService.findById(id);
+		for (Image i : dep1.getImages()) {
+			i.setDepartment(null);
+			imageSerivce.update(i);
+			
+			
+		}
+		
 		apartmentService.deleteApartment(id);
 		return "redirect:/user/apartment";
 	}

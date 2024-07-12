@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <title>User Apartment</title>
 
 </head>
@@ -28,7 +27,8 @@
 			<div class="card border-light ">
 				<div class="d-flex justify-content-between my-2">
 					<h4 class="card-title mx-3">My Apartment</h4>
-					<a href="/"><h4 class="card-title mx-3 btn btn-outline-secondary ">Go back</h4></a>
+					<a href="/"><h4
+							class="card-title mx-3 btn btn-outline-secondary ">Go back</h4></a>
 				</div>
 				<div class="card-body">
 					<table class="table  text-center">
@@ -54,21 +54,23 @@
 									<td>${apartment.numOfGuest}</td>
 									<td>${apartment.approval}</td>
 									<td>$ ${apartment.price}</td>
-<!-- 									<td><a class=" btn btn-outline-warning" -->
-<%-- 										href="/admins/apartment/${apartment.id}/edit">Edit</a> <a --%>
-<!-- 										class=" btn btn-outline-danger" -->
-<%-- 										href="/admins/apartment/delete/${apartment.id}">Delete</a></td> --%>
+									<!-- 									<td><a class=" btn btn-outline-warning" -->
+									<%-- 										href="/admins/apartment/${apartment.id}/edit">Edit</a> <a --%>
+									<!-- 										class=" btn btn-outline-danger" -->
+									<%-- 										href="/admins/apartment/delete/${apartment.id}">Delete</a></td> --%>
 
 
 
 									<td><div class="d-flex justify-content-center"" >
-                                            <a href="/user/apartment/${apartment.id}/edit" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
-                                            <form action="/user/apartment/${apartment.id}/delete" method="post" >
-                                                <input type="hidden" name="_method" value="delete">
-                                                <button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
-                                            </form>
+											<a href="/user/apartment/${apartment.id}/edit"
+												class="mx-3 btn btn-outline-warning btn-sm">Edit</a>
+											<form action="/user/apartment/${apartment.id}/delete"
+												method="post">
+												<input type="hidden" name="_method" value="delete">
+												<button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
+											</form>
 
-                                        </div></td>
+										</div></td>
 
 
 								</tr>
@@ -76,16 +78,43 @@
 						</tbody>
 					</table>
 					<div class="my-4">
-						<a href="apartment/new" class=" btn btn-outline-primary">
-							+ New Apartment </a>
+						<a href="apartment/new" class=" btn btn-outline-primary"> +
+							New Apartment </a>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div style="width: 800px;">
-			<canvas id="acquisitions"></canvas>
+		<div class="row ">
+			<c:forEach var="apartment" items="${user.ownedDeparment}">
+				<div class="col-3 my-3">
+					<div class="card" style="width: 18rem;">
+
+						<img alt="not work" src="${ apartment.images[0].url}">
+						<div class="card-body ">
+
+							<h1>${apartment.title}</h1>
+							<p>
+								description : ${ apartment.description} 
+							</p>
+
+							<div class="d-flex justify-content-center"" >
+								<a href="/user/apartment/${apartment.id}/edit"
+									class="mx-3 btn btn-outline-warning btn-sm">Edit</a>
+								<form action="/user/apartment/${apartment.id}/delete"
+									method="post">
+									<input type="hidden" name="_method" value="delete">
+									<button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
+								</form>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
+
 
 		<script type="text/javascript" src="/js/chart.js"></script>
 </body>
