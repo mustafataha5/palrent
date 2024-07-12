@@ -157,6 +157,8 @@
 							<h4 class="mx-3">${apaOffer.name}</h4>
 							<form action="/admins/apartmet/${Apartment.id}/DelOffer"
 								method="post">
+								  <input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
 								<input type="hidden" name="_method" value="delete">
 								<input type="hidden" name="offerId" value="${apaOffer.id}">
 								<button type="submit" class="btn btn-danger btn-sm">delete</button>
@@ -172,6 +174,8 @@
 				<div class="card-body">
 				<form action="/admins/apartmet/${Apartment.id}/AddOffer"
 					method="post">
+					  <input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
 					<input type="hidden" name="_method" value="patch"> <select
 						name="offerId">
 						<c:forEach var="apaoffer" items="${exOffer}">
@@ -192,6 +196,8 @@
 							<h4 class="mx-3">${apaRule.name}</h4>
 							<form action="/admins/apartmet/${Apartment.id}/DelRule"
 								method="post">
+								  <input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
 								<input type="hidden" name="_method" value="delete">
 								<input type="hidden" name="ruleId" value="${apaRule.id}">
 								<button type="submit" class="btn btn-danger btn-sm">Del</button>
@@ -207,6 +213,8 @@
 				<div class="card-body">
 				<form action="/admins/apartmet/${Apartment.id}/AddRule"
 					method="post">
+					  <input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
 					<input type="hidden" name="_method" value="patch"> <select
 						name="ruleId">
 						<c:forEach var="aparule" items="${exRule}">

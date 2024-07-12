@@ -268,3 +268,12 @@ footer .social-icons {
     margin: 0;
     font-size: 0.8rem;
 }
+.error{
+	color: #e01b24 ;
+	font-size: 12px;
+}
+.success{
+	color: #2ec27e ;
+	font-size: 12px;
+}
+

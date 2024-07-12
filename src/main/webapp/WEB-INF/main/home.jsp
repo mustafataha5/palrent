@@ -34,14 +34,14 @@
 			<li><a href="#">User</a></li>
 		</ul>
 		<c:choose>
-			<c:when test="${ userId == null}">
+			<c:when test="${ user == null}">
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
 						<img src="user-image" alt="Image not found"
 							onerror="this.src='img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
-							<a href="/register" id="register-btn">Register</a> 
-							<a href="/login" id="login-btn">Log In</a>
+							<a href="/register" id="register-btn">Register</a> <a
+								href="/login" id="login-btn">Log In</a>
 						</div>
 					</div>
 				</div>
@@ -50,17 +50,23 @@
 				<div class="d-flex align-items-center mx-3">
 					<h4 class="text-light mx-2">${user.firstName}</h4>
 					<div class="user-icon-container">
-					<div class="user-icon-wrapper">
-						<img src="user-image" alt="Image not found" onerror="this.src='img/profile.png';" class="user-icon" />
-						<div class="burger-menu" id="user-menu">
-			
-						    <a href="/userinfo/${user.id}" >User Info</a>
-							<a href="user/apartment" > apartment</a> 
-							<a href="/logout"> Log out</a>
+						<div class="user-icon-wrapper">
+							<img src="user-image" alt="Image not found"
+								onerror="this.src='img/profile.png';" class="user-icon" />
+							<div class="burger-menu" id="user-menu">
 
+								<a href="/userinfo/${user.id}">User Info</a> <a
+									href="user/apartment"> apartment</a>
+								<!-- <a href="/logout"> Log out</a> -->
+
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit" value="Logout!" />
+								</form>
+
+							</div>
 						</div>
 					</div>
-				</div>
 
 				</div>
 
@@ -73,10 +79,10 @@
 			<h1>Find Your Perfect Stay, Anytime, Anywhere</h1>
 		</div>
 		<div class="search-bar">
-			<input type="text" id="location" placeholder="Location"> 
-			<input type="date" id="checkin" placeholder="Check-in "> 
-			<input type="date" id="checkout" placeholder="Check-out"> 
-			<input type="number" id="guests" placeholder="Number of Guests">
+			<input type="text" id="location" placeholder="Location"> <input
+				type="date" id="checkin" placeholder="Check-in "> <input
+				type="date" id="checkout" placeholder="Check-out"> <input
+				type="number" id="guests" placeholder="Number of Guests">
 			<button id="search-btn">Search</button>
 		</div>
 		<div class="call-to-action">
@@ -85,10 +91,10 @@
 	</div>
 	<footer>
 		<div class="social-icons">
-			<a href="#"><i class="fab fa-facebook-f"></i></a> 
-			<a href="#"><i class="fab fa-instagram"></i></a> 
-			<a href="#"><i class="fab fa-linkedin-in"></i></a> 
-			<a href="#"><i class="fab fa-whatsapp"></i></a>
+			<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+				class="fab fa-instagram"></i></a> <a href="#"><i
+				class="fab fa-linkedin-in"></i></a> <a href="#"><i
+				class="fab fa-whatsapp"></i></a>
 		</div>
 		<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
 	</footer>

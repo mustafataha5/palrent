@@ -51,9 +51,9 @@ public class ApartmentController {
 
 	@GetMapping("/user/apartment/new")
 	public String getApartment(@ModelAttribute("Apartment") Department apartment, HttpSession session,Model model) {
-		if (session.getAttribute("userId") == null) {
-			return "redirect:/";
-		}
+//		if (session.getAttribute("userId") == null) {
+//			return "redirect:/";
+//		}
 		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
 		return "user/apartment/newpartment.jsp";
 	}
@@ -61,9 +61,9 @@ public class ApartmentController {
 	@PostMapping("/user/apartment/new")
 	public String addApartmentPosting(@Valid @ModelAttribute("Apartment") Department apartment, BindingResult result,
 			HttpSession session) {
-		if (result.hasErrors()) {
-			return "user/apartment/newpartment.jsp";
-		}
+//		if (result.hasErrors()) {
+//			return "user/apartment/newpartment.jsp";
+//		}
 		User user = userService.findUser((Long) session.getAttribute("userId"));
 		apartment.setOwner(user);
 
@@ -87,18 +87,18 @@ public class ApartmentController {
 
 	@GetMapping("/user/apartment")
 	public String showUserApartment(HttpSession session, Model model) {
-		if (session.getAttribute("userId") == null) {
-			return "redirect:/";
-		}
+//		if (session.getAttribute("userId") == null) {
+//			return "redirect:/";
+//		}
 		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
 		return "user/apartment/apartment.jsp";
 	}
 
 	@GetMapping("/user/apartment/{id}/edit")
 	public String userApartmentPutMapping(@PathVariable("id") Long id, Model model, HttpSession session) {
-		if (session.getAttribute("userId") == null) {
-			return "redirect:/";
-		}
+//		if (session.getAttribute("userId") == null) {
+//			return "redirect:/";
+//		}
 		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
 		Department apartment = apartmentService.findById(id);
 		model.addAttribute("Apartment", apartment);
