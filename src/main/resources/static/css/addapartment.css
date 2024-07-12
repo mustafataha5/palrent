@@ -1,0 +1,51 @@
+.navbar {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding-top: 0px;
+    z-index: 100;
+    top: 0;
+    transition: all 0.3s;
+}
+
+.navbar .logo img {
+    width: 80px;
+    margin-left: 32%;
+}
+
+.navbar .hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.navbar .hamburger-menu i {
+    color: white;
+    font-size: 24px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.nav-links li:hover a {
+    color: #bba270;
+    font-weight: 700;
+}
