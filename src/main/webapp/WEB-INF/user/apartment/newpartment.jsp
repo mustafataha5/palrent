@@ -11,19 +11,71 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>New Apartment</title>
+<title>New Apartment</title> <
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+	<div class="navbar">
+		<div class="logo">
+			<img src="/img/palrent-logo.png" alt="Logo">
+		</div>
+		<div class="hamburger-menu" onclick="toggleMenu()">
+			<i class="fas fa-bars"></i>
+		</div>
+		<ul class="nav-links">
+			<li><a href="#">About us</a></li>
+			<li><a href="#">Contact us</a></li>
+			<li><a href="#">User</a></li>
+		</ul>
+		<c:choose>
+			<c:when test="${ userId == null}">
+				<div class="user-icon-container">
+					<div class="user-icon-wrapper">
+						<img src="user-image" alt="Image not found"
+							onerror="this.src='img/profile.png';" class="user-icon" />
+						<div class="burger-menu" id="user-menu">
+							<a href="/register" id="register-btn">Register</a> <a
+								href="/login" id="login-btn">Log In</a>
+						</div>
+					</div>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="d-flex align-items-center mx-3">
+					<h4 class="text-light mx-2">${user.firstName}</h4>
+					<div class="user-icon-container">
+						<div class="user-icon-wrapper">
+							<img src="user-image" alt="Image not found"
+								onerror="this.src='/img/profile.png';" class="user-icon" />
+							<div class="burger-menu" id="user-menu">
 
+								<a href="/userinfo/${user.id}">User Info</a> <a
+									href="/user/apartment"> apartment</a> <a href="/logout">
+									Log out</a>
 
-	<div class="row d-flex justify-content-center mx-5 mt-3">
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</c:otherwise>
+		</c:choose>
+	</div>
+
+	<div class="row d-flex justify-content-center mx-5 mt-5 my-4">
 		<div class="col-md-8">
 			<div class="card border-light">
-			
-				<div class="d-flex justify-content-between my-2">
+
+				<div class="d-flex justify-content-between my-5 ">
 					<h4 class="card-title mx-3">New A Apartment</h4>
 					<a href="/user/apartment"><h4
 							class="card-title mx-3 btn btn-outline-primary ">Go back</h4></a>
@@ -78,25 +130,30 @@
 							<tbody>
 								<tr>
 									<td><form:label path="numOfRoom">Number Of Rooms:</form:label></td>
-									<td><form:input type="number" value="1" min="1" path="numOfRoom" /></td>
+									<td><form:input type="number" value="1" min="1"
+											path="numOfRoom" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="numOfBath">Number Of Baths:</form:label></td>
-									<td><form:input type="number" value="1" min="1" path="numOfBath" /></td>
+									<td><form:input type="number" value="1" min="1"
+											path="numOfBath" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="numOfBed">Number Of Beds:</form:label></td>
-									<td><form:input type="number" value="1" min="1" path="numOfBed" /></td>
+									<td><form:input type="number" value="1" min="1"
+											path="numOfBed" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="area">Apartment Space:</form:label></td>
-									<td><form:input path="area" type="number" value="1" min="1" /></td>
+									<td><form:input path="area" type="number" value="1"
+											min="1" /></td>
 								</tr>
 								<tr>
 									<td><form:label path="numOfGuest">Number Of Guests:</form:label></td>
-									<td><form:input path="numOfGuest" type="number" value="1" min="1"/></td>
+									<td><form:input path="numOfGuest" type="number" value="1"
+											min="1" /></td>
 								</tr>
-							<%-- <tr>
+								<%-- <tr>
 									<td><form:label path="approval">Approval:</form:label></td>
 									<td><form:select path="approval">
 									<form:option value="false" >False</form:option>
@@ -107,11 +164,15 @@
 									<td><form:label path="price">Price:</form:label></td>
 									<td><form:input type="double" value="0" path="price" /></td>
 								</tr>
-								
+
 								<tr>
 									<td><form:label path="">address:</form:label></td>
-									<td><form:input type="text" path="departmentNum" placeholder="department number" />  <form:input type="text" path="buildingNum" placeholder="Building Number" /> <form:input type="text" path="street"  placeholder="Street"/> <form:input type="text" path="city" placeholder="City" /></td>
-					
+									<td><form:input type="text" path="departmentNum"
+											placeholder="department number" /> <form:input type="text"
+											path="buildingNum" placeholder="Building Number" /> <form:input
+											type="text" path="street" placeholder="Street" /> <form:input
+											type="text" path="city" placeholder="City" /></td>
+
 								</tr>
 								<tr>
 									<td><form:label path="title">Title:</form:label></td>
@@ -137,6 +198,6 @@
 			</div>
 		</div>
 	</div>
-
+	<script type="text/javascript" src="/js/apartment.js"></script>
 </body>
 </html>

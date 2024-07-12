@@ -25,7 +25,7 @@
 </head>
 <body>
 
-<div class="navbar">
+	<div class="navbar">
 		<div class="logo">
 			<img src="/img/palrent-logo.png" alt="Logo">
 		</div>
@@ -44,8 +44,8 @@
 						<img src="user-image" alt="Image not found"
 							onerror="this.src='img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
-							<a href="/register" id="register-btn">Register</a> 
-							<a href="/login" id="login-btn">Log In</a>
+							<a href="/register" id="register-btn">Register</a> <a
+								href="/login" id="login-btn">Log In</a>
 						</div>
 					</div>
 				</div>
@@ -54,17 +54,18 @@
 				<div class="d-flex align-items-center mx-3">
 					<h4 class="text-light mx-2">${user.firstName}</h4>
 					<div class="user-icon-container">
-					<div class="user-icon-wrapper">
-						<img src="user-image" alt="Image not found" onerror="this.src='/img/profile.png';" class="user-icon" />
-						<div class="burger-menu" id="user-menu">
-			
-						    <a href="/userinfo/${user.id}" >User Info</a>
-							<a href="/user/apartment" > apartment</a> 
-							<a href="/logout"> Log out</a>
+						<div class="user-icon-wrapper">
+							<img src="user-image" alt="Image not found"
+								onerror="this.src='/img/profile.png';" class="user-icon" />
+							<div class="burger-menu" id="user-menu">
 
+								<a href="/userinfo/${user.id}">User Info</a> <a
+									href="/user/apartment"> apartment</a> <a href="/logout">
+									Log out</a>
+
+							</div>
 						</div>
 					</div>
-				</div>
 
 				</div>
 
@@ -76,51 +77,49 @@
 	<div class="row d-flex justify-content-center mx-5 mt-5 my-5">
 		<div class="col-ld-11 my-5">
 			<div class="card border-light ">
-				<div class="d-flex justify-content-between my-2">
+				<div class="d-flex justify-content-between my-5">
 					<h4 class="card-title mx-3">My Apartment</h4>
 					<a href="/"><h4
-							class="card-title mx-3 btn btn-outline-secondary ">Go back</h4></a>
+							class="card-title mx-3 btn btn-outline-primary ">Go back</h4></a>
 				</div>
-				
-					<div class="my-4">
-						<a href="apartment/new" class=" btn btn-outline-primary"> +
-							New Apartment </a>
-					</div>
+
+				<div class="my-4">
+					<a href="apartment/new" class=" btn btn-outline-primary"> + New
+						Apartment </a>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<div class="row mx-5 ">
-			<c:forEach var="apartment" items="${user.ownedDeparment}">
-				<div class="col-3 my-3">
-					<div class="card" style="width: 18rem;">
+	<div class="row mx-5 ">
+		<c:forEach var="apartment" items="${user.ownedDeparment}">
+			<div class="col-3 my-3">
+				<div class="card" style="width: 18rem;">
 
-						<img alt="not work" src="${ apartment.images[0].url}">
-						<div class="card-body ">
+					<img alt="not work" src="${ apartment.images[0].url}">
+					<div class="card-body ">
 
-							<h1>${apartment.title}</h1>
-							<p>
-								description : ${ apartment.description} 
-							</p>
+						<h1>${apartment.title}</h1>
+						<p>description : ${ apartment.description}</p>
 
-							<div class="d-flex justify-content-center"" >
-								<a href="/user/apartment/${apartment.id}/edit"
-									class="mx-3 btn btn-outline-warning btn-sm">Edit</a>
-								<form action="/user/apartment/${apartment.id}/delete"
-									method="post">
-									<input type="hidden" name="_method" value="delete">
-									<button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
-								</form>
-
-							</div>
+						<div class="d-flex justify-content-center"" >
+							<a href="/user/apartment/${apartment.id}/edit"
+								class="mx-3 btn btn-outline-warning btn-sm">Edit</a>
+							<form action="/user/apartment/${apartment.id}/delete"
+								method="post">
+								<input type="hidden" name="_method" value="delete">
+								<button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
+							</form>
 
 						</div>
+
 					</div>
 				</div>
-			</c:forEach>
-		</div>
+			</div>
+		</c:forEach>
+	</div>
 
 
-			<script type="text/javascript" src="/js/apartment.js"></script>
+	<script type="text/javascript" src="/js/apartment.js"></script>
 </body>
 </html>
