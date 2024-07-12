@@ -19,9 +19,15 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </head>
 <body>
 	<div class="navbar">
@@ -40,7 +46,7 @@
 			<c:when test="${ userId == null}">
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
-						<img src="user-image" alt="Image not found"
+						<img src="img.png" alt="Image not found"
 							onerror="this.src='img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
 							<a href="/register" id="register-btn">Register</a> <a
@@ -57,14 +63,12 @@
 							<img src="user-image" alt="Image not found"
 								onerror="this.src='img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
-								<a href="/new-apartment">New apartment</a> <a href="/logout">Log
+								<a href="user/apartment">Apartment</a> <a href="/logout">Log
 									out</a>
 							</div>
 						</div>
 					</div>
-
 				</div>
-
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -78,142 +82,54 @@
 				type="date" id="checkin" placeholder="Check-in "> <input
 				type="date" id="checkout" placeholder="Check-out"> <input
 				type="number" id="guests" placeholder="Number of Guests">
-			<button id="search-btn">Search</button>
+			<button id="open-modal-btn">Search</button>
 		</div>
 		<div class="call-to-action">
 			<p>Explore our top-rated apartments now!</p>
 		</div>
 	</div>
-	<main>
-		<section class="cards">
-			<div class="card">
-				<div class="card__image-container">
-					<img
-						src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80" />
-				</div>
-				<div class="card__content">
-					<p class="card__title text--medium">Tabakhna Apartment , Ramallah 
-						,Near to the Center</p>
-					<div class="card__info">
-						<p class="text--medium">200$</p>
-						<p><a href="/apartment">Book now</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card__image-container">
-					<img
-						src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80" />
-				</div>
-				<div class="card__content">
-					<p class="card__title text--medium">Tabakhna Apartment , Ramallah 
-						,Near to the Center</p>
-					<div class="card__info">
-						<p class="text--medium">200$</p>
-						<p><a href="/apartment">Book now</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card__image-container">
-					<!-- <img
-						src="https://images.unsplash.com/photo-1473283147055-e39c51463929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80" /> -->
-				</div>
-				<div class="card__content">
-					<p class="card__title text--medium">Laith Apartment , Ramallah 
-						,Near to the Center</p>
-					<div class="card__info">
-						<p class="text--medium">300$</p>
-						<p><a href="/apartment">Book now</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card__image-container">
-					<img
-						src="https://images.unsplash.com/photo-1482784160316-6eb046863ece?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80" />
-				</div>
-				<div class="card__content">
-					<p class="card__title text--medium">Musftafa Apartment ,Ramallah 
-						,Near to the Center </p>
-					<div class="card__info">
-						<p class="text--medium">500$</p>
-						<p><a href="/apartment">Book now</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card__image-container">
-					<img
-						src="https://images.unsplash.com/photo-1470104240373-bc1812eddc9f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80" />
-				</div>
-				<div class="card__content">
-					<p class="card__title text--medium">Laith Apartment , Ramallah 
-						,Near to the Center</p>
-					<div class="card__info">
-						<p class="text--medium">300$</p>
-						<p><a href="/apartment">Book now</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card__image-container">
-					<img
-						src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80" />
-				</div>
-				<div class="card__content">
-					<p class="card__title text--medium">Laith Apartment , Ramallah 
-						,Near to the Center</p>
-					<div class="card__info">
-						<p class="text--medium">300$</p>
-						<p><a href="/apartment">Book now</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card__image-container">
-					<img
-						src="https://images.unsplash.com/photo-1534143046043-44af3469836b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80" />
-				</div>
-				<div class="card__content">
-					<p class="card__title text--medium">Laith Apartment , Ramallah 
-						,Near to the Center</p>
-					<div class="card__info">
-						<p class="text--medium">300$</p>
-						<p><a href="/apartment">Book now</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card__image-container">
-					<img
-						src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80" />
-				</div>
-				<div class="card__content">
-					<p class="card__title text--medium">Laith Apartment , Ramallah 
-						,Near to the Center</p>
-					<div class="card__info">
-						<p class="text--medium">300$</p>
-						<p><a href="/apartment">Book now</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card__image-container">
-					<img
-						src="https://images.unsplash.com/photo-1465056836041-7f43ac27dcb5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80" />
-				</div>
-				<div class="card__content">
-					<p class="card__title text--medium">Laith Apartment , Ramallah 
-						,Near to the Center</p>
-					<div class="card__info">
-						<p class="text--medium">300$</p>
-						<p><a href="/apartment">Book now</a></p>
-					</div>
-				</div>
-			</div>
-		</section>
-	</main>
+<div id="myModal" class="modal">
+   <span class="close-btn" id="close-modal">&times;</span>
+    <div class="container">
+         <span class="close-btn" id="close-modal">&times;</span>
+        <!-- Repeat this structure for each card -->
+        <div class="modal-content">
+           <!--  <span class="close-btn">&times;</span> -->
+            <img src="img_avatar.png" alt="Avatar">
+            <div>
+                <h4><b>Tabakhna Apartment</b></h4>
+                <p>Ramallah, City Center, Rukab's St</p>
+                <p>$300</p>
+                
+            </div>
+            <a href="/apartment">View Details</a>
+        </div>
+
+        <div class="modal-content">
+       
+            <img src="img_avatar.png" alt="Avatar">
+            <div>
+                <h4><b>Tabakhna Apartment</b></h4>
+                <p>Ramallah, City Center, Rukab's St</p>
+                <p>$300</p>
+              
+            </div>
+             <a href="/apartment">View Details</a>
+        </div>
+
+        <div class="modal-content">
+            
+            <img src="img_avatar.png" alt="Avatar">
+            <div>
+                <h4><b>Tabakhna Apartment</b></h4>
+                <p>Ramallah, City Center, Rukab's St</p>
+                <p>$300</p>
+               
+            </div>
+           <a href="/apartment">View Details</a>
+        </div>
+    </div>
+</div>
 	<footer>
 		<div class="social-icons">
 			<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i

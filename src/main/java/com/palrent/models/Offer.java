@@ -28,7 +28,7 @@ public class Offer {
 	private Long id;
 	
 	@NotEmpty(message = "")
-	@Size(min=3,message = "Offer name must be at least 3 character ")
+	@Size(min=1,message = "Offer name must be at least 1 character ")
 	private String name ; 
 	
 	@Column(updatable = false)

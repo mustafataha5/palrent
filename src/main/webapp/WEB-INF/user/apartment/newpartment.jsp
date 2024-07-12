@@ -25,13 +25,13 @@
 			
 				<div class="d-flex justify-content-between my-2">
 					<h4 class="card-title mx-3">New A Apartment</h4>
-					<a href="/admins/apartment"><h4
+					<a href="/user/apartment"><h4
 							class="card-title mx-3 btn btn-outline-primary ">Go back</h4></a>
 				</div>
 				<div class="card-body">
 
 
-					<form:form action="/apartment/new" method="post"
+					<form:form action="/user/apartment/new" method="post"
 						modelAttribute="Apartment">
 
 
