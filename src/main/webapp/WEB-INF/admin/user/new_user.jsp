@@ -28,59 +28,79 @@
 				<div class="card-body">
 
 
-					<form:form action="/admins/user/new" method="post"
+					<%-- <form:form action="/admins/user/new" method="post"
+						modelAttribute="newUser"> --%>
+
+					<form:form action="/admins/register" method="post"
 						modelAttribute="newUser">
-
-
-						<p class="error"> <form:errors path="firstName"></form:errors> </p>
-						<p class="error"> <form:errors path="lastName"></form:errors> </p>
-						<p class="error"><form:errors path="email"></form:errors></p>
-						<p class="error"><form:errors path="password"></form:errors></p>
-						<p class="error"><form:errors path="confirm"></form:errors></p>
-						<p class="error"><form:errors path="phone"></form:errors></p>
-						<p class="error"><form:errors path="dateOfBirth"></form:errors></p>
-						<p class="error"><form:errors path="urlImage"></form:errors></p>
+						<p class="error">
+							<form:errors path="firstName"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="lastName"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="username"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="password"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="confirm"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="phone"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="dateOfBirth"></form:errors>
+						</p>
+						<p class="error">
+							<form:errors path="urlImage"></form:errors>
+						</p>
 						<table class="table">
 							<tbody>
-								<tr> 
-								
+								<tr>
+
 									<td><form:label path="firstName">First Name:</form:label></td>
-									<td><form:input path="firstName"/></td>
+									<td><form:input path="firstName" /></td>
 								</tr>
-								<tr> 
+								<tr>
 									<td><form:label path="lastName">Last Name:</form:label></td>
-									<td><form:input path="lastName"/></td>
+									<td><form:input path="lastName" /></td>
 								</tr>
-								<tr> 
-									<td><form:label path="email">Email:</form:label></td>
-									<td><form:input path="email"/></td>
+								<tr>
+									<td><form:label path="username">Email:</form:label></td>
+									<td><form:input path="username" /></td>
 								</tr>
-								<tr> 
+								<tr>
 									<td><form:label path="password">Password:</form:label></td>
-									<td><form:input type="password" path="password"/></td>
+									<td><form:input type="password" path="password" /></td>
 								</tr>
-								<tr> 
+								<tr>
 									<td><form:label path="confirm">Confirm PW:</form:label></td>
-									<td><form:input type="password" path="confirm"/></td>
+									<td><form:input type="password" path="confirm" /></td>
 								</tr>
-								<tr> 
+								<tr>
 									<td><form:label path="phone">Phone:</form:label></td>
-									<td><form:input path="phone"/></td>
+									<td><form:input path="phone" /></td>
 								</tr>
-								<tr> 
+								<tr>
 									<td><form:label path="dateOfBirth">Date Of Birth:</form:label></td>
-									<td><form:input type="date"  path="dateOfBirth"/></td>
+									<td><form:input type="date" path="dateOfBirth" /></td>
 								</tr>
-								<tr> 
+								<tr>
 									<td><form:label path="urlImage">Url Image:</form:label></td>
-									<td><form:input path="urlImage"/></td>
+									<td><form:input path="urlImage" /></td>
 								</tr>
-								
-								<tr> 
+
+								<tr>
 									<td></td>
-									<td> <button type="submit" class="btn btn-outline-primary" > Create User</button> </td>
+									<td>
+										<button type="submit" class="btn btn-outline-primary">
+											Create User</button>
+									</td>
 								</tr>
-								
+
 							</tbody>
 						</table>
 					</form:form>

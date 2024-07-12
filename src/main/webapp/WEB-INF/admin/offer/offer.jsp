@@ -48,6 +48,8 @@
                                             <a href="/admins/offer/${offer.id}/edit"" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
                                             <form action="/admins/offer/${offer.id}/delete" method="post" >
                                                 <input type="hidden" name="_method" value="delete">
+                                                <input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
                                             </form>
 

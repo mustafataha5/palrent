@@ -11,6 +11,9 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
@@ -18,6 +21,7 @@ import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -41,7 +45,7 @@ public class User {
 	@NotEmpty(message = "")
 	@Email(message = "Please enter a valid email!",regexp  = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}")
 	//@Size(min = 6, message = "User Email Must be at least 6 charachters")
-	private String email;
+	private String username;
 
 	@NotEmpty(message = "")
 	@Size(min = 8, max = 128, message = "User Password Must be at least 8 charachters")
@@ -54,6 +58,7 @@ public class User {
 	
 	@NotNull(message = "Date of Birth should not be null")
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	@Past
 	private Date dateOfBirth ;
 	
 	@NotNull(message = "UrlImage should not be null")
@@ -74,7 +79,12 @@ public class User {
 		protected void onCreate() {
 			this.createdAt = new Date();
 		}
-	
+	@ManyToMany(fetch = FetchType.EAGER)
+	 @JoinTable(
+	        name = "users_roles", 
+	        joinColumns = @JoinColumn(name = "user_id"), 
+	        inverseJoinColumns = @JoinColumn(name = "role_id"))
+	    private List<Role> roles;
 	@OneToMany(mappedBy = "owner",fetch = FetchType.LAZY)
 	List<Department> ownedDeparment; 
 	
@@ -113,13 +123,7 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 
 	public String getPassword() {
 		return password;
@@ -199,6 +203,22 @@ public class User {
 
 	public void setReviewDeps(List<ReviewDep> reviewDeps) {
 		this.reviewDeps = reviewDeps;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 	
 

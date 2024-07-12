@@ -45,7 +45,7 @@
 							<form:errors path="lastName"></form:errors>
 						</p>
 						<p class="error">
-							<form:errors path="email"></form:errors>
+							<form:errors path="username"></form:errors>
 						</p>
 						<p class="error">
 							<form:errors path="password"></form:errors>
@@ -74,8 +74,8 @@
 									<td><form:input path="lastName" /></td>
 								</tr>
 								<tr>
-									<td><form:label path="email">Email:</form:label></td>
-									<td><form:input path="email" /></td>
+									<td><form:label path="username">Email:</form:label></td>
+									<td><form:input path="username" /></td>
 								</tr>
 								<%-- <tr>
 									<td><form:label path="password">Password:</form:label></td>

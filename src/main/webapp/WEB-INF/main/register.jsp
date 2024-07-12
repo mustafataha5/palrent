@@ -71,7 +71,7 @@
 				<div class="card">
 					<div class="card-body">
 						<h2 class="card-title text-center">Register</h2>
-						<form:form action="/user/new" method="post"
+						<form:form action="/register" method="post"
 							modelAttribute="newUser">
 
 
@@ -82,7 +82,7 @@
 								<form:errors path="lastName"></form:errors>
 							</p>
 							<p class="error">
-								<form:errors path="email"></form:errors>
+								<form:errors path="username"></form:errors>
 							</p>
 							<p class="error">
 								<form:errors path="password"></form:errors>
@@ -111,8 +111,8 @@
 										<td><form:input path="lastName" /></td>
 									</tr>
 									<tr>
-										<td><form:label path="email">Email:</form:label></td>
-										<td><form:input path="email" /></td>
+										<td><form:label path="username">Email:</form:label></td>
+										<td><form:input path="username" /></td>
 									</tr>
 									<tr>
 										<td><form:label path="password">Password:</form:label></td>
