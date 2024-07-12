@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.palrent.models.LoginUser;
 import com.palrent.models.User;
@@ -34,7 +35,7 @@ public class HomeController {
 		
 	}
 	@GetMapping("/register")
-	public String register() {
+	public String register(@ModelAttribute("newUser") User newUser) {
 		
 		return "main/register.jsp";
 	}
@@ -44,4 +45,13 @@ public class HomeController {
 		return "main/login.jsp";
 	}
 
+	@GetMapping("/userinfo/{id}")
+	public String userinfo(@PathVariable("id")Long id ,  Model model) {
+		
+		model.addAttribute("user",userService.findUser(id) );
+		
+		return "user/Userinfo.jsp";
+	}
+	
+	
 }

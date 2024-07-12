@@ -1,5 +1,7 @@
 package com.palrent.controllers;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +15,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.palrent.models.Department;
+import com.palrent.models.Image;
+
 import com.palrent.models.Offer;
+import com.palrent.models.Rule;
+
 import com.palrent.models.User;
+import com.palrent.repositories.ImageRepository;
 import com.palrent.services.ApartmentService;
+import com.palrent.services.ImageSerivce;
 import com.palrent.services.OfferService;
 import com.palrent.services.RuleServices;
 import com.palrent.services.UserService;
@@ -32,13 +40,21 @@ public class ApartmentController {
 	@Autowired
 	UserService userService;
 	@Autowired
-	RuleServices ruleServices;
+	RuleServices ruleServices ; 
+	@Autowired
+	ImageSerivce imageSerivce ; 
+	
+	
+
+	
+
 
 	@GetMapping("/user/apartment/new")
-	public String getApartment(@ModelAttribute("Apartment") Department apartment, HttpSession session) {
+	public String getApartment(@ModelAttribute("Apartment") Department apartment, HttpSession session,Model model) {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/";
 		}
+		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
 		return "user/apartment/newpartment.jsp";
 	}
 
@@ -50,8 +66,21 @@ public class ApartmentController {
 		}
 		User user = userService.findUser((Long) session.getAttribute("userId"));
 		apartment.setOwner(user);
-		System.out.println(">>>>>>>>>>" + user.getEmail());
+
 		apartmentService.creatAdminApartment(apartment);
+		Image img = new Image("https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+		img.setDepartment(apartment);
+		imageSerivce.createImage(img);
+		
+		img = (new Image("https://images.pexels.com/photos/5502218/pexels-photo-5502218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"));
+		img.setDepartment(apartment);
+		imageSerivce.createImage(img);
+		
+		img = (new Image("https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"));
+		img.setDepartment(apartment);
+		imageSerivce.createImage(img);
+		
+		
 
 		return "redirect:/user/apartment";
 	}
@@ -70,6 +99,7 @@ public class ApartmentController {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/";
 		}
+		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
 		Department apartment = apartmentService.findById(id);
 		model.addAttribute("Apartment", apartment);
 		model.addAttribute("exOffer", offerService.allOffernotIn(id));
@@ -81,11 +111,12 @@ public class ApartmentController {
 
 	@PatchMapping("/user/apartment/{id}/edit")
 	public String userApartmentPatchPosting(@Valid @ModelAttribute("Apartment") Department apartment,
-			BindingResult result, @PathVariable("id") Long id, Model model) {
+			BindingResult result, @PathVariable("id") Long id, Model model ,HttpSession session) {
 		if (result.hasErrors()) {
 			model.addAttribute("exOffer", offerService.allOffernotIn(id));
 			return "user/apartment/editapartment.jsp";
 		}
+		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
 		Department EditedApartment = apartmentService.findById(id);
 		EditedApartment.setNumOfRoom(apartment.getNumOfRoom());
 		EditedApartment.setNumOfBath(apartment.getNumOfBath());
@@ -107,6 +138,14 @@ public class ApartmentController {
 
 	@DeleteMapping("/user/apartment/{id}/delete")
 	public String deleteUserApartment(@PathVariable("id") Long id) {
+		Department dep1=apartmentService.findById(id);
+		for (Image i : dep1.getImages()) {
+			i.setDepartment(null);
+			imageSerivce.update(i);
+			
+			
+		}
+		
 		apartmentService.deleteApartment(id);
 		return "redirect:/user/apartment";
 	}
@@ -135,4 +174,31 @@ public class ApartmentController {
 		return "redirect:/user/apartment/" + Id + "/edit";
 	}
 
+
+	@PatchMapping("/user/apartmet/{id}/AddRule")
+	public String addRule(@PathVariable("id") Long Id ,@RequestParam(value ="ruleId", required = false)Long ruleId ,Model model)
+	{
+		if (ruleId == null) {
+			return "redirect:/user/apartment/" + Id + "/edit";
+		}
+		Department department = apartmentService.findById(Id);
+		Rule rule = ruleServices.findRule(ruleId);
+		department.getRules().add(rule);
+		apartmentService.updateApartment(department);
+						
+		return "redirect:/user/apartment/"+Id+"/edit";
+	}
+	
+	@DeleteMapping("/user/apartmet/{id}/DelRule")
+	public String delRule(@PathVariable("id") Long Id ,@RequestParam("ruleId")Long ruleId ,Model model)
+	{
+		Department department = apartmentService.findById(Id);
+		Rule rule = ruleServices.findRule(ruleId);
+		department.getRules().remove(rule);
+		apartmentService.updateApartment(department);
+						
+		return "redirect:/user/apartment/"+Id+"/edit";
+	}
+	
+	
 }

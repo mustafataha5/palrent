@@ -13,14 +13,70 @@
 <meta charset="UTF-8">
 <title>Edit Apartment</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-	<div class="d-flex justify-content-between my-4 mx-5">
-		<h4 class="card-title mx-3">Edit Apartment</h4>
+	<div class="navbar">
+		<div class="logo">
+			<a href="/"> <img src="/img/palrent-logo.png" alt="Logo"></a>
+		</div>
+		<div class="hamburger-menu" onclick="toggleMenu()">
+			<i class="fas fa-bars"></i>
+		</div>
+		<ul class="nav-links">
+			<li><a href="#">About us</a></li>
+			<li><a href="#">Contact us</a></li>
+			<li><a href="#">User</a></li>
+		</ul>
+		<c:choose>
+			<c:when test="${ userId == null}">
+				<div class="user-icon-container">
+					<div class="user-icon-wrapper">
+						<img src="user-image" alt="Image not found"
+							onerror="this.src='img/profile.png';" class="user-icon" />
+						<div class="burger-menu" id="user-menu">
+							<a href="/register" id="register-btn">Register</a> <a
+								href="/login" id="login-btn">Log In</a>
+						</div>
+					</div>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="d-flex align-items-center mx-3">
+					<h4 class="text-light mx-2">${user.firstName}</h4>
+					<div class="user-icon-container">
+						<div class="user-icon-wrapper">
+							<img src="user-image" alt="Image not found"
+								onerror="this.src='/img/profile.png';" class="user-icon" />
+							<div class="burger-menu" id="user-menu">
+
+								<a href="/userinfo/${user.id}">User Info</a> <a
+									href="/user/apartment"> apartment</a> <a href="/logout">
+									Log out</a>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</c:otherwise>
+		</c:choose>
+	</div>
+
+
+	<div class="d-flex justify-content-between my-4 mx-2 mt-5">
+		<h4 class="card-title mx-3 mt-5">Edit Apartment</h4>
 		<a href="/user/apartment"><h4
-				class="card-title mx-3 btn btn-outline-primary ">Go back</h4></a>
+				class="card-title mx-3 mt-5 btn btn-outline-primary ">Go back</h4></a>
 	</div>
 
 	<div class="row d-flex justify-content-center mx-5 mt-3">
@@ -157,8 +213,8 @@
 							<h4 class="mx-3">${apaOffer.name}</h4>
 							<form action="/user/apartmet/${Apartment.id}/DelOffer"
 								method="post">
-								<input type="hidden" name="_method" value="delete">
-								<input type="hidden" name="offerId" value="${apaOffer.id}">
+								<input type="hidden" name="_method" value="delete"> <input
+									type="hidden" name="offerId" value="${apaOffer.id}">
 								<button type="submit" class="btn btn-danger btn-sm">delete</button>
 							</form>
 						</div>
@@ -170,24 +226,63 @@
 			<div class="card my-3">
 				<h2 class="card-title">Add Offer:</h2>
 				<div class="card-body">
-				<form action="/user/apartment/${Apartment.id}/AddOffer"
-					method="post">
-					<input type="hidden" name="_method" value="patch"> <select
-						name="offerId">
-						<c:forEach var="apaoffer" items="${exOffer}">
-							<option value=${apaoffer.id}>${apaoffer.name}</option>
-						</c:forEach>
+					<form action="/user/apartment/${Apartment.id}/AddOffer"
+						method="post">
+						<input type="hidden" name="_method" value="patch"> <select
+							name="offerId">
+							<c:forEach var="apaoffer" items="${exOffer}">
+								<option value=${apaoffer.id}>${apaoffer.name}</option>
+							</c:forEach>
 
-					</select>
-					<button type="submit" class="btn btn-outline-primary">Add Offer</button>
-				</form>
+						</select>
+						<button type="submit" class="btn btn-outline-primary">Add
+							Offer</button>
+					</form>
 				</div>
 			</div>
 
 
 		</div>
+		<div class="col-md d-flex flex-column">
 
-	</div>
+			<div class="card my-3">
+				<h2 class="card-title">All Rule:</h2>
+				<div class="card-body">
+					<c:forEach var="apaRule" items="${Apartment.rules}">
+						<div class="d-flex justify-content-start">
+							<h4 class="mx-3">${apaRule.name}</h4>
+							<form action="/user/apartmet/${Apartment.id}/DelRule"
+								method="post">
+								<input type="hidden" name="_method" value="delete"> <input
+									type="hidden" name="ruleId" value="${apaRule.id}">
+								<button type="submit" class="btn btn-danger btn-sm">delete</button>
+							</form>
+						</div>
 
+					</c:forEach>
+				</div>
+			</div>
+
+			<div class="card  my-3">
+				<h2 class="card-title">Add Rule:</h2>
+				<div class="card-body">
+					<form action="/user/apartmet/${Apartment.id}/AddRule" method="post">
+						<input type="hidden" name="_method" value="patch"> <select
+							name="ruleId">
+							<c:forEach var="aparule" items="${exRule}">
+								<option value=${aparule.id}>${aparule.name}</option>
+							</c:forEach>
+
+						</select>
+						<button type="submit" class="btn btn-outline-primary">Add
+							Rule</button>
+					</form>
+				</div>
+			</div>
+
+
+			<script type="text/javascript" src="/js/apartment.js"></script>
+
+		</div>
 </body>
 </html>

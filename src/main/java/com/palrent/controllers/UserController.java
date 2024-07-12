@@ -31,7 +31,10 @@ public class UserController {
 		newUser = userService.prepareUser(newUser,result);
 		if(result.hasErrors()) {
 			model.addAttribute("newLogin", new LoginUser());
+
 			return "main/register.jsp";
+
+
 		}
 //		redirectAttributes.addAttribute("success", "Successfully added user");
 		User user = userService.createUser(newUser);

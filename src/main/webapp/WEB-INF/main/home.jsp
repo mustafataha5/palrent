@@ -59,13 +59,24 @@
 				<div class="d-flex align-items-center mx-3">
 					<h4 class="text-light mx-2">${user.firstName}</h4>
 					<div class="user-icon-container">
-						<div class="user-icon-wrapper">
-							<img src="user-image" alt="Image not found"
-								onerror="this.src='img/profile.png';" class="user-icon" />
-							<div class="burger-menu" id="user-menu">
-								<a href="user/apartment">Apartment</a> <a href="/logout">Log
-									out</a>
-							</div>
+<!-- <<<<<<< HEAD -->
+<!-- 						<div class="user-icon-wrapper"> -->
+<!-- 							<img src="user-image" alt="Image not found" -->
+<!-- 								onerror="this.src='img/profile.png';" class="user-icon" /> -->
+<!-- 							<div class="burger-menu" id="user-menu"> -->
+<!-- 								<a href="user/apartment">Apartment</a> <a href="/logout">Log -->
+<!-- 									out</a> -->
+<!-- 							</div> -->
+<!-- ======= -->
+					<div class="user-icon-wrapper">
+						<img src="user-image" alt="Image not found" onerror="this.src='img/profile.png';" class="user-icon" />
+						<div class="burger-menu" id="user-menu">
+			
+						    <a href="/userinfo/${user.id}" >User Info</a>
+							<a href="user/apartment" > apartment</a> 
+							<a href="/logout"> Log out</a>
+
+
 						</div>
 					</div>
 				</div>
