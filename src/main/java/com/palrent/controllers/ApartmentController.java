@@ -98,6 +98,7 @@ public class ApartmentController {
 		if (session.getAttribute("userId") == null) {
 			return "redirect:/";
 		}
+		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
 		Department apartment = apartmentService.findById(id);
 		model.addAttribute("Apartment", apartment);
 		model.addAttribute("exOffer", offerService.allOffernotIn(id));
@@ -109,11 +110,12 @@ public class ApartmentController {
 
 	@PatchMapping("/user/apartment/{id}/edit")
 	public String userApartmentPatchPosting(@Valid @ModelAttribute("Apartment") Department apartment,
-			BindingResult result, @PathVariable("id") Long id, Model model) {
+			BindingResult result, @PathVariable("id") Long id, Model model ,HttpSession session) {
 		if (result.hasErrors()) {
 			model.addAttribute("exOffer", offerService.allOffernotIn(id));
 			return "user/apartment/editapartment.jsp";
 		}
+		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
 		Department EditedApartment = apartmentService.findById(id);
 		EditedApartment.setNumOfRoom(apartment.getNumOfRoom());
 		EditedApartment.setNumOfBath(apartment.getNumOfBath());
