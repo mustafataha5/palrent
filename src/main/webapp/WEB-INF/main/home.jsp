@@ -28,6 +28,9 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <meta name="_csrf" content="${_csrf.token}">
+    <meta name="_csrf_header" content="${_csrf.headerName}">
+	
 </head>
 <body>
 	<div class="navbar">
@@ -91,10 +94,10 @@
 			
 			<form action="/sreach" method="post">
 			<div class=" search-bar">
-			<select class="p-3"  name="city">
-			<option vaule="0">Select Location</option>
+			<select class="p-3" id="city"  name="city">
+			<option value="">Select Location</option>
 				<c:forEach var="cit"  items="${cities}">
-					<option vaule="${cit}">${ cit} </option>
+					<option value="${cit}">${ cit} </option>
 				</c:forEach>
 			</select>
 			<input
@@ -103,19 +106,20 @@
 				type="number" id="guests" name="guest" placeholder="Number of Guests">
 				<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
-			<button id="open-modal-btn" type="submit">Search</button>
-			
+			<!-- <button id="open-modal-btn" type="submit">Search</button> -->
+			<button id="search" type="button">Search</button>
 			</div>	
 			</form>
 			
 		
 		<div class="my-5 call-to-action">
+			<p class="error">${error}</p>
 			<p>Explore our top-rated apartments now!</p>
 		</div>
 	</div>
 <div id="myModal" class="modal">
    <span class="close-btn" id="close-modal">&times;</span>
-    <div class="container">
+    <div class="container" id="mypopup" >
          <span class="close-btn" id="close-modal">&times;</span>
         <!-- Repeat this structure for each card -->
         <!-- <div class="modal-content">
@@ -145,8 +149,7 @@
 		</c:forEach>
         
 
-       <!--  <div class="modal-content">
-            
+       <!-- <div class="modal-content">     
             <img src="img_avatar.png" alt="Avatar">
             <div>
                 <h4><b>Tabakhna Apartment</b></h4>
@@ -155,7 +158,7 @@
                
             </div>
            <a href="/apartment">View Details</a>
-        </div> -->
+        </div>  -->
     </div>
 </div>
 	<footer>
@@ -169,5 +172,6 @@
 	</footer>
 
 	<script type="text/javascript" src="/js/home.js"></script>
+	<script type="text/javascript" src="/js/searhByAjax.js"></script>
 </body>
 </html>

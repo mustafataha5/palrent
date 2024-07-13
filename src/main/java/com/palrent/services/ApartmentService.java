@@ -54,7 +54,7 @@ public class ApartmentService {
 		
 	}
 	
-	public List<Department> search(String city , Integer numOfGuest){
+	public List<Object[]> search(String city , Integer numOfGuest){
 		return apartmentRepository.myquery1(city, numOfGuest);
 	}
 	

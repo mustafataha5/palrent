@@ -56,7 +56,7 @@ public class User {
     @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
 	private String confirm;
 	
-	@NotNull(message = "Date of Birth should not be null")
+//	@NotNull(message = "Date of Birth should not be null")
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	@Past
 	private Date dateOfBirth ;

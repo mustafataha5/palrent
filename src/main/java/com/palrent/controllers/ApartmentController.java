@@ -66,9 +66,9 @@ public class ApartmentController {
 	@PostMapping("/user/apartment/new")
 	public String addApartmentPosting(@Valid @ModelAttribute("Apartment") Department apartment, BindingResult result,
 			Principal principal, Model model) {
-//		if (result.hasErrors()) {
-//			return "user/apartment/newpartment.jsp";
-//		}
+		if (result.hasErrors()) {
+			return "user/apartment/newpartment.jsp";
+		}
 		String username = principal.getName();
 
 		User user = userService.findByUsername(username);
