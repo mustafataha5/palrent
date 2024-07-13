@@ -100,10 +100,4 @@ The Palrent application is built using:
 - **Enhanced Search**: Implement advanced search features and filters.
 - **User Reviews**: Add a review and rating system for properties.
 
-  ## Visuals
-
-Below is a screenshot of the Palrent application:
-
-![Palrent Screenshot](https://example.com/path/to/your/image.png)
-
 
