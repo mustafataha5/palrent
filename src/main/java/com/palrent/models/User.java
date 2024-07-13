@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -86,6 +87,7 @@ public class User {
 	        inverseJoinColumns = @JoinColumn(name = "role_id"))
 	    private List<Role> roles;
 	@OneToMany(mappedBy = "owner",fetch = FetchType.LAZY)
+	 @JsonManagedReference // T
 	List<Department> ownedDeparment; 
 	
 	@OneToMany(mappedBy = "user",fetch = FetchType.LAZY)

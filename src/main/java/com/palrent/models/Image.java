@@ -1,5 +1,7 @@
 package com.palrent.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,6 +23,7 @@ public class Image {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="department_id")
+	@JsonBackReference // Prevents circular reference
 	private Department department ; 
 	
 	public Long getId() {

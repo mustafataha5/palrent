@@ -67,6 +67,7 @@ public class ApartmentController {
 	public String addApartmentPosting(@Valid @ModelAttribute("Apartment") Department apartment, BindingResult result,
 			Principal principal, Model model) {
 		if (result.hasErrors()) {
+			 model.addAttribute("cities", apartmentService.cities);
 			return "user/apartment/newpartment.jsp";
 		}
 		String username = principal.getName();
@@ -129,6 +130,8 @@ public class ApartmentController {
 	public String userApartmentPatchPosting(@Valid @ModelAttribute("Apartment") Department apartment,
 			BindingResult result, @PathVariable("id") Long id, Model model, Principal principal) {
 		if (result.hasErrors()) {
+			model.addAttribute("cities", apartmentService.cities);
+			model.addAttribute("exRule", ruleServices.allRulenotIn(id));
 			model.addAttribute("exOffer", offerService.allOffernotIn(id));
 			return "user/apartment/editapartment.jsp";
 		}
@@ -162,12 +165,12 @@ public class ApartmentController {
 		for (Image i : dep1.getImages()) {
 			i.setDepartment(null);
 			imageSerivce.update(i);
+			imageSerivce.deleteImage(i.getId());
 
 		}
 		for(Booking book:dep1.getUsers()) {
 			book.setUser(null);
 			book.setDepartment(null);
-			
 			bookingService.updateBooking(book);
 		}
 		

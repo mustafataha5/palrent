@@ -14,79 +14,101 @@
           });
       });*/
 	  $(document).ready(function() {
-		
-					var csrfToken = $("meta[name='_csrf']").attr("content");
-		            var csrfHeader = $("meta[name='_csrf_header']").attr("content");
-	              
-					var mypop = $("#mypopup"); 					
-					$("#search").click(function() {
-	                  var city = $("#city").val();
-					  var checkin = $("#checkin").val(); 
-					  var checkout = $("#checkout").val();
-					  var guests = $("#guests").val();
-					  var requestData = {
-					              city: city,
-					              checkin: checkin,
-					              checkout: checkout,
-					              guests: guests
-					          };
-					  
-	                  $.ajax({
-	                      url: "/ajax",
-	                      type: "POST",
-	                      contentType: "application/json",
-	                      data:JSON.stringify(requestData),
-						  dataType: "json",
-						  beforeSend: function(xhr) {
-						         xhr.setRequestHeader(csrfHeader, csrfToken);
-						                      },
-	                      success: function(response) {
-							
-								
-							console.log(">>>>>"+response)
-						    
-	                          console.log(response[0]);
-							  console.log(response.length);
-							  populateModal(response);
-	                      },
-	                      error: function(xhr, status, error) {
-	                       console.log(status +"An error occurred: " + error);
-	                      }
+	      var csrfToken = $("meta[name='_csrf']").attr("content");
+	      var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+
+	      $("#search1").click(function() {
+	          var city = $("#city").val();
+	          var checkin = $("#checkin").val();
+	          var checkout = $("#checkout").val();
+	          var guests = $("#guests").val();
+	          var requestData = {
+	              city: city,
+	              checkin: checkin,
+	              checkout: checkout,
+	              guests: guests
+	          };
+			  console.log(city+">>>>>>>>>>>>>>>>"+guests)
+				if(city==="" || guests === ""){
+					return ;
+				}	
+	          $.ajax({
+	              url: "/ajax",
+	              type: "POST",
+	              contentType: "application/json",
+	              data: JSON.stringify(requestData),
+	              dataType: "json",
+	              beforeSend: function(xhr) {
+	                  xhr.setRequestHeader(csrfHeader, csrfToken);
+	              },
+	              success: function(response) {
+	                  /*console.log(">>>>>"+response);
+	                  console.log(response[0]);
+	                  console.log(response.length);*/
+	                  populateModal(response);
+
+	                  $('.panorama-container').css('height', '50vh');
+	                  $('#slider').show();
+
+	                  // Initialize or reinitialize slick carousel
+	                  $('.cards').slick('unslick').slick({
+	                      infinite: true,
+	                      slidesToShow: 3,
+	                      slidesToScroll: 1,
+	                      dots: true,
+	                      autoplay: true,
+	                      autoplaySpeed: 3000,
+	                      responsive: [
+	                          {
+	                              breakpoint: 1024,
+	                              settings: {
+	                                  slidesToShow: 2,
+	                                  slidesToScroll: 1,
+	                                  infinite: true,
+	                                  dots: true
+	                              }
+	                          },
+	                          {
+	                              breakpoint: 600,
+	                              settings: {
+	                                  slidesToShow: 1,
+	                                  slidesToScroll: 1
+	                              }
+	                          }
+	                      ]
 	                  });
-	              });
-				  
-				  // Function to populate modal with apartments data
-				     function populateModal(apartments) {
-				         var modalContent = $('#modal-content');
-				         modalContent.empty();  // Clear existing content
-
-				         apartments.forEach(function(apartment) {
-				             var cardHtml = `
-				                 <div class="modal-content">
-				                     <span class="close-btn" id="close-modal">&times;</span>
-				                     <img src="img_avatar.png" alt="Avatar">
-				                     <div>
-				                         <h4><b>${apartment[1]}</b></h4>
-				                         <p>${apartment[1]}</p>
-				                         <p>${apartment[2]}</p>
-				                     </div>
-				                     <a href="/apartment/${apartment[0]}/show">View Details</a>
-				                 </div>
-				             `;
-				             modalContent.append(cardHtml);  // Append each card to modal
-				         });
-				     }
-
-				     // Event listener to open modal and fetch data
-				     $('#open-modal').on('click', function() {
-				         fetchApartments();
-				         $('#myModal').css('display', 'block');  // Show modal
-				     });
-
-				     // Close modal event handler
-				     $('#close-modal').on('click', function() {
-				         $('#myModal').css('display', 'none');  // Hide modal
-				     });
-				  
+	              },
+	              error: function(xhr, status, error) {
+	                  console.log(status + " An error occurred: " + error);
+	              }
 	          });
+	      });
+
+	      // Function to populate modal with apartments data
+	      function populateModal(apartments) {
+	          var modalContent = $('#slider');
+	          modalContent.empty();  // Clear existing content
+
+	          apartments.forEach(function(apartment) {
+	              var cardHtml = `
+	                  <div class="card">
+	                      <img src="${apartment.images[0].url}" alt="Apartment Image">
+	                      <div class="card-body">
+	                          <h4>${apartment.title}</h4>
+	                          <p>${apartment.city}, ${apartment.street}, ${apartment.buildingNum}</p>
+	                          <a href="/apartment/${apartment.id}/show" class="btn btn-primary">View Details</a>
+	                      </div>
+	                  </div>
+	              `;
+	              modalContent.append(cardHtml);  // Append each card to modal
+	          });
+	      }
+	  });
+
+
+				  
+				 
+				     
+	  
+				  
 	  

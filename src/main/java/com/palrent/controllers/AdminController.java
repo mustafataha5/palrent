@@ -14,12 +14,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.palrent.models.Booking;
 import com.palrent.models.Department;
+import com.palrent.models.Image;
 import com.palrent.models.Offer;
 import com.palrent.models.Role;
 import com.palrent.models.Rule;
 import com.palrent.models.User;
 import com.palrent.services.ApartmentService;
+import com.palrent.services.BookingService;
+import com.palrent.services.ImageSerivce;
 import com.palrent.services.OfferService;
 import com.palrent.services.RuleServices;
 import com.palrent.services.UserService;
@@ -41,6 +45,10 @@ public class AdminController {
 	RuleServices ruleServices ; 
 	@Autowired
 	UserValidator userValidator;
+	@Autowired
+	ImageSerivce imageSerivce;
+	@Autowired
+	BookingService bookingService ; 
 	
 	
 	@GetMapping("/admin")
@@ -112,13 +120,32 @@ public class AdminController {
 	}
 	@DeleteMapping("/admins/apartment/{id}/delete")
 	public String deleteApartment(@PathVariable("id")Long id) {
-		User user = userService.findUser(id);
-		for(Role role:user.getRoles()) {
-			user.getRoles().remove(role);
+		Department dep1 = apartmentService.findById(id);
+//		for(Role role:user.getRoles()) {
+//			user.getRoles().remove(role);
+//		}
+		for (Image i : dep1.getImages()) {
+			i.setDepartment(null);
+			imageSerivce.update(i);
+			imageSerivce.deleteImage(i.getId());
+
 		}
-		userService.updateUser(id, user);
+		for(Booking book:dep1.getUsers()) {
+			book.setUser(null);
+			book.setDepartment(null);
+			bookingService.updateBooking(book);
+		}
+//		userService.updateUser(id, user);
 		apartmentService.deleteApartment(id);
 		return"redirect:/admins/apartment";
+	}
+	
+	public String deleteUserApartment(@PathVariable("id") Long id) {
+		Department dep1 = apartmentService.findById(id);
+		
+		
+		apartmentService.deleteApartment(id);
+		return "redirect:/user/apartment";
 	}
 	
 	
