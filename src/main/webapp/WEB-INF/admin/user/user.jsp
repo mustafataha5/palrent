@@ -48,15 +48,17 @@
 									<td>
 										<p>${userX.firstName} ${userX.lastName}</p>
 									</td>
-									<td>${userX.email}</td>
+									<td>${userX.username}</td>
 									<td>${userX.phone}</td>
 									<td> ${userX.dateOfBirth}</td>
 									<td>
-									    <div class="d-flex">
-									    	<a href="/admins/user/${userX.id}/edit" class="btn btn-outline-warning btn-sm" >Edit</a>
+									    <div class="d-flex justify-content-center">
+									    	<a href="/admins/user/${userX.id}/edit" class="mx-2 btn btn-outline-warning btn-sm h-50" >Edit</a>
 									    	<form action="/admins/user/${userX.id}/delete" method="post" >
 									    		<input type="hidden" name="_method" value="delete">
-									    		<button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
+									    		<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+									    		<button type="submit" class="btn btn-outline-danger btn-sm " >Del</button>
 									    	</form>
 									    	
 									    </div>

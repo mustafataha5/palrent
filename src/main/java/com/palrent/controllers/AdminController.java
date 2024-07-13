@@ -1,6 +1,7 @@
 package com.palrent.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,15 +12,20 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.palrent.models.Department;
 import com.palrent.models.Offer;
+import com.palrent.models.Role;
 import com.palrent.models.Rule;
+import com.palrent.models.User;
 import com.palrent.services.ApartmentService;
 import com.palrent.services.OfferService;
 import com.palrent.services.RuleServices;
 import com.palrent.services.UserService;
+import com.palrent.validator.UserValidator;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 
@@ -33,7 +39,8 @@ public class AdminController {
 	UserService userService ; 
 	@Autowired
 	RuleServices ruleServices ; 
-	
+	@Autowired
+	UserValidator userValidator;
 	
 	
 	@GetMapping("/admin")
@@ -63,6 +70,8 @@ public class AdminController {
 
 		return "redirect:/admins/apartment";
 	}
+	
+	
 	@GetMapping("/admins/apartment/{id}/edit")
 	public String adminApartmentPutMapping(@PathVariable("id") Long id, Model model) {
 
@@ -103,6 +112,11 @@ public class AdminController {
 	}
 	@DeleteMapping("/admins/apartment/{id}/delete")
 	public String deleteApartment(@PathVariable("id")Long id) {
+		User user = userService.findUser(id);
+		for(Role role:user.getRoles()) {
+			user.getRoles().remove(role);
+		}
+		userService.updateUser(id, user);
 		apartmentService.deleteApartment(id);
 		return"redirect:/admins/apartment";
 	}
@@ -152,6 +166,76 @@ public class AdminController {
 						
 		return "redirect:/admins/apartment/"+Id+"/edit";
 	}
+	@GetMapping("/admins/user")
+	public String showUser(Model model){
+		model.addAttribute("users",userService.allUsers());
+		return "admin/user/user.jsp";
+	}
+	
+	@GetMapping("/admins/user/new")
+	public String newUser(@ModelAttribute("newUser") User newUser){
+		
+		return "admin/user/new_user.jsp";
+	}
+	
+	@GetMapping("/admins/user/{id}/edit")
+	public String showEditUser(@PathVariable("id")Long id ,Model model){
+		User editUser = userService.findUser(id);
+		model.addAttribute("editUser",editUser );
+		return "admin/user/edit_user.jsp";
+	}
+	
+	
+//	@PostMapping("/admins/user/new")
+//	public String addNewUser(@Valid @ModelAttribute("newUser") User newUser 
+//			,BindingResult result
+//			,RedirectAttributes redirectAttributes){
+//		newUser = userService.prepareUser(newUser,result);
+//		if(result.hasErrors()) {
+//			return "admin/user/new_user.jsp";
+//		}
+//	
+//		
+//		redirectAttributes.addAttribute("success", "Successfully added user");
+//		userService.createUser(newUser);
+//		
+//		return "redirect:/admins/user";
+//	}
+//	
+	@PatchMapping("/admins/user/{id}/edit")
+	public String EditUser(@Valid @ModelAttribute("editUser")User editUser
+			,BindingResult result
+			,@PathVariable("id") Long id 
+			,Model model
+			,RedirectAttributes redirectAttributes){
+		if(result.hasErrors()) {
+			return "admin/user/edit_user.jsp";
+		}
+	
+		
+		redirectAttributes.addAttribute("success", "Successfully update user");
+		userService.updateUser(id,editUser);
+		return "redirect:/admins/user";
+	}
+	
+	@PreAuthorize("hasRole('ADMIN')")
+	@DeleteMapping("/admins/user/{id}/delete")
+	public String deleteUser(@PathVariable("id")Long id) {
+		
+		userService.deleteUser(id);
+		return "redirect:/admins/user";
+	}
+	
+	@PostMapping("/admins/register")
+    public String registration(@Valid @ModelAttribute("newUser") User user, BindingResult result, Model model, HttpSession session) {
+       userValidator.validate(user, result);
+	 	if (result.hasErrors()) {
+            return "main/register.jsp";
+        }
+       // userService.saveWithUserRole(user);
+       userService.saveWithUserRole(user);
+	 	return "redirect:/admins/user";
+    }
 
 	
 	

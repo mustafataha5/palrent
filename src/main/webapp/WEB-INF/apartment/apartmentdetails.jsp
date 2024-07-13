@@ -28,7 +28,9 @@
 
     <div class="navbar">
         <div class="logo">
+
             <a href="/"><img src="img/palrent-logo.png" alt="Logo"></a>
+
         </div>
         <div class="hamburger-menu" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -39,10 +41,10 @@
             <li><a href="#">User</a></li>
         </ul>
         <c:choose>
-            <c:when test="${ userId == null}">
+            <c:when test="${user == null}">
                 <div class="user-icon-container">
                     <div class="user-icon-wrapper">
-                        <img src="img.png" alt="Image not found" onerror="this.src='img/profile.png';" class="user-icon" />
+                        <img src="img.png" alt="Image not found" onerror="this.src='/img/profile.png';" class="user-icon" />
                         <div class="burger-menu" id="user-menu">
                             <a href="/register" id="register-btn">Register</a>
                             <a href="/login" id="login-btn">Log In</a>
@@ -55,9 +57,9 @@
                     <h4 class="text-light mx-2">${user.firstName}</h4>
                     <div class="user-icon-container">
                         <div class="user-icon-wrapper">
-                         <img src="user-image" alt="Image not found" onerror="this.src='img/profile.png';" class="user-icon" /> 
+                         <img src="user-image" alt="Image not found" onerror="this.src='/img/profile.png';" class="user-icon" /> 
                             <div class="burger-menu" id="user-menu">
-                                <a href="user/apartment">Apartment</a>
+                                <a href="/user/apartment">Apartment</a>
                                 <a href="/logout">Log out</a>
                             </div>
                         </div>
@@ -67,7 +69,8 @@
         </c:choose>
     </div>
 
-    <div class="apartment-details">
+
+    <%-- <div class="apartment-details">
         <div class="details-left">
             <h1 class="title">Beautiful Apartment in City Center</h1>
             <div class="apartment-images">
@@ -116,7 +119,63 @@
             <input type="number" id="numGuests" name="numGuests" required>
             <button type="submit" class="book-now">Book Now</button>
         </form>
+    </div> --%>
+
+<!-- Your existing HTML content continues below -->
+<div class="apartment-details">
+    <div class="details-left">
+        <h1 class="title">Beautiful Apartment in City Center</h1>
+        <div class="apartment-images">
+        	<c:forEach var="image" items="${apartment.images}">
+        		<img src="${image.url}" alt="Apartment Image 2" class="apartment-img">
+        	</c:forEach>
+         
+        </div>
+        <div class="details-right">
+        <div class="owner">
+            <img src="${apartment.owner.urlImage}" alt="Owner's Image" onerror="this.src='/img/profile.png';" class="owner-img">
+            <h3>Owner: ${apartment.owner.firstName} - ${apartment.owner.lastName}</h3>
+        </div>
+        
     </div>
+        <div class="offers-rules">
+        <div class="rules">
+            <h3>Rules</h3>
+            <ul>
+            
+                
+                <c:forEach var="rule" items="${apartment.rules}">
+                	<li> ${ rule.name } </li>
+                </c:forEach>
+            </ul>
+        </div>
+        <div class="offers">
+            <h3>Offers</h3>
+            <ul>
+                 <c:forEach var="offer" items="${apartment.offers}">
+                	<li> ${ offer.name } </li>
+                </c:forEach>
+            </ul>
+        </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="reservation-form">
+    <h2>Make a Reservation</h2>
+    <form   action="/apartment/${apartment.id}/booking" method="post">
+    	<input type="hidden" name="_method" value="patch"> 
+        <label for="checkin">Check-in Date:</label>
+        <input type="date" id="checkin" name="checkin" required>
+
+        <label for="checkout">Check-out Date:</label>
+        <input type="date" id="checkout" name="checkout" required>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <button type="submit" >Book Now</button>
+    </form>
+</div>
+   
 
     <div id="image-popup" class="modal">
         <span class="close-btn">&times;</span>

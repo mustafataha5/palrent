@@ -1,8 +1,11 @@
 package com.palrent.controllers;
 
+import java.security.Principal;
+import java.util.Date;
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.palrent.models.Booking;
 import com.palrent.models.Department;
 import com.palrent.models.Image;
 
@@ -21,8 +25,10 @@ import com.palrent.models.Offer;
 import com.palrent.models.Rule;
 
 import com.palrent.models.User;
+import com.palrent.repositories.BookingRepositry;
 import com.palrent.repositories.ImageRepository;
 import com.palrent.services.ApartmentService;
+import com.palrent.services.BookingService;
 import com.palrent.services.ImageSerivce;
 import com.palrent.services.OfferService;
 import com.palrent.services.RuleServices;
@@ -40,83 +46,97 @@ public class ApartmentController {
 	@Autowired
 	UserService userService;
 	@Autowired
-	RuleServices ruleServices ; 
+	RuleServices ruleServices;
 	@Autowired
-	ImageSerivce imageSerivce ; 
+	ImageSerivce imageSerivce;
+	@Autowired
+	BookingService bookingService ;
 	
-	
-
-	
-
-
 	@GetMapping("/user/apartment/new")
-	public String getApartment(@ModelAttribute("Apartment") Department apartment, HttpSession session,Model model) {
-		if (session.getAttribute("userId") == null) {
-			return "redirect:/";
-		}
-		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
+	public String getApartment(@ModelAttribute("Apartment") Department apartment, Principal principal, Model model) {
+//		if (session.getAttribute("userId") == null) {
+//			return "redirect:/";
+//		}
+		String username = principal.getName();
+		model.addAttribute("user", userService.findByUsername(username));
+		model.addAttribute("cities", apartmentService.cities);
 		return "user/apartment/newpartment.jsp";
 	}
 
 	@PostMapping("/user/apartment/new")
 	public String addApartmentPosting(@Valid @ModelAttribute("Apartment") Department apartment, BindingResult result,
-			HttpSession session) {
-		if (result.hasErrors()) {
-			return "user/apartment/newpartment.jsp";
-		}
-		User user = userService.findUser((Long) session.getAttribute("userId"));
+			Principal principal, Model model) {
+//		if (result.hasErrors()) {
+//			return "user/apartment/newpartment.jsp";
+//		}
+		String username = principal.getName();
+
+		User user = userService.findByUsername(username);
 		apartment.setOwner(user);
 
 		apartmentService.creatAdminApartment(apartment);
-		Image img = new Image("https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+		Image img = new Image(
+				"https://images.pexels.com/photos/1918291/pexels-photo-1918291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 		img.setDepartment(apartment);
 		imageSerivce.createImage(img);
-		
-		img = (new Image("https://images.pexels.com/photos/5502218/pexels-photo-5502218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"));
+
+		img = (new Image(
+				"https://images.pexels.com/photos/5502218/pexels-photo-5502218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"));
 		img.setDepartment(apartment);
 		imageSerivce.createImage(img);
-		
-		img = (new Image("https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"));
+
+		img = (new Image(
+				"https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"));
 		img.setDepartment(apartment);
 		imageSerivce.createImage(img);
-		
-		
 
 		return "redirect:/user/apartment";
 	}
 
 	@GetMapping("/user/apartment")
-	public String showUserApartment(HttpSession session, Model model) {
-		if (session.getAttribute("userId") == null) {
-			return "redirect:/";
-		}
-		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
+	public String showUserApartment(Principal principal, Model model) {
+//		if (session.getAttribute("userId") == null) {
+//			return "redirect:/";
+//		}
+//		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
 		return "user/apartment/apartment.jsp";
 	}
 
 	@GetMapping("/user/apartment/{id}/edit")
-	public String userApartmentPutMapping(@PathVariable("id") Long id, Model model, HttpSession session) {
-		if (session.getAttribute("userId") == null) {
-			return "redirect:/";
-		}
-		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
+	public String userApartmentPutMapping(@PathVariable("id") Long id, Model model, Principal principal) {
+//		if (session.getAttribute("userId") == null) {
+//			return "redirect:/";
+//		}
+//		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
+		
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
+		
 		Department apartment = apartmentService.findById(id);
 		model.addAttribute("Apartment", apartment);
 		model.addAttribute("exOffer", offerService.allOffernotIn(id));
 		model.addAttribute("exRule", ruleServices.allRulenotIn(id));
-
-		return "/user/apartment/editapartment.jsp";
+		model.addAttribute("cities", apartmentService.cities);
+		return "user/apartment/editapartment.jsp";
 
 	}
 
 	@PatchMapping("/user/apartment/{id}/edit")
 	public String userApartmentPatchPosting(@Valid @ModelAttribute("Apartment") Department apartment,
-			BindingResult result, @PathVariable("id") Long id, Model model ,HttpSession session) {
+			BindingResult result, @PathVariable("id") Long id, Model model, Principal principal) {
 		if (result.hasErrors()) {
 			model.addAttribute("exOffer", offerService.allOffernotIn(id));
 			return "user/apartment/editapartment.jsp";
 		}
-		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
+//		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
+
 		Department EditedApartment = apartmentService.findById(id);
 		EditedApartment.setNumOfRoom(apartment.getNumOfRoom());
 		EditedApartment.setNumOfBath(apartment.getNumOfBath());
@@ -138,18 +158,39 @@ public class ApartmentController {
 
 	@DeleteMapping("/user/apartment/{id}/delete")
 	public String deleteUserApartment(@PathVariable("id") Long id) {
-		Department dep1=apartmentService.findById(id);
+		Department dep1 = apartmentService.findById(id);
 		for (Image i : dep1.getImages()) {
 			i.setDepartment(null);
 			imageSerivce.update(i);
+
+		}
+		for(Booking book:dep1.getUsers()) {
+			book.setUser(null);
+			book.setDepartment(null);
 			
-			
+			bookingService.updateBooking(book);
 		}
 		
 		apartmentService.deleteApartment(id);
 		return "redirect:/user/apartment";
 	}
 
+//	@DeleteMapping("/user/booking/{id}/delete")
+//	public String deleteUserBooking(@PathVariable("id") Long id) {
+//		Booking book1 = bookingService.findBooking(id);
+//			
+//			book1.setUser(null);
+//			book1.setDepartment(null);
+//			bookingService.updateBooking(book1);
+//			bookingService.delete();
+//
+//		
+//		
+//		apartmentService.deleteApartment(id);
+//		return "redirect:/user/apartment";
+//	}
+	
+	
 	@PatchMapping("/user/apartment/{id}/AddOffer")
 	public String addOffer(@PathVariable("id") Long Id, @RequestParam(value = "offerId", required = false) Long offerId,
 			Model model) {
@@ -174,10 +215,9 @@ public class ApartmentController {
 		return "redirect:/user/apartment/" + Id + "/edit";
 	}
 
-
 	@PatchMapping("/user/apartmet/{id}/AddRule")
-	public String addRule(@PathVariable("id") Long Id ,@RequestParam(value ="ruleId", required = false)Long ruleId ,Model model)
-	{
+	public String addRule(@PathVariable("id") Long Id, @RequestParam(value = "ruleId", required = false) Long ruleId,
+			Model model) {
 		if (ruleId == null) {
 			return "redirect:/user/apartment/" + Id + "/edit";
 		}
@@ -185,20 +225,45 @@ public class ApartmentController {
 		Rule rule = ruleServices.findRule(ruleId);
 		department.getRules().add(rule);
 		apartmentService.updateApartment(department);
-						
-		return "redirect:/user/apartment/"+Id+"/edit";
+
+		return "redirect:/user/apartment/" + Id + "/edit";
 	}
-	
+
 	@DeleteMapping("/user/apartmet/{id}/DelRule")
-	public String delRule(@PathVariable("id") Long Id ,@RequestParam("ruleId")Long ruleId ,Model model)
-	{
+	public String delRule(@PathVariable("id") Long Id, @RequestParam("ruleId") Long ruleId, Model model) {
 		Department department = apartmentService.findById(Id);
 		Rule rule = ruleServices.findRule(ruleId);
 		department.getRules().remove(rule);
 		apartmentService.updateApartment(department);
-						
-		return "redirect:/user/apartment/"+Id+"/edit";
+
+		return "redirect:/user/apartment/" + Id + "/edit";
 	}
 	
+	@GetMapping("/apartment/{id}/show")
+	public String showApartment(@PathVariable("id")Long id,Model model,Principal principal) {
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
+		model.addAttribute("apartment", apartmentService.findById(id));
+		return "apartment/apartmentdetails.jsp";
+	}
 	
+	@PatchMapping("/apartment/{id}/booking")
+	public String bookApartment(@PathVariable("id")Long id
+			,@RequestParam("checkin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date checkin , 
+			@RequestParam("checkout") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date checkout ,
+			Model model,Principal principal) {
+		
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		Department department = apartmentService.findById(id);
+		Booking book = new Booking();
+		book.setUser(user);
+		book.setDepartment(department);
+		book.setStartDate(checkin);
+		book.setEndDate(checkout);
+		bookingService.createBooking(book);
+		return "redirect:/home";
+	}
+
 }

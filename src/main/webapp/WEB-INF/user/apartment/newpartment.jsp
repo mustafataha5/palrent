@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>New Apartment</title> 
+<title>New Apartment</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="stylesheet"
@@ -36,11 +36,11 @@
 			<li><a href="#">User</a></li>
 		</ul>
 		<c:choose>
-			<c:when test="${ userId == null}">
+			<c:when test="${ user == null}">
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
 						<img src="user-image" alt="Image not found"
-							onerror="this.src='img/profile.png';" class="user-icon" />
+							onerror="this.src='/img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
 							<a href="/register" id="register-btn">Register</a> <a
 								href="/login" id="login-btn">Log In</a>
@@ -162,7 +162,7 @@
 								</tr> --%>
 								<tr>
 									<td><form:label path="price">Price:</form:label></td>
-									<td><form:input type="double" value="0" path="price" /></td>
+									<td><form:input type="double" value="1" path="price" /></td>
 								</tr>
 
 								<tr>
@@ -170,8 +170,15 @@
 									<td><form:input type="text" path="departmentNum"
 											placeholder="department number" /> <form:input type="text"
 											path="buildingNum" placeholder="Building Number" /> <form:input
-											type="text" path="street" placeholder="Street" /> <form:input
-											type="text" path="city" placeholder="City" /></td>
+											type="text" path="street" placeholder="Street" /> 
+											<form:select path="city">
+											<form:option value="0">Select City</form:option>
+											<c:forEach var="cit" items="${cities}">
+												<form:option value="${cit}">${ cit}</form:option>
+											</c:forEach>
+
+										</form:select></td>
+					
 
 								</tr>
 								<tr>

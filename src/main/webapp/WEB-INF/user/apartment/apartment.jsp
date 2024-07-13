@@ -38,7 +38,7 @@
 			<li><a href="#">User</a></li>
 		</ul>
 		<c:choose>
-			<c:when test="${ userId == null}">
+			<c:when test="${ user == null}">
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
 						<img src="user-image" alt="Image not found"
@@ -103,15 +103,20 @@
 						<p>description : ${ apartment.description}</p>
 
 						<div class="d-flex justify-content-center"" >
+
 							<a href="/user/apartment/${apartment.id}/edit"
 								class="mx-3 btn btn-outline-warning btn-sm">Edit</a>
 							<form action="/user/apartment/${apartment.id}/delete"
 								method="post">
-								<input type="hidden" name="_method" value="delete">
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" /> <input type="hidden" name="_method"
+									value="delete">
 								<button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
 							</form>
-
+							<a href="/apartment/${apartment.id}/show" class="mx-3 btn
+							btn-outline-primary btn-sm">show apartment</a>
 						</div>
+
 
 					</div>
 				</div>

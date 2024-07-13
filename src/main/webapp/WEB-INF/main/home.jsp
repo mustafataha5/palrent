@@ -43,7 +43,7 @@
 			<li><a href="#">User</a></li>
 		</ul>
 		<c:choose>
-			<c:when test="${ userId == null}">
+			<c:when test="${ user == null}">
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
 						<img src="img.png" alt="Image not found"
@@ -59,27 +59,26 @@
 				<div class="d-flex align-items-center mx-3">
 					<h4 class="text-light mx-2">${user.firstName}</h4>
 					<div class="user-icon-container">
-<!-- <<<<<<< HEAD -->
-<!-- 						<div class="user-icon-wrapper"> -->
-<!-- 							<img src="user-image" alt="Image not found" -->
-<!-- 								onerror="this.src='img/profile.png';" class="user-icon" /> -->
-<!-- 							<div class="burger-menu" id="user-menu"> -->
-<!-- 								<a href="user/apartment">Apartment</a> <a href="/logout">Log -->
-<!-- 									out</a> -->
-<!-- 							</div> -->
-<!-- ======= -->
-					<div class="user-icon-wrapper">
-						<img src="user-image" alt="Image not found" onerror="this.src='img/profile.png';" class="user-icon" />
-						<div class="burger-menu" id="user-menu">
-			
-						    <a href="/userinfo/${user.id}" >User Info</a>
-							<a href="user/apartment" > apartment</a> 
-							<a href="/logout"> Log out</a>
+						<div class="user-icon-wrapper">
+							<img src="user-image" alt="Image not found"
+								onerror="this.src='img/profile.png';" class="user-icon" />
+							<div class="burger-menu" id="user-menu">
 
+								<a href="/userinfo/${user.id}">User Info</a> <a
+									href="user/apartment"> apartment</a>
+								<!-- <a href="/logout"> Log out</a> -->
 
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit" value="Logout!" />
+								</form>
+
+							</div>
 						</div>
 					</div>
+
 				</div>
+
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -88,14 +87,29 @@
 		<div class="overlay-text">
 			<h1>Find Your Perfect Stay, Anytime, Anywhere</h1>
 		</div>
-		<div class="search-bar">
-			<input type="text" id="location" placeholder="Location"> <input
-				type="date" id="checkin" placeholder="Check-in "> <input
-				type="date" id="checkout" placeholder="Check-out"> <input
-				type="number" id="guests" placeholder="Number of Guests">
-			<button id="open-modal-btn">Search</button>
-		</div>
-		<div class="call-to-action">
+		
+			
+			<form action="/sreach" method="post">
+			<div class=" search-bar">
+			<select class="p-3"  name="city">
+			<option vaule="0">Select Location</option>
+				<c:forEach var="cit"  items="${cities}">
+					<option vaule="${cit}">${ cit} </option>
+				</c:forEach>
+			</select>
+			<input
+				type="date" id="checkin" name="start" placeholder="Check-in "> <input
+				type="date" id="checkout" name="end" placeholder="Check-out"> <input
+				type="number" id="guests" name="guest" placeholder="Number of Guests">
+				<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+			<button id="open-modal-btn" type="submit">Search</button>
+			
+			</div>	
+			</form>
+			
+		
+		<div class="my-5 call-to-action">
 			<p>Explore our top-rated apartments now!</p>
 		</div>
 	</div>
@@ -104,8 +118,8 @@
     <div class="container">
          <span class="close-btn" id="close-modal">&times;</span>
         <!-- Repeat this structure for each card -->
-        <div class="modal-content">
-           <!--  <span class="close-btn">&times;</span> -->
+        <!-- <div class="modal-content">
+            <span class="close-btn">&times;</span>
             <img src="img_avatar.png" alt="Avatar">
             <div>
                 <h4><b>Tabakhna Apartment</b></h4>
@@ -114,21 +128,24 @@
                 
             </div>
             <a href="/apartment">View Details</a>
-        </div>
+        </div> -->
 
-        <div class="modal-content">
+		<c:forEach var="apartment" items="${apartments}">
+		<div class="modal-content">
        
-            <img src="img_avatar.png" alt="Avatar">
+            <img src="${apartment.images[0].url}" alt="Avatar">
             <div>
-                <h4><b>Tabakhna Apartment</b></h4>
-                <p>Ramallah, City Center, Rukab's St</p>
-                <p>$300</p>
+                <h4><b>${apartment.title}</b></h4>
+                <p>${apartment.city},${apartment.street},${apartment.buildingNum}</p>
+                <p>${apartment.title}</p>
               
             </div>
-             <a href="/apartment">View Details</a>
+             <a href="/apartment/${apartment.id}/show">View Details</a>
         </div>
+		</c:forEach>
+        
 
-        <div class="modal-content">
+       <!--  <div class="modal-content">
             
             <img src="img_avatar.png" alt="Avatar">
             <div>
@@ -138,7 +155,7 @@
                
             </div>
            <a href="/apartment">View Details</a>
-        </div>
+        </div> -->
     </div>
 </div>
 	<footer>
