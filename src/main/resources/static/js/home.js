@@ -82,7 +82,7 @@ $(document).ready(function() {
     });
 
     // Search button click handler
-    $('#search').click(function(e) {
+    /*$('#search').click(function(e) {
         e.preventDefault();
         const location = $('#city').val();
         const checkin = $('#checkin').val();
@@ -90,37 +90,8 @@ $(document).ready(function() {
         const guests = $('#guests').val();
 
         // Show the slider and adjust panorama-container height
-        $('.panorama-container').css('height', '50vh');
-        $('#slider').show();
-
-        // Initialize or reinitialize slick carousel
-        $('.cards').slick('unslick').slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            dots: true,
-            autoplay: true,
-            autoplaySpeed: 3000,
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: true
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
-    });
+       
+    });*/
 
     // Next and Previous buttons for slick carousel
     $('.next-btn').click(function() {

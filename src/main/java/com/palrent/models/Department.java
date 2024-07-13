@@ -6,6 +6,10 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -123,10 +127,12 @@ public class Department {
 	}
 //	@Column(columnDefinition = "Text")
 	@OneToMany(mappedBy ="department",fetch = FetchType.LAZY)
+	@JsonManagedReference // Manage the relationship on this side
 	private List<Image> images;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "department_offer", joinColumns = @JoinColumn(name = "department_id"), inverseJoinColumns = @JoinColumn(name = "offer_id"))
+	 @JsonIgnore // Avoid circular references
 	List<Offer> offers;
 
 	/*
@@ -135,16 +141,20 @@ public class Department {
 	 */
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "department_rule", joinColumns = @JoinColumn(name = "department_id"), inverseJoinColumns = @JoinColumn(name = "rule_id"))
+	 @JsonIgnore // Avoid circular references
 	List<Rule> rules;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "owner_id")
+	@JsonBackReference // Back reference to prevent infinite loop
 	private User owner;
 
 	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
+	 @JsonIgnore // Avoid circular references
 	private List<Booking> users;
 
 	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
+	 @JsonIgnore // Avoid circular references
 	List<ReviewDep> reviewers;
 
 	public Long getId() {

@@ -88,7 +88,7 @@
                 <input type="date" id="checkout" name="end" placeholder="Check-out">
                 <input type="number" id="guests" name="guest" placeholder="Number of Guests">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                <button id="search" type="button">Search</button>
+                <button id="search1" type="button">Search</button>
             </div>
         </form>
         <div class="my-5 call-to-action">
@@ -117,7 +117,8 @@
         </div>
         <p>&copy; 2024 Apartment Rental. All rights reserved.</p>
     </footer>
+   
     <script type="text/javascript" src="/js/home.js"></script>
-    <script type="text/javascript" src="/js/searchByAjax.js"></script>
-</body>
+     <script type="text/javascript" src="/js/searhByAjax.js"></script>
+</body>									     
 </html>

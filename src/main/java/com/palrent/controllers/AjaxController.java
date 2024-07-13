@@ -38,11 +38,11 @@ public class AjaxController {
 	}
 	
 	@PostMapping("/ajax")
-	public List<Object[]> postMessage(@RequestBody RequestData requestData) {
+	public List<Department> postMessage(@RequestBody RequestData requestData) {
 //		return "Received data - City: " +requestData.city + ", Check-in: " + requestData.checkin + 
 //	               ", Check-out: " + requestData.checkout + ", Guests: " + requestData.guests;
 			System.out.println(" >>>>>>>>>>"+apartmentService.search(requestData.city, requestData.guests).size());
-			List<Object[]> deps = apartmentService.search(requestData.city, requestData.guests); 
+			List<Department> deps = apartmentService.search(requestData.city, requestData.guests); 
 			return deps ;
 	    }
 	}
