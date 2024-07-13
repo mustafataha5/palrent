@@ -8,10 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.palrent.models.LoginUser;
 import com.palrent.models.User;
+import com.palrent.services.ApartmentService;
 import com.palrent.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -20,7 +23,8 @@ import jakarta.servlet.http.HttpSession;
 public class HomeController {
 	@Autowired
 	UserService userService ; 
-	
+	@Autowired
+	ApartmentService apartmentService;
 //	@GetMapping("/")
 //	public String homePage(@ModelAttribute("newUser") User user,Model model,HttpSession session){
 //		if(session.getAttribute("userId")==null) {
@@ -40,23 +44,33 @@ public class HomeController {
 		}
         String username = principal.getName();
         model.addAttribute("user", userService.findByUsername(username));
+        model.addAttribute("cities", apartmentService.cities);
         return "main/home.jsp";
     }
 
-	@GetMapping("/apartment")
-	public String getMethodName() {
-		return "apartment/apartmentdetails.jsp";
-		
-	}
+//	@GetMapping("/apartment")
+//	public String getMethodName() {
+//		return "apartment/apartmentdetails.jsp";
+//		
+//	}
 	
 
-	@GetMapping("/userinfo/{id}")
-	public String userinfo(@PathVariable("id")Long id ,  Model model) {
-		
-		model.addAttribute("user",userService.findUser(id) );
-		
-		return "user/Userinfo.jsp";
-	}
 	
+	
+	@PostMapping("/sreach")
+	public String sreach(@RequestParam(value="city",required = false)String city
+			,@RequestParam(value="start",required = false)String start
+			,@RequestParam(value="end",required = false)String end
+			,@RequestParam(value="guest",required = false)Integer guest
+			,Model model) {
+		
+		if(city.equals("0") || guest == null) {
+			return "redirect:/";
+		}
+		
+//		System.out.println(">>>>>>>>>>>>>"+apartmentService.search(city, guest).size());
+		model.addAttribute("apartments", apartmentService.search(city, guest));
+		return "main/home.jsp" ; 
+	}
 	
 }

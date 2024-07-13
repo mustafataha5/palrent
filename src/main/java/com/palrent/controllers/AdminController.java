@@ -70,6 +70,8 @@ public class AdminController {
 
 		return "redirect:/admins/apartment";
 	}
+	
+	
 	@GetMapping("/admins/apartment/{id}/edit")
 	public String adminApartmentPutMapping(@PathVariable("id") Long id, Model model) {
 

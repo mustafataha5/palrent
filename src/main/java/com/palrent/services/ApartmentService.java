@@ -1,5 +1,6 @@
 package com.palrent.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,9 @@ import com.palrent.repositories.ApartmentRepository;
 
 @Service
 public class ApartmentService {
+	
+	public static String[] cities = {"Ramallah","Nablus","Betlahem","Hebron","Jenin","Birzeit"};
+	
 	@Autowired
 	ApartmentRepository apartmentRepository;
 	
@@ -48,6 +52,10 @@ public class ApartmentService {
 		apartmentRepository.deleteById(id);
 		
 		
+	}
+	
+	public List<Department> search(String city , Integer numOfGuest){
+		return apartmentRepository.myquery1(city, numOfGuest);
 	}
 	
 }
