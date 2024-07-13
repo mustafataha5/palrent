@@ -164,11 +164,33 @@ public class ApartmentController {
 			imageSerivce.update(i);
 
 		}
-
+		for(Booking book:dep1.getUsers()) {
+			book.setUser(null);
+			book.setDepartment(null);
+			
+			bookingService.updateBooking(book);
+		}
+		
 		apartmentService.deleteApartment(id);
 		return "redirect:/user/apartment";
 	}
 
+//	@DeleteMapping("/user/booking/{id}/delete")
+//	public String deleteUserBooking(@PathVariable("id") Long id) {
+//		Booking book1 = bookingService.findBooking(id);
+//			
+//			book1.setUser(null);
+//			book1.setDepartment(null);
+//			bookingService.updateBooking(book1);
+//			bookingService.delete();
+//
+//		
+//		
+//		apartmentService.deleteApartment(id);
+//		return "redirect:/user/apartment";
+//	}
+	
+	
 	@PatchMapping("/user/apartment/{id}/AddOffer")
 	public String addOffer(@PathVariable("id") Long Id, @RequestParam(value = "offerId", required = false) Long offerId,
 			Model model) {
@@ -218,8 +240,10 @@ public class ApartmentController {
 	}
 	
 	@GetMapping("/apartment/{id}/show")
-	public String showApartment(@PathVariable("id")Long id,Model model) {
-		
+	public String showApartment(@PathVariable("id")Long id,Model model,Principal principal) {
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
 		model.addAttribute("apartment", apartmentService.findById(id));
 		return "apartment/apartmentdetails.jsp";
 	}
