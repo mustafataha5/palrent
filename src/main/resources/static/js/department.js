@@ -63,24 +63,3 @@ $(document).ready(function() {
     });
 });
 
-// Google Maps API initialization
-function initMap() {
-    const map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 40.712776, lng: -74.005974 }, // Example coordinates (New York City)
-        zoom: 12,
-    });
-    // Optionally, add markers or customize further
-}
-
-// Load Google Maps API script asynchronously
-$(document).ready(function() {
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
-    script.defer = true;
-    script.async = true;
-    script.onerror = function() {
-        alert("Failed to load Google Maps API!");
-    };
-
-    document.head.appendChild(script);
-});

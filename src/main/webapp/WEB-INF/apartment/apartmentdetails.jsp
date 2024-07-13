@@ -1,11 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
-<%@ page isErrorPage="true"%>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,9 +22,13 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" defer async></script>
 </head>
 <body>
+    <div class="back-button-container">
+        <a href="/" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
     <div class="navbar">
         <div class="logo">
-            <img src="img/palrent-logo.png" alt="Logo">
+            <a href="/"><img src="img/palrent-logo.png" alt="Logo"></a>
         </div>
         <div class="hamburger-menu" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -64,64 +66,58 @@
             </c:otherwise>
         </c:choose>
     </div>
-<!-- <div id="map"></div> -->
 
-<!-- Your existing HTML content continues below -->
-<div class="apartment-details">
-    <div class="details-left">
-        <h1 class="title">Beautiful Apartment in City Center</h1>
-        <div class="apartment-images">
-            <img src="https://www.thespruce.com/thmb/BpZG-gG2ReQwYpzrQg302pezLr0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Stocksy_txp3d216bb1tUq300_Medium_4988078-56c96ac19def4bf8ba430cf5063b6b38.jpg" alt="Apartment Image 1" class="apartment-img">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Studio_apartment.webp" alt="Apartment Image 2" class="apartment-img">
-            <img src="https://www.redfin.com/blog/wp-content/uploads/2022/09/spacejoy-xkJ2_THgKmk-unsplash.jpg" alt="Apartment Image 3" class="apartment-img">
-        </div>
-        <div class="details-right">
-        <div class="owner">
-            <img src="user-image" alt="Owner's Image" onerror="this.src='img/profile.png';" class="owner-img">
-            <h3>Owner: John Doe</h3>
-        </div>
+    <div class="apartment-details">
+        <div class="details-left">
+            <h1 class="title">Beautiful Apartment in City Center</h1>
+            <div class="apartment-images">
         
+                <img src="https://img.freepik.com/free-photo/shot-panoramic-composition-living-room_23-2150315622.jpg?w=2000&t=st=1720817822~exp=1720818422~hmac=f67e61491b60f72092e12575eeff34bde68e421c6e6b8a7bb7b2e20317c1f2da" alt="Apartment Image 2" class="apartment-img">
+                <img src="https://img.freepik.com/free-photo/shot-panoramic-composition-living-room_23-2150315628.jpg?w=2000&t=st=1720817774~exp=1720818374~hmac=da2813a06dab532dfbb0505987e008afaaa34d55b5e3ae6420ce73cb6a8304c8" alt="Apartment Image 2" class="apartment-img">
+                <img src="https://img.freepik.com/free-photo/view-light-lamp-with-futuristic-design_23-2151037593.jpg?t=st=1720816798~exp=1720820398~hmac=e86315c5123d53aaef9eee8538c96e4c1c277cb8844ab7fccd6b2b61b0ab8fe7&w=2000" alt="Apartment Image 3" class="apartment-img">
+            </div>
+            <div class="details-right">
+                <div class="owner">
+                    <img src="user-image" alt="Owner's Image" onerror="this.src='img/profile.png';" class="owner-img">
+                    <h3>Owner: John Doe</h3>
+                </div>
+            </div>
+            <div class="offers-rules">
+                <div class="rules">
+                    <h3>Rules</h3>
+                    <ul>
+                        <li>No Smoking</li>
+                        <li>No Pets</li>
+                        <li>Check-in after 3 PM</li>
+                        <li>Check-out before 12:00 PM</li>
+                        <!-- Add more rules as needed -->
+                    </ul>
+                </div>
+                <div class="offers">
+                    <h3>Offers</h3>
+                    <ul>
+                        <li>Free Parking</li>
+                        <li>Hair Dryer</li>
+                        <li>Wi-Fi</li>
+                        <!-- Add more offers as needed -->
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-        <div class="offers-rules">
-        <div class="rules">
-            <h3>Rules</h3>
-            <ul>
-                <li>No Smoking</li>
-                <li>No Pets</li>
-                <li>Check-in after 3 PM</li>
-                <li>Check-out before 12:00 PM</li>
-                <!-- Add more rules as needed -->
-            </ul>
-        </div>
-        <div class="offers">
-            <h3>Offers</h3>
-            <ul>
-                <li>Free Parking</li>
-                <li>Hair Dryer</li>
-                <li>Wi-Fi</li>
-                <!-- Add more offers as needed -->
-            </ul>
-        </div>
-        </div>
+    <div class="reservation-form">
+        <h2>Make a Reservation</h2>
+        <form id="reservationForm">
+            <label for="checkInDate">Check-in Date:</label>
+            <input type="date" id="checkInDate" name="checkInDate" required>
+            <label for="checkOutDate">Check-out Date:</label>
+            <input type="date" id="checkOutDate" name="checkOutDate" required>
+            <label for="numGuests">Number of Guests:</label>
+            <input type="number" id="numGuests" name="numGuests" required>
+            <button type="submit" class="book-now">Book Now</button>
+        </form>
     </div>
-    
-</div>
-<div class="reservation-form">
-    <h2>Make a Reservation</h2>
-    <form id="reservationForm">
-        <label for="checkInDate">Check-in Date:</label>
-        <input type="date" id="checkInDate" name="checkInDate" required>
 
-        <label for="checkOutDate">Check-out Date:</label>
-        <input type="date" id="checkOutDate" name="checkOutDate" required>
-
-        <label for="numGuests">Number of Guests:</label>
-        <input type="number" id="numGuests" name="numGuests" required>
-
-        <button type="submit" class="book-now">Book Now</button>
-    </form>
-</div>
-   
     <div id="image-popup" class="modal">
         <span class="close-btn">&times;</span>
         <img class="modal-content" id="img01">
