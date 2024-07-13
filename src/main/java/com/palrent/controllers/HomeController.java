@@ -50,6 +50,20 @@ public class HomeController {
         return "main/home.jsp";
     }
 
+	@RequestMapping(value = {"/home2"})
+    public String home2(Principal principal, Model model) {
+        // 1
+		 model.addAttribute("cities", apartmentService.cities);
+		if(principal == null) {
+			model.addAttribute("user", null);
+	        return "main/home.jsp";
+		}
+        String username = principal.getName();
+        model.addAttribute("user", userService.findByUsername(username));
+        //model.addAttribute("apartments",apartmentService.findall());
+        return "main/home2.jsp";
+    }
+	
 //	@GetMapping("/apartment")
 //	public String getMethodName() {
 //		return "apartment/apartmentdetails.jsp";
