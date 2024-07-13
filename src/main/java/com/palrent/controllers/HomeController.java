@@ -46,7 +46,7 @@ public class HomeController {
 		}
         String username = principal.getName();
         model.addAttribute("user", userService.findByUsername(username));
-       
+        model.addAttribute("apartments", apartmentService.findall());
         return "main/home.jsp";
     }
 
@@ -73,7 +73,7 @@ public class HomeController {
 
 	
 	
-	@PostMapping("/sreach")
+	@PostMapping("/search")
 	public String sreach(@RequestParam(value="city",required = false)String city
 			,@RequestParam(value="start",required = false)String start
 			,@RequestParam(value="end",required = false)String end

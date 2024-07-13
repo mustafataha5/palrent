@@ -154,7 +154,7 @@
 /* Search bar styles */
 .search-bar {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -188,9 +188,10 @@
 }
 
 /* Main content styles */
-#close-modal{
-	color:white;
+.close-modal {
+    color: white;
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -202,6 +203,7 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
 }
+
 .modal .container {
     display: flex;
     flex-wrap: wrap;
@@ -230,6 +232,7 @@
     height: auto;
     border-radius: 5px;
 }
+
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
@@ -245,91 +248,86 @@
     top: 10px;
     right: 15px;
     font-size: 30px;
-    color: #aaa;
+    color: white;
     cursor: pointer;
 }
 
 .close-btn:hover,
 .close-btn:focus {
-    color: black;
+    color: white;
     text-decoration: none;
     cursor: pointer;
 }
 
-/* Media queries for responsive design */
-@media only screen and (max-width: 1000px) {
-    .card {
-        grid-column-end: span 6;
-    }
+.cards {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-@media only screen and (max-width: 700px) {
-    main {
-        grid-gap: 20px;
-    }
-    .card {
-        grid-column-end: span 12;
-    }
+.card {
+    flex: 0 0 30%; /* Adjust width of each card */
+    margin: 10px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer styles */
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-   /*  position: fixed; */
+.card img {
     width: 100%;
-    bottom: 0;
-    height: 68px;
+    border-radius: 10px;
 }
 
-footer .social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    color: white;
-    transition: transform 0.3s, color 0.3s;
+.card-body {
+    padding: 15px;
+    text-align: center;
 }
 
-footer .social-icons a:hover {
-    transform: scale(1.2);
-    color: #bba270;
+.card-body h4 {
+    margin-bottom: 10px;
 }
 
-footer .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
+.card-body p {
+    margin-bottom: 10px;
+}
+
+.card-body .btn {
+    background-color: #bba270;
     color: white;
 }
 
-.footer a {
-    color: white;
-    text-decoration: none;
+.card-body .btn:hover {
+    background-color: #a68850;
 }
 
-.footer p {
-    margin: 0;
-    font-size: 0.8rem;
-}
-
-/* Hide fullscreen toggle button in Pannellum */
-.pnlm-fullscreen-toggle-button {
-    display: none !important;
-}
-
-.close-btn {
+/* Next and Previous buttons */
+.next-btn, .prev-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: white;
     cursor: pointer;
-    font-size: 20px;
-    color: black;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 100;
 }
 
-/* Responsive navbar styles */
+.next-btn {
+    right: 10px;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
 @media (max-width: 1024px) {
     .navbar .logo img {
         width: 60px;
@@ -393,95 +391,124 @@ footer .social-icons {
     .call-to-action {
         font-size: 0.9rem;
     }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .search-bar input, .search-bar button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .modal .container .modal-content {
+        width: calc(100% - 20px);
+    }
+
+    .modal-content {
+        width: 80%;
+    }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Footer styles */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    height: 68px;
+/*     position:fixed; */
+}
+
+footer .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: white;
+    transition: transform 0.3s, color 0.3s;
+}
+
+footer .social-icons a:hover {
+    transform: scale(1.2);
+    color: #bba270;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+/* Hide fullscreen toggle button in Pannellum */
+.pnlm-fullscreen-toggle-button {
+    display: none !important;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+}
+
+.close-btn:hover {
+    color: white;
+}
+
+/* Update user icon styles */
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: white;
+    background-image: url('path/to/default/profile.png');
+    background-size: cover;
+    background-position: center;
+}
+@media (max-width: 768px) {
+    .overlay-text {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .call-to-action {
+        display: none;
+    }
+}
+@media (max-width: 1024px) {
+    .overlay-text {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .call-to-action {
+        display: none;
+    }
+}
 
 .error{
 	color: #e01b24 ; 
 	font-size: 12px ;
 }
+
 

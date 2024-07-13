@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.7);
     padding: 10px 20px;
     z-index: 100;
     top: 0;
@@ -270,7 +270,7 @@
 
 .prev:hover,
 .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+   background-color: rgba(252, 249, 249, 0.8);
 }
 /* Footer styles */
 footer {
@@ -359,3 +359,28 @@ Copy code
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.back-button-container {
+    position: fixed;
+    top: 100px;
+    left: 10px;
+    z-index: 110;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #bba270;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 18px;
+}
+
+.back-button:hover {
+    background-color: #a68850;
+    color: #fff;
+}
+
