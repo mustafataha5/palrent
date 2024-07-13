@@ -12,8 +12,8 @@ import com.palrent.models.Department;
 @Repository
 public interface ApartmentRepository extends CrudRepository<Department, Long> {
 
-	@Query("select d "
-			+" from Department d " 
-			+" where d.city =?1 and d.numOfGuest=?2")
-	List<Department> myquery1(String cirt,Integer guest);
+	@Query("select d.id,d.title,d.price,d.city"
+			+" from Department d "
+			+" where d.city =?1 and d.numOfGuest=?2 ")
+	List<Object[]> myquery1(String cirt,Integer guest);
 }

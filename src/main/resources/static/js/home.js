@@ -82,24 +82,52 @@ $(document).ready(function() {
     });
 
     // Search button click handler
-    $('#open-modal-btn').click(function(e) {
+    $('#search').click(function(e) {
         e.preventDefault();
-        const location = $('#location').val();
+        const location = $('#city').val();
         const checkin = $('#checkin').val();
         const checkout = $('#checkout').val();
         const guests = $('#guests').val();
 
-        if (location && checkin && checkout && guests) {
-            console.log(`Searching for apartments in ${location} from ${checkin} to ${checkout} for ${guests} guests.`);
-            $('.panorama-container').css('height', '50vh');
-            $('#slider').show();
-        } else {
-            alert('Please fill in all search fields.');
-        }
+        // Show the slider and adjust panorama-container height
+        $('.panorama-container').css('height', '50vh');
+        $('#slider').show();
+
+        // Initialize or reinitialize slick carousel
+        $('.cards').slick('unslick').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
     });
 
-    // Function to toggle hamburger menu visibility
-    function toggleMenu() {
-        $('.nav-links').toggleClass('show');
-    }
+    // Next and Previous buttons for slick carousel
+    $('.next-btn').click(function() {
+        $('.cards').slick('slickNext');
+    });
+
+    $('.prev-btn').click(function() {
+        $('.cards').slick('slickPrev');
+    });
 });

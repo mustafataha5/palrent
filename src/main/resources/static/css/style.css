@@ -154,7 +154,7 @@
 /* Search bar styles */
 .search-bar {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -271,7 +271,7 @@
 }
 
 .card {
-    flex: 0 0 30%;
+    flex: 0 0 30%; /* Adjust width of each card */
     margin: 10px;
     padding: 15px;
     background: white;
@@ -305,7 +305,29 @@
 .card-body .btn:hover {
     background-color: #a68850;
 }
-/* Media queries for responsive design */
+
+/* Next and Previous buttons */
+.next-btn, .prev-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
 @media (max-width: 1024px) {
     .navbar .logo img {
         width: 60px;
@@ -388,6 +410,7 @@
     }
 }
 
+
 /* Footer styles */
 footer {
     background: #333;
@@ -396,7 +419,7 @@ footer {
     width: 100%;
     bottom: 0;
     height: 68px;
-    position:fixed;
+/*     position:fixed; */
 }
 
 footer .social-icons a {
@@ -482,3 +505,10 @@ footer p {
         display: none;
     }
 }
+
+.error{
+	color: #e01b24 ; 
+	font-size: 12px ;
+}
+
+

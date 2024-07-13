@@ -55,19 +55,23 @@
 					<div class="user-icon-container">
 						<div class="user-icon-wrapper">
 							<img src="user-image" alt="Image not found"
-								onerror="this.src='/img/profile.png';" class="user-icon" />
+								onerror="this.src='img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
 
 								<a href="/userinfo/${user.id}">User Info</a> <a
-									href="/user/apartment"> apartment</a> <a href="/logout">
-									Log out</a>
+									href="user/apartment"> apartment</a>
+								<!-- <a href="/logout"> Log out</a> -->
+
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit" value="Logout!" />
+								</form>
 
 							</div>
 						</div>
 					</div>
 
 				</div>
-
 			</c:otherwise>
 		</c:choose>
 	</div>
