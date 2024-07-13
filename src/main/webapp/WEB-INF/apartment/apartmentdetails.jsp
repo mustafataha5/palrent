@@ -26,7 +26,7 @@
 <body>
     <div class="navbar">
         <div class="logo">
-            <img src="img/palrent-logo.png" alt="Logo">
+            <img src="/img/palrent-logo.png" alt="Logo">
         </div>
         <div class="hamburger-menu" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -37,10 +37,10 @@
             <li><a href="#">User</a></li>
         </ul>
         <c:choose>
-            <c:when test="${ user == null}">
+            <c:when test="${user == null}">
                 <div class="user-icon-container">
                     <div class="user-icon-wrapper">
-                        <img src="img.png" alt="Image not found" onerror="this.src='img/profile.png';" class="user-icon" />
+                        <img src="img.png" alt="Image not found" onerror="this.src='/img/profile.png';" class="user-icon" />
                         <div class="burger-menu" id="user-menu">
                             <a href="/register" id="register-btn">Register</a>
                             <a href="/login" id="login-btn">Log In</a>
@@ -53,9 +53,9 @@
                     <h4 class="text-light mx-2">${user.firstName}</h4>
                     <div class="user-icon-container">
                         <div class="user-icon-wrapper">
-                         <img src="user-image" alt="Image not found" onerror="this.src='img/profile.png';" class="user-icon" /> 
+                         <img src="user-image" alt="Image not found" onerror="this.src='/img/profile.png';" class="user-icon" /> 
                             <div class="burger-menu" id="user-menu">
-                                <a href="user/apartment">Apartment</a>
+                                <a href="/user/apartment">Apartment</a>
                                 <a href="/logout">Log out</a>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
         </div>
         <div class="details-right">
         <div class="owner">
-            <img src="${apartment.owner.urlImage}" alt="Owner's Image" onerror="this.src='img/profile.png';" class="owner-img">
+            <img src="${apartment.owner.urlImage}" alt="Owner's Image" onerror="this.src='/img/profile.png';" class="owner-img">
             <h3>Owner: ${apartment.owner.firstName} - ${apartment.owner.lastName}</h3>
         </div>
         

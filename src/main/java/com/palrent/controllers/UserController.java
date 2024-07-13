@@ -1,5 +1,7 @@
 package com.palrent.controllers;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,19 +24,18 @@ import jakarta.validation.Valid;
 
 @Controller
 public class UserController {
-	
-private UserService userService;
-    
-    // NEW
-    private UserValidator userValidator;
-    
-    // NEW
-    public UserController(UserService userService, UserValidator userValidator) {
-        this.userService = userService;
-        this.userValidator = userValidator;
-    }
-	
-	
+
+	private UserService userService;
+
+	// NEW
+	private UserValidator userValidator;
+
+	// NEW
+	public UserController(UserService userService, UserValidator userValidator) {
+		this.userService = userService;
+		this.userValidator = userValidator;
+	}
+
 //	@PostMapping("/user/new")
 //	public String addNewUser(@Valid @ModelAttribute("newUser") User newUser 
 //			,BindingResult result
@@ -53,42 +54,47 @@ private UserService userService;
 //	}
 	@GetMapping("/register")
 	public String register(@ModelAttribute("newUser") User newUser) {
-		
+
 		return "main/register.jsp";
 	}
-	
-	
-	 @PostMapping("/register")
-	    public String registration(@Valid @ModelAttribute("newUser") User user, BindingResult result, Model model, HttpSession session) {
-	       userValidator.validate(user, result);
-		 	if (result.hasErrors()) {
-	            return "main/register.jsp";
-	        }
-	       // userService.saveWithUserRole(user);
-	       userService.saveUserWithAdminRole(user);
-	       
-		 	return "redirect:/login";
-	    }
-	 
-	 @RequestMapping("/login")
-	    public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
-	        if(error != null) {
-	            model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
-	        }
-	        if(logout != null) {
-	            model.addAttribute("logoutMessage", "Logout Successful!");
-	        }
-	        return "main/login.jsp";
-	    }
-	
-	 @GetMapping("/userinfo/{id}")
-		public String userinfo(@PathVariable("id")Long id ,  Model model) {
-			
-			model.addAttribute("user",userService.findUser(id) );
-			
-			return "user/Userinfo.jsp";
+
+	@PostMapping("/register")
+	public String registration(@Valid @ModelAttribute("newUser") User user, BindingResult result, Model model,
+			HttpSession session) {
+		userValidator.validate(user, result);
+		if (result.hasErrors()) {
+			return "main/register.jsp";
 		}
-	
+		// userService.saveWithUserRole(user);
+		userService.saveUserWithAdminRole(user);
+
+		return "redirect:/login";
+	}
+
+	@RequestMapping("/login")
+	public String login(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout, Model model) {
+		if (error != null) {
+			model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
+		}
+		if (logout != null) {
+			model.addAttribute("logoutMessage", "Logout Successful!");
+		}
+		return "main/login.jsp";
+	}
+
+	@GetMapping("/userinfo/{id}")
+	public String userinfo(@PathVariable("id") Long id, Model model ,Principal principal) {
+
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		model.addAttribute("user", user);
+
+		model.addAttribute("user", userService.findUser(id));
+
+		return "user/Userinfo.jsp";
+	}
+
 //	@GetMapping("/logout")
 //	public  String logout(HttpSession session) {
 //		session.invalidate();
