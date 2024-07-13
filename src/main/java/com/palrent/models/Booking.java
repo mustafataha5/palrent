@@ -19,7 +19,7 @@ import jakarta.validation.constraints.FutureOrPresent;
 
 @Entity
 @Table(name="userbookdeps")
-public class UserBookDep {
+public class Booking {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,7 +60,7 @@ public class UserBookDep {
 	
 	
 	
-	public UserBookDep() {
+	public Booking() {
 		// TODO Auto-generated constructor stub
 	}
 

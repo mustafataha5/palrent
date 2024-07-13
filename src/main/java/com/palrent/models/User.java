@@ -89,7 +89,7 @@ public class User {
 	List<Department> ownedDeparment; 
 	
 	@OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
-	List<UserBookDep> departments ; 
+	List<Booking> booking ; 
 	
 	@OneToMany(mappedBy = "reviewer",fetch = FetchType.LAZY)
 	List<ReviewDep> reviewDeps;
@@ -181,13 +181,7 @@ public class User {
 		this.ownedDeparment = ownedDeparment;
 	}
 
-	public List<UserBookDep> getDepartments() {
-		return departments;
-	}
-
-	public void setDepartments(List<UserBookDep> departments) {
-		this.departments = departments;
-	}
+	
 
 	public String getConfirm() {
 		return confirm;
@@ -219,6 +213,14 @@ public class User {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public List<Booking> getBooking() {
+		return booking;
+	}
+
+	public void setBooking(List<Booking> booking) {
+		this.booking = booking;
 	}
 	
 

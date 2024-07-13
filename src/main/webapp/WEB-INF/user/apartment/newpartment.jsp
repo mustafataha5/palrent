@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>New Apartment</title> 
+<title>New Apartment</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="stylesheet"
@@ -170,8 +170,15 @@
 									<td><form:input type="text" path="departmentNum"
 											placeholder="department number" /> <form:input type="text"
 											path="buildingNum" placeholder="Building Number" /> <form:input
-											type="text" path="street" placeholder="Street" /> <form:input
-											type="text" path="city" placeholder="City" /></td>
+											type="text" path="street" placeholder="Street" /> 
+											<form:select path="city">
+											<form:option value="0">Select City</form:option>
+											<c:forEach var="cit" items="${cities}">
+												<form:option value="${cit}">${ cit}</form:option>
+											</c:forEach>
+
+										</form:select></td>
+					
 
 								</tr>
 								<tr>

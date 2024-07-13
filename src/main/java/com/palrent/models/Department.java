@@ -79,7 +79,7 @@ public class Department {
 	private String street;
 
 	@NotEmpty(message = "")
-	@Size(min = 4, message = "City Name must be at least 2 character.")
+	@Size(min = 4, message = "City Name must be at least 4 character.")
 	private String city;
 
 	private Double locationX;
@@ -142,7 +142,7 @@ public class Department {
 	private User owner;
 
 	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
-	private List<UserBookDep> users;
+	private List<Booking> users;
 
 	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
 	List<ReviewDep> reviewers;
@@ -317,11 +317,11 @@ public class Department {
 		this.owner = owner;
 	}
 
-	public List<UserBookDep> getUsers() {
+	public List<Booking> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<UserBookDep> users) {
+	public void setUsers(List<Booking> users) {
 		this.users = users;
 	}
 

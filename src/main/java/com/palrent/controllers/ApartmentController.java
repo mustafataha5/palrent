@@ -1,9 +1,11 @@
 package com.palrent.controllers;
 
 import java.security.Principal;
+import java.util.Date;
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.palrent.models.Booking;
 import com.palrent.models.Department;
 import com.palrent.models.Image;
 
@@ -22,8 +25,10 @@ import com.palrent.models.Offer;
 import com.palrent.models.Rule;
 
 import com.palrent.models.User;
+import com.palrent.repositories.BookingRepositry;
 import com.palrent.repositories.ImageRepository;
 import com.palrent.services.ApartmentService;
+import com.palrent.services.BookingService;
 import com.palrent.services.ImageSerivce;
 import com.palrent.services.OfferService;
 import com.palrent.services.RuleServices;
@@ -44,7 +49,9 @@ public class ApartmentController {
 	RuleServices ruleServices;
 	@Autowired
 	ImageSerivce imageSerivce;
-
+	@Autowired
+	BookingService bookingService ;
+	
 	@GetMapping("/user/apartment/new")
 	public String getApartment(@ModelAttribute("Apartment") Department apartment, Principal principal, Model model) {
 //		if (session.getAttribute("userId") == null) {
@@ -52,6 +59,7 @@ public class ApartmentController {
 //		}
 		String username = principal.getName();
 		model.addAttribute("user", userService.findByUsername(username));
+		model.addAttribute("cities", apartmentService.cities);
 		return "user/apartment/newpartment.jsp";
 	}
 
@@ -103,7 +111,7 @@ public class ApartmentController {
 //			return "redirect:/";
 //		}
 //		model.addAttribute("user", userService.findUser((Long) session.getAttribute("userId")));
-		System.out.println(">>>>>>>>>>>>>>>>>>>");
+		
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		model.addAttribute("user", user);
@@ -112,7 +120,7 @@ public class ApartmentController {
 		model.addAttribute("Apartment", apartment);
 		model.addAttribute("exOffer", offerService.allOffernotIn(id));
 		model.addAttribute("exRule", ruleServices.allRulenotIn(id));
-		System.out.println(">>>>>>>>>>>>>>>>>>> end edit");
+		model.addAttribute("cities", apartmentService.cities);
 		return "user/apartment/editapartment.jsp";
 
 	}
@@ -207,6 +215,31 @@ public class ApartmentController {
 		apartmentService.updateApartment(department);
 
 		return "redirect:/user/apartment/" + Id + "/edit";
+	}
+	
+	@GetMapping("/apartment/{id}/show")
+	public String showApartment(@PathVariable("id")Long id,Model model) {
+		
+		model.addAttribute("apartment", apartmentService.findById(id));
+		return "apartment/apartmentdetails.jsp";
+	}
+	
+	@PatchMapping("/apartment/{id}/booking")
+	public String bookApartment(@PathVariable("id")Long id
+			,@RequestParam("checkin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date checkin , 
+			@RequestParam("checkout") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date checkout ,
+			Model model,Principal principal) {
+		
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		Department department = apartmentService.findById(id);
+		Booking book = new Booking();
+		book.setUser(user);
+		book.setDepartment(department);
+		book.setStartDate(checkin);
+		book.setEndDate(checkout);
+		bookingService.createBooking(book);
+		return "redirect:/home";
 	}
 
 }

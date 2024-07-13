@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +40,7 @@
 		<div class="content">
 			<div class="content__cover">
 				<div class="content__avatar"
-					style="background: #0a0a0a url('https://media.discordapp.net/attachments/1226501003608723487/1260690957301715024/IMG_8203.jpg?ex=66903d72&amp;is=668eebf2&amp;hm=5a4bf3be49f225a4dd9e92a4ba79a28c6397a8b0cd7a5d644404989e612f3553&amp;=&amp;format=webp&amp;width=441&amp;height=662') center center no-repeat; background-size: cover;">
+					style="background: #0a0a0a url(${user.urlImage}) center center no-repeat; background-size: cover;">
 				</div>
 				<div class="content__bull"></div>
 			</div>
@@ -46,21 +48,30 @@
 				<a href="#"> <span></span></a>
 			</div>
 			<div class="content__title">
-				<h1>User name</h1>
+				<h1>${user.firstName} ${user.lastName} </h1>
 				<span> </span>
 			</div>
 			<div class="content__description">
-				<p>Email:</p>
-				<p>Columbia University - New York</p>
+				<p>Email: ${user.username}</p>
+				<p>Phone: ${user.phone}</p>
 			</div>
 			<ul class="content__list">
-				<li><span># of appartment</span>apprtment</li>
+				<li><span># of owned appartment</span>${fn:length(user.ownedDeparment)}</li>
 				
-				<li><span>history</span>
-				<li> ramallah</li>
-				<li> ramallah</li>
-				<li> ramallah</li>
-				<li> ramallah</li>
+				<li><span>history:  ${fn:length(user.booking)}</span>
+				<lu class="content__list">
+				<c:forEach var="book" items="${user.booking}">
+				 	<li>
+				 	    <div >
+				 	    	
+				 	    	 <h3>${book.department.title}</h3>
+				 	    	<h5>From :${book.startDate}</h5>
+				 	    	<h5>To :${book.endDate}</h5>
+				 	    	<p>price: ${book.department.price} </p> 
+				 	    </div>
+				 	</li>
+				</c:forEach> 
+				</lu>
 				</li>
 			</ul>
 

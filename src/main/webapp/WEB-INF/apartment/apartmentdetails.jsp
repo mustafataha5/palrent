@@ -37,7 +37,7 @@
             <li><a href="#">User</a></li>
         </ul>
         <c:choose>
-            <c:when test="${ userId == null}">
+            <c:when test="${ user == null}">
                 <div class="user-icon-container">
                     <div class="user-icon-wrapper">
                         <img src="img.png" alt="Image not found" onerror="this.src='img/profile.png';" class="user-icon" />
@@ -71,14 +71,17 @@
     <div class="details-left">
         <h1 class="title">Beautiful Apartment in City Center</h1>
         <div class="apartment-images">
-            <img src="https://www.thespruce.com/thmb/BpZG-gG2ReQwYpzrQg302pezLr0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Stocksy_txp3d216bb1tUq300_Medium_4988078-56c96ac19def4bf8ba430cf5063b6b38.jpg" alt="Apartment Image 1" class="apartment-img">
+        	<c:forEach var="image" items="${apartment.images}">
+        		<img src="${image.url}" alt="Apartment Image 2" class="apartment-img">
+        	</c:forEach>
+           <!--  <img src="https://www.thespruce.com/thmb/BpZG-gG2ReQwYpzrQg302pezLr0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Stocksy_txp3d216bb1tUq300_Medium_4988078-56c96ac19def4bf8ba430cf5063b6b38.jpg" alt="Apartment Image 1" class="apartment-img">
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Studio_apartment.webp" alt="Apartment Image 2" class="apartment-img">
-            <img src="https://www.redfin.com/blog/wp-content/uploads/2022/09/spacejoy-xkJ2_THgKmk-unsplash.jpg" alt="Apartment Image 3" class="apartment-img">
+            <img src="https://www.redfin.com/blog/wp-content/uploads/2022/09/spacejoy-xkJ2_THgKmk-unsplash.jpg" alt="Apartment Image 3" class="apartment-img"> -->
         </div>
         <div class="details-right">
         <div class="owner">
-            <img src="user-image" alt="Owner's Image" onerror="this.src='img/profile.png';" class="owner-img">
-            <h3>Owner: John Doe</h3>
+            <img src="${apartment.owner.urlImage}" alt="Owner's Image" onerror="this.src='img/profile.png';" class="owner-img">
+            <h3>Owner: ${apartment.owner.firstName} - ${apartment.owner.lastName}</h3>
         </div>
         
     </div>
@@ -86,39 +89,50 @@
         <div class="rules">
             <h3>Rules</h3>
             <ul>
-                <li>No Smoking</li>
+                <!-- <li>No Smoking</li>
                 <li>No Pets</li>
                 <li>Check-in after 3 PM</li>
                 <li>Check-out before 12:00 PM</li>
-                <!-- Add more rules as needed -->
+                Add more rules as needed -->
+                
+                <c:forEach var="rule" items="${apartment.rules}">
+                	<li> ${ rule.name } </li>
+                </c:forEach>
             </ul>
         </div>
         <div class="offers">
             <h3>Offers</h3>
             <ul>
-                <li>Free Parking</li>
+                <!-- <li>Free Parking</li>
                 <li>Hair Dryer</li>
-                <li>Wi-Fi</li>
+                <li>Wi-Fi</li> -->
                 <!-- Add more offers as needed -->
+                 <c:forEach var="offer" items="${apartment.offers}">
+                	<li> ${ offer.name } </li>
+                </c:forEach>
             </ul>
         </div>
         </div>
     </div>
     
 </div>
+
+
+
 <div class="reservation-form">
     <h2>Make a Reservation</h2>
-    <form id="reservationForm">
-        <label for="checkInDate">Check-in Date:</label>
-        <input type="date" id="checkInDate" name="checkInDate" required>
+    <form   action="/apartment/${apartment.id}/booking" method="post">
+    	<input type="hidden" name="_method" value="patch"> 
+        <label for="checkin">Check-in Date:</label>
+        <input type="date" id="checkin" name="checkin" required>
 
-        <label for="checkOutDate">Check-out Date:</label>
-        <input type="date" id="checkOutDate" name="checkOutDate" required>
-
+        <label for="checkout">Check-out Date:</label>
+        <input type="date" id="checkout" name="checkout" required>
+<%-- 
         <label for="numGuests">Number of Guests:</label>
-        <input type="number" id="numGuests" name="numGuests" required>
-
-        <button type="submit" class="book-now">Book Now</button>
+        <input type="number" id="numGuests" name="numGuest" value="${ apartment.numOfGuest}" disabled="disabled"> --%>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <button type="submit" >Book Now</button>
     </form>
 </div>
    

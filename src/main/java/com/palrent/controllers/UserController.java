@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,6 +66,7 @@ private UserService userService;
 	        }
 	       // userService.saveWithUserRole(user);
 	       userService.saveUserWithAdminRole(user);
+	       
 		 	return "redirect:/login";
 	    }
 	 
@@ -79,7 +81,13 @@ private UserService userService;
 	        return "main/login.jsp";
 	    }
 	
-	
+	 @GetMapping("/userinfo/{id}")
+		public String userinfo(@PathVariable("id")Long id ,  Model model) {
+			
+			model.addAttribute("user",userService.findUser(id) );
+			
+			return "user/Userinfo.jsp";
+		}
 	
 //	@GetMapping("/logout")
 //	public  String logout(HttpSession session) {

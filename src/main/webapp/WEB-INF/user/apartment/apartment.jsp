@@ -104,7 +104,7 @@
 
 						<div class="d-flex justify-content-center"" >
 						 
-							<a href=""
+							<a href="/user/apartment/${apartment.id}/edit"
 								class="mx-3 btn btn-outline-warning btn-sm">Edit</a> 
 							<form action="/user/apartment/${apartment.id}/delete"
 								method="post">
