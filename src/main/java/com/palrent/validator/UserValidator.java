@@ -38,9 +38,14 @@ public class UserValidator implements Validator {
         	errors.rejectValue("username", "Exist");
         } 
         Date now = new  Date();
-        if(user.getDateOfBirth().after(now)) {
+        
+        if(user.getDateOfBirth()!=null && user.getDateOfBirth().after(now)) {
         	errors.rejectValue("dateOfBirth", "Future");
         }
+        if(user.getDateOfBirth() == null) {
+        	errors.rejectValue("dateOfBirth","Require");
+        }
+        
 //        Date past = new Date("1920-1-1");
 //        if(user.getDateOfBirth().before(past)) {
 //        	errors.rejectValue("dateOfBirth", "Past");

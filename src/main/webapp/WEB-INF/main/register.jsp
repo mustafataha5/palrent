@@ -128,7 +128,7 @@
 									</tr>
 									<tr>
 										<td><form:label path="dateOfBirth">Date Of Birth:</form:label></td>
-										<td><form:input type="date" path="dateOfBirth" /></td>
+										<td><form:input type="date" path="dateOfBirth"  /></td>
 									</tr>
 									<tr>
 										<td><form:label path="urlImage">Url Image:</form:label></td>
