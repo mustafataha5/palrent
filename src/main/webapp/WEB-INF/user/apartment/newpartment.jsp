@@ -40,7 +40,7 @@
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
 						<img src="user-image" alt="Image not found"
-							onerror="this.src='img/profile.png';" class="user-icon" />
+							onerror="this.src='/img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
 							<a href="/register" id="register-btn">Register</a> <a
 								href="/login" id="login-btn">Log In</a>
@@ -167,7 +167,7 @@
 								</tr> --%>
 								<tr>
 									<td><form:label path="price">Price:</form:label></td>
-									<td><form:input type="double" value="0" path="price" /></td>
+									<td><form:input type="double" value="1" path="price" /></td>
 								</tr>
 
 								<tr>
