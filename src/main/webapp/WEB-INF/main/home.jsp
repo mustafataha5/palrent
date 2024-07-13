@@ -113,49 +113,33 @@
 			<p>Explore our top-rated apartments now!</p>
 		</div>
 	</div>
-<div id="myModal" class="modal">
-   <span class="close-btn" id="close-modal">&times;</span>
-    <div class="container">
-         <span class="close-btn" id="close-modal">&times;</span>
-        <!-- Repeat this structure for each card -->
-        <!-- <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <img src="img_avatar.png" alt="Avatar">
-            <div>
-                <h4><b>Tabakhna Apartment</b></h4>
-                <p>Ramallah, City Center, Rukab's St</p>
-                <p>$300</p>
-                
+	<div id="slider" class="cards" style="display:none;">
+    <c:forEach var="apartment" items="${apartments}">
+        <div class="card">
+            <img src="${apartment.images[0].url}" alt="Apartment Image">
+            <div class="card-body">
+                <h4>${apartment.title}</h4>
+                <p>${apartment.city}, ${apartment.street}, ${apartment.buildingNum}</p>
+                <a href="/apartment/${apartment.id}/show" class="btn btn-primary">View Details</a>
             </div>
-            <a href="/apartment">View Details</a>
-        </div> -->
-
-		<c:forEach var="apartment" items="${apartments}">
-		<div class="modal-content">
-       
-            <img src="${apartment.images[0].url}" alt="Avatar">
-            <div>
-                <h4><b>${apartment.title}</b></h4>
-                <p>${apartment.city},${apartment.street},${apartment.buildingNum}</p>
-                <p>${apartment.title}</p>
-              
-            </div>
-             <a href="/apartment/${apartment.id}/show">View Details</a>
         </div>
-		</c:forEach>
-        
-
-       <!--  <div class="modal-content">
-            
-            <img src="img_avatar.png" alt="Avatar">
-            <div>
-                <h4><b>Tabakhna Apartment</b></h4>
-                <p>Ramallah, City Center, Rukab's St</p>
-                <p>$300</p>
-               
+    </c:forEach>
+</div>
+<div id="myModal" class="modal">
+    <span class="close-btn" id="close-modal">&times;</span>
+    <div class="container">
+        <span class="close-btn" id="close-modal">&times;</span>
+        <c:forEach var="apartment" items="${apartments}">
+            <div class="modal-content">
+                <img src="${apartment.images[0].url}" alt="Avatar">
+                <div>
+                    <h4><b>${apartment.title}</b></h4>
+                    <p>${apartment.city},${apartment.street},${apartment.buildingNum}</p>
+                    <p>${apartment.title}</p>
+                </div>
+                <a href="/apartment/${apartment.id}/show">View Details</a>
             </div>
-           <a href="/apartment">View Details</a>
-        </div> -->
+        </c:forEach>
     </div>
 </div>
 	<footer>

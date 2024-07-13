@@ -259,6 +259,52 @@
     cursor: pointer;
 }
 
+.cards {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+    flex: 0 0 30%;
+    margin: 10px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-body h4 {
+    margin-bottom: 10px;
+}
+
+.card-body p {
+    margin-bottom: 10px;
+}
+
+.card-body .btn {
+    background-color: #bba270;
+    color: white;
+}
+
+.card-body .btn:hover {
+    background-color: #a68850;
+}
 /* Media queries for responsive design */
 @media (max-width: 1024px) {
     .navbar .logo img {
