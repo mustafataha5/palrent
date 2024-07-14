@@ -1,0 +1,259 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding-top: 0px;
+    z-index: 100;
+    top: 0;
+    transition: all 0.3s;
+}
+
+.navbar .logo img {
+    width: 80px;
+    margin-left: 32%;
+}
+
+.navbar .hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.navbar .hamburger-menu i {
+    color: white;
+    font-size: 24px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.nav-links li:hover a {
+    color: #bba270;
+    font-weight: 700;
+}
+
+/* Overlay text styles */
+.overlay-text {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    margin-bottom:4%;
+    background: rgba(0, 0, 0, 0.7);
+    padding:1%;
+    border-radius:10px;
+    
+}
+
+/* Call to action styles */
+.call-to-action {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* User icon container styles */
+.user-icon-container {
+    position: relative;
+    margin-right: 6%;
+}
+
+.user-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user-icon-wrapper:hover .user-icon {
+    border-radius: 50%;
+    border: 3px solid #bba270;
+}
+
+.user-icon {
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.burger-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    z-index: 2000;
+}
+
+.burger-menu.show {
+    display: block;
+    width: 9rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.burger-menu a {
+    display: block;
+    color: black;
+    padding: 10px 0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.burger-menu a:hover {
+    color: #bba270;
+}
+
+
+.panorama-container {
+    width: 100%;
+    height: 100vh;
+}
+
+.panorama-container {
+    width: 100%;
+    height: 100vh;
+}
+
+#panorama {
+    width: 100%;
+    height: 100%;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 68px; /* Adjust as needed */
+    background: #333;
+    color: white;
+    text-align: center;
+}
+
+footer .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: white;
+    transition: transform 0.3s, color 0.3s;
+}
+
+footer .social-icons a:hover {
+    transform: scale(1.2);
+    color: #bba270;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+
+.pnlm-fullscreen-toggle-button {
+    display: none !important;
+}
+
+/* Update user icon styles */
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: white;
+    background-image: url('path/to/default/profile.png');
+    background-size: cover;
+    background-position: center;
+}
+.contact-form-container {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    width: 80%;
+    max-width: 600px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.contact-form {
+    margin-top: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.contact-form button {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #8c7b52;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.contact-form button:hover {
+    background-color: #bba270;
+    transform: scale(1.05);
+    color:white;
+}

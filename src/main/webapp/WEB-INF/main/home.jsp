@@ -40,8 +40,8 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
-			<li><a href="#">About us</a></li>
-			<li><a href="#">Contact us</a></li>
+			<li><a href=".">About us</a></li>
+			<li><a href="/contactus">Contact us</a></li>
 			<li><a href="#">User</a></li>
 		</ul>
 
