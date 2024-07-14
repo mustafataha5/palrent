@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.palrent.models.Department;
-
 import com.palrent.repositories.ApartmentRepository;
 
 @Service

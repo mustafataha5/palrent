@@ -30,6 +30,7 @@ public class HomeController {
 
 	@GetMapping("/apartment")
 	public String getMethodName() {
+		
 		return "apartment/apartmentdetails.jsp";
 	}
 

@@ -33,16 +33,7 @@
 			<li><a href="#">Contact us</a></li>
 			<li><a href="#">User</a></li>
 		</ul>
-		<!-- 	<div class="user-icon-container">
-			<div class="user-icon-wrapper">
-				<img src="user-image" alt="Image not found"
-					onerror="this.src='img/profile.png';" class="user-icon" />
-				<div class="burger-menu" id="user-menu">
-					<a href="#" id="register-btn">Register</a> <a href="#"
-						id="login-btn">Log In</a>
-				</div>
-			</div>
-		</div> -->
+
 		<c:choose>
 			<c:when test="${ userId == null}">
 				<div class="user-icon-container">
@@ -60,15 +51,15 @@
 				<div class="d-flex align-items-center mx-3">
 					<h4 class="text-light mx-2">${user.firstName}</h4>
 					<div class="user-icon-container">
-					<div class="user-icon-wrapper">
-						<img src="user-image" alt="Image not found"
-							onerror="this.src='img/profile.png';" class="user-icon" />
-						<div class="burger-menu" id="user-menu">
-							<a href="#" >New apartment</a> <a href="/logout"
-								>Log out</a>
+						<div class="user-icon-wrapper">
+							<img src="user-image" alt="Image not found"
+								onerror="this.src='img/profile.png';" class="user-icon" />
+							<div class="burger-menu" id="user-menu">
+								<a href="#">New apartment</a> <a href="/logout">Log
+									out</a>
+							</div>
 						</div>
 					</div>
-				</div>
 
 				</div>
 
