@@ -41,9 +41,12 @@
 		</div>
 		<ul class="nav-links">
 			<li><a href="/">Home</a></li>
-			<li><a href="#">About us</a></li>
-			<li><a href="#">Contact us</a></li>
-			<li><a href="#">User</a></li>
+			<li><a href="/about">About us</a></li>
+			<li><a href="/contact">Contact us</a></li>
+			<c:if test="${user != null}">
+				<li><a href="/user/info/${user.id}">User</a></li>
+			</c:if>
+			
 		</ul>
 
 		<c:choose>

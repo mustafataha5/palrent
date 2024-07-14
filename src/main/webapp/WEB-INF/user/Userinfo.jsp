@@ -38,7 +38,7 @@
 			<li><a href="/">Home</a></li>
 			<li><a href="/about">About us</a></li>
 			<li><a href="/contact">Contact us</a></li>
-			<li><a href="/user">User</a></li>
+			<li><a href="/user/info/${user.id}">User</a></li>
 		</ul>
 		<c:choose>
 			<c:when test="${user == null}">
