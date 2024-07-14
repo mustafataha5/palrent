@@ -10,7 +10,7 @@ Our mission is to provide a seamless platform for users to discover and book apa
 
 - **User Registration and Authentication**: Secure sign-up and login functionalities.
 - **Property Listings**: Property owners can add, update, and delete apartment listings.
-- **Search Functionality**: Users can search for apartments by location, price, and other criteria.
+- **Search Functionality**: Users can search for apartments by location, date, and other criteria.
 - **Booking System**: Users can book available apartments and view booking history.
 - **Admin Dashboard**: Administrators can manage users, properties, and bookings.
 
@@ -24,7 +24,7 @@ The Palrent application is built using:
 
 ### Components
 
-- **Frontend**: Web application using JSP and Bootstrap.
+- **Frontend**: Web application using JSP, Bootstrap and css.
 - **Backend**: Spring Boot application.
 - **Database**: MySQL.
 - **Authentication**: Managed with Spring Security.
@@ -50,13 +50,12 @@ The Palrent application is built using:
 ### Environment
 
 - **Development**: Local development with an embedded database.
-- **Staging**: Deploy on a staging server for testing.
-- **Production**: Deploy on a cloud provider such as AWS or Azure.
+- **Production**: Deploy on AWS .
 
 ### Build and Deploy
 
 - **Build Tool**: Maven
-- **Deployment**: Deploy using Docker or directly on a server.
+- **Deployment**: Deploy using directly on a server.
 
 ## Security
 
@@ -70,25 +69,6 @@ The Palrent application is built using:
 - Role-based access control (e.g., USER, ADMIN).
 - Configured using Spring Security.
 
-## Testing
-
-### Unit Testing
-
-- **Framework**: JUnit 5
-- **Coverage**: Business logic, repository methods.
-
-### Integration Testing
-
-- **Framework**: Spring Boot Test
-- **Coverage**: API endpoints, database interactions.
-
-
-## Troubleshooting
-
-### Common Issues
-
-- **Database Connection Issues**: Check database URL and credentials.
-- **Authentication Failures**: Ensure JWT token validity and configuration.
 
 ### Logging
 
