@@ -77,7 +77,7 @@
 			<div class=" d-flex justify-content-around">
 
 				<h4 class="card-title mx-3">Add New Rule:</h4>
-				<a href="/admins/offer"><h4
+				<a href="/admins/rule"><h4
 						class="card-title mx-3 btn btn-outline-secondary ">Go back</h4></a>
 			</div>
 			<div class=" col-md-8 d-flex justify-content-center">

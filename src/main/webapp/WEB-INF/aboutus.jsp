@@ -30,27 +30,56 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="palrent-logo.png" alt="Logo">
-        </div>
-        <div class="hamburger-menu" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">User</a></li>
-        </ul>
-        <div class="user-icon-container">
-            <img src="ibrahim.jpg" alt="Image not found" onerror="this.src='img/profile.png';" class="user-icon" />
-            <div class="burger-menu">
-                <a href="#" id="register-btn">Register</a>
-                <a href="#" id="login-btn">Log In</a>
-            </div>
-        </div>
-    </div>
-    
+ 	<div class="navbar">
+		<div class="logo">
+			<a href="/"><img src="img/palrent-logo.png" alt="Logo"></a>
+		</div>
+		<div class="hamburger-menu" onclick="toggleMenu()">
+			<i class="fas fa-bars"></i>
+		</div>
+		<ul class="nav-links">
+			<li><a href="#">About us</a></li>
+			<li><a href="#">Contact us</a></li>
+			<li><a href="#">User</a></li>
+		</ul>
+
+		<c:choose>
+			<c:when test="${ user == null}">
+				<div class="user-icon-container">
+					<div class="user-icon-wrapper">
+						<img src="img.png" alt="Image not found"
+							onerror="this.src='img/profile.png';" class="user-icon" />
+						<div class="burger-menu" id="user-menu">
+							<a href="/register" id="register-btn">Register</a> <a
+								href="/login" id="login-btn">Log In</a>
+						</div>
+					</div>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="d-flex align-items-center mx-3">
+					<h4 class="text-light mx-2">${user.firstName}</h4>
+					<div class="user-icon-container">
+						<div class="user-icon-wrapper">
+							<img src="user-image" alt="Image not found"
+								onerror="this.src='img/profile.png';" class="user-icon" />
+							<div class="burger-menu" id="user-menu">
+
+								<a href="/userinfo/${user.id}">User Info</a> <a
+									href="user/apartment">Apartment</a>
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</c:otherwise>
+		</c:choose>
+	</div>
     <section id="home">
         <div class="home-left">
             <img src="palrent-logo.png" alt="">
@@ -88,9 +117,7 @@
             <img src="https://e0.pxfuel.com/wallpapers/574/541/desktop-wallpaper-interior-mockup-vectors-stock-psd-minimal-interior.jpg" alt="">
         </div>
     </section>
-    <!--================== Goal Section Ends Here -->
 
-    <!--================== Our Team Section Starts from Here ==================-->
     <section id="our-Team">
         <h2>Our Member</h2>
         <div class="teamContainer">

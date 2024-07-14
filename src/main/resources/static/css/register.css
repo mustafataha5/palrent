@@ -1,279 +1,408 @@
+ * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
 
-.navbar {
-    background: rgba(0, 0, 0, 0.4);
-    padding-top: 0px;
-    z-index: 100;
-    top: 0;
-    transition: all 0.3s;
+        .navbar {
+         position: absolute; /* Position relative to .panorama-container */
+    	top: 0;
+    	left: 0;
+    	width: 100%;
+    	z-index: 10; /* Ensure it's above the panorama */
+            background: rgba(0, 0, 0, 0.4);
+            padding-top: 0px;
+            z-index: 100;
+            top: 0;
+            transition: all 0.3s;
+            width:100%
+        }
+
+        .navbar .logo img {
+            width: 80px;
+            margin-left: 32%;
+        }
+
+        .navbar .hamburger-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .navbar .hamburger-menu i {
+            color: white;
+            font-size: 24px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .nav-links li:hover a {
+            color: #bba270;
+            font-weight: 700;
+        }
+
+        /* User Icon */
+        .user-icon-container {
+            position: relative;
+            margin-right: 6%;
+        }
+
+        .user-icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .user-icon-wrapper:hover .user-icon {
+            border-radius: 50%;
+            border: 3px solid #bba270;
+        }
+
+        .user-icon {
+            width: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .burger-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            z-index: 2000;
+        }
+
+        .burger-menu.show {
+            display: block;
+            width: 9rem;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .burger-menu a {
+            display: block;
+            color: black;
+            padding: 10px 0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .burger-menu a:hover {
+            color: #bba270;
+        }
+
+.panorama-container {
+    width: 100%;
+    height: 100vh; /* Cover full viewport height */
+    overflow: hidden; /* Prevent scrollbars due to overflow */
+    position: relative; /* Ensure proper stacking context */
 }
 
-.navbar .logo img {
-    width: 80px;
-    margin-left: 32%;
+#panorama {
+    width: 100%;
+    height: 100%; /* Ensure it fills the parent container */
 }
-
-.navbar .hamburger-menu {
-    display: none;
-    cursor: pointer;
+.pnlm-fullscreen-toggle-button {
+    display: none !important;
 }
+        /* Register Form */
+        .form-popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            z-index: 1000;
+            width: 90%;
+            max-width: 30rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
 
-.navbar .hamburger-menu i {
-    color: white;
-    font-size: 24px;
-}
+        .form-box.signup {
+            display: block;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
+        .form-details {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-.nav-links li {
-    margin: 0 15px;
-}
+        .form-details h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    transition: color 0.3s;
-}
+        .form-details p {
+            font-size: 14px;
+            color: #777;
+        }
 
-.nav-links li:hover a {
-    color: #bba270;
-    font-weight: 700;
-}
+        .form-content h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
 
-/* User Icon */
-.user-icon-container {
-    position: relative;
-    margin-right: 6%;
-}
+        .input-field {
+            position: relative;
+            margin-bottom: 20px;
+        }
 
-.user-icon-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
+        .input-field input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
 
-.user-icon-wrapper:hover .user-icon {
-    border-radius: 50%;
-    border: 3px solid #bba270;
-}
+        .input-field input:focus {
+            outline: none;
+            border-color: #bba270;
+        }
 
-.user-icon {
-    width: 40px;
-    border-radius: 50%;
-    border: 2px solid white;
-}
+        .input-field label {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #777;
+            transition: 0.3s;
+        }
 
-.burger-menu {
-    display: none;
+        .input-field input:focus + label,
+        .input-field input:not(:placeholder-shown) + label {
+            top: 0;
+            left: 10px;
+            font-size: 12px;
+            color: blue;
+        }
+
+        .button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background: #bba270;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #388e3c;
+        }
+
+        .bottom-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .bottom-link a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .bottom-link a:hover {
+            text-decoration: underline;
+        }
+
+        .policy-text {
+            margin-bottom: 20px;
+        }
+
+        .policy-text input {
+            margin-right: 10px;
+        }
+
+        .policy-text label {
+            font-size: 14px;
+        }
+
+        .option {
+            color: #388e3c;
+            text-decoration: none;
+        }
+
+        .option:hover {
+            text-decoration: underline;
+        }
+        
+.registration-form {
     position: absolute;
-    top: 100%;
-    right: 0;
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 10px;
-    margin-top: 10px;
-    z-index: 2000;
-}
-
-.burger-menu.show {
-    display: block;
-    width: 9rem;
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.burger-menu a {
-    display: block;
-    color: black;
-    padding: 10px 0;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.burger-menu a:hover {
-    color: #bba270;
-}
-
-/* Register Form */
-.form-popup {
-    display: none;
-    position: fixed;
-    left: 50%;
     top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
-    padding: 2rem;
-    z-index: 1000;
-    width: 90%;
-    max-width: 30rem;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 20; /* Higher z-index to overlay navbar */
+    border-radius: 10px; /* Example border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Example shadow */
+    width: 40%; /* Example width */
+ 
 }
-
-.form-box.signup {
-    display: block;
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-details {
+     .card-title {
+    font-size: 24px;
+    font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
+    color: #333; /* Dark text color */
+}   
+.card-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20; /* Higher z-index to overlay navbar */
+    background-color: rgba(255, 255, 255, 0.9); /* Example background */
+    padding: 20px; /* Example padding */
+    border-radius: 10px; /* Example border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Example shadow */
+    width: 100%; /* Example width */
+    max-width: 600px; /* Example max-width */
 }
 
-.form-details h2 {
+.card-title {
     font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Dark text color */
+}
+
+.form-error {
+    color: #e01b24; /* Red error text */
+    font-size: 12px;
     margin-bottom: 10px;
 }
 
-.form-details p {
-    font-size: 14px;
-    color: #777;
-}
-
-.form-content h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.input-field {
-    position: relative;
-    margin-bottom: 20px;
-}
-
-.input-field input {
+.table {
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px
-}
-.input-field label {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: #777;
-    transition: 0.3s;
 }
 
-.input-field input:focus + label,
-.input-field input:not(:placeholder-shown) + label {
-    top: 0;
-    left: 10px;
-    font-size: 12px;
-    color: blue;
+.table td {
+    padding: 10px 0;
+}
+
+.table label {
+    font-weight: bold;
+    color: #555; /* Dark grey label text */
+}
+
+.table input[type="text"],
+.table input[type="password"],
+.table input[type="date"] {
+    width: calc(100% - 20px); /* Adjusted width for input fields */
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+.card{
+	    padding: 5%;
+}
+.table input[type="text"]:focus,
+.table input[type="password"]:focus,
+.table input[type="date"]:focus {
+    outline: none;
+    border-color: #bba270; /* Light brownish border on focus */
 }
 
 .button {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    background: #bba270;
+    background-color: #bba270; /* Light brownish button */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background-color 0.3s;
+    margin-top: 10px;
 }
 
 .button:hover {
-    background: #388e3c;
+    background-color: #388e3c; /* Dark greenish hover state */
 }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            height: 68px;
+        }
 
-.bottom-link {
-    text-align: center;
-    margin-top: 20px;
-}
+        footer .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            color: white;
+            transition: transform 0.3s, color 0.3s;
+        }
 
-.bottom-link a {
-    color: blue;
-    text-decoration: none;
-}
+        footer .social-icons a:hover {
+            transform: scale(1.2);
+            color: #bba270;
+        }
 
-.bottom-link a:hover {
-    text-decoration: underline;
-}
+        footer .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            color: white;
+        }
 
-.policy-text {
-    margin-bottom: 20px;
-}
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
 
-.policy-text input {
-    margin-right: 10px;
-}
+        .footer p {
+            margin: 0;
+            font-size: 0.8rem;
+        }
 
-.policy-text label {
-    font-size: 14px;
-}
+        .error {
+            color: #e01b24;
+            font-size: 12px;
+        }
 
-.option {
-    color: #388e3c;
-    text-decoration: none;
-}
-
-.option:hover {
-    text-decoration: underline;
-}
-
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    height: 68px;
-}
-
-footer .social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    color: white;
-    transition: transform 0.3s, color 0.3s;
-}
-
-footer .social-icons a:hover {
-    transform: scale(1.2);
-    color: #bba270;
-}
-
-footer .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    color: white;
-}
-
-.footer a {
-    color: white;
-    text-decoration: none;
-}
-
-.footer p {
-    margin: 0;
-    font-size: 0.8rem;
-}
-.error{
-	color: #e01b24 ;
-	font-size: 12px;
-}
-.success{
-	color: #2ec27e ;
-	font-size: 12px;
-}
-
+        .success {
+            color: #2ec27e;
+            font-size: 12px;
+        }

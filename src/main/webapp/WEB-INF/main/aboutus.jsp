@@ -24,12 +24,62 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </head>
 <body>
-<section class="intro-single">
+	<div class="navbar">
+		<div class="logo">
+			<a href="/"><img src="img/palrent-logo.png" alt="Logo"></a>
+		</div>
+		<div class="hamburger-menu" onclick="toggleMenu()">
+			<i class="fas fa-bars"></i>
+		</div>
+		<ul class="nav-links">
+			<li><a href="#">About us</a></li>
+			<li><a href="#">Contact us</a></li>
+			<li><a href="#">User</a></li>
+		</ul>
+
+		<c:choose>
+			<c:when test="${ user == null}">
+				<div class="user-icon-container">
+					<div class="user-icon-wrapper">
+						<img src="img.png" alt="Image not found"
+							onerror="this.src='img/profile.png';" class="user-icon" />
+						<div class="burger-menu" id="user-menu">
+							<a href="/register" id="register-btn">Register</a> <a
+								href="/login" id="login-btn">Log In</a>
+						</div>
+					</div>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="d-flex align-items-center mx-3">
+					<h4 class="text-light mx-2">${user.firstName}</h4>
+					<div class="user-icon-container">
+						<div class="user-icon-wrapper">
+							<img src="user-image" alt="Image not found"
+								onerror="this.src='img/profile.png';" class="user-icon" />
+							<div class="burger-menu" id="user-menu">
+
+								<a href="/userinfo/${user.id}">User Info</a> <a
+									href="user/apartment">Apartment</a>
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</c:otherwise>
+		</c:choose>
+	</div>
+  <section class="intro-single">
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">We Do Great Design For Creative Folks</h1>
+            <h1 class="title-single">Your Perfect Stay Awaits – Explore Comfortable and Modern Rentals Today.</h1>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
@@ -47,9 +97,6 @@
       </div>
     </div>
   </section>
-  <!--/ Intro Single End /-->
-
-  <!--/ About Star /-->
   <section class="section-about">
     <div class="container">
       <div class="row">
@@ -58,10 +105,10 @@
             <img src="img/slide-about-1.jpg" alt="" class="img-fluid">
           </div>
           <div class="sinse-box">
-            <h3 class="sinse-title">EstateAgency
+            <h3 class="sinse-title">PalRent
               <span></span>
-              <br> Sinse 2017</h3>
-            <p>Art & Creative</p>
+              <br> Sinse 2024</h3>
+            <p>Apartment Rental</p>
           </div>
         </div>
         <div class="col-md-12 section-t8">
@@ -71,7 +118,7 @@
             </div>
             <div class="col-lg-2  d-none d-lg-block">
               <div class="title-vertical d-flex justify-content-start">
-                <span>EstateAgency Exclusive Property</span>
+                <span>PalRent</span>
               </div>
             </div>
             <div class="col-md-6 col-lg-5 section-md-t3">
@@ -99,7 +146,9 @@
       </div>
     </div>
   </section>
+  <!--/ About End /-->
 
+  <!--/ Team Star /-->
   <section class="section-agents section-t8">
     <div class="container">
       <div class="row">
@@ -121,20 +170,20 @@
               <div class="card-header-d">
                 <div class="card-title-d align-self-center">
                   <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two">Margaret Sotillo
-                      <br> Escala</a>
+                    <a href="agent-single.html" class="link-two">Mohammad Tabakhna
+                      <br></a>
                   </h3>
                 </div>
               </div>
               <div class="card-body-d">
                 <p class="content-d color-text-a">
-                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                Owner , Frontend developer
                 </p>
                 <div class="info-agents color-a">
                   <p>
-                    <strong>Phone: </strong> +54 356 945234</p>
+                    <strong>Phone: </strong> 00972569699666</p>
                   <p>
-                    <strong>Email: </strong> agents@example.com</p>
+                    <strong>Email: </strong> tabakhna7@gmail.com</p>
                 </div>
               </div>
               <div class="card-footer-d">
@@ -180,7 +229,7 @@
               <div class="card-header-d">
                 <div class="card-title-d align-self-center">
                   <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two">Stiven Spilver
+                    <a href="agent-single.html" class="link-two">Mustafa Taha
                       <br> Darw</a>
                   </h3>
                 </div>
@@ -292,5 +341,14 @@
       </div>
     </div>
   </section>
+  	<footer>
+		<div class="social-icons">
+			<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+				class="fab fa-instagram"></i></a> <a href="#"><i
+				class="fab fa-linkedin-in"></i></a> <a href="#"><i
+				class="fab fa-whatsapp"></i></a>
+		</div>
+		<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
+	</footer>
 </body>
 </html>
