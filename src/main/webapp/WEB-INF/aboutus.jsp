@@ -1,11 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<%@ page isErrorPage="true"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-<link rel="stylesheet" href="style.css">
-    <title>Pal-Rent</title>
+<meta charset="UTF-8">
+<title>PalRen</title>
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+	rel="stylesheet" />
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/aboutus.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </head>
 <body>
     <div class="navbar">
@@ -28,26 +50,7 @@
             </div>
         </div>
     </div>
-    <!-- <div class="navbar">
-        <div class="logo">
-            <img src="img/palrent-logo.png" alt="Logo">
-        </div>
-        <div class="hamburger-menu" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">User</a></li>
-        </ul>
-        <div class="user-icon-container">
-            <img src="user-image" alt="Image not found" onerror="this.src='img/profile.png';" class="user-icon" />
-            <div class="burger-menu">
-                <a href="#" id="register-btn">Register</a>
-                <a href="#" id="login-btn">Log In</a>
-            </div>
-        </div>
-    </div> -->
+    
     <section id="home">
         <div class="home-left">
             <img src="palrent-logo.png" alt="">
@@ -59,9 +62,7 @@
          
         </div>
     </section>
-    <!--================== Home Section Ends Here -->
-
-    <!--================== Workflow Section Starts from Here ==================-->
+   
     <section id="workFlow">
         <h2 class="heading"> Grow Up Your Workflow Speed. </h2>
         <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. A, commodi sint. <br>Ipsam molestias
@@ -72,11 +73,7 @@
             <div class="num-item"><span>70,592 <br>Downloads</span></div>
         </div>
     </section>
-    <!--================== Workflow Section Ends Here -->
-
-
-    <!--================== Goal Section Starts from Here ==================-->
-    <section id="goal">
+   
         <div class="goal-left">
             <h2>Our Goal</h2>
            
@@ -119,13 +116,11 @@
             </div>
         </div>
     </section>
-    <!--================== Our Team Section Ends Here -->
 
-    <!--================== Footer Starts from Here ==================-->
     <footer>
         <p> &copy; 2022 - All rights reserved - geekshelp.in</p>
     </footer>
-    <!--================== Footer Ends Here -->
+   
 
     
 </body>

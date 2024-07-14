@@ -141,7 +141,7 @@
     color: #bba270;
 }
 
-/* Panorama container styles */
+
 .panorama-container {
     width: 100%;
     height: 100vh;
@@ -152,7 +152,7 @@
     height: 100%;
 }
 
-/* Search bar styles */
+
 .search-bar {
     position: absolute;
     top: 40%;
@@ -188,77 +188,7 @@
     background-color: #a68850;
 }
 
-/* Main content styles */
-.close-modal {
-    color: white;
-}
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.modal .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.modal .container .modal-content {
-    background-color: #fefefe;
-    border: 1px solid #888;
-    width: calc(33.33% - 20px);
-    margin: 10px;
-    padding: 15px;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-}
-
-.modal .container .modal-content:hover {
-    transform: scale(1.05);
-}
-
-.modal .container .modal-content img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 60%;
-    max-width: 600px;
-    position: relative;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 .cards {
     display: flex;
@@ -485,19 +415,6 @@ footer p {
     display: none !important;
 }
 
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 20px;
-    color: white;
-}
-
-.close-btn:hover {
-    color: white;
-}
-
 /* Update user icon styles */
 .user-icon {
     width: 40px;
@@ -548,6 +465,6 @@ footer p {
 	color: #e01b24 ; 
 	font-size: 24px ;
 	font-weight: bold;
-	background: grey;
+ background: rgba(0, 0, 0, 0.7);
 }
 
