@@ -8,7 +8,7 @@
 	href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
 	rel="stylesheet" />
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/aboutus.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet"
@@ -99,9 +99,7 @@
       </div>
     </div>
   </section>
-  <!--/ About End /-->
 
-  <!--/ Team Star /-->
   <section class="section-agents section-t8">
     <div class="container">
       <div class="row">
