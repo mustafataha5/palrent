@@ -1,3 +1,4 @@
+
 /* Ensure global styles reset properly */
 * {
     margin: 0;
@@ -538,3 +539,15 @@ footer p {
         width: 100%; /* Full width for mobile screens */
     }
 }
+
+.error{
+	color: #e01b24 ; 
+	font-size: 12px ;
+}
+.error_q{
+	color: #e01b24 ; 
+	font-size: 24px ;
+	font-weight: bold;
+	background: grey;
+}
+

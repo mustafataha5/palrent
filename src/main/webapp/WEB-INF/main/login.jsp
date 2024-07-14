@@ -89,7 +89,7 @@
 							</div>
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" />
-							<button type="submit" class="btn btn-primary btn-block">Login</button>
+							<button type="submit" class="my-2 btn btn-primary btn-block">Login</button>
 						</form>
 						<div class="text-center mt-3">
 							<p>

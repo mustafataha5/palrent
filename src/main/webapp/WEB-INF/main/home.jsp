@@ -114,8 +114,10 @@
 				<button id="search1" type="button">Search</button>
 			</div>
 		</form>
+		
 		<div class="my-5 call-to-action">
 			<p class="error">${error}</p>
+			<p class="error_q" id="error_q"> </p>
 		</div>
 	</div>
 	<div id="slider" class="cards" style="display: none;">
