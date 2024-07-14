@@ -12,81 +12,124 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <title>User Apartment</title>
 
 </head>
 <body>
 
-
-
-
-	<div class="row d-flex justify-content-center mx-5 mt-3">
-		<div class="col-ld-11">
-			<div class="card border-light ">
-				<div class="d-flex justify-content-between my-2">
-					<h4 class="card-title mx-3">Apartment</h4>
-					<a href="/"><h4 class="card-title mx-3 btn btn-outline-secondary ">Go back</h4></a>
-				</div>
-				<div class="card-body">
-					<table class="table  text-center">
-						<thead class="table-primary">
-							<th>Id</th>
-							<th>Number Of Rooms</th>
-							<th>Number Of Baths</th>
-							<th>Number Of Beds</th>
-							<th>Apartment Space</th>
-							<th>Number Of Guests</th>
-							<th>Approval</th>
-							<th>$ Price</th>
-							<th>Action</th>
-						</thead>
-						<tbody>
-							<c:forEach var="apartment" items="${user.departments}">
-								<tr>
-									<td id="apartmentcart">${apartment.id}</td>
-									<td>${apartment.numOfRoom}</td>
-									<td>${apartment.numOfBath}</td>
-									<td>${apartment.numOfBed}</td>
-									<td>${apartment.area}</td>
-									<td>${apartment.numOfGuest}</td>
-									<td>${apartment.approval}</td>
-									<td>$ ${apartment.price}</td>
-<!-- 									<td><a class=" btn btn-outline-warning" -->
-<%-- 										href="/admins/apartment/${apartment.id}/edit">Edit</a> <a --%>
-<!-- 										class=" btn btn-outline-danger" -->
-<%-- 										href="/admins/apartment/delete/${apartment.id}">Delete</a></td> --%>
-
-
-
-									<td><div class="d-flex justify-content-center"" >
-                                            <a href="/apartment/${apartment.id}/edit" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
-                                            <form action="/apartment/${apartment.id}/delete" method="post" >
-                                                <input type="hidden" name="_method" value="delete">
-                                                <button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
-                                            </form>
-
-                                        </div></td>
-
-
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-					<div class="my-4">
-						<a href="apartment/new" class=" btn btn-outline-primary">
-							+ New Apartment </a>
+	<div class="navbar">
+		<div class="logo">
+			<a href="/"> <img src="/img/palrent-logo.png" alt="Logo"></a>
+		</div>
+		<div class="hamburger-menu" onclick="toggleMenu()">
+			<i class="fas fa-bars"></i>
+		</div>
+		<ul class="nav-links">
+			<li><a href="#">About us</a></li>
+			<li><a href="#">Contact us</a></li>
+			<li><a href="#">User</a></li>
+		</ul>
+		<c:choose>
+			<c:when test="${ user == null}">
+				<div class="user-icon-container">
+					<div class="user-icon-wrapper">
+						<img src="user-image" alt="Image not found"
+							onerror="this.src='img/profile.png';" class="user-icon" />
+						<div class="burger-menu" id="user-menu">
+							<a href="/register" id="register-btn">Register</a> <a
+								href="/login" id="login-btn">Log In</a>
+						</div>
 					</div>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="d-flex align-items-center mx-3">
+					<h4 class="text-light mx-2">${user.firstName}</h4>
+					<div class="user-icon-container">
+						<div class="user-icon-wrapper">
+							<img src="user-image" alt="Image not found"
+								onerror="this.src='/img/profile.png';" class="user-icon" />
+							<div class="burger-menu" id="user-menu">
+
+								<a href="/userinfo/${user.id}">User Info</a> <a
+									href="/user/apartment"> apartment</a>
+								<!-- <a href="/logout"> Log out</a> -->
+
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit" value="Logout!" />
+								</form>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</c:otherwise>
+		</c:choose>
+	</div>
+
+
+	<div class="row d-flex justify-content-center mx-5 mt-5 my-5">
+		<div class="col-ld-11 my-5">
+			<div class="card border-light ">
+				<div class="d-flex justify-content-between my-5">
+					<h4 class="card-title mx-3">My Apartment</h4>
+					<a href="/"><h4
+							class="card-title mx-3 btn btn-outline-primary ">Go back</h4></a>
+				</div>
+
+				<div class="my-4">
+					<a href="apartment/new" class=" btn btn-outline-primary"> + New
+						Apartment </a>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<div style="width: 800px;">
-			<canvas id="acquisitions"></canvas>
-		</div>
+	<div class="row mx-5 ">
+		<c:forEach var="apartment" items="${user.ownedDeparment}">
+			<div class="col-3 my-3">
+				<div class="card" style="width: 18rem;">
 
-		<script type="text/javascript" src="/js/chart.js"></script>
+					<img alt="not work" src="${ apartment.images[0].url}">
+					<div class="card-body ">
+
+						<h1>${apartment.title}</h1>
+						<p>description : ${ apartment.description}</p>
+
+						<div class="d-flex justify-content-center"" >
+
+							<a href="/user/apartment/${apartment.id}/edit"
+								class="mx-3 btn btn-outline-warning btn-sm">Edit</a>
+							<form action="/user/apartment/${apartment.id}/delete"
+								method="post">
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" /> <input type="hidden" name="_method"
+									value="delete">
+								<button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
+							</form>
+							<a href="/apartment/${apartment.id}/show" class="mx-3 btn
+							btn-outline-primary btn-sm">show apartment</a>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
+
+
+	<script type="text/javascript" src="/js/apartment.js"></script>
 </body>
 </html>

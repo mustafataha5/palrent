@@ -1,0 +1,279 @@
+
+.navbar {
+    background: rgba(0, 0, 0, 0.4);
+    padding-top: 0px;
+    z-index: 100;
+    top: 0;
+    transition: all 0.3s;
+}
+
+.navbar .logo img {
+    width: 80px;
+    margin-left: 32%;
+}
+
+.navbar .hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.navbar .hamburger-menu i {
+    color: white;
+    font-size: 24px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.nav-links li:hover a {
+    color: #bba270;
+    font-weight: 700;
+}
+
+/* User Icon */
+.user-icon-container {
+    position: relative;
+    margin-right: 6%;
+}
+
+.user-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user-icon-wrapper:hover .user-icon {
+    border-radius: 50%;
+    border: 3px solid #bba270;
+}
+
+.user-icon {
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.burger-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    z-index: 2000;
+}
+
+.burger-menu.show {
+    display: block;
+    width: 9rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.burger-menu a {
+    display: block;
+    color: black;
+    padding: 10px 0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.burger-menu a:hover {
+    color: #bba270;
+}
+
+/* Register Form */
+.form-popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    z-index: 1000;
+    width: 90%;
+    max-width: 30rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-box.signup {
+    display: block;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-details {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-details h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.form-details p {
+    font-size: 14px;
+    color: #777;
+}
+
+.form-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px
+}
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #777;
+    transition: 0.3s;
+}
+
+.input-field input:focus + label,
+.input-field input:not(:placeholder-shown) + label {
+    top: 0;
+    left: 10px;
+    font-size: 12px;
+    color: blue;
+}
+
+.button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background: #bba270;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background: #388e3c;
+}
+
+.bottom-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bottom-link a {
+    color: blue;
+    text-decoration: none;
+}
+
+.bottom-link a:hover {
+    text-decoration: underline;
+}
+
+.policy-text {
+    margin-bottom: 20px;
+}
+
+.policy-text input {
+    margin-right: 10px;
+}
+
+.policy-text label {
+    font-size: 14px;
+}
+
+.option {
+    color: #388e3c;
+    text-decoration: none;
+}
+
+.option:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 68px;
+}
+
+footer .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: white;
+    transition: transform 0.3s, color 0.3s;
+}
+
+footer .social-icons a:hover {
+    transform: scale(1.2);
+    color: #bba270;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    color: white;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+.error{
+	color: #e01b24 ;
+	font-size: 12px;
+}
+.success{
+	color: #2ec27e ;
+	font-size: 12px;
+}
+

@@ -41,61 +41,43 @@ $(document).ready(function() {
         }
     });
 
-    // Function to show login form
-    function showLoginForm() {
-        $('.form-popup').fadeIn();
-        $('.form-box.login').fadeIn();
-        $('.form-box.signup').hide();
-        $('.blur-bg-overlay').show();
-    }
-
-    // Function to show signup form
-    function showSignupForm() {
-        $('.form-popup').fadeIn();
-        $('.form-box.signup').fadeIn();
-        $('.form-box.login').hide();
-        $('.blur-bg-overlay').show();
-    }
-
-    // Function to hide forms and overlay
-    function hideForms() {
-        $('.form-popup').fadeOut();
-        $('.blur-bg-overlay').fadeOut();
-    }
-
-    // Event listeners for showing forms
-    $('#login-btn, #login-link').click(function(e) {
+    // Redirect to login page
+    $('#login-btn').click(function(e) {
         e.preventDefault();
-        showLoginForm();
+        window.location.href = "/login";
     });
 
-    $('#register-btn, #signup-link').click(function(e) {
+    // Redirect to register page
+    $('#register-btn').click(function(e) {
         e.preventDefault();
-        showSignupForm();
+        window.location.href = "/register";
+    });
+$('#search1').click(function() {
+        // Reset card visibility
+        $('.card').hide();
+        $('.cards').fadeIn(2000); // Fade in the .cards container
+        
+        // Fade in each card one by one with a delay
+        $('.card').each(function(index) {
+            $(this).delay(100 * index).fadeIn(300); // Fade in each card with a delay
+        });
+    });
+    // Previous and Next buttons for card navigation
+    let currentCardIndex = 0;
+    const cards = $('.card');
+    const numCards = cards.length;
+
+    $('.prev-btn').click(function() {
+        if (currentCardIndex > 0) {
+            currentCardIndex--;
+            cards.hide().eq(currentCardIndex).show();
+        }
     });
 
-    $('.close-btn, .blur-bg-overlay').click(function(e) {
-        e.preventDefault();
-        hideForms();
-    });
-
-    // Search button click handler
-    $('#search-btn').click(function() {
-        const location = $('#location').val();
-        const checkin = $('#checkin').val();
-        const checkout = $('#checkout').val();
-        const guests = $('#guests').val();
-
-        if (location && checkin && checkout && guests) {
-            console.log(`Searching for apartments in ${location} from ${checkin} to ${checkout} for ${guests} guests.`);
-            window.location.href = `/search?location=${location}&checkin=${checkin}&checkout=${checkout}&guests=${guests}`;
-        } else {
-            alert('Please fill in all search fields.');
+    $('.next-btn').click(function() {
+        if (currentCardIndex < numCards - 1) {
+            currentCardIndex++;
+            cards.hide().eq(currentCardIndex).show();
         }
     });
 });
-
-// Function to toggle hamburger menu visibility
-function toggleMenu() {
-    $('.nav-links').toggleClass('show');
-}

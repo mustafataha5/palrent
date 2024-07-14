@@ -10,20 +10,31 @@
 <head>
 <meta charset="UTF-8">
 <title>PalRen</title>
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+	rel="stylesheet" />
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
 </head>
 <body>
 	<div class="navbar">
 		<div class="logo">
-			<img src="img/palrent-logo.png" alt="Logo">
+			<a href="/"><img src="img/palrent-logo.png" alt="Logo"></a>
 		</div>
 		<div class="hamburger-menu" onclick="toggleMenu()">
 			<i class="fas fa-bars"></i>
@@ -33,16 +44,19 @@
 			<li><a href="#">Contact us</a></li>
 			<li><a href="#">User</a></li>
 		</ul>
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 		<c:choose>
-			<c:when test="${ userId == null}">
+			<c:when test="${ user == null}">
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
-						<img src="user-image" alt="Image not found"
+						<img src="img.png" alt="Image not found"
 							onerror="this.src='img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
-							<a href="#" id="register-btn">Register</a> <a href="#"
-								id="login-btn">Log In</a>
+							<a href="/register" id="register-btn">Register</a> <a
+								href="/login" id="login-btn">Log In</a>
 						</div>
 					</div>
 				</div>
@@ -55,6 +69,7 @@
 							<img src="user-image" alt="Image not found"
 								onerror="this.src='img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
+<<<<<<< HEAD
 								<a href="#">New apartment</a> <a href="/logout">Log
 									out</a>
 							</div>
@@ -63,6 +78,19 @@
 
 				</div>
 
+=======
+								<a href="/userinfo/${user.id}">User Info</a> <a
+									href="user/apartment">Apartment</a>
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+>>>>>>> master
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -71,16 +99,48 @@
 		<div class="overlay-text">
 			<h1>Find Your Perfect Stay, Anytime, Anywhere</h1>
 		</div>
-		<div class="search-bar">
-			<input type="text" id="location" placeholder="Location"> <input
-				type="date" id="checkin" placeholder="Check-in "> <input
-				type="date" id="checkout" placeholder="Check-out"> <input
-				type="number" id="guests" placeholder="Number of Guests">
-			<button id="search-btn">Search</button>
+		<form action="/search" method="post">
+			<div class="search-bar">
+				<select class="p-3" id="city" name="city">
+					<option value="">Select Location</option>
+					<c:forEach var="cit" items="${cities}">
+						<option value="${cit}">${cit}</option>
+					</c:forEach>
+				</select> <input type="date" id="checkin" name="start" placeholder="Check-in">
+				<input type="date" id="checkout" name="end" placeholder="Check-out">
+				<input type="number" id="guests" name="guest"
+					placeholder="Number of Guests"> <input type="hidden"
+					name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<button id="search1" type="button">Search</button>
+			</div>
+		</form>
+		<div class="my-5 call-to-action">
+			<p class="error">${error}</p>
 		</div>
-		<div class="call-to-action">
-			<p>Explore our top-rated apartments now!</p>
+	</div>
+	<div id="slider" class="cards" style="display: none;">
+		<c:forEach var="apartment" items="${apartments}">
+		
+			<div class="card">
+				<div class="card-overlay"></div>
+				<!-- Overlay background -->
+				<img src="${apartment.images[0].url}" alt="Apartment Image">
+				<div class="card-body">
+					<h4>${apartment.title}</h4>
+					<p>${apartment.city},${apartment.street},
+						${apartment.buildingNum}</p>
+					<a href="/apartment/${apartment.id}/show" class="btn btn-primary">View
+						Details</a>
+				</div>
+			</div>
+		</c:forEach>
+
+		<!-- Next and Previous buttons -->
+		<div class="next-btn">next</div>
+		<div class="prev-btn">
+			previous</i>
 		</div>
+
 	</div>
 	<footer>
 		<div class="social-icons">
@@ -92,104 +152,7 @@
 		<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
 	</footer>
 
-	<div class="blur-bg-overlay"></div>
-	<div class="form-popup">
-		<div class="form-box login">
-			<div class="form-details">
-				<h2>Welcome Back</h2>
-				<p>Please log in using your personal information to stay
-					connected with us.</p>
-			</div>
-			<span class="close-btn">&times;</span>
-			<div class="form-content">
-				<h2>LOGIN</h2>
-				<c:if test="${ userId == null }">
-					<form:form action="/user/login" method="post"
-						modelAttribute="newLogin">
-						<div class="input-field">
-							<form:input path="email" placeholder="Enter your Email" />
-							<form:errors path="email" cssClass="error" />
-						</div>
-						<div class="input-field">
-							<form:input path="password" type="password"
-								placeholder="Enter your Password" />
-							<form:errors path="password" cssClass="error" />
-						</div>
-						<button type="submit">Log In</button>
-					</form:form>
-				</c:if>
-				<div class="bottom-link">
-					Don't have an account? <a href="#" id="signup-link">Signup</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="form-box signup">
-			<div class="form-details">
-				<h2>Create Account</h2>
-				<p>To become a part of our community, please sign up using your
-					personal information.</p>
-			</div>
-			<span class="close-btn">&times;</span>
-			<div class="form-content">
-				<h2>SIGNUP</h2>
-				<form:form action="/user/new" method="post" modelAttribute="newUser">
-					<div class="input-field">
-						<%-- <form:label path="firstName">First Name:</form:label> --%>
-						<form:input path="firstName" placeholder="First Name:" />
-						<form:errors path="firstName" cssClass="error" />
-					</div>
-					<div class="input-field">
-						<%-- <form:label path="lastName">Last Name:</form:label> --%>
-						<form:input path="lastName" placeholder="Last Name:" />
-						<form:errors path="lastName" cssClass="error" />
-					</div>
-					<div class="input-field">
-						<%-- <form:label path="email">Email:</form:label> --%>
-						<form:input path="email" placeholder="Email:" />
-						<form:errors path="email" cssClass="error" />
-					</div>
-					<div class="input-field">
-						<%-- <form:label path="password">Password:</form:label> --%>
-						<form:input type="password" path="password"
-							placeholder="Password:" />
-						<form:errors path="password" cssClass="error" />
-					</div>
-					<div class="input-field">
-						<%-- <form:label path="confirm">Confirm PW:</form:label> --%>
-						<form:input type="password" path="confirm"
-							placeholder="Confirm PW:" />
-						<form:errors path="confirm" cssClass="error" />
-					</div>
-					<div class="input-field">
-						<%-- <form:label path="phone">Phone:</form:label> --%>
-						<form:input path="phone" placeholder="Phone:" />
-						<form:errors path="phone" cssClass="error" />
-					</div>
-					<div class="input-field">
-						<%-- <form:label path="dateOfBirth">Date Of Birth:</form:label> --%>
-						<form:input type="date" path="dateOfBirth" />
-						<form:errors path="dateOfBirth" cssClass="error" />
-					</div>
-					<div class="input-field">
-						<%-- <form:label path="urlImage">Url Image:</form:label> --%>
-						<form:input path="urlImage" />
-						<form:errors path="urlImage" cssClass="error" />
-					</div>
-					<div class="policy-text">
-						<input type="checkbox" id="policy"> <label for="policy">
-							I agree to the <a href="#" class="option">Terms & Conditions</a>
-						</label>
-					</div>
-					<button type="submit">Sign Up</button>
-				</form:form>
-				<div class="bottom-link">
-					Already have an account? <a href="#" id="login-link">Login</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<script type="text/javascript" src="/js/home.js"></script>
+	<script type="text/javascript" src="/js/searhByAjax.js"></script>
 </body>
 </html>
