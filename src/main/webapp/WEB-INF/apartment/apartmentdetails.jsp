@@ -28,9 +28,7 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
-	defer async></script>
+
 </head>
 <body>
 	<div class="navbar">
@@ -210,6 +208,6 @@
 	</footer>
 
 	<script type="text/javascript" src="/js/department.js"></script>
-	<script type="text/javascript" src="/js/script.js"></script>
+	
 </body>
 </html>

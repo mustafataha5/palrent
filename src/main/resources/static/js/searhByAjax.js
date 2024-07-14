@@ -30,7 +30,9 @@
 	          };
 			 
 				if(city==="" || guests === ""){
-					$("#error_q").text("Please , Select your input")
+					$('.panorama-container').css('height', '100vh');
+					$('#slider').fadeOut();
+					$("#error_q").text("Please enter your input")
 					return ;
 				}	
 	          $.ajax({
@@ -47,7 +49,8 @@
 	                  console.log(response[0]);
 	                  console.log(response.length);*/
 					  if(response.length==0){
-						
+						$('.panorama-container').css('height', '100vh');
+						$('#slider').fadeOut();
 						$("#error_q").text("There is no apartment with your input")
 						return 
 					  }
