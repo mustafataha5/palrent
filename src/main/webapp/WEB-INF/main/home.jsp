@@ -94,8 +94,10 @@
 					<c:forEach var="cit" items="${cities}">
 						<option value="${cit}">${cit}</option>
 					</c:forEach>
-				</select> <input type="date" id="checkin" name="start" placeholder="Check-in">
-				<input type="date" id="checkout" name="end" placeholder="Check-out">
+				</select> <input type="text" id="checkin" name="start"  
+					placeholder="Checkin"	onmouseover="(this.type='date')">
+				<input type="text" id="checkout" name="end" placeholder="Check-out"
+					onmouseover="(this.type='date')" >
 				<input type="number" id="guests" name="guest"
 					placeholder="Number of Guests"> <input type="hidden"
 					name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -144,5 +146,6 @@
 
 	<script type="text/javascript" src="/js/home.js"></script>
 	<script type="text/javascript" src="/js/searhByAjax.js"></script>
+	<script type="text/javascript" src="/js/dateSkip.js"></script>
 </body>
 </html>

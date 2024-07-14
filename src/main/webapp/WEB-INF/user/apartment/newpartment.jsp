@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <title>New Apartment</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/apartmentstyle.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet"
@@ -54,16 +54,17 @@
 					<div class="user-icon-container">
 						<div class="user-icon-wrapper">
 							<img src="user-image" alt="Image not found"
-								onerror="this.src='img/profile.png';" class="user-icon" />
+								onerror="this.src='/img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
 
 								<a href="/userinfo/${user.id}">User Info</a> <a
-									href="user/apartment"> apartment</a>
+									href="/user/apartment"> apartment</a>
 								<!-- <a href="/logout"> Log out</a> -->
 
 								<form id="logoutForm" method="POST" action="/logout">
 									<input type="hidden" name="${_csrf.parameterName}"
-										value="${_csrf.token}" /> <input type="submit" value="Logout!" />
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
 								</form>
 
 							</div>
@@ -175,15 +176,15 @@
 									<td><form:input type="text" path="departmentNum"
 											placeholder="department number" /> <form:input type="text"
 											path="buildingNum" placeholder="Building Number" /> <form:input
-											type="text" path="street" placeholder="Street" /> 
-											<form:select path="city">
+											type="text" path="street" placeholder="Street" /> <form:select
+											path="city">
 											<form:option value="0">Select City</form:option>
 											<c:forEach var="cit" items="${cities}">
 												<form:option value="${cit}">${ cit}</form:option>
 											</c:forEach>
 
 										</form:select></td>
-					
+
 
 								</tr>
 								<tr>
@@ -210,6 +211,16 @@
 			</div>
 		</div>
 	</div>
+	
+		<footer>
+		<div class="social-icons">
+			<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+				class="fab fa-instagram"></i></a> <a href="#"><i
+				class="fab fa-linkedin-in"></i></a> <a href="#"><i
+				class="fab fa-whatsapp"></i></a>
+		</div>
+		<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
+	</footer>
 	<script type="text/javascript" src="/js/apartment.js"></script>
 </body>
 </html>
