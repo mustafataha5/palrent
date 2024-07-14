@@ -35,26 +35,21 @@
 					<table class="table  text-center">
 						<thead class="table-primary">
 							<th>Id</th>
-							<th>Number Of Rooms</th>
-							<th>Number Of Baths</th>
-							<th>Number Of Beds</th>
-							<th>Apartment Space</th>
-							<th>Number Of Guests</th>
-							<th>Approval</th>
-							<th>$ Price</th>
+							<th>City</th>
+							<th>title</th>
+							<th>Apartment Owner</th>
+							<th >Approval</th>
+							
 							<th>Action</th>
 						</thead>
 						<tbody>
 							<c:forEach var="apartment" items="${apartments}">
 								<tr>
 									<td id="apartmentcart">${apartment.id}</td>
-									<td>${apartment.numOfRoom}</td>
-									<td>${apartment.numOfBath}</td>
-									<td>${apartment.numOfBed}</td>
-									<td>${apartment.area}</td>
-									<td>${apartment.numOfGuest}</td>
+									<td>${apartment.city}</td>
+									<td>${apartment.title}</td>
+									<td>${apartment.owner.firstName} ${apartment.owner.lastName}</td>
 									<td>${apartment.approval}</td>
-									<td>$ ${apartment.price}</td>
 <!-- 									<td><a class=" btn btn-outline-warning" -->
 <%-- 										href="/admins/apartment/${apartment.id}/edit">Edit</a> <a --%>
 <!-- 										class=" btn btn-outline-danger" -->
