@@ -44,6 +44,10 @@
 			<li><a href="#">Contact us</a></li>
 			<li><a href="#">User</a></li>
 		</ul>
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 		<c:choose>
 			<c:when test="${ user == null}">
 				<div class="user-icon-container">
@@ -65,6 +69,16 @@
 							<img src="user-image" alt="Image not found"
 								onerror="this.src='img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
+<<<<<<< HEAD
+								<a href="#">New apartment</a> <a href="/logout">Log
+									out</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+=======
 								<a href="/userinfo/${user.id}">User Info</a> <a
 									href="user/apartment">Apartment</a>
 								<form id="logoutForm" method="POST" action="/logout">
@@ -76,6 +90,7 @@
 						</div>
 					</div>
 				</div>
+>>>>>>> master
 			</c:otherwise>
 		</c:choose>
 	</div>
