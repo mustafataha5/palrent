@@ -20,7 +20,7 @@
 <body>
 	<div class="navbar">
 		<div class="logo">
-			<img src="img/palrent-logo.png" alt="Logo">
+			<img src="/img/palrent-logo.png" alt="Logo">
 		</div>
 		<div class="hamburger-menu" onclick="toggleMenu()">
 			<i class="fas fa-bars"></i>
@@ -35,7 +35,7 @@
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
 						<img src="user-image" alt="Image not found"
-							onerror="this.src='img/profile.png';" class="user-icon" />
+							onerror="this.src='/img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
 							<a href="/register" id="register-btn">Register</a> <a
 								href="/login" id="login-btn">Log In</a>
@@ -49,7 +49,7 @@
 					<div class="user-icon-container">
 						<div class="user-icon-wrapper">
 							<img src="user-image" alt="Image not found"
-								onerror="this.src='img/profile.png';" class="user-icon" />
+								onerror="this.src='/img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
 								<a href="/new-apartment">New apartment</a> <a href="/logout">Log
 									out</a>

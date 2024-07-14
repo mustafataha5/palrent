@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <title>New Apartment</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/apartmentstyle.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet"
@@ -54,11 +54,11 @@
 					<div class="user-icon-container">
 						<div class="user-icon-wrapper">
 							<img src="user-image" alt="Image not found"
-								onerror="this.src='img/profile.png';" class="user-icon" />
+								onerror="this.src='/img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
 
 								<a href="/userinfo/${user.id}">User Info</a> <a
-									href="user/apartment"> apartment</a>
+									href="/user/apartment"> apartment</a>
 								<!-- <a href="/logout"> Log out</a> -->
 
 								<form id="logoutForm" method="POST" action="/logout">
