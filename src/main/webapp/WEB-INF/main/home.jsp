@@ -75,6 +75,7 @@
         <div id="panorama"></div>
         <div class="overlay-text">
             <h1>Find Your Perfect Stay, Anytime, Anywhere</h1>
+        	
         </div>
         <form action="/search" method="post">
             <div class="search-bar">
@@ -93,6 +94,7 @@
         </form>
         <div class="my-5 call-to-action">
             <p class="error">${error}</p>
+            <p class="error_q" id="error_q"></p> 
             <p>Explore our top-rated apartments now!</p>
         </div>
     </div>

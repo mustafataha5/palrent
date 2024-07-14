@@ -28,8 +28,9 @@
 	              checkout: checkout,
 	              guests: guests
 	          };
-			  console.log(city+">>>>>>>>>>>>>>>>"+guests)
+			 
 				if(city==="" || guests === ""){
+					$("#error_q").text("Please , Select your input")
 					return ;
 				}	
 	          $.ajax({
@@ -45,6 +46,13 @@
 	                  /*console.log(">>>>>"+response);
 	                  console.log(response[0]);
 	                  console.log(response.length);*/
+					  if(response.length==0){
+						
+						$("#error_q").text("There is no apartment with your input")
+						return 
+					  }
+					  $("#error_q").text("")
+					  
 	                  populateModal(response);
 
 	                  $('.panorama-container').css('height', '50vh');
