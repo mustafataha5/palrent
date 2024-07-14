@@ -199,6 +199,8 @@
     background: rgba(0, 0, 0, 0.7);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     justify-content: space-around;
+    height: 100vh;
+    align-content: first baseline;
 }
 
 .card {
@@ -212,7 +214,8 @@
     text-align: center;
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
-    flex:auto;
+    flex:inherit;
+    height: fit-content;
 }
 
 .card::before {
@@ -376,6 +379,7 @@ footer {
     bottom: 0;
     height: 68px;
     margin-top: auto;
+    position: fixed;
 }
 
 footer .social-icons a {
