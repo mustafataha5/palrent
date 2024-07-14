@@ -40,9 +40,10 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
-			<li><a href="#">About us</a></li>
-			<li><a href="#">Contact us</a></li>
-			<li><a href="#">User</a></li>
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About us</a></li>
+			<li><a href="/contact">Contact us</a></li>
+			<li><a href="/user/info/${ booking.user.id}">User</a></li>
 		</ul>
 		<c:choose>
 			<c:when test="${user == null}">
@@ -129,9 +130,9 @@
 						<div class="card p-3">
 							<h3 class="card-title">Rules</h3>
 							<div class="card-body">
-								<lu> <c:forEach var="rule" items="${apartment.rules}">
-									<li>${ rule.name }</li>
-								</c:forEach> </lu>
+								<c:forEach var="rule" items="${apartment.rules}">
+									<p>${ rule.name }</p>
+								</c:forEach> 
 							</div>
 						</div>
 					</div>
@@ -140,9 +141,9 @@
 						<div class="card p-3 ">
 							<h3 class="card-title">Offers</h3>
 							<div class="card-body">
-								<lu> <c:forEach var="offer" items="${apartment.offers}">
-									<li>${ offer.name }</li>
-								</c:forEach> </lu>
+								 <c:forEach var="offer" items="${apartment.offers}">
+									<p>${ offer.name }</p>
+								</c:forEach> 
 							</div>
 						</div>
 					</div>

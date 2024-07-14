@@ -40,9 +40,10 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
-			<li><a href="#">About us</a></li>
-			<li><a href="#">Contact us</a></li>
-			<li><a href="#">User</a></li>
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About us</a></li>
+			<li><a href="/contact">Contact us</a></li>
+			<li><a href="/user/info/${ booking.user.id}">User</a></li>
 		</ul>
 		<c:choose>
 			<c:when test="${user == null}">
@@ -111,20 +112,23 @@
 									<p class="error_q">${error_q}</p>
 									<input type="hidden" name="_method" value="patch"> <label
 										for="checkin">Check-in Date:</label> <input type="date"
-										id="checkin" name="checkin" 
-										value="<fmt:formatDate value='${booking.startDate}' pattern='yyyy-MM-dd' />"" required /> 
-										<label for="checkout">Check-out Date:</label> <input
-										type="date" id="checkout" name="checkout" 
-										value="<fmt:formatDate value='${booking.endDate}' pattern='yyyy-MM-dd' />" required> 
-										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+										id="checkin" name="checkin"
+										value="<fmt:formatDate value='${booking.startDate}' pattern='yyyy-MM-dd' />"
+										" required /> <label for="checkout">Check-out Date:</label> <input
+										type="date" id="checkout" name="checkout"
+										value="<fmt:formatDate value='${booking.endDate}' pattern='yyyy-MM-dd' />"
+										required> <input type="hidden"
+										name="${_csrf.parameterName}" value="${_csrf.token}" />
 									<button type="submit">Edit Booking</button>
 								</form>
-								
+
 								<form action="/user/booking/${booking.id}" method="post">
-									<input type="hidden" name="_method" value="delete">
-									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-									<button type="submit" class="btn btn-outline-danger" >Delete Booking</button>
-								</form>	
+									<input type="hidden" name="_method" value="delete"> <input
+										type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" />
+									<button type="submit" class="btn btn-outline-danger">Delete
+										Booking</button>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -137,9 +141,9 @@
 						<div class="card p-3">
 							<h3 class="card-title">Rules</h3>
 							<div class="card-body">
-								<lu> <c:forEach var="rule" items="${booking.department.rules}">
-									<li>${ rule.name }</li>
-								</c:forEach> </lu>
+								<c:forEach var="rule" items="${booking.department.rules}">
+									<p>${ rule.name }</p>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -148,9 +152,9 @@
 						<div class="card p-3">
 							<h3 class="card-title">Offers</h3>
 							<div class="card-body">
-								<lu> <c:forEach var="offer" items="${booking.department.offers}">
-									<li>${ offer.name }</li>
-								</c:forEach> </lu>
+								<c:forEach var="offer" items="${booking.department.offers}">
+									<p>${ offer.name }</p>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -159,7 +163,9 @@
 						<div class="card p-3">
 							<h3 class="card-title">Total:</h3>
 							<div class="card-body">
-								<h5>Price per day: <span id="Price">${apartment.price}</span> </h5>
+								<h5>
+									Price per day: <span id="Price">${booking.department.price}</span>
+								</h5>
 								<h5 id="numofday"></h5>
 								<h5 id="total"></h5>
 							</div>
@@ -227,5 +233,6 @@
 
 	<script type="text/javascript" src="/js/department.js"></script>
 	<script type="text/javascript" src="/js/dateSkip.js"></script>
+	<script type="text/javascript" src="/js/totalprice.js"></script>
 </body>
 </html>
