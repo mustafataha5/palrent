@@ -261,32 +261,59 @@
 
 .cards {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     overflow: hidden;
-    margin-top: 20px;
+    margin-top: 0px;
     padding: 20px;
     background: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    justify-content: space-around;
 }
 
 .card {
-    flex: 0 0 30%; /* Adjust width of each card */
+    position: relative;
+    width: 26%;
     margin: 10px;
-    padding: 15px;
+    padding: 0px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    flex:auto;
 }
 
-.card img {
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-radius: 10px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    z-index: 1; /* Ensure the overlay is behind text but above the image */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover::before {
+    opacity: 1; /* Show overlay on hover */
 }
 
 .card-body {
-    padding: 15px;
-    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensure card-body is above the overlay and image */
+    color: white; /* Example text color */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover .card-body {
+    opacity: 1; /* Show card-body on hover */
 }
 
 .card-body h4 {
@@ -300,33 +327,31 @@
 .card-body .btn {
     background-color: #bba270;
     color: white;
+    border: none;
 }
 
 .card-body .btn:hover {
     background-color: #a68850;
+    border: none;
 }
 
-/* Next and Previous buttons */
-.next-btn, .prev-btn {
+.overlay-text-below {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; /* Ensure overlay text is above the overlay */
     color: white;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 100;
+    font-size: 1rem;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out;
 }
 
-.next-btn {
-    right: 10px;
+.card:hover .overlay-text-below {
+    opacity: 1; /* Show overlay text on hover */
 }
 
-.prev-btn {
-    left: 10px;
-}
+/* Navigation and footer adjustments for responsiveness */
 
 @media (max-width: 1024px) {
     .navbar .logo img {
@@ -394,6 +419,7 @@
 
     .search-bar {
         flex-direction: column;
+        margin-bottom:2%;
     }
 
     .search-bar input, .search-bar button {
@@ -410,7 +436,6 @@
     }
 }
 
-
 /* Footer styles */
 footer {
     background: #333;
@@ -419,7 +444,7 @@ footer {
     width: 100%;
     bottom: 0;
     height: 68px;
-/*     position:fixed; */
+    margin-top: auto;
 }
 
 footer .social-icons a {
@@ -483,18 +508,9 @@ footer p {
     background-size: cover;
     background-position: center;
 }
-@media (max-width: 768px) {
-    .overlay-text {
-        display: none;
-    }
-}
 
-@media (max-width: 768px) {
-    .call-to-action {
-        display: none;
-    }
-}
-@media (max-width: 1024px) {
+/* Additional Media Queries for Hiding Elements */
+@media (max-width:1024px) {
     .overlay-text {
         display: none;
     }
@@ -506,9 +522,19 @@ footer p {
     }
 }
 
-.error{
-	color: #e01b24 ; 
-	font-size: 12px ;
+@media (max-width: 1024px) {
+    .cards {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .card {
+        width: 45%; /* Adjust card width for tablet screens */
+        margin: 10px;
+    }
 }
 
-
+@media (max-width: 768px) {
+    .card {
+        width: 100%; /* Full width for mobile screens */
+    }
+}

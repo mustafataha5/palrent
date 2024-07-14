@@ -9,34 +9,6 @@ $(document).ready(function() {
         autoRotate: -2,
     });
 
-    // Initialize the Slick carousel
-    $('.cards').slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
-
     // Set placeholders for check-in and check-out inputs
     $('#checkin').attr('placeholder', 'Check-in');
     $('#checkout').attr('placeholder', 'Check-out');
@@ -80,25 +52,32 @@ $(document).ready(function() {
         e.preventDefault();
         window.location.href = "/register";
     });
-
-    // Search button click handler
-    /*$('#search').click(function(e) {
-        e.preventDefault();
-        const location = $('#city').val();
-        const checkin = $('#checkin').val();
-        const checkout = $('#checkout').val();
-        const guests = $('#guests').val();
-
-        // Show the slider and adjust panorama-container height
-       
-    });*/
-
-    // Next and Previous buttons for slick carousel
-    $('.next-btn').click(function() {
-        $('.cards').slick('slickNext');
+$('#search1').click(function() {
+        // Reset card visibility
+        $('.card').hide();
+        $('.cards').fadeIn(2000); // Fade in the .cards container
+        
+        // Fade in each card one by one with a delay
+        $('.card').each(function(index) {
+            $(this).delay(100 * index).fadeIn(300); // Fade in each card with a delay
+        });
     });
+    // Previous and Next buttons for card navigation
+    let currentCardIndex = 0;
+    const cards = $('.card');
+    const numCards = cards.length;
 
     $('.prev-btn').click(function() {
-        $('.cards').slick('slickPrev');
+        if (currentCardIndex > 0) {
+            currentCardIndex--;
+            cards.hide().eq(currentCardIndex).show();
+        }
+    });
+
+    $('.next-btn').click(function() {
+        if (currentCardIndex < numCards - 1) {
+            currentCardIndex++;
+            cards.hide().eq(currentCardIndex).show();
+        }
     });
 });
