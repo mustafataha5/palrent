@@ -64,7 +64,8 @@
 
 								<form id="logoutForm" method="POST" action="/logout">
 									<input type="hidden" name="${_csrf.parameterName}"
-										value="${_csrf.token}" /> <input type="submit" value="Logout!" />
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
 								</form>
 
 							</div>
@@ -111,7 +112,7 @@
 						<p lass="error">
 							<form:errors path="numOfGuest"></form:errors>
 						</p>
-<%-- 						<p class="error">
+						<%-- 						<p class="error">
 							<form:errors path="approval"></form:errors>
 						</p> --%>
 						<p lass="error">
@@ -162,7 +163,7 @@
 									<td><form:input path="numOfGuest" type="number" value="1"
 											min="1" /></td>
 								</tr>
-							<%-- 	<tr>
+								<%-- 	<tr>
 									<td><form:label path="approval">Approval:</form:label></td>
 									<td><form:select path="approval">
 											<form:option value="false">False</form:option>
@@ -179,14 +180,13 @@
 									<td><form:input type="text" path="departmentNum"
 											placeholder="department number" /> <form:input type="text"
 											path="buildingNum" placeholder="Building Number" /> <form:input
-											type="text" path="street" placeholder="Street" /> 
-											<form:select path="city">
+											type="text" path="street" placeholder="Street" /> <form:select
+											path="city">
 											<form:option value="0">Select City</form:option>
 											<c:forEach var="cit" items="${cities}">
 												<form:option value="${cit}">${ cit}</form:option>
 											</c:forEach>
-											</form:select>
-											</td>
+										</form:select></td>
 
 								</tr>
 								<tr>
@@ -224,9 +224,9 @@
 							<form action="/user/apartmet/${Apartment.id}/DelOffer"
 								method="post">
 								<input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
-								<input type="hidden" name="_method" value="delete"> <input
-									type="hidden" name="offerId" value="${apaOffer.id}">
+									value="${_csrf.token}" /> <input type="hidden" name="_method"
+									value="delete"> <input type="hidden" name="offerId"
+									value="${apaOffer.id}">
 								<button type="submit" class="btn btn-outline-danger btn-sm">delete</button>
 							</form>
 						</div>
@@ -238,12 +238,11 @@
 			<div class="card my-3 p-4">
 				<h2 class="card-title">Add Offer:</h2>
 				<div class="card-body">
-					<form class="d-flex justify-content-between" action="/user/apartment/${Apartment.id}/AddOffer"
-						method="post">
+					<form class="d-flex justify-content-between"
+						action="/user/apartment/${Apartment.id}/AddOffer" method="post">
 						<input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
-						<input type="hidden" name="_method" value="patch"> <select
-							name="offerId">
+							value="${_csrf.token}" /> <input type="hidden" name="_method"
+							value="patch"> <select name="offerId">
 							<c:forEach var="apaoffer" items="${exOffer}">
 								<option value=${apaoffer.id}>${apaoffer.name}</option>
 							</c:forEach>
@@ -267,11 +266,10 @@
 							<h4 class="mx-3">${apaRule.name}</h4>
 							<form action="/user/apartmet/${Apartment.id}/DelRule"
 								method="post">
-								<input type="hidden" name="_method" value="delete">
-								<input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
-								 <input
-									type="hidden" name="ruleId" value="${apaRule.id}">
+								<input type="hidden" name="_method" value="delete"> <input
+									type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" /> <input type="hidden" name="ruleId"
+									value="${apaRule.id}">
 								<button type="submit" class="btn btn-outline-danger btn-sm">delete</button>
 							</form>
 						</div>
@@ -283,12 +281,11 @@
 			<div class="card  my-3 p-4">
 				<h2 class="card-title">Add Rule:</h2>
 				<div class="card-body">
-					<form class="d-flex justify-content-between" action="/user/apartmet/${Apartment.id}/AddRule" method="post">
-						<input type="hidden" name="_method" value="patch">
-						<input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
-						 <select
-							name="ruleId">
+					<form class="d-flex justify-content-between"
+						action="/user/apartmet/${Apartment.id}/AddRule" method="post">
+						<input type="hidden" name="_method" value="patch"> <input
+							type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" /> <select name="ruleId">
 							<c:forEach var="aparule" items="${exRule}">
 								<option value=${aparule.id}>${aparule.name}</option>
 							</c:forEach>
@@ -304,5 +301,15 @@
 			<script type="text/javascript" src="/js/apartment.js"></script>
 
 		</div>
+		</div>
+		<footer>
+			<div class="social-icons">
+				<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+					class="fab fa-instagram"></i></a> <a href="#"><i
+					class="fab fa-linkedin-in"></i></a> <a href="#"><i
+					class="fab fa-whatsapp"></i></a>
+			</div>
+			<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
+		</footer>
 </body>
 </html>
