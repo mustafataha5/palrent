@@ -57,7 +57,7 @@
 								onerror="this.src='/img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
 
-								<a href="/userinfo/${user.id}">User Info</a> <a
+								<a href="/user/info/${user.id}">User Info</a> <a
 									href="/user/apartment"> apartment</a>
 								<!-- <a href="/logout"> Log out</a> -->
 

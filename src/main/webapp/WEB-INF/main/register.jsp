@@ -20,7 +20,7 @@
 <body>
 	<div class="navbar">
 		<div class="logo">
-			<img src="/img/palrent-logo.png" alt="Logo">
+			<a href="/"> <img src="/img/palrent-logo.png" alt="Logo"></a>
 		</div>
 		<div class="hamburger-menu" onclick="toggleMenu()">
 			<i class="fas fa-bars"></i>
@@ -28,7 +28,7 @@
 		<ul class="nav-links">
 			<li><a href="#">About us</a></li>
 			<li><a href="#">Contact us</a></li>
-			<li><a href="#">User</a></li>
+			
 		</ul>
 		<c:choose>
 			<c:when test="${ userId == null}">
