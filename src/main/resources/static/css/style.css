@@ -548,6 +548,7 @@ footer p {
 	color: #e01b24 ; 
 	font-size: 24px ;
 	font-weight: bold;
-	background: grey;
+	background: #979797;
+	padding: 2px 5px;
 }
 

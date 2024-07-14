@@ -110,10 +110,10 @@
 								<form action="/apartment/${apartment.id}/booking" method="post">
 									<input type="hidden" name="_method" value="patch"> <label
 										for="checkin">Check-in Date:</label> <input type="date"
-										id="checkin" name="checkin" required> <label
-										for="checkout">Check-out Date:</label> <input type="date"
-										id="checkout" name="checkout" required>
-									<input type="hidden" name="${_csrf.parameterName}"
+										id="checkin" name="checkin" required /> 
+										<label for="checkout">Check-out Date:</label> <input
+										type="date" id="checkout" name="checkout" required> <input
+										type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" />
 									<button type="submit">Book Now</button>
 								</form>
@@ -209,6 +209,6 @@
 	</footer>
 
 	<script type="text/javascript" src="/js/department.js"></script>
-	
+	<script type="text/javascript" src="/js/dateSkip.js"></script>
 </body>
 </html>
