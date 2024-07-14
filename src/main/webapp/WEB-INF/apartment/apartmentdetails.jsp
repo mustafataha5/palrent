@@ -126,7 +126,7 @@
 				<div class="col-sm-4  ">
 
 					<div class="row">
-						<div class="card p-4">
+						<div class="card p-3">
 							<h3 class="card-title">Rules</h3>
 							<div class="card-body">
 								<lu> <c:forEach var="rule" items="${apartment.rules}">
@@ -137,7 +137,7 @@
 					</div>
 
 					<div class="row">
-						<div class="card p-4 ">
+						<div class="card p-3 ">
 							<h3 class="card-title">Offers</h3>
 							<div class="card-body">
 								<lu> <c:forEach var="offer" items="${apartment.offers}">
@@ -148,7 +148,7 @@
 					</div>
 					
 					<div class="row">
-						<div class="card">
+						<div class="card p-3">
 							<h3 class="card-title">Total:</h3>
 							<div class="card-body">
 								<h5>Price per day: <span id="Price">${apartment.price}</span> </h5>
