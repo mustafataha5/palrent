@@ -1,5 +1,7 @@
 package com.palrent.services;
 
+
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,5 +58,7 @@ public class ApartmentService {
 	public List<Department> search(String city , Integer numOfGuest){
 		return apartmentRepository.myquery1(city, numOfGuest);
 	}
-	
+	public List<Department> search2(String city , Integer numOfGuest,Date start ,Date end){
+		return apartmentRepository.myquery2(city, numOfGuest,start,end);
+	}
 }
