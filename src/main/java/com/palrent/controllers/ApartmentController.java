@@ -255,8 +255,8 @@ public class ApartmentController {
 	
 	@PatchMapping("/apartment/{id}/booking")
 	public String bookApartment(@PathVariable("id")Long id
-			,@RequestParam("checkin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date checkin , 
-			@RequestParam("checkout") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date checkout ,
+			,@RequestParam(value="checkin",required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date checkin , 
+			@RequestParam(value="checkout",required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date checkout ,
 			Model model,Principal principal) {
 		
 		String username = principal.getName();
@@ -268,7 +268,7 @@ public class ApartmentController {
 		book.setStartDate(checkin);
 		book.setEndDate(checkout);
 		bookingService.createBooking(book);
-		return "redirect:/userinfo/"+user.getId();
+		return "redirect:/user/info/"+user.getId();
 	}
 
 }

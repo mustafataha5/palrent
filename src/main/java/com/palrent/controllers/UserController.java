@@ -123,7 +123,7 @@ public class UserController {
 		Booking booking = bookingService.findBooking(id) ;
 		if(checkin.after(checkout)) {
 			redirectAttributes.addFlashAttribute("error_q","Check-In must be before Check-Out ");
-			return "redirect:/user/booking/"+user.getId();
+			return "redirect:/user/booking/"+booking.getId();
 		}
 		
 		booking.setStartDate(checkin);
