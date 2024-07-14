@@ -19,29 +19,95 @@
 <link rel="stylesheet" href="/css/apartmentstyle.css"> 
 </head>
 <body>
-	<div class="row d-flex justify-content-center mx-5 mt-3">
-		<div class="col-md-8">
-			<div class="card border-light">
-				<h4 class="card-title mx-3">Add New Rule:</h4>
-				<div class="card-body">
-					<tbody>
-						<form:form action="/admins/rule/new" method="post"
-							modelAttribute="newRule">
-							<p class="error"> <form:errors path="name"></form:errors> </p>
-							<tr>
+<div class="navbar">
+		<div class="logo">
+			<a href="/"> <img src="/img/palrent-logo.png" alt="Logo"></a>
+		</div>
+		<div class="hamburger-menu" onclick="toggleMenu()">
+			<i class="fas fa-bars"></i>
+		</div>
+		<ul class="nav-links">
+			<li><a href="/">Home</a></li>
+			<li><a href="#">About us</a></li>
+			<li><a href="#">Contact us</a></li>
 
-								<td><form:label path="name"> Name:</form:label></td>
-								<td><form:input path="name" /></td>
-							</tr>
-							<tr> 
-									<td></td>
-									<td> <button type="submit" class="btn btn-outline-primary"> Create Rule</button> </td>
-								</tr>
-					</tbody>
-					</table>
-					</form:form>
+		</ul>
+		<c:choose>
+			<c:when test="${ user == null}">
+				<div class="user-icon-container">
+					<div class="user-icon-wrapper">
+						<img src="user-image" alt="Image not found"
+							onerror="this.src='/img/profile.png';" class="user-icon" />
+						<div class="burger-menu" id="user-menu">
+							<a href="/register" id="register-btn">Register</a> <a
+								href="/login" id="login-btn">Log In</a>
+						</div>
+					</div>
 				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="d-flex align-items-center mx-3">
+					<h4 class="text-light mx-2">${user.firstName}</h4>
+					<div class="user-icon-container">
+						<div class="user-icon-wrapper">
+							<img src="user-image" alt="Image not found"
+								onerror="this.src='/img/profile.png';" class="user-icon" />
+							<div class="burger-menu" id="user-menu">
+
+								<a href="/user/info/${user.id}">User Info</a> <a
+									href="/user/apartment"> apartment</a>
+								<!-- <a href="/logout"> Log out</a> -->
+
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
+								</form>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</c:otherwise>
+		</c:choose>
+	</div>
+	<div class="row d-flex justify-content-center mx-5 mt-5">
+		<div class="col-md-8 mt-5">
+			<div class=" d-flex justify-content-around">
+
+				<h4 class="card-title mx-3">Add New Rule:</h4>
+				<a href="/admins/offer"><h4
+						class="card-title mx-3 btn btn-outline-secondary ">Go back</h4></a>
 			</div>
+			<div class=" col-md-8 d-flex justify-content-center">
+
+
+
+				<tbody class="row-md-8 d-flex justify-content-between">
+					<form:form action="/admins/rule/new" method="post"
+						modelAttribute="newRule">
+						<p class="error">
+							<form:errors path="name"></form:errors>
+						</p>
+						<tr>
+
+							<td><form:label path="name"> Name:</form:label></td>
+							<td><form:input path="name" /></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<button type="submit"
+									class="card-title mx-3 btn btn-outline-primary">ADD
+									rule</button>
+							</td>
+						</tr>
+				</tbody>
+				</table>
+				</form:form>
+			</div>
+
 		</div>
 	</div>
 </body>

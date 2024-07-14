@@ -26,9 +26,10 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
+			<li><a href="/">Home</a></li>
 			<li><a href="#">About us</a></li>
 			<li><a href="#">Contact us</a></li>
-			
+
 		</ul>
 		<c:choose>
 			<c:when test="${ userId == null}">
@@ -128,7 +129,7 @@
 									</tr>
 									<tr>
 										<td><form:label path="dateOfBirth">Date Of Birth:</form:label></td>
-										<td><form:input type="date" path="dateOfBirth"  /></td>
+										<td><form:input type="date" path="dateOfBirth" /></td>
 									</tr>
 									<tr>
 										<td><form:label path="urlImage">Url Image:</form:label></td>

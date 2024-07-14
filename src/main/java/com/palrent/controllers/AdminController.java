@@ -150,8 +150,11 @@ public class AdminController {
 	
 	
 	@PatchMapping("/admins/apartmet/{id}/AddOffer")
-	public String addOffer(@PathVariable("id") Long Id ,@RequestParam("offerId")Long offerId ,Model model)
+	public String addOffer(@PathVariable("id") Long Id ,@RequestParam(value = "offerId", required = false)Long offerId ,Model model)
 	{
+		if (offerId == null) {
+			return "redirect:/admins/apartment/" + Id + "/edit";
+		}
 		Department department = apartmentService.findById(Id);
 		Offer offer = offerService.findOffer(offerId);
 		department.getOffers().add(offer);
@@ -173,8 +176,12 @@ public class AdminController {
 	
 	
 	@PatchMapping("/admins/apartmet/{id}/AddRule")
-	public String addRule(@PathVariable("id") Long Id ,@RequestParam("ruleId")Long ruleId ,Model model)
+	public String addRule(@PathVariable("id") Long Id ,@RequestParam(value ="ruleId",required = false)Long ruleId ,Model model)
 	{
+		if (ruleId == null) {
+		return	"redirect:/admins/apartment/"+Id+"/edit";
+		}
+		
 		Department department = apartmentService.findById(Id);
 		Rule rule = ruleServices.findRule(ruleId);
 		department.getRules().add(rule);

@@ -33,9 +33,10 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
-			<li><a href="#">About us</a></li>
+			<li><a href="/">Home</a></li>
 			<li><a href="#">Contact us</a></li>
 			<li><a href="#">User</a></li>
+			<li><a href="#">About us</a></li>
 		</ul>
 		<c:choose>
 			<c:when test="${ user == null}">
@@ -80,19 +81,19 @@
 	</div>
 
 
-	<div class="row d-flex justify-content-center mx-5 mt-5 my-5">
+	<div class="row d-flex justify-content-center mx-5 mt-5 ">
 		<div class="col-ld-11 my-5">
 			<div class="card border-light ">
-				<div class="d-flex justify-content-between my-5">
-					<h4 class="card-title mx-3">My Apartment</h4>
-					<a href="/"><h4
+				<div class="d-flex justify-content-between my-2">
+					<h4 class="card-title mx-3"> MY Apartments</h4>
+					<a href="apartment/new" class=" card-title btn btn-outline-primary mx-3""> +
+						Apartment </a> <a href="/"><h4
 							class="card-title mx-3 btn btn-outline-primary ">Go back</h4></a>
 				</div>
 
-				<div class="my-3 mx-3 ">
-					<a href="apartment/new" class=" btn btn-outline-primary"> + New
-						Apartment </a>
-				</div>
+
+
+
 			</div>
 		</div>
 	</div>
