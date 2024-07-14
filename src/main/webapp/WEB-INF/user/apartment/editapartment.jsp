@@ -32,6 +32,7 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
+			<li><a href="/">Home</a></li>
 			<li><a href="#">About us</a></li>
 			<li><a href="#">Contact us</a></li>
 			<li><a href="#">User</a></li>
@@ -301,15 +302,15 @@
 			<script type="text/javascript" src="/js/apartment.js"></script>
 
 		</div>
+	</div>
+	<footer>
+		<div class="social-icons">
+			<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+				class="fab fa-instagram"></i></a> <a href="#"><i
+				class="fab fa-linkedin-in"></i></a> <a href="#"><i
+				class="fab fa-whatsapp"></i></a>
 		</div>
-		<footer>
-			<div class="social-icons">
-				<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
-					class="fab fa-instagram"></i></a> <a href="#"><i
-					class="fab fa-linkedin-in"></i></a> <a href="#"><i
-					class="fab fa-whatsapp"></i></a>
-			</div>
-			<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
-		</footer>
+		<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
+	</footer>
 </body>
 </html>

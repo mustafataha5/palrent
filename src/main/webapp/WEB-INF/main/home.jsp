@@ -40,6 +40,7 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
+			<li><a href="/">Home</a></li>
 			<li><a href="#">About us</a></li>
 			<li><a href="#">Contact us</a></li>
 			<li><a href="#">User</a></li>
@@ -94,25 +95,24 @@
 					<c:forEach var="cit" items="${cities}">
 						<option value="${cit}">${cit}</option>
 					</c:forEach>
-				</select> <input type="text" id="checkin" name="start"  
-					placeholder="Checkin"	onmouseover="(this.type='date')">
-				<input type="text" id="checkout" name="end" placeholder="Check-out"
-					onmouseover="(this.type='date')" >
-				<input type="number" id="guests" name="guest"
-					placeholder="Number of Guests"> <input type="hidden"
-					name="${_csrf.parameterName}" value="${_csrf.token}" />
+				</select> <input type="text" id="checkin" name="start" placeholder="Checkin"
+					onmouseover="(this.type='date')"> <input type="text"
+					id="checkout" name="end" placeholder="Check-out"
+					onmouseover="(this.type='date')"> <input type="number"
+					id="guests" name="guest" placeholder="Number of Guests"> <input
+					type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<button id="search1" type="button">Search</button>
 			</div>
 		</form>
-		
+
 		<div class="my-5 call-to-action">
 			<p class="error">${error}</p>
-			<p class="error_q" id="error_q"> </p>
+			<p class="error_q" id="error_q"></p>
 		</div>
 	</div>
 	<div id="slider" class="cards" style="display: none;">
 		<c:forEach var="apartment" items="${apartments}">
-		
+
 			<div class="card">
 				<div class="card-overlay"></div>
 				<!-- Overlay background -->
