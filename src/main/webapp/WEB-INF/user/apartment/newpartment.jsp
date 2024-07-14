@@ -63,7 +63,8 @@
 
 								<form id="logoutForm" method="POST" action="/logout">
 									<input type="hidden" name="${_csrf.parameterName}"
-										value="${_csrf.token}" /> <input type="submit" value="Logout!" />
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
 								</form>
 
 							</div>
@@ -175,15 +176,15 @@
 									<td><form:input type="text" path="departmentNum"
 											placeholder="department number" /> <form:input type="text"
 											path="buildingNum" placeholder="Building Number" /> <form:input
-											type="text" path="street" placeholder="Street" /> 
-											<form:select path="city">
+											type="text" path="street" placeholder="Street" /> <form:select
+											path="city">
 											<form:option value="0">Select City</form:option>
 											<c:forEach var="cit" items="${cities}">
 												<form:option value="${cit}">${ cit}</form:option>
 											</c:forEach>
 
 										</form:select></td>
-					
+
 
 								</tr>
 								<tr>
@@ -210,6 +211,16 @@
 			</div>
 		</div>
 	</div>
+	
+		<footer>
+		<div class="social-icons">
+			<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+				class="fab fa-instagram"></i></a> <a href="#"><i
+				class="fab fa-linkedin-in"></i></a> <a href="#"><i
+				class="fab fa-whatsapp"></i></a>
+		</div>
+		<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
+	</footer>
 	<script type="text/javascript" src="/js/apartment.js"></script>
 </body>
 </html>

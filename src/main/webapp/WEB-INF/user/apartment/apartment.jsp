@@ -64,8 +64,9 @@
 								<!-- <a href="/logout"> Log out</a> -->
 
 								<form id="logoutForm" method="POST" action="/logout">
-									<input class="logmeout" type="hidden" name="${_csrf.parameterName}"
-										value="${_csrf.token}" /> <input class="logmeout" type="submit" value="Logout!" />
+									<input class="logmeout" type="hidden"
+										name="${_csrf.parameterName}" value="${_csrf.token}" /> <input
+										class="logmeout" type="submit" value="Logout!" />
 								</form>
 
 							</div>
@@ -88,7 +89,7 @@
 							class="card-title mx-3 btn btn-outline-primary ">Go back</h4></a>
 				</div>
 
-				<div class="my-4">
+				<div class="my-3 mx-3 ">
 					<a href="apartment/new" class=" btn btn-outline-primary"> + New
 						Apartment </a>
 				</div>
@@ -106,7 +107,7 @@
 
 						<h1>${apartment.title}</h1>
 						<p>description : ${ apartment.description}</p>
-
+						<p>city : ${ apartment.city}</p>
 						<div class="d-flex justify-content-center"" >
 
 							<a href="/user/apartment/${apartment.id}/edit"
@@ -118,7 +119,8 @@
 									value="delete">
 								<button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
 							</form>
-							<a href="/apartment/${apartment.id}/show" class="mx-3 btn
+							<a href="/apartment/${apartment.id}/show"
+								class="mx-3 btn
 							btn-outline-primary btn-sm">show </a>
 						</div>
 
@@ -128,6 +130,15 @@
 			</div>
 		</c:forEach>
 	</div>
+	<footer>
+		<div class="social-icons">
+			<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+				class="fab fa-instagram"></i></a> <a href="#"><i
+				class="fab fa-linkedin-in"></i></a> <a href="#"><i
+				class="fab fa-whatsapp"></i></a>
+		</div>
+		<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
+	</footer>
 
 
 	<script type="text/javascript" src="/js/apartment.js"></script>
