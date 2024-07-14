@@ -62,7 +62,7 @@ The Palrent application is built using:
 
 ### Authentication
 
-- JWT tokens for user authentication.
+- Spring security for user authentication.
 - Secure password storage using bcrypt.
 
 ### Authorization
