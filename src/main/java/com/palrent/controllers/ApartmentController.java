@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.palrent.models.Booking;
 import com.palrent.models.Department;
@@ -257,8 +258,19 @@ public class ApartmentController {
 	public String bookApartment(@PathVariable("id")Long id
 			,@RequestParam(value="checkin",required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date checkin , 
 			@RequestParam(value="checkout",required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date checkout ,
-			Model model,Principal principal) {
-		
+			Model model,Principal principal,RedirectAttributes redirectAttributes) {
+		if( checkout == null) {
+			redirectAttributes.addFlashAttribute("error_q","Check-In is required ");
+			return "direct:/apartment/"+id+"/booking";
+		}
+		if( checkout == null) {
+			redirectAttributes.addFlashAttribute("error_q","Check-Out is required ");
+			return "direct:/apartment/"+id+"/booking";
+		}
+		if(checkout.after(checkout)) {
+			redirectAttributes.addFlashAttribute("error_q","Check-In date must be before Check-out date ");
+			return "direct:/apartment/"+id+"/booking";
+		}
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		Department department = apartmentService.findById(id);

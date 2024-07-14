@@ -109,6 +109,7 @@
 							<div class="reservation-form">
 
 								<form action="/apartment/${apartment.id}/booking" method="post">
+									<p class="error_q">${error_q}</p>
 									<input type="hidden" name="_method" value="patch"> <label
 										for="checkin">Check-in Date:</label> <input type="date"
 										id="checkin" name="checkin" required /> 

@@ -2,6 +2,7 @@ package com.palrent.controllers;
 
 import java.security.Principal;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.palrent.models.Booking;
 import com.palrent.models.LoginUser;
 import com.palrent.models.User;
+import com.palrent.services.ApartmentService;
 import com.palrent.services.BookingService;
 import com.palrent.services.UserService;
 import com.palrent.validator.UserValidator;
@@ -36,11 +38,14 @@ public class UserController {
 	// NEW
 	private UserValidator userValidator;
 	private BookingService bookingService ; 
+	private ApartmentService apartmentService ; 
 	// NEW
-	public UserController(UserService userService, UserValidator userValidator,BookingService bookingService ) {
+	public UserController(UserService userService, UserValidator userValidator
+			,BookingService bookingService , ApartmentService apartmentService ) {
 		this.userService = userService;
 		this.userValidator = userValidator;
 		this.bookingService = bookingService ;
+		this.apartmentService = apartmentService ;
 	}
 
 //	@PostMapping("/user/new")
@@ -125,7 +130,7 @@ public class UserController {
 			redirectAttributes.addFlashAttribute("error_q","Check-In must be before Check-Out ");
 			return "redirect:/user/booking/"+booking.getId();
 		}
-		
+		System.out.println(">>>>>>>>>>>>>>>>"+apartmentService.search3(booking.getDepartment().getId(),new java.sql.Date( checkin.getTime()), new java.sql.Date(checkout.getTime())).size());
 		booking.setStartDate(checkin);
 		booking.setEndDate(checkout);
 		bookingService.updateBooking(booking);
