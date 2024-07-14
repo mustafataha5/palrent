@@ -1,5 +1,6 @@
 package com.palrent.services;
 
+import java.awt.print.Book;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,10 @@ public class BookingService {
 		}
 		return null ; 
 		
+	}
+	
+	public void deleteBooking(Long id) {
+		bookingRepositry.deleteById(id);
 	}
 	
 }

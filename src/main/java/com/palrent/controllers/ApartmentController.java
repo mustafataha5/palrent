@@ -251,6 +251,8 @@ public class ApartmentController {
 		return "apartment/apartmentdetails.jsp";
 	}
 	
+	
+	
 	@PatchMapping("/apartment/{id}/booking")
 	public String bookApartment(@PathVariable("id")Long id
 			,@RequestParam("checkin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date checkin , 
@@ -266,7 +268,7 @@ public class ApartmentController {
 		book.setStartDate(checkin);
 		book.setEndDate(checkout);
 		bookingService.createBooking(book);
-		return "redirect:/home";
+		return "redirect:/userinfo/"+user.getId();
 	}
 
 }
