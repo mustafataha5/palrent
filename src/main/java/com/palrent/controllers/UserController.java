@@ -129,7 +129,7 @@ public class UserController {
 		booking.setStartDate(checkin);
 		booking.setEndDate(checkout);
 		bookingService.updateBooking(booking);
-		return "redirect:/user/booking/"+user.getId();
+		return "redirect:/user/info/"+user.getId();
 	}
 	
 	@DeleteMapping("/user/booking/{id}")
