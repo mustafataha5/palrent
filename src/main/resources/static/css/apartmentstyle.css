@@ -93,6 +93,7 @@
     border-radius: 10px;
     margin-top: 10px;
     z-index: 2000;
+    
 }
 
 .burger-menu.show {
@@ -110,10 +111,30 @@
     text-decoration: none;
     transition: color 0.3s;
 }
+.burger-menu input{
+    
+    color: black;
+    padding: 10px 0;
+    
+    transition: color 0.3s;
+    background-color: white;
+    border: none;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 60
+}
+
+
 
 .burger-menu a:hover {
     color: #bba270;
 }
+.burger-menu input:hover {
+    color: #bba270;
+    font-size: 1.1rem;
+}
+
+
 
 /* Apartment details styles */
 .apartment-details {
@@ -364,7 +385,7 @@ Copy code
 .back-button {
     display: flex;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 14px;
     background-color: #bba270;
     color: white;
     text-decoration: none;
@@ -377,4 +398,16 @@ Copy code
     background-color: #a68850;
     color: #fff;
 }
-
+.error{
+    color: #e01b24 ; 
+    font-size: 12px ;
+}
+.error_q{
+    color: #e01b24 ; 
+    font-size: 24px ;
+    font-weight: bold;
+    background: grey;
+}
+.mt-5 {
+    margin-top: 4rem !important;
+}
