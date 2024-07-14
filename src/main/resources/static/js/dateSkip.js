@@ -5,6 +5,8 @@
 $(document).ready(function (){
 
 $("#checkin").click(function() {
+	
+	
 		var dtToday = new Date();
 
 		var month = dtToday.getMonth() + 1;
@@ -18,6 +20,7 @@ $("#checkin").click(function() {
 		var maxDate = year + '-' + month + '-' + day;
 		$('#checkin').attr('min', maxDate);
 	});
+	
 
 	$("#checkout").click(function() {
 		let dtToday

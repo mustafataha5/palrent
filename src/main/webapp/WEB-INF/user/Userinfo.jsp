@@ -112,7 +112,7 @@
 									<p>Price: ${book.department.price}</p>
 								</div>
 								<div class="booking-details__action">
-									<a href="#" class="btn-more">More</a>
+									<a href="/user/booking/${book.id}" class="btn-more">More</a>
 								</div>
 							</div>
 						</div>
