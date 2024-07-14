@@ -20,12 +20,13 @@
 <body>
 	<div class="navbar">
 		<div class="logo">
-			<img src="img/palrent-logo.png" alt="Logo">
+			<a href="/"> <img src="/img/palrent-logo.png" alt="Logo"></a>
 		</div>
 		<div class="hamburger-menu" onclick="toggleMenu()">
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
+			<li><a href="/">Home</a></li>
 			<li><a href="#">About us</a></li>
 			<li><a href="#">Contact us</a></li>
 			<li><a href="#">User</a></li>
@@ -71,11 +72,15 @@
 				<div class="card">
 					<div class="card-body">
 						<c:if test="${logoutMessage != null}">
-							<p class="success">  <c:out value="${logoutMessage}"></c:out></p>
+							<p class="success">
+								<c:out value="${logoutMessage}"></c:out>
+							</p>
 						</c:if>
 						<h2 class="card-title text-center">Login</h2>
 						<c:if test="${errorMessage != null}">
-							<p class="error"><c:out value="${errorMessage}"></c:out></p>
+							<p class="error">
+								<c:out value="${errorMessage}"></c:out>
+							</p>
 						</c:if>
 
 						<form id="login-form" action="/login" method="post">

@@ -14,20 +14,75 @@
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link rel="stylesheet" href="/css/apartmentstyle.css"> 
+<link rel="stylesheet" href="/css/apartmentstyle.css">
 <title>Admin Apartment</title>
 
 </head>
 <body>
 
+	<div class="navbar">
+		<div class="logo">
+			<a href="/"> <img src="/img/palrent-logo.png" alt="Logo"></a>
+		</div>
+		<div class="hamburger-menu" onclick="toggleMenu()">
+			<i class="fas fa-bars"></i>
+		</div>
+		<ul class="nav-links">
+			<li><a href="/">Home</a></li>
+			<li><a href="#">About us</a></li>
+			<li><a href="#">Contact us</a></li>
+
+		</ul>
+		<c:choose>
+			<c:when test="${ user == null}">
+				<div class="user-icon-container">
+					<div class="user-icon-wrapper">
+						<img src="user-image" alt="Image not found"
+							onerror="this.src='/img/profile.png';" class="user-icon" />
+						<div class="burger-menu" id="user-menu">
+							<a href="/register" id="register-btn">Register</a> <a
+								href="/login" id="login-btn">Log In</a>
+						</div>
+					</div>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="d-flex align-items-center mx-3">
+					<h4 class="text-light mx-2">${user.firstName}</h4>
+					<div class="user-icon-container">
+						<div class="user-icon-wrapper">
+							<img src="user-image" alt="Image not found"
+								onerror="this.src='/img/profile.png';" class="user-icon" />
+							<div class="burger-menu" id="user-menu">
+
+								<a href="/user/info/${user.id}">User Info</a> <a
+									href="/user/apartment"> apartment</a>
+								<!-- <a href="/logout"> Log out</a> -->
+
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
+								</form>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</c:otherwise>
+		</c:choose>
+	</div>
 
 
-
-	<div class="row d-flex justify-content-center mx-5 mt-3">
-		<div class="col-ld-11">
+	<div class="row d-flex justify-content-center mx-5 mt-5">
+		<div class="col-ld-10 mt-5 mx-5">
 			<div class="card border-light ">
-				<div class="d-flex justify-content-between my-2">
+				<div class="d-flex justify-content-around my-2">
 					<h4 class="card-title mx-3">Apartment</h4>
+					<a href="/admins/apartment/new"
+						class="card-title btn btn-outline-primary mx-3"> + Apartment </a>
+
 					<a href="/admin"><h4
 							class="card-title mx-3 btn btn-outline-secondary ">Go back</h4></a>
 				</div>
@@ -35,53 +90,48 @@
 					<table class="table  text-center">
 						<thead class="table-primary">
 							<th>Id</th>
-							<th>Number Of Rooms</th>
-							<th>Number Of Baths</th>
-							<th>Number Of Beds</th>
-							<th>Apartment Space</th>
-							<th>Number Of Guests</th>
+							<th>City</th>
+							<th>title</th>
+							<th>Apartment Owner</th>
 							<th>Approval</th>
-							<th>$ Price</th>
+
 							<th>Action</th>
 						</thead>
 						<tbody>
 							<c:forEach var="apartment" items="${apartments}">
 								<tr>
 									<td id="apartmentcart">${apartment.id}</td>
-									<td>${apartment.numOfRoom}</td>
-									<td>${apartment.numOfBath}</td>
-									<td>${apartment.numOfBed}</td>
-									<td>${apartment.area}</td>
-									<td>${apartment.numOfGuest}</td>
+									<td>${apartment.city}</td>
+									<td>${apartment.title}</td>
+									<td>${apartment.owner.firstName}
+										${apartment.owner.lastName}</td>
 									<td>${apartment.approval}</td>
-									<td>$ ${apartment.price}</td>
-<!-- 									<td><a class=" btn btn-outline-warning" -->
-<%-- 										href="/admins/apartment/${apartment.id}/edit">Edit</a> <a --%>
-<!-- 										class=" btn btn-outline-danger" -->
-<%-- 										href="/admins/apartment/delete/${apartment.id}">Delete</a></td> --%>
+									<!-- 									<td><a class=" btn btn-outline-warning" -->
+									<%-- 										href="/admins/apartment/${apartment.id}/edit">Edit</a> <a --%>
+									<!-- 										class=" btn btn-outline-danger" -->
+									<%-- 										href="/admins/apartment/delete/${apartment.id}">Delete</a></td> --%>
 
 
 
 									<td><div class="d-flex justify-content-center"" >
-                                            <a href="/admins/apartment/${apartment.id}/edit" class="mx-3 btn btn-outline-warning btn-sm" >Edit</a>
-                                            <form action="/admins/apartment/${apartment.id}/delete" method="post" >
-                                                <input type="hidden" name="_method" value="delete">
-                                                <input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
-                                                <button type="submit" class="btn btn-outline-danger btn-sm" >Del</button>
-                                            </form>
+											<a href="/admins/apartment/${apartment.id}/edit"
+												class="mx-3 btn btn-outline-warning btn-sm">Edit</a>
+											<form action="/admins/apartment/${apartment.id}/delete"
+												method="post">
+												<input type="hidden" name="_method" value="delete">
+												<input type="hidden" name="${_csrf.parameterName}"
+													value="${_csrf.token}" />
+												<button type="submit" class="btn btn-outline-danger btn-sm">Del</button>
+											</form>
 
-                                        </div></td>
+										</div></td>
 
 
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-					<div class="my-4">
-						<a href="/admins/apartment/new" class=" btn btn-outline-primary">
-							+ New Apartment </a>
-					</div>
+
 				</div>
 			</div>
 		</div>

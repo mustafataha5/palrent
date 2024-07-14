@@ -31,6 +31,7 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
+			<li><a href="/">Home</a></li>
 			<li><a href="#">About us</a></li>
 			<li><a href="#">Contact us</a></li>
 			<li><a href="#">User</a></li>
@@ -57,7 +58,7 @@
 								onerror="this.src='/img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
 
-								<a href="/userinfo/${user.id}">User Info</a> <a
+								<a href="/user/info/${user.id}">User Info</a> <a
 									href="/user/apartment"> apartment</a>
 								<!-- <a href="/logout"> Log out</a> -->
 
@@ -82,7 +83,7 @@
 			<div class="card border-light">
 
 				<div class="d-flex justify-content-between my-5 ">
-					<h4 class="card-title mx-3">New A Apartment</h4>
+					<h4 class="card-title mx-3">New Apartment</h4>
 					<a href="/user/apartment"><h4
 							class="card-title mx-3 btn btn-outline-primary ">Go back</h4></a>
 				</div>
@@ -211,8 +212,8 @@
 			</div>
 		</div>
 	</div>
-	
-		<footer>
+
+	<footer>
 		<div class="social-icons">
 			<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
 				class="fab fa-instagram"></i></a> <a href="#"><i

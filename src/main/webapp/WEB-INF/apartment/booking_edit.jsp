@@ -82,7 +82,7 @@
 		<div class="details-left">
 			<h1 class="title">Beautiful Apartment in City Center</h1>
 			<div class="apartment-images">
-				<c:forEach var="image" items="${apartment.images}">
+				<c:forEach var="image" items="${booking.department.images}">
 					<img src="${image.url}" alt="Apartment Image 2"
 						class="apartment-img">
 				</c:forEach>
@@ -92,10 +92,10 @@
 			</div>
 			<div class="details-right">
 				<div class="owner">
-					<img src="${apartment.owner.urlImage}" alt="Owner's Image"
+					<img src="${booking.department.owner.urlImage}" alt="Owner's Image"
 						onerror="this.src='/img/profile.png';" class="owner-img">
-					<h3>Owner: ${apartment.owner.firstName} -
-						${apartment.owner.lastName}</h3>
+					<h3>Owner: ${booking.department.owner.firstName} -
+						${booking.department.owner.lastName}</h3>
 				</div>
 
 			</div>
@@ -108,15 +108,26 @@
 						<div class="card-body">
 							<div class="reservation-form">
 
-								<form action="/apartment/${apartment.id}/booking" method="post">
+								<form action="/user/booking/${booking.id}" method="post">
+									<p class="error_q">${error_q}</p>
 									<input type="hidden" name="_method" value="patch"> <label
 										for="checkin">Check-in Date:</label> <input type="date"
-										id="checkin" name="checkin" required /> 
-										<label for="checkout">Check-out Date:</label> <input
-										type="date" id="checkout" name="checkout" required> <input
+										id="checkin" name="checkin"
+										value="<fmt:formatDate value='${booking.startDate}' pattern='yyyy-MM-dd' />"
+										" required /> <label for="checkout">Check-out Date:</label> <input
+										type="date" id="checkout" name="checkout"
+										value="<fmt:formatDate value='${booking.endDate}' pattern='yyyy-MM-dd' />"
+										required> <input type="hidden"
+										name="${_csrf.parameterName}" value="${_csrf.token}" />
+									<button type="submit">Edit Booking</button>
+								</form>
+
+								<form action="/user/booking/${booking.id}" method="post">
+									<input type="hidden" name="_method" value="delete"> <input
 										type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" />
-									<button type="submit">Book Now</button>
+									<button type="submit" class="btn btn-outline-danger">Delete
+										Booking</button>
 								</form>
 							</div>
 						</div>
@@ -130,36 +141,36 @@
 						<div class="card p-3">
 							<h3 class="card-title">Rules</h3>
 							<div class="card-body">
-								<c:forEach var="rule" items="${apartment.rules}">
+								<c:forEach var="rule" items="${booking.department.rules}">
 									<p>${ rule.name }</p>
-								</c:forEach> 
+								</c:forEach>
 							</div>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="card p-3 ">
+						<div class="card p-3">
 							<h3 class="card-title">Offers</h3>
 							<div class="card-body">
-								 <c:forEach var="offer" items="${apartment.offers}">
+								<c:forEach var="offer" items="${booking.department.offers}">
 									<p>${ offer.name }</p>
-								</c:forEach> 
+								</c:forEach>
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="row">
 						<div class="card p-3">
 							<h3 class="card-title">Total:</h3>
 							<div class="card-body">
-								<h5>Price per day: <span id="Price">${apartment.price}</span> </h5>
+								<h5>
+									Price per day: <span id="Price">${booking.department.price}</span>
+								</h5>
 								<h5 id="numofday"></h5>
 								<h5 id="total"></h5>
 							</div>
 						</div>
 					</div>
-
-
 
 				</div>
 

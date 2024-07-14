@@ -158,6 +158,24 @@
     text-decoration: none;
     transition: color 0.3s;
 }
+.burger-menu input{
+    
+    color: black;
+    padding: 10px 0;
+    
+    transition: color 0.3s;
+    background-color: white;
+    border: none;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 60
+}
+
+.burger-menu input:hover {
+    color: #bba270;
+    font-size: 1.1rem;
+}
+
 
 .burger-menu a:hover {
     color: #bba270;
@@ -221,6 +239,8 @@
     background: rgba(0, 0, 0, 0.7);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     justify-content: space-around;
+    height: 100vh;
+    align-content: first baseline;
 }
 
 .card {
@@ -234,7 +254,8 @@
     text-align: center;
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
-    flex:auto;
+    flex:inherit;
+    height: fit-content;
 }
 
 .card::before {
@@ -390,14 +411,17 @@
 }
 
 /* Footer styles */
+
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 68px; /* Adjust as needed */
     background: #333;
     color: white;
     text-align: center;
+    width: 100%;
+    bottom: 0;
+    height: 68px;
+    margin-top: auto;
+    position: fixed;
+
 }
 
 footer .social-icons a {

@@ -40,9 +40,15 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
-			<li><a href=".">About us</a></li>
+
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About us</a></li>
 			<li><a href="/contactus">Contact us</a></li>
-			<li><a href="#">User</a></li>
+			<c:if test="${user != null}">
+				<li><a href="/user/info/${user.id}">User</a></li>
+			</c:if>
+			
+
 		</ul>
 
 		<c:choose>
@@ -67,7 +73,7 @@
 								onerror="this.src='img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
 
-								<a href="/userinfo/${user.id}">User Info</a> <a
+								<a href="/user/info/${user.id}">User Info</a> <a
 									href="user/apartment">Apartment</a>
 								<form id="logoutForm" method="POST" action="/logout">
 									<input type="hidden" name="${_csrf.parameterName}"
@@ -94,25 +100,24 @@
 					<c:forEach var="cit" items="${cities}">
 						<option value="${cit}">${cit}</option>
 					</c:forEach>
-				</select> <input type="text" id="checkin" name="start"  
-					placeholder="Checkin"	onmouseover="(this.type='date')">
-				<input type="text" id="checkout" name="end" placeholder="Check-out"
-					onmouseover="(this.type='date')" >
-				<input type="number" id="guests" name="guest"
-					placeholder="Number of Guests"> <input type="hidden"
-					name="${_csrf.parameterName}" value="${_csrf.token}" />
+				</select> <input type="text" id="checkin" name="start" placeholder="Checkin"
+					onmouseover="(this.type='date')"> <input type="text"
+					id="checkout" name="end" placeholder="Check-out"
+					onmouseover="(this.type='date')"> <input type="number"
+					id="guests" name="guest" placeholder="Number of Guests"> <input
+					type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<button id="search1" type="button">Search</button>
 			</div>
 		</form>
-		
+
 		<div class="my-5 call-to-action">
 			<p class="error">${error}</p>
-			<p class="error_q" id="error_q"> </p>
+			<p class="error_q" id="error_q"></p>
 		</div>
 	</div>
 	<div id="slider" class="cards" style="display: none;">
 		<c:forEach var="apartment" items="${apartments}">
-		
+
 			<div class="card">
 				<div class="card-overlay"></div>
 				<!-- Overlay background -->

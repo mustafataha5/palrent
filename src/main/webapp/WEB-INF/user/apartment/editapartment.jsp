@@ -32,6 +32,7 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
+			<li><a href="/">Home</a></li>
 			<li><a href="#">About us</a></li>
 			<li><a href="#">Contact us</a></li>
 			<li><a href="#">User</a></li>
@@ -58,7 +59,7 @@
 								onerror="this.src='/img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
 
-								<a href="/userinfo/${user.id}">User Info</a> <a
+								<a href="/user/info/${user.id}">User Info</a> <a
 									href="/user/apartment"> apartment</a>
 								<!-- <a href="/logout"> Log out</a> -->
 
@@ -301,15 +302,15 @@
 			<script type="text/javascript" src="/js/apartment.js"></script>
 
 		</div>
+	</div>
+	<footer>
+		<div class="social-icons">
+			<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+				class="fab fa-instagram"></i></a> <a href="#"><i
+				class="fab fa-linkedin-in"></i></a> <a href="#"><i
+				class="fab fa-whatsapp"></i></a>
 		</div>
-		<footer>
-			<div class="social-icons">
-				<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
-					class="fab fa-instagram"></i></a> <a href="#"><i
-					class="fab fa-linkedin-in"></i></a> <a href="#"><i
-					class="fab fa-whatsapp"></i></a>
-			</div>
-			<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
-		</footer>
+		<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
+	</footer>
 </body>
 </html>
