@@ -50,6 +50,7 @@ public class HomeController {
         return "main/home.jsp";
     }
 
+
 	@RequestMapping(value = {"/home2"})
     public String home2(Principal principal, Model model) {
         // 1
@@ -70,6 +71,7 @@ public class HomeController {
 //		
 //	}
 	
+
 
 	
 	
