@@ -55,7 +55,8 @@
 						return 
 					  }
 					  $("#error_q").text("")
-					  
+					
+					    
 	                  populateModal(response);
 
 	                  $('.panorama-container').css('height', '50vh');
