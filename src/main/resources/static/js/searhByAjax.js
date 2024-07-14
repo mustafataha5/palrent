@@ -29,11 +29,36 @@ $(document).ready(function() {
 			guests: guests
 		};
 
-		if (city === "" || guests === "") {
+		
+		let flag = false ; 
+		$("#error_q").text("")
+		if (city === "" ) {
 			$('.panorama-container').css('height', '100vh');
 			$('#slider').fadeOut();
-			$("#error_q").text("Please enter your input")
-			return;
+			$("#error_q").append("Please enter select location <br>");
+			flag =true ; 
+		}
+		if (checkin=="") {
+			$('.panorama-container').css('height', '100vh');
+			$('#slider').fadeOut();
+			$("#error_q").append("Please enter select check-in date<br>")
+			flag =true ; 
+		}
+		if (checkout == "") {
+			$('.panorama-container').css('height', '100vh');
+			$('#slider').fadeOut();
+			$("#error_q").append("Please enter select check-in date<br>")
+			flag =true ; 
+		}
+		if ( guests === "") {
+			$('.panorama-container').css('height', '100vh');
+			$('#slider').fadeOut();
+			$("#error_q").append("Please enter guest number")
+			flag =true ; 
+		}
+		
+		if(flag){
+			return ; 
 		}
 		$.ajax({
 			url: "/ajax",
@@ -117,7 +142,7 @@ $(document).ready(function() {
 	}
 
 
-	
+
 
 });
 
