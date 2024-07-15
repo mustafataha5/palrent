@@ -152,18 +152,23 @@
 								<form action="/user/booking/${booking.id}" method="post">
                                     <p class="error_q">${error_q}</p>
                                     <input type="hidden" name="_method" value="patch"> <label
-                                        for="checkin">Check-in Date:</label> 
-                                        <input type="date"
-                                        id="checkin" name="checkin" 
-                                            value="<fmt:formatDate value='${checkin}' pattern='yyyy-MM-dd' />" required /> 
-
-                                        <label for="checkout">Check-out Date:</label> <input
+                                        for="checkin">Check-in Date:</label> <input type="date"
+                                        id="checkin" name="checkin"
+                                        value="<fmt:formatDate value='${booking.startDate}' pattern='yyyy-MM-dd' />"
+                                        " required /> <label for="checkout">Check-out Date:</label> <input
                                         type="date" id="checkout" name="checkout"
-                                        value="<fmt:formatDate value='${checkout}' pattern='yyyy-MM-dd' />"
-                                         required> <input
+                                        value="<fmt:formatDate value='${booking.endDate}' pattern='yyyy-MM-dd' />"
+                                        required> <input type="hidden"
+                                        name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                    <button type="submit">Edit Booking</button>
+                                </form>
+
+                                <form action="/user/booking/${booking.id}" method="post">
+                                    <input type="hidden" name="_method" value="delete"> <input
                                         type="hidden" name="${_csrf.parameterName}"
                                         value="${_csrf.token}" />
-                                    <button type="submit">Book Now</button>
+                                    <button type="submit" class="btn btn-outline-danger">Delete
+                                        Booking</button>
                                 </form>
 							</div>
 						</div>
