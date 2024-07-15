@@ -6,6 +6,9 @@
 
 Our mission is to provide a seamless platform for users to discover and book apartments while giving property owners an efficient way to list and manage their properties.
 
+![Alt text](https://github.com/mustafataha5/palrent/blob/master/1.png)
+![Alt text](https://github.com/mustafataha5/palrent/blob/master/2.png)
+![Alt text](https://github.com/mustafataha5/palrent/blob/master/3.png)
 ## Features
 
 - **User Registration and Authentication**: Secure sign-up and login functionalities.
