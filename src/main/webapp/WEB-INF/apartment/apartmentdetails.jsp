@@ -75,7 +75,6 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	<!-- <div id="map"></div> -->
 
 	<!-- Your existing HTML content continues below -->
 	<div class="apartment-details">
@@ -106,34 +105,33 @@
 					<div class="card">
 						<h3 class="card-title">Make a Reservation</h3>
 						<div class="card-body">
-						<div class="card p-3">
-							<h3 class="card-title">Total:</h3>
-							<div class="card-body">
-								<h5>Price per day: <span id="Price">${apartment.price}</span> </h5>
-								<h5 id="numofday"></h5>
-								<h5 id="total"></h5>
+							<div class="card p-3">
+								<h3 class="card-title">Total:</h3>
+								<div class="card-body">
+									<h5>
+										Price per day: <span id="Price">${apartment.price}</span>
+									</h5>
+									<h5 id="numofday"></h5>
+									<h5 id="total"></h5>
+								</div>
 							</div>
-						</div>
-					
-						
+
+
 							<div class="reservation-form">
 
 								<form action="/apartment/${apartment.id}/booking" method="post">
-                                    <p class="error_q">${error_q}</p>
-                                    <input type="hidden" name="_method" value="patch"> <label
-                                        for="checkin">Check-in Date:</label> 
-                                        <input type="date"
-                                        id="checkin" name="checkin" 
-                                            value="<fmt:formatDate value='${checkin}' pattern='yyyy-MM-dd' />" required /> 
-
-                                        <label for="checkout">Check-out Date:</label> <input
-                                        type="date" id="checkout" name="checkout"
-                                        value="<fmt:formatDate value='${checkout}' pattern='yyyy-MM-dd' />"
-                                         required> <input
-                                        type="hidden" name="${_csrf.parameterName}"
-                                        value="${_csrf.token}" />
-                                    <button type="submit">Book Now</button>
-                                </form>
+									<p class="error_q">${error_q}</p>
+									<input type="hidden" name="_method" value="patch"> <label
+										for="checkin">Check-in Date:</label> <input type="date"
+										id="checkin" name="checkin"
+										value="<fmt:formatDate value='${checkin}' pattern='yyyy-MM-dd' />"
+										required /> <label for="checkout">Check-out Date:</label> <input
+										type="date" id="checkout" name="checkout"
+										value="<fmt:formatDate value='${checkout}' pattern='yyyy-MM-dd' />"
+										required> <input type="hidden"
+										name="${_csrf.parameterName}" value="${_csrf.token}" />
+									<button type="submit">Book Now</button>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -148,7 +146,7 @@
 							<div class="card-body">
 								<c:forEach var="rule" items="${apartment.rules}">
 									<p>${ rule.name }</p>
-								</c:forEach> 
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -157,58 +155,18 @@
 						<div class="card p-3 ">
 							<h3 class="card-title">Offers</h3>
 							<div class="card-body">
-								 <c:forEach var="offer" items="${apartment.offers}">
+								<c:forEach var="offer" items="${apartment.offers}">
 									<p>${ offer.name }</p>
-								</c:forEach> 
+								</c:forEach>
 							</div>
 						</div>
 					</div>
-					
-					
-
 
 				</div>
-
-
-
-
 			</div>
 
-			<%-- <div class="offers-rules">
-				<div class="rules">
-					<h3>Rules</h3>
-					<ul>
-						<!-- <li>No Smoking</li>
-                <li>No Pets</li>
-                <li>Check-in after 3 PM</li>
-                <li>Check-out before 12:00 PM</li>
-                Add more rules as needed -->
-
-						<c:forEach var="rule" items="${apartment.rules}">
-							<li>${ rule.name }</li>
-						</c:forEach>
-					</ul>
-				</div>
-				<div class="offers">
-					<h3>Offers</h3>
-					<ul>
-						<!-- <li>Free Parking</li>
-                <li>Hair Dryer</li>
-                <li>Wi-Fi</li> -->
-						<!-- Add more offers as needed -->
-						<c:forEach var="offer" items="${apartment.offers}">
-							<li>${ offer.name }</li>
-						</c:forEach>
-					</ul>
-				</div>--%>
 		</div>
 	</div>
-
-
-
-
-
-
 
 	<div id="image-popup" class="modal">
 		<span class="close-btn">&times;</span> <img class="modal-content"
