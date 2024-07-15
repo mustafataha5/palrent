@@ -32,7 +32,7 @@ $(document).ready(function() {
 					         //calculate days difference by dividing total milliseconds in a day  
 					         var days_difference = time_difference / (1000 * 60 * 60 * 24); 
 							 $("#numofday").text("Number Of Booking Day:"+days_difference);
-							 $("#total").text("Total Price : "+ days_difference*parseFloat(price));
+							 $("#total").text("Total Price : $"+ days_difference*parseFloat(price));
 							  
 				}
 				else{
