@@ -51,14 +51,17 @@ public class AjaxController {
 //			return deps ;
 //	    }
 	@PostMapping("/ajax")
-	public List<Department> postMessage1(@RequestBody RequestData requestData, HttpSession session) {
+
+	public List<Department> postMessage1(@RequestBody RequestData requestData , HttpSession session) {
+
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			 LocalDate localDate1 = LocalDate.parse(requestData.checkin, formatter);
 			 LocalDate localDate2 = LocalDate.parse(requestData.checkout, formatter);
 			Date d1 = Date.valueOf(localDate1) ; 
 			Date d2 =  Date.valueOf(localDate2) ;
 			session.setAttribute("checkin", d1);
-			session.setAttribute("checkout", d2);
+
+            session.setAttribute("checkout", d2);
 			List<Department> deps = apartmentService.search2(requestData.city, requestData.guests,d1,d2); 
 			//System.out.println(" >>>>>>>>>>"+deps);
 			return deps ;

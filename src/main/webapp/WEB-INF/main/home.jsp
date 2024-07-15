@@ -74,7 +74,7 @@
 							<div class="burger-menu" id="user-menu">
 
 								<a href="/user/info/${user.id}">User Info</a> <a
-									href="user/apartment">Apartment</a>
+									href="/user/apartment">Apartment</a>
 								<form id="logoutForm" method="POST" action="/logout">
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" /> <input type="submit"
