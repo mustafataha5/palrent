@@ -20,96 +20,107 @@ body {
     
 }
   
-  .navbar {
-      position: fixed;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.4);
-      padding-top:20px;
-      z-index: 100;
-      top: 0;
-      transition: all 0.3s;
-    
-  }
-  
-  .navbar .logo img {
-      width: 80px;
-  }
-  
-  .navbar .hamburger-menu {
-      display: none;
-      cursor: pointer;
-  }
-  
-  .navbar .hamburger-menu i {
-      color: white;
-      font-size: 24px;
-  }
-  
-  .nav-links {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      margin: 0;
-      padding: 0;
-  }
-  
-  .nav-links li {
-      margin: 0 15px;
-  }
-  
-  .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 20px;
-      transition: color 0.3s;
-  }
-  
-  .nav-links li:hover a {
-      color: #bba270;
-      font-weight: 700;
-  }
-  
-  .user-icon-container {
-      position: relative;
-      margin-right: 20px;
-      cursor: pointer;
-  }
-  
-  .user-icon {
-      width: 77px;
-      border-radius: 50%;
-      border: 2px solid white;
-      cursor: pointer;
-  }
-  
-  .burger-menu {
-      display: none;
-      position: absolute;
-      right: 0px;
-      top: 60px;
-      background: white;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      padding: 10px;
-      border-radius: 10px;
-  }
-  
-  .burger-menu.show {
-      display: block;
-  }
-  
-  .burger-menu a {
-      display: block;
-      color: black;
-      padding: 10px 0;
-      text-decoration: none;
-  }
-  
-  .burger-menu a:hover {
-      color: #bba270;
-  }
+.navbar {
+    background: rgba(0, 0, 0, 0.4);
+    padding-top: 0px;
+    z-index: 100;
+    top: 0;
+    transition: all 0.3s;
+    position: fixed;
+    width: 100%;
+}
+
+.navbar .logo img {
+    width: 80px;
+    margin-left: 32%;
+}
+
+.navbar .hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.navbar .hamburger-menu i {
+    color: white;
+    font-size: 24px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.nav-links li:hover a {
+    color: #bba270;
+    font-weight: 700;
+}
+
+/* User Icon */
+.user-icon-container {
+    position: relative;
+    margin-right: 6%;
+}
+
+.user-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user-icon-wrapper:hover .user-icon {
+    border-radius: 50%;
+    border: 3px solid #bba270;
+}
+
+.user-icon {
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.burger-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    z-index: 2000;
+}
+
+.burger-menu.show {
+    display: block;
+    width: 9rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.burger-menu a {
+    display: block;
+    color: black;
+    padding: 10px 0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
   #home {
     width: 100%;
@@ -216,7 +227,12 @@ body {
 .num-item {
     font-size: 1.5rem;
     line-height: 1.4rem;
-    color: rgb(43, 126, 199);
+    color: white;
+    text-align: center; /* Optional: Center align text */
+}
+
+.num-item i {
+    margin-right: 0.5rem; /* Adjust the margin as needed */
 }
 
 /* Our Goal */
@@ -340,37 +356,58 @@ body {
 }
 
 .team-item img {
-    width: 180px;
-    border-radius: 70px;
+        width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    border: 3px solid #bba270;
+  
 }
 
 footer {
+    background: #333;
+    color: white;
     text-align: center;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    margin-top:20px
-    
+    height: 68px;
+    bottom:0;
+
+}
+
+footer .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: white;
+    transition: transform 0.3s, color 0.3s;
+}
+
+footer .social-icons a:hover {
+    transform: scale(1.2);
+    color: #bba270;
 }
 
 footer .social-icons {
     display: flex;
     justify-content: center;
-    margin-bottom: 0;
-}
-
-footer .social-icons a {
+    gap: 40px;
     color: white;
-    margin: 0 10px;
-    font-size: 20px;
-    transition: color 0.3s;
 }
 
-footer .social-icons a:hover {
-    color: #bba270;
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.8rem;
 }
 
 
@@ -457,7 +494,9 @@ footer .social-icons a:hover {
     .num-item {
         margin: 1rem;
     }
-
+.num-item span { 
+        color:white;
+    }
     .teamContainer {
         justify-content: center;
     }
