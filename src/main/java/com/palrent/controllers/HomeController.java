@@ -81,6 +81,7 @@ public class HomeController {
 			,@RequestParam(value="end",required = false)String end
 			,@RequestParam(value="guest",required = false)Integer guest
 			,Model model
+			,HttpSession session 
 			,RedirectAttributes redirectAttributes) {
 		
 		if(city.equals("0") || guest == null) {

@@ -130,7 +130,11 @@ public class UserController {
 			redirectAttributes.addFlashAttribute("error_q","Check-In must be before Check-Out ");
 			return "redirect:/user/booking/"+booking.getId();
 		}
-		System.out.println(">>>>>>>>>>>>>>>>"+apartmentService.search3(booking.getDepartment().getId(),new java.sql.Date( checkin.getTime()), new java.sql.Date(checkout.getTime())).size());
+		//System.out.println(">>>>>>>>>>>>>>>>"+apartmentService.search3(booking.getDepartment().getId(),new java.sql.Date( checkin.getTime()), new java.sql.Date(checkout.getTime())).size());
+		if(apartmentService.search3(booking.getDepartment().getId(),new java.sql.Date( checkin.getTime()), new java.sql.Date(checkout.getTime())).size() == 0) {
+			redirectAttributes.addFlashAttribute("error_q","conflect with other  ");
+			return "redirect:/user/booking/"+booking.getId();
+		}
 		booking.setStartDate(checkin);
 		booking.setEndDate(checkout);
 		bookingService.updateBooking(booking);

@@ -271,6 +271,10 @@ public class ApartmentController {
 			redirectAttributes.addFlashAttribute("error_q","Check-In date must be before Check-out date ");
 			return "direct:/apartment/"+id+"/booking";
 		}
+		if(apartmentService.search3(id,new java.sql.Date( checkin.getTime()), new java.sql.Date(checkout.getTime())).size() == 0) {
+			redirectAttributes.addFlashAttribute("error_q","conflect with other Booking date  ");
+			return "direct:/apartment/"+id+"/booking";
+		}
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
 		Department department = apartmentService.findById(id);

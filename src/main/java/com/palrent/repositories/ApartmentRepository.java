@@ -31,7 +31,7 @@ public interface ApartmentRepository extends CrudRepository<Department, Long> {
 	
 	@Query("select  d "
 			+" from Department d "
-			+ "	where d.id not in ( select d1.id  "
+			+ "	where d.id in ( select d1.id  "
 			+ "	from Department d1 "
 			+ "	join d1.users u "
 			+" 	where u.department.id =?1 and  d1.approval= true  and "
