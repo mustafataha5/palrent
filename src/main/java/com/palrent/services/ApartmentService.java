@@ -61,4 +61,7 @@ public class ApartmentService {
 	public List<Department> search2(String city , Integer numOfGuest,Date start ,Date end){
 		return apartmentRepository.myquery2(city, numOfGuest,start,end);
 	}
+	public List<Department> search3(Long id ,Date start ,Date end){
+		return apartmentRepository.myquery3(id,start,end);
+	}
 }

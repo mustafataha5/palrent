@@ -412,3 +412,26 @@ Copy code
     margin-top: 4rem !important;
 }
 
+.myborder{
+	border: 2px solid #bba270;
+	background: #484a49 ; 
+	color: white;
+}
+.myinside{
+	background: #484a49 ; 
+	color: white;
+	border: none;
+}
+.myno{
+	border: none;
+	background: none;
+}
+
+
+body{
+background-image: url('https://static.vecteezy.com/system/resources/previews/035/360/463/non_2x/ai-generated-empty-room-and-wall-and-wooden-floor-with-interesting-with-glare-from-the-window-interior-background-for-the-presentation-generative-ai-photo.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
