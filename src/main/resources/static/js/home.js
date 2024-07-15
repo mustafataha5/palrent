@@ -82,5 +82,5 @@ $('#search1').click(function() {
     });
 });
 $(document).ready(function(){
-  $('.overlay-text').fadeIn(1500); // Fade in over 1.5 seconds
+  $('.overlay-text').fadeIn(3000); // Fade in over 1.5 seconds
 });
