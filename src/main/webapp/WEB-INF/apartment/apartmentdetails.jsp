@@ -75,7 +75,6 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	<!-- <div id="map"></div> -->
 
 	<!-- Your existing HTML content continues below -->
 	
@@ -162,6 +161,7 @@
                                     <button type="submit">Book Now</button>
                                 </form>
 
+
 							</div>
 						</div>
 					</div>
@@ -176,7 +176,7 @@
 							<div class="card-body">
 								<c:forEach var="rule" items="${apartment.rules}">
 									<p>${ rule.name }</p>
-								</c:forEach> 
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -185,58 +185,18 @@
 						<div class="card p-3 myborder">
 							<h3 class="card-title">Offers</h3>
 							<div class="card-body">
-								 <c:forEach var="offer" items="${apartment.offers}">
+								<c:forEach var="offer" items="${apartment.offers}">
 									<p>${ offer.name }</p>
-								</c:forEach> 
+								</c:forEach>
 							</div>
 						</div>
 					</div>
-					
-					
-
 
 				</div>
-
-
-
-
 			</div>
 
-			<%-- <div class="offers-rules">
-				<div class="rules">
-					<h3>Rules</h3>
-					<ul>
-						<!-- <li>No Smoking</li>
-                <li>No Pets</li>
-                <li>Check-in after 3 PM</li>
-                <li>Check-out before 12:00 PM</li>
-                Add more rules as needed -->
-
-						<c:forEach var="rule" items="${apartment.rules}">
-							<li>${ rule.name }</li>
-						</c:forEach>
-					</ul>
-				</div>
-				<div class="offers">
-					<h3>Offers</h3>
-					<ul>
-						<!-- <li>Free Parking</li>
-                <li>Hair Dryer</li>
-                <li>Wi-Fi</li> -->
-						<!-- Add more offers as needed -->
-						<c:forEach var="offer" items="${apartment.offers}">
-							<li>${ offer.name }</li>
-						</c:forEach>
-					</ul>
-				</div>--%>
 		</div>
 	</div>
-
-
-
-
-
-
 
 	<div id="image-popup" class="modal">
 		<span class="close-btn">&times;</span> <img class="modal-content"

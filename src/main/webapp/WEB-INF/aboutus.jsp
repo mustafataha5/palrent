@@ -28,6 +28,8 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
  	<div class="navbar">
@@ -38,8 +40,9 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
-			<li><a href="#">About us</a></li>
-			<li><a href="#">Contact us</a></li>
+		    <li><a href="/">Home</a></li>
+			<li><a href="/about">About us</a></li>
+			<li><a href="/contactus">Contact us</a></li>
 			<li><a href="#">User</a></li>
 		</ul>
 
@@ -85,31 +88,30 @@
             <img src="palrent-logo.png" alt="">
         </div>
         <div class="home-right">
-            <h2 class="home-heading"> Grow Up Your Workflow Speed </h2>
-            <p class="home-para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quibusdam blanditiis
-                quas assumenda nam error vel dolores suscipit ad, sapiente deleniti ipsum, obcaecati perspiciatis.</p>
+            <h2 class="home-heading"> Growing up with team </h2>
+            <p class="home-para">Growing up with a dedicated and supportive team by our side, we've navigated countless hurdles, collaborated on ideas, and pooled our strengths to create a project that reflects our collective efforts and achievements.</p>
          
         </div>
     </section>
    
     <section id="workFlow">
-        <h2 class="heading"> Grow Up Your Workflow Speed. </h2>
-        <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. A, commodi sint. <br>Ipsam molestias
-            nemovel laboriosam consequatur, perferendis<br> minima soluta? Natus necessitatibus autem suscipit!</p>
-        <div class="num-container">
-            <div class="num-item"><span>27,882 <br>Customers</span></div>
-            <div class="num-item"><span>90% <br>Action Plans</span></div>
-            <div class="num-item"><span>70,592 <br>Downloads</span></div>
-        </div>
-    </section>
+    <h2 class="heading"> Face Challenges </h2>
+    <p class="para">Facing challenges head-on has been a cornerstone of our journey together, where each obstacle became an opportunity to innovate, problem-solve, and strengthen our bonds as a cohesive team. Through perseverance and shared determination, we've not only overcome hurdles but also cultivated a resilient spirit that defines our project's success.</p>
+    <div class="num-container">
+        <div class="num-item"><span id="count1"><i class="fas fa-users"></i> 300 <br> Users</span></div>
+        <div class="num-item"><span id="count2"><i class="fas fa-percentage"></i> 90% <br> Rental</span></div>
+        <div class="num-item"><span id="count3"><i class="fas fa-eye"></i> 1200 <br> Views</span></div>
+        <div class="num-item"><span id="count4"><i class="fas fa-building"></i> 3600 <br> Apartments</span></div>
+    </div>
+</section>
    
         <div class="goal-left">
             <h2>Our Goal</h2>
            
             <ul>
-                <li>Enhance Property Management</li>
-                <li> Provide Comprehensive Property Information</li>
-                <li>Strengthen Marketing and Outreach:</li>
+                <li>Enhance User Experience </li>
+                <li> Increase Conversion Rates</li>
+                <li>Expand Property Listings and Reach</li>
             </ul>
            
         </div>
@@ -119,25 +121,25 @@
     </section>
 
     <section id="our-Team">
-        <h2>Our Member</h2>
+        <h2>Our Team</h2>
         <div class="teamContainer">
             <div class="team-item">
-                <img src="./ibrahim.jpg" alt="">
-                <h5 class="member-name">Ibeahim Khalil</h5>
+                <img src="img/ibrahim.jpg" alt="">
+                <h5 class="member-name">Ibrahim Khalil</h5>
        
             </div>
             <div class="team-item">
-                <img src="./ibrahim.jpg" alt="">
+                <img src="img/tabakhna.png" alt="">
                 <h5 class="member-name">Mohammad Tabakhna</h5>
               
             </div>
             <div class="team-item">
-                <img src="./ibrahim.jpg" alt="">
+                <img src="img/mustafa.png" alt="">
                 <h5 class="member-name">Mustafa Taha</h5>
              
             </div>
             <div class="team-item">
-                <img src="./ibrahim.jpg" alt="">
+                <img src="img/laith.png" alt="">
                 <h5 class="member-name">Laith Amer</h5>
               
             </div>
@@ -149,6 +151,6 @@
     </footer>
    
 
-    
+    <script type="text/javascript" src="/js/aboutus.js"></script>
 </body>
 </html>

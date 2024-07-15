@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,9 +35,15 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
-			<li><a href="#">About us</a></li>
-			<li><a href="#">Contact us</a></li>
-			<li><a href="#">User</a></li>
+
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About us</a></li>
+			<li><a href="/contactus">Contact us</a></li>
+			<c:if test="${user != null}">
+				<li><a href="/user/info/${user.id}">User</a></li>
+			</c:if>
+			
+
 		</ul>
 
 		<c:choose>
@@ -59,8 +68,8 @@
 								onerror="this.src='img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
 
-								<a href="/userinfo/${user.id}">User Info</a> <a
-									href="user/apartment">Apartment</a>
+								<a href="/user/info/${user.id}">User Info</a> <a
+									href="/user/apartment">Apartment</a>
 								<form id="logoutForm" method="POST" action="/logout">
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" /> <input type="submit"
@@ -350,5 +359,6 @@
 		</div>
 		<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
 	</footer>
+	<script type="text/javascript" src="/js/aboutus.js"></script>
 </body>
 </html>
