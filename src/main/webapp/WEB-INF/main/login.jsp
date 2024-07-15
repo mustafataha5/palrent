@@ -10,17 +10,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Login - PalRen</title>
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+	rel="stylesheet" />
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/login.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pannellum/build/pannellum.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </head>
 <body>
+	<div class="panorama-container">
+		<div id="panorama"></div>
+	</div>
+
 	<div class="navbar">
 		<div class="logo">
-			<a href="/"> <img src="/img/palrent-logo.png" alt="Logo"></a>
+			<a href="/"><img src="img/palrent-logo.png" alt="Logo"></a>
 		</div>
 		<div class="hamburger-menu" onclick="toggleMenu()">
 			<i class="fas fa-bars"></i>
@@ -28,14 +44,15 @@
 		<ul class="nav-links">
 			<li><a href="/">Home</a></li>
 			<li><a href="#">About us</a></li>
-			<li><a href="#">Contact us</a></li>
+			<li><a href="/contactus">Contact us</a></li>
 			<li><a href="#">User</a></li>
 		</ul>
+
 		<c:choose>
-			<c:when test="${ userId == null}">
+			<c:when test="${ user == null}">
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
-						<img src="user-image" alt="Image not found"
+						<img src="img.png" alt="Image not found"
 							onerror="this.src='img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
 							<a href="/register" id="register-btn">Register</a> <a
@@ -52,56 +69,56 @@
 							<img src="user-image" alt="Image not found"
 								onerror="this.src='img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
-								<a href="/new-apartment">New apartment</a> <a href="/logout">Log
-									out</a>
+
+								<a href="/userinfo/${user.id}">User Info</a> <a
+									href="user/apartment">Apartment</a>
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
+								</form>
 							</div>
 						</div>
 					</div>
-
 				</div>
 
 			</c:otherwise>
 		</c:choose>
 	</div>
 
-
 	<!-- Login Form Section -->
-	<div class="container mt-5">
-		<div class="row justify-content-center">
-			<div class="col-md-6">
-				<div class="card">
-					<div class="card-body">
-						<c:if test="${logoutMessage != null}">
-							<p class="success">
-								<c:out value="${logoutMessage}"></c:out>
-							</p>
-						</c:if>
-						<h2 class="card-title text-center">Login</h2>
-						<c:if test="${errorMessage != null}">
-							<p class="error">
-								<c:out value="${errorMessage}"></c:out>
-							</p>
-						</c:if>
+	<div class="login-container">
+		<div class="card">
+			<div class="card-body">
+				<c:if test="${logoutMessage != null}">
+					<p class="success">
+						<c:out value="${logoutMessage}"></c:out>
+					</p>
+				</c:if>
+				<h2 class="card-title text-center">Login</h2>
+				<c:if test="${errorMessage != null}">
+					<p class="error">
+						<c:out value="${errorMessage}"></c:out>
+					</p>
+				</c:if>
 
-						<form id="login-form" action="/login" method="post">
-							<div class="form-group">
-								<label for="username">Email</label> <input type="username"
-									class="form-control" id="username" name="username" required>
-							</div>
-							<div class="form-group">
-								<label for="password">Password</label> <input type="password"
-									class="form-control" id="password" name="password" required>
-							</div>
-							<input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
-							<button type="submit" class="my-2 btn btn-primary btn-block">Login</button>
-						</form>
-						<div class="text-center mt-3">
-							<p>
-								Don't have an account? <a href="/register">Register here</a>
-							</p>
-						</div>
+				<form id="login-form" action="/login" method="post">
+					<div class="form-group">
+						<label for="username">Email</label> <input type="username"
+							class="form-control" id="username" name="username" required>
 					</div>
+					<div class="form-group">
+						<label for="password">Password</label> <input type="password"
+							class="form-control" id="password" name="password" required>
+					</div>
+					<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+					<button type="submit" class="my-2 btn btn-primary btn-block">Login</button>
+				</form>
+				<div class="text-center mt-3">
+					<p>
+						Don't have an account? <a href="/register">Register here</a>
+					</p>
 				</div>
 			</div>
 		</div>
@@ -116,6 +133,6 @@
 		</div>
 		<p>&copy; 2024 Apartment Rental. All rights reserved.</p>
 	</footer>
-
+<script type="text/javascript" src="/js/login.js"></script>
 </body>
 </html>

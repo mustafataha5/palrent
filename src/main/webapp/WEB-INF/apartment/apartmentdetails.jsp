@@ -106,18 +106,34 @@
 					<div class="card">
 						<h3 class="card-title">Make a Reservation</h3>
 						<div class="card-body">
+						<div class="card p-3">
+							<h3 class="card-title">Total:</h3>
+							<div class="card-body">
+								<h5>Price per day: <span id="Price">${apartment.price}</span> </h5>
+								<h5 id="numofday"></h5>
+								<h5 id="total"></h5>
+							</div>
+						</div>
+					
+						
 							<div class="reservation-form">
 
 								<form action="/apartment/${apartment.id}/booking" method="post">
-									<input type="hidden" name="_method" value="patch"> <label
-										for="checkin">Check-in Date:</label> <input type="date"
-										id="checkin" name="checkin" required /> 
-										<label for="checkout">Check-out Date:</label> <input
-										type="date" id="checkout" name="checkout" required> <input
-										type="hidden" name="${_csrf.parameterName}"
-										value="${_csrf.token}" />
-									<button type="submit">Book Now</button>
-								</form>
+                                    <p class="error_q">${error_q}</p>
+                                    <input type="hidden" name="_method" value="patch"> <label
+                                        for="checkin">Check-in Date:</label> 
+                                        <input type="date"
+                                        id="checkin" name="checkin" 
+                                            value="<fmt:formatDate value='${checkin}' pattern='yyyy-MM-dd' />" required /> 
+
+                                        <label for="checkout">Check-out Date:</label> <input
+                                        type="date" id="checkout" name="checkout"
+                                        value="<fmt:formatDate value='${checkout}' pattern='yyyy-MM-dd' />"
+                                         required> <input
+                                        type="hidden" name="${_csrf.parameterName}"
+                                        value="${_csrf.token}" />
+                                    <button type="submit">Book Now</button>
+                                </form>
 							</div>
 						</div>
 					</div>
@@ -148,17 +164,7 @@
 						</div>
 					</div>
 					
-					<div class="row">
-						<div class="card p-3">
-							<h3 class="card-title">Total:</h3>
-							<div class="card-body">
-								<h5>Price per day: <span id="Price">${apartment.price}</span> </h5>
-								<h5 id="numofday"></h5>
-								<h5 id="total"></h5>
-							</div>
-						</div>
-					</div>
-
+					
 
 
 				</div>
