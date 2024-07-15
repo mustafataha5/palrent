@@ -147,7 +147,7 @@
     </section>
 
     <footer>
-        <p> &copy; 2022 - All rights reserved - geekshelp.in</p>
+        <p> &copy;  2024 Apartment Rental. All rights reserved</p>
     </footer>
    
 

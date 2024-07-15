@@ -282,3 +282,19 @@ footer .social-icons a {
 footer .social-icons a:hover {
     color: #bba270;
 }
+.burger-menu input{
+
+    color: black;
+    padding: 10px 0;
+
+    transition: color 0.3s;
+    background-color: white;
+    border: none;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 60
+}
+.burger-menu input:hover {
+    color: #bba270;
+    font-size: 1.1rem;
+}
