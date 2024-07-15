@@ -43,9 +43,11 @@
 		</div>
 		<ul class="nav-links">
 			<li><a href="/">Home</a></li>
-			<li><a href="#">About us</a></li>
+			<li><a href="/about">About us</a></li>
 			<li><a href="/contactus">Contact us</a></li>
-			<li><a href="#">User</a></li>
+			<c:if test="${user != null}">
+				<li><a href="/user/info/${user.id}">User</a></li>
+			</c:if>
 		</ul>
 
 		<c:choose>
@@ -66,12 +68,12 @@
 					<h4 class="text-light mx-2">${user.firstName}</h4>
 					<div class="user-icon-container">
 						<div class="user-icon-wrapper">
-							<img src="user-image" alt="Image not found"
+							<img src="${user.urlImage}" alt="Image not found"
 								onerror="this.src='img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
 
 								<a href="/userinfo/${user.id}">User Info</a> <a
-									href="user/apartment">Apartment</a>
+									href="/user/apartment">Apartment</a>
 								<form id="logoutForm" method="POST" action="/logout">
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" /> <input type="submit"
@@ -81,7 +83,6 @@
 						</div>
 					</div>
 				</div>
-
 			</c:otherwise>
 		</c:choose>
 	</div>

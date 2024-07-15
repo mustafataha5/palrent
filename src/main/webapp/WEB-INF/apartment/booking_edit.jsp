@@ -42,7 +42,7 @@
 		<ul class="nav-links">
 			<li><a href="/">Home</a></li>
 			<li><a href="/about">About us</a></li>
-			<li><a href="/contact">Contact us</a></li>
+			<li><a href="/contactus">Contact us</a></li>
 			<li><a href="/user/info/${ booking.user.id}">User</a></li>
 		</ul>
 		<c:choose>
@@ -60,14 +60,20 @@
 			</c:when>
 			<c:otherwise>
 				<div class="d-flex align-items-center mx-3">
-					<h4 class="text-light mx-2">${user.firstName}</h4>
+					<h4 class="text-light mx-2">${booking.user.firstName}</h4>
 					<div class="user-icon-container">
 						<div class="user-icon-wrapper">
-							<img src="user-image" alt="Image not found"
-								onerror="this.src='/img/profile.png';" class="user-icon" />
+							<img src="${booking.user.urlImage}" alt="Image not found"
+								onerror="this.src='img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
-								<a href="/user/apartment">Apartment</a> <a href="/logout">Log
-									out</a>
+
+								<a href="/user/info/${booking.user.id}">User Info</a> <a
+									href="/user/apartment">Apartment</a>
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
+								</form>
 							</div>
 						</div>
 					</div>
@@ -106,6 +112,20 @@
 					<div class="card">
 						<h3 class="card-title">Make a Reservation</h3>
 						<div class="card-body">
+						
+						
+						<div class="card p-3">
+							<h3 class="card-title">Total:</h3>
+							<div class="card-body">
+								<h5>
+									Price per day: <span id="Price">${booking.department.price}</span>
+								</h5>
+								<h5 id="numofday"></h5>
+								<h5 id="total"></h5>
+							</div>
+						</div>
+					
+						
 							<div class="reservation-form">
 
 								<form action="/user/booking/${booking.id}" method="post">
@@ -159,18 +179,7 @@
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="card p-3">
-							<h3 class="card-title">Total:</h3>
-							<div class="card-body">
-								<h5>
-									Price per day: <span id="Price">${booking.department.price}</span>
-								</h5>
-								<h5 id="numofday"></h5>
-								<h5 id="total"></h5>
-							</div>
-						</div>
-					</div>
+					
 
 				</div>
 
