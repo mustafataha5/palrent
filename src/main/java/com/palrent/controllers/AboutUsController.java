@@ -13,7 +13,7 @@ public class AboutUsController {
 	
 
 	
-@GetMapping("/aboutus")
+@GetMapping("/about")
 public String home2() {
       
 	        return "aboutus.jsp";
