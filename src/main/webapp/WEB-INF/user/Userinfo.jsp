@@ -28,8 +28,9 @@
 </head>
 <body>
 	<div class="navbar">
+
 		<div class="logo">
-			<a href="/"><img src="/img/palrent-logo.png" alt="Logo"></a>
+			<img src="/img/palrent-logo.png" alt="Logo">
 		</div>
 		<div class="hamburger-menu" onclick="toggleMenu()">
 			<i class="fas fa-bars"></i>
@@ -37,15 +38,15 @@
 		<ul class="nav-links">
 			<li><a href="/">Home</a></li>
 			<li><a href="/about">About us</a></li>
-			<li><a href="/contact">Contact us</a></li>
-			<li><a href="/user/info/${user.id}">User</a></li>
+			<li><a href="/contactus">Contact us</a></li>
+			<li><a href="/user/info/${ user.id}">User</a></li>
 		</ul>
 		<c:choose>
 			<c:when test="${user == null}">
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
-						<img src="user-image" alt="Image not found"
-							onerror="this.src='img/profile.png';" class="user-icon" />
+						<img src="img.png" alt="Image not found"
+							onerror="this.src='/img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
 							<a href="/register" id="register-btn">Register</a> <a
 								href="/login" id="login-btn">Log In</a>
@@ -58,12 +59,17 @@
 					<h4 class="text-light mx-2">${user.firstName}</h4>
 					<div class="user-icon-container">
 						<div class="user-icon-wrapper">
-							<img src="user-image" alt="Image not found"
-								onerror="this.src='/img/profile.png';" class="user-icon" />
+							<img src="${user.urlImage}" alt="Image not found"
+								onerror="this.src='img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
-								<a href="/userinfo/${user.id}">User Info</a> <a
-									href="/user/apartment">Apartment</a> <a href="/logout">Log
-									out</a>
+
+								<a href="/user/info/${user.id }user.id}">User Info</a> <a
+									href="/user/apartment">Apartment</a>
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
+								</form>
 							</div>
 						</div>
 					</div>

@@ -33,9 +33,10 @@
 		</div>
 		<ul class="nav-links">
 			<li><a href="/">Home</a></li>
-			<li><a href="#">About us</a></li>
-			<li><a href="#">Contact us</a></li>
-			<li><a href="#">User</a></li>
+			<li><a href="/about">About us</a></li>
+			<li><a href="/contactus">Contact us</a></li>
+			<li><a href="/user/info/${user.id}">User</a></li>
+
 		</ul>
 		<c:choose>
 			<c:when test="${ user == null}">
@@ -74,10 +75,10 @@
 					</div>
 
 				</div>
+
 			</c:otherwise>
 		</c:choose>
 	</div>
-
 
 	<div class="d-flex justify-content-between my-4 mx-2 mt-5">
 		<h4 class="card-title mx-3 mt-5">Edit Apartment</h4>

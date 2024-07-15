@@ -19,6 +19,60 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div class="navbar">
+		<div class="logo">
+			<a href="/"> <img src="/img/palrent-logo.png" alt="Logo"></a>
+		</div>
+		<div class="hamburger-menu" onclick="toggleMenu()">
+			<i class="fas fa-bars"></i>
+		</div>
+		<ul class="nav-links">
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About us</a></li>
+			<li><a href="/contactus">Contact us</a></li>
+			<li><a href="/user/info/${user.id}">User</a></li>
+
+		</ul>
+		<c:choose>
+			<c:when test="${ user == null}">
+				<div class="user-icon-container">
+					<div class="user-icon-wrapper">
+						<img src="user-image" alt="Image not found"
+							onerror="this.src='/img/profile.png';" class="user-icon" />
+						<div class="burger-menu" id="user-menu">
+							<a href="/register" id="register-btn">Register</a> <a
+								href="/login" id="login-btn">Log In</a>
+						</div>
+					</div>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="d-flex align-items-center mx-3">
+					<h4 class="text-light mx-2">${user.firstName}</h4>
+					<div class="user-icon-container">
+						<div class="user-icon-wrapper">
+							<img src="user-image" alt="Image not found"
+								onerror="this.src='/img/profile.png';" class="user-icon" />
+							<div class="burger-menu" id="user-menu">
+
+								<a href="/user/info/${user.id}">User Info</a> <a
+									href="/user/apartment"> apartment</a>
+								<!-- <a href="/logout"> Log out</a> -->
+
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
+								</form>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</c:otherwise>
+		</c:choose>
+	</div>
 	<div class="row d-flex justify-content-center mx-5 mt-3">
 		<div class="col-ld-11">
 			<div class="card border-light ">
