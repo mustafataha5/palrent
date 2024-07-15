@@ -28,4 +28,13 @@ public interface ApartmentRepository extends CrudRepository<Department, Long> {
 			+ " where d.city =?1 and d.numOfGuest=?2 and  d.approval= true "
 			+ " and d.id not in (SELECT d1.id FROM Department d1 join d1.users u1) "  )
 	List<Department> myquery2(String cirt,Integer guest,Date start ,Date end);
+	
+	@Query("select  d "
+			+" from Department d "
+			+ "	where d.id in ( select d1.id  "
+			+ "	from Department d1 "
+			+ "	join d1.users u "
+			+" 	where u.department.id =?1 and  d1.approval= true  and "
+			+ "( (u.startDate > ?2  and u.startDate > ?3) or (u.endDate < ?2  and  u.endDate < ?3 )) )")
+	List<Department> myquery3(Long id, Date start ,Date end);
 }

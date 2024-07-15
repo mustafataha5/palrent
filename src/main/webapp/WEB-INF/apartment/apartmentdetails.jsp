@@ -145,6 +145,7 @@
 							<div class="reservation-form myinside">
 
 								<form action="/apartment/${apartment.id}/booking" method="post">
+
                                     <p class="error_q">${error_q}</p>
                                     <input type="hidden" name="_method" value="patch"> <label
                                         for="checkin">Check-in Date:</label> 
@@ -160,6 +161,7 @@
                                         value="${_csrf.token}" />
                                     <button type="submit">Book Now</button>
                                 </form>
+
 							</div>
 						</div>
 					</div>
