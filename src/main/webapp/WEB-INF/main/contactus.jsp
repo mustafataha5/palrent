@@ -34,7 +34,7 @@
     <div id="panorama"></div>
 </div>
 
-<<div class="navbar">
+<div class="navbar">
 		<div class="logo">
 			<a href="/"><img src="img/palrent-logo.png" alt="Logo"></a>
 		</div>

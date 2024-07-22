@@ -33,10 +33,12 @@
 			<i class="fas fa-bars"></i>
 		</div>
 		<ul class="nav-links">
-			<li><a href="/">Home</a></li>
+		    <li><a href="/">Home</a></li>
+			<li><a href="/about">About us</a></li>
 			<li><a href="/contactus">Contact us</a></li>
-			<li><a href="/user/info/${user.id }">User</a></li>
-			<li><a href="#">About us</a></li>
+			<c:if test="${user != null}">
+				<li><a href="/user/info/${user.id}">User</a></li>
+			</c:if>
 		</ul>
 		<c:choose>
 			<c:when test="${ user == null}">

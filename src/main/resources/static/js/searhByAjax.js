@@ -16,7 +16,7 @@
 $(document).ready(function() {
 	var csrfToken = $("meta[name='_csrf']").attr("content");
 	var csrfHeader = $("meta[name='_csrf_header']").attr("content");
-
+    $("#error_q").hide();
 	$("#search1").click(function() {
 		var city = $("#city").val();
 		var checkin = $("#checkin").val();
@@ -31,26 +31,31 @@ $(document).ready(function() {
 
 		
 		let flag = false ; 
+		$("#error_q").hide();
 		$("#error_q").text("")
 		if (city === "" ) {
+			$("#error_q").show()
 			$('.panorama-container').css('height', '100vh');
 			$('#slider').fadeOut();
 			$("#error_q").append("Please enter select location <br>");
 			flag =true ; 
 		}
 		if (checkin=="") {
+			$("#error_q").show()
 			$('.panorama-container').css('height', '100vh');
 			$('#slider').fadeOut();
 			$("#error_q").append("Please enter select check-in date<br>")
 			flag =true ; 
 		}
 		if (checkout == "") {
+			$("#error_q").show()
 			$('.panorama-container').css('height', '100vh');
 			$('#slider').fadeOut();
 			$("#error_q").append("Please enter select check-in date<br>")
 			flag =true ; 
 		}
 		if ( guests === "") {
+			$("#error_q").show()
 			$('.panorama-container').css('height', '100vh');
 			$('#slider').fadeOut();
 			$("#error_q").append("Please enter guest number")
