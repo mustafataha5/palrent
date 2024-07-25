@@ -17,16 +17,21 @@ public interface ApartmentRepository extends CrudRepository<Department, Long> {
 			+" from Department d "
 			+" where d.city =?1 and d.numOfGuest=?2 and  d.approval= true ")
 	List<Department> myquery1(String cirt,Integer guest);
-	@Query("select distinct d "
-			+" from Department d "
-			+ " join d.users u "
-			+" where d.city =?1 and d.numOfGuest=?2 and  d.approval= true "
-			+ " and ( (u.startDate > ?3  and u.startDate > ?4) or (u.endDate < ?3  and  u.endDate < ?4 )) "
-			+ " UNION "
-			+ " SELECT DISTINCT d "
-			+ " FROM Department d "
-			+ " where d.city =?1 and d.numOfGuest=?2 and  d.approval= true "
-			+ " and d.id not in (SELECT d1.id FROM Department d1 join d1.users u1) "  )
+//	@Query("select distinct d "
+//			+" from Department d "
+//			+ " join d.users u "
+//			+" where d.city =?1 and d.numOfGuest=?2 and  d.approval= true "
+//			+ " and ( (u.startDate > ?3  and u.startDate > ?4) or (u.endDate < ?3  and  u.endDate < ?4 )) "
+//			+ " UNION "
+//			+ " SELECT DISTINCT d "
+//			+ " FROM Department d "
+//			+ " where d.city =?1 and d.numOfGuest=?2 and  d.approval= true "
+//			+ " and d.id not in (SELECT d1.id FROM Department d1 join d1.users u1) "  )
+	@Query("select distinct d\n"
+			+ "from Department d\n"
+			+ "left join d.users u\n"
+			+ "where d.city = ?1 and d.numOfGuest = ?2 and d.approval = true\n"
+			+ "and (u is null or ((u.startDate >= ?3  and u.startDate >= ?4) or (u.endDate <= ?3  and  u.endDate <= ?4 )))")
 	List<Department> myquery2(String cirt,Integer guest,Date start ,Date end);
 	
 	@Query("select  d "

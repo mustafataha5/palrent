@@ -62,16 +62,24 @@ public class ApartmentService {
 		return apartmentRepository.myquery1(city, numOfGuest);
 	}
 	public List<Department> search2(String city , Integer numOfGuest,Date start ,Date end){
-//		return apartmentRepository.myquery2(city, numOfGuest,start,end);
-		 List<Department> withUsers = apartmentRepository.findDepartmentsWithUsers(city, numOfGuest, start, end);
-	        List<Department> withoutUsers = apartmentRepository.findDepartmentsWithoutUsers(city, numOfGuest);
-	        
-	        // Combine and remove duplicates
-	        Set<Department> result = new HashSet<>();
-	        result.addAll(withUsers);
-	        result.addAll(withoutUsers);
-	        
-	        return new ArrayList<>(result);
+		
+		
+		return apartmentRepository.myquery2(city, numOfGuest,start,end);
+//		 List<Department> withUsers = apartmentRepository.findDepartmentsWithUsers(city, numOfGuest, start, end);
+//	        List<Department> withoutUsers = apartmentRepository.findDepartmentsWithoutUsers(city, numOfGuest);
+//	        
+//	        // Combine and remove duplicates
+//	        Set<Department> result = new HashSet<>();
+//	        result.addAll(withUsers);
+//	        result.addAll(withoutUsers);
+//	        for(Department d : withUsers) {
+//	        	System.out.print(" -- "+d.getTitle());
+//	        }
+//	        System.out.println("\n Without \n");
+//	        for(Department d : withoutUsers) {
+//	        	System.out.print(" -- "+d.getTitle());
+//	        }
+//	        return new ArrayList<>(result);
 	}
 	public List<Department> search3(Long id ,Date start ,Date end){
 		return apartmentRepository.myquery3(id,start,end);

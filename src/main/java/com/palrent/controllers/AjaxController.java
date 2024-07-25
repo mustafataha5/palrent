@@ -63,7 +63,8 @@ public class AjaxController {
 
             session.setAttribute("checkout", d2);
 			List<Department> deps = apartmentService.search2(requestData.city, requestData.guests,d1,d2); 
-			//System.out.println(" >>>>>>>>>>"+deps);
+//			for(Department d : deps) {
+//			System.out.println(" >>>>>>>>>>"+d.getTitle());}
 			return deps ;
 	    }
 	

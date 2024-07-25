@@ -261,19 +261,19 @@ public class ApartmentController {
 			Model model,Principal principal,RedirectAttributes redirectAttributes) {
 		if( checkout == null) {
 			redirectAttributes.addFlashAttribute("error_q","Check-In is required ");
-			return "direct:/apartment/"+id+"/booking";
+			return "redirect:/apartment/"+id+"/show";
 		}
 		if( checkout == null) {
 			redirectAttributes.addFlashAttribute("error_q","Check-Out is required ");
-			return "direct:/apartment/"+id+"/booking";
+			return "redirect:/apartment/"+id+"/show";
 		}
 		if(checkout.after(checkout)) {
 			redirectAttributes.addFlashAttribute("error_q","Check-In date must be before Check-out date ");
-			return "direct:/apartment/"+id+"/booking";
+			return "redirect:/apartment/"+id+"/show";
 		}
-		if(apartmentService.search3(id,new java.sql.Date( checkin.getTime()), new java.sql.Date(checkout.getTime())).size() == 0) {
+		if(apartmentService.search3(id,new java.sql.Date( checkin.getTime()), new java.sql.Date(checkout.getTime())).size() != 0) {
 			redirectAttributes.addFlashAttribute("error_q","conflect with other Booking date  ");
-			return "direct:/apartment/"+id+"/booking";
+			return "redirect:/apartment/"+id+"/show";
 		}
 		String username = principal.getName();
 		User user = userService.findByUsername(username);
