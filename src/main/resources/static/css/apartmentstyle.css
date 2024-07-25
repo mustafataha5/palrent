@@ -150,7 +150,10 @@
     gap: 20px;
     margin: 20px 0;
 }
-
+.title {
+	color:white;
+	
+}
 .apartment-img {
     width: 300px;
     height: 200px;
@@ -429,7 +432,7 @@ Copy code
 
 
 body{
-background-image: url('https://static.vecteezy.com/system/resources/previews/035/360/463/non_2x/ai-generated-empty-room-and-wall-and-wooden-floor-with-interesting-with-glare-from-the-window-interior-background-for-the-presentation-generative-ai-photo.jpg');
+background-image: url('https://wallpapers.com/images/hd/apartment-with-open-bed-and-pool-93j6gf6occ1yapek.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;

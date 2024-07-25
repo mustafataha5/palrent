@@ -267,7 +267,6 @@
     transform: translate(-50%, -50%);
     z-index: 20; /* Higher z-index to overlay navbar */
     border-radius: 10px; /* Example border radius */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Example shadow */
     width: 40%; /* Example width */
  
 }
@@ -406,3 +405,88 @@
             color: #2ec27e;
             font-size: 12px;
         }
+        @media (max-width: 992px) {
+    .navbar .logo img {
+        width: 70px;
+        margin-left: 10%;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .navbar .hamburger-menu {
+        display: block;
+    }
+
+    .user-icon-container {
+        margin-right: 10px;
+    }
+
+    .form-popup {
+        width: 90%;
+    }
+
+    .registration-form {
+        width: 80%;
+    }
+
+    .table input[type="text"],
+    .table input[type="password"],
+    .table input[type="date"] {
+        width: calc(100% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar .logo img {
+        width: 60px;
+        margin-left: 5%;
+    }
+
+    .form-popup {
+        width: 100%;
+    }
+
+    .registration-form {
+        width: 90%;
+    }
+
+    .table input[type="text"],
+    .table input[type="password"],
+    .table input[type="date"] {
+        width: calc(100% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo img {
+        width: 50px;
+        margin-left: 2%;
+    }
+
+    .registration-form {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .table input[type="text"],
+    .table input[type="password"],
+    .table input[type="date"] {
+        width: 100%;
+    }
+}

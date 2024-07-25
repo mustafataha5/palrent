@@ -77,8 +77,8 @@ public class UserController {
 		if (result.hasErrors()) {
 			return "main/register.jsp";
 		}
-		// userService.saveWithUserRole(user);
-		userService.saveUserWithAdminRole(user);
+		 userService.saveWithUserRole(user);
+		//userService.saveUserWithAdminRole(user);
 
 		return "redirect:/login";
 	}

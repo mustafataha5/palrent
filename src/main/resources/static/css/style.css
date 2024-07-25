@@ -227,7 +227,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     justify-content: space-around;
     height: 100%;
-    align-content: first baseline;
+    align-content: center;
 }
 
 .card {
@@ -241,10 +241,13 @@
     text-align: center;
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
-    flex:auto;
-    height: fit-content;
+    flex:inherit;
+    height: 250px;
 }
-
+.card img{
+	width:100%;
+	height:100%;
+}
 .card::before {
     content: "";
     position: absolute;
@@ -348,7 +351,8 @@
     }
 
     .overlay-text {
-        font-size: 1.8rem;
+        display:none;
+        
     }
 
     .call-to-action {
@@ -371,7 +375,7 @@
     }
 
     .overlay-text {
-        font-size: 1.5rem;
+        display:none;
     }
 
     .call-to-action {
@@ -500,6 +504,9 @@ footer p {
 	background: #979797;
 	padding: 2px 5px;
 
+}
+.overlay-text{
+	display:none;
 }
 @media (max-width: 1024px) {
     .cards {
