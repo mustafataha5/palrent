@@ -86,7 +86,7 @@
 				</div>
 			</div>
 			<div class="content__info">
-				<h1 class="content__title">${user.firstName}${user.lastName}</h1>
+				<h1 class="content__title">${user.firstName} ${user.lastName}</h1>
 				<div class="content__details">
 					<p>
 						<i class="fas fa-envelope"></i> Email: ${user.username}

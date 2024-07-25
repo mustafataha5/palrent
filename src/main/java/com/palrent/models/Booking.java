@@ -24,7 +24,6 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@FutureOrPresent
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date startDate;
 	@FutureOrPresent

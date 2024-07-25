@@ -68,11 +68,11 @@
 					<h4 class="text-light mx-2">${user.firstName}</h4>
 					<div class="user-icon-container">
 						<div class="user-icon-wrapper">
-							<img src="${user.urlImage}" alt="Image not found"
+							<img src="user-image" alt="Image not found"
 								onerror="this.src='img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
 
-								<a href="/userinfo/${user.id}">User Info</a> <a
+								<a href="/user/info/${user.id}">User Info</a> <a
 									href="/user/apartment">Apartment</a>
 								<form id="logoutForm" method="POST" action="/logout">
 									<input type="hidden" name="${_csrf.parameterName}"
@@ -83,6 +83,7 @@
 						</div>
 					</div>
 				</div>
+
 			</c:otherwise>
 		</c:choose>
 	</div>

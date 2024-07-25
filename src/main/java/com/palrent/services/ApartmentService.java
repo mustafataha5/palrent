@@ -2,8 +2,11 @@ package com.palrent.services;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,7 +62,24 @@ public class ApartmentService {
 		return apartmentRepository.myquery1(city, numOfGuest);
 	}
 	public List<Department> search2(String city , Integer numOfGuest,Date start ,Date end){
+		
+		
 		return apartmentRepository.myquery2(city, numOfGuest,start,end);
+//		 List<Department> withUsers = apartmentRepository.findDepartmentsWithUsers(city, numOfGuest, start, end);
+//	        List<Department> withoutUsers = apartmentRepository.findDepartmentsWithoutUsers(city, numOfGuest);
+//	        
+//	        // Combine and remove duplicates
+//	        Set<Department> result = new HashSet<>();
+//	        result.addAll(withUsers);
+//	        result.addAll(withoutUsers);
+//	        for(Department d : withUsers) {
+//	        	System.out.print(" -- "+d.getTitle());
+//	        }
+//	        System.out.println("\n Without \n");
+//	        for(Department d : withoutUsers) {
+//	        	System.out.print(" -- "+d.getTitle());
+//	        }
+//	        return new ArrayList<>(result);
 	}
 	public List<Department> search3(Long id ,Date start ,Date end){
 		return apartmentRepository.myquery3(id,start,end);
