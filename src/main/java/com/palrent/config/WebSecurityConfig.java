@@ -26,20 +26,24 @@ public class WebSecurityConfig {
 	
 	@Bean
 	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests(
-				
-				auth -> auth.requestMatchers(
-						new MvcRequestMatcher(introspector, "/admin")
-							,new MvcRequestMatcher(introspector, "/admin/**")
-							,new MvcRequestMatcher(introspector, "/admins/**")
-							
-						).hasRole("ADMIN")
-				.requestMatchers(
-						new MvcRequestMatcher(introspector, "/user/**"),
-						new MvcRequestMatcher(introspector, "/apartment/**")
-					   ,new MvcRequestMatcher(introspector, "/admin")
-						,new MvcRequestMatcher(introspector, "/admins/**"))
-				.authenticated().anyRequest().permitAll())
+		http.authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                        new MvcRequestMatcher(introspector, "/admin"),
+                        new MvcRequestMatcher(introspector, "/admin/**"),
+                        new MvcRequestMatcher(introspector, "/admins/**"))
+                    .hasRole("ADMIN")
+                .requestMatchers(
+                        new MvcRequestMatcher(introspector, "/user/**"),
+                        new MvcRequestMatcher(introspector, "/apartment/**"))
+                    .authenticated()
+                .requestMatchers(
+                        new MvcRequestMatcher(introspector, "/css/**"),
+                        new MvcRequestMatcher(introspector, "/img/**"),
+                        new MvcRequestMatcher(introspector, "/js/**"),
+                        new MvcRequestMatcher(introspector, "/webjars/**"))
+                    .permitAll()
+                .anyRequest().permitAll()
+            )
 		
 				.formLogin(
 						form -> form.loginPage("/login").

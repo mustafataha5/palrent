@@ -52,7 +52,7 @@
 			<c:when test="${ user == null}">
 				<div class="user-icon-container">
 					<div class="user-icon-wrapper">
-						<img src="img.png" alt="Image not found"
+						<img src="/img/profile.png" alt="Image not found"
 							onerror="this.src='img/profile.png';" class="user-icon" />
 						<div class="burger-menu" id="user-menu">
 							<a href="/register" id="register-btn">Register</a> <a
@@ -66,12 +66,12 @@
 					<h4 class="text-light mx-2">${user.firstName}</h4>
 					<div class="user-icon-container">
 						<div class="user-icon-wrapper">
-							<img src="user-image" alt="Image not found"
-								onerror="this.src='img/profile.png';" class="user-icon" />
+							<img src="${user.urlImage}" alt="Image not found"
+								onerror="this.src='/img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
 
-								<a href="/userinfo/${user.id}">User Info</a> <a
-									href="user/apartment">Apartment</a>
+								<a href="/user/info/${user.id}">User Info</a> <a
+									href="/user/apartment">Apartment</a>
 								<form id="logoutForm" method="POST" action="/logout">
 									<input type="hidden" name="${_csrf.parameterName}"
 										value="${_csrf.token}" /> <input type="submit"
@@ -87,7 +87,7 @@
 	</div>
     <section id="home">
         <div class="home-left">
-            <img src="palrent-logo.png" alt="">
+            <img src="/img/palrent-logo.png" alt="">
         </div>
         <div class="home-right">
             <h2 class="home-heading"> Growing up with team </h2>
@@ -117,38 +117,38 @@
             </ul>
            
         </div>
-        <div class="goal-right">
+       <!--  <div class="goal-right">
             <img src="https://e0.pxfuel.com/wallpapers/574/541/desktop-wallpaper-interior-mockup-vectors-stock-psd-minimal-interior.jpg" alt="">
-        </div>
+        </div> -->
     </section>
 
     <section id="our-Team">
         <h2>Our Team</h2>
         <div class="teamContainer">
             <div class="team-item">
-                <img src="img/ibrahim.jpg" alt="">
+                <img src="/img/ibrahim.jpg" alt="">
                 <h5 class="member-name">Ibrahim Khalil</h5>
        
             </div>
             <div class="team-item">
-                <img src="img/tabakhna.png" alt="">
+                <img src="/img/tabakhna.png" alt="">
                 <h5 class="member-name">Mohammad Tabakhna</h5>
               
             </div>
             <div class="team-item">
-                <img src="img/mustafa.png" alt="">
+                <img src="/img/mustafa.png" alt="">
                 <h5 class="member-name">Mustafa Taha</h5>
              
             </div>
             <div class="team-item">
-                <img src="img/laith.png" alt="">
+                <img src="/img/laith.png" alt="">
                 <h5 class="member-name">Laith Amer</h5>
               
             </div>
         </div>
     </section>
 
-    <footer>
+    <footer class="m-4 p-3">
         <p> &copy;  2024 Apartment Rental. All rights reserved</p>
     </footer>
    
