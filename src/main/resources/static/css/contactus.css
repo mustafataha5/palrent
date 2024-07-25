@@ -257,3 +257,20 @@ footer p {
     transform: scale(1.05);
     color:white;
 }
+
+.burger-menu input{
+
+    color: black;
+    padding: 10px 0;
+
+    transition: color 0.3s;
+    background-color: white;
+    border: none;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 60
+}
+.burger-menu input:hover {
+    color: #bba270;
+    font-size: 1.1rem;
+}

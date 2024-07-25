@@ -66,8 +66,12 @@
 							<img src="user-image" alt="Image not found"
 								onerror="this.src='/img/profile.png';" class="user-icon" />
 							<div class="burger-menu" id="user-menu">
-								<a href="/user/apartment">Apartment</a> <a href="/logout">Log
-									out</a>
+								<a href="/user/apartment">Apartment</a>
+								<form id="logoutForm" method="POST" action="/logout">
+									<input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" /> <input type="submit"
+										value="Logout!" />
+								</form>
 							</div>
 						</div>
 					</div>
@@ -77,53 +81,55 @@
 	</div>
 
 	<!-- Your existing HTML content continues below -->
-	
+
 	<div class="apartment-details">
 		<div class="details-left">
-		
-		<div class="row mt-3 d-flex align-items-center justify-content-center">
-		<div class="col-md-2">
-			<div class="card p-4  myinside">
-				<div class="card-body">
-					<div class="details-right">
-				<div class="owner">
-					<img id="owner-img" src="${apartment.owner.urlImage}" alt="Owner's Image"
-						onerror="this.src='/img/profile.png';" class="owner-img">
-					<h3>Owner:</h3>
-					<p>  ${apartment.owner.firstName} -
-						${apartment.owner.lastName} </p>
-					<p> ${apartment.owner.username} <p>	
-					<p> ${apartment.owner.phone} <p>	
+
+			<div
+				class="row mt-3 d-flex align-items-center justify-content-center">
+				<div class="col-md-2">
+					<div class="card p-4  myinside">
+						<div class="card-body">
+							<div class="details-right">
+								<div class="owner">
+									<img id="owner-img" src="${apartment.owner.urlImage}"
+										alt="Owner's Image" onerror="this.src='/img/profile.png';"
+										class="owner-img">
+									<h3>Owner:</h3>
+									<p>${apartment.owner.firstName} -
+										${apartment.owner.lastName}</p>
+									<p>${apartment.owner.username}
+									<p>
+									<p>${apartment.owner.phone}
+									<p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
 				</div>
 
-			</div>
-				</div>
-			</div>
-	
-			
-			</div>
-		
-		<div class="col-md-8">
-			<h1 class="title">Beautiful Apartment in City Center</h1>
-			<div class="apartment-images">
-				<c:forEach var="image" items="${apartment.images}">
-					<img src="${image.url}" alt="Apartment Image 2"
-						class="apartment-img">
-				</c:forEach>
-				<!--  <img src="https://www.thespruce.com/thmb/BpZG-gG2ReQwYpzrQg302pezLr0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Stocksy_txp3d216bb1tUq300_Medium_4988078-56c96ac19def4bf8ba430cf5063b6b38.jpg" alt="Apartment Image 1" class="apartment-img">
+				<div class="col-md-8">
+					<h1 class="title">Beautiful Apartment in City Center</h1>
+					<div class="apartment-images">
+						<c:forEach var="image" items="${apartment.images}">
+							<img src="${image.url}" alt="Apartment Image 2"
+								class="apartment-img">
+						</c:forEach>
+						<!--  <img src="https://www.thespruce.com/thmb/BpZG-gG2ReQwYpzrQg302pezLr0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Stocksy_txp3d216bb1tUq300_Medium_4988078-56c96ac19def4bf8ba430cf5063b6b38.jpg" alt="Apartment Image 1" class="apartment-img">
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/Studio_apartment.webp" alt="Apartment Image 2" class="apartment-img">
             <img src="https://www.redfin.com/blog/wp-content/uploads/2022/09/spacejoy-xkJ2_THgKmk-unsplash.jpg" alt="Apartment Image 3" class="apartment-img"> -->
+					</div>
+				</div>
+
+				<div class="col-md-2">
+					<div class="card p-4 myno"></div>
+				</div>
 			</div>
-		</div>
-		
-		<div class="col-md-2">
-		<div class="card p-4 myno">
-				
-			</div>
-		</div>
-	</div>
-			
-			
+
+
 
 			<div class="row d-flex justify-content-center">
 
@@ -131,35 +137,34 @@
 					<div class="card myborder">
 						<h3 class="card-title">Make a Reservation</h3>
 						<div class="card-body">
-						<div class="card p-3 myinside">
-							<h3 class="card-title">Total:</h3>
-							<div class="card-body">
-								<h5>Price per day: $<span id="Price">${apartment.price}</span> </h5>
-								<h5 id="numofday"></h5>
-								<h5 id="total"></h5>
+							<div class="card p-3 myinside">
+								<h3 class="card-title">Total:</h3>
+								<div class="card-body">
+									<h5>
+										Price per day: $<span id="Price">${apartment.price}</span>
+									</h5>
+									<h5 id="numofday"></h5>
+									<h5 id="total"></h5>
+								</div>
 							</div>
-						</div>
-					
-						
+
+
 							<div class="reservation-form myinside">
 
 								<form action="/apartment/${apartment.id}/booking" method="post">
 
-                                    <p class="error_q">${error_q}</p>
-                                    <input type="hidden" name="_method" value="patch"> <label
-                                        for="checkin">Check-in Date:</label> 
-                                        <input type="date"
-                                        id="checkin" name="checkin" 
-                                            value="<fmt:formatDate value='${checkin}' pattern='yyyy-MM-dd' />" required /> 
-
-                                        <label for="checkout">Check-out Date:</label> <input
-                                        type="date" id="checkout" name="checkout"
-                                        value="<fmt:formatDate value='${checkout}' pattern='yyyy-MM-dd' />"
-                                         required> <input
-                                        type="hidden" name="${_csrf.parameterName}"
-                                        value="${_csrf.token}" />
-                                    <button type="submit">Book Now</button>
-                                </form>
+									<p class="error_q">${error_q}</p>
+									<input type="hidden" name="_method" value="patch"> <label
+										for="checkin">Check-in Date:</label> <input type="date"
+										id="checkin" name="checkin"
+										value="<fmt:formatDate value='${checkin}' pattern='yyyy-MM-dd' />"
+										required /> <label for="checkout">Check-out Date:</label> <input
+										type="date" id="checkout" name="checkout"
+										value="<fmt:formatDate value='${checkout}' pattern='yyyy-MM-dd' />"
+										required> <input type="hidden"
+										name="${_csrf.parameterName}" value="${_csrf.token}" />
+									<button type="submit">Book Now</button>
+								</form>
 
 
 							</div>
