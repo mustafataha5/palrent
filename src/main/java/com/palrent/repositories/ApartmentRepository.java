@@ -39,9 +39,9 @@ public interface ApartmentRepository extends CrudRepository<Department, Long> {
 			+ "	where d.id in ( select d1.id  "
 			+ "	from Department d1 "
 			+ "	join d1.users u "
-			+" 	where u.department.id =?1 and  d1.approval= true  and "
-			+ "( (u.startDate > ?2  and u.startDate > ?3) or (u.endDate < ?2  and  u.endDate < ?3 )) )")
-	List<Department> myquery3(Long id, Date start ,Date end);
+			+" 	where u.department.id =?2 and  d1.approval= true  and u.user.id != ?1 and "
+			+ "( (u.startDate > ?3  and u.startDate > ?4) or (u.endDate < ?3  and  u.endDate < ?4 )) )")
+	List<Department> myquery3(Long usrtId,Long id, Date start ,Date end);
 
 	@Query("select distinct d "
             + " from Department d "

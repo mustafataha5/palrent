@@ -120,10 +120,10 @@
 											<td><form:label path="dateOfBirth">Date Of Birth:</form:label></td>
 											<td><form:input type="date" path="dateOfBirth" /></td>
 										</tr>
-										<tr>
+										<%-- <tr>
 											<td><form:label path="urlImage">Url Image:</form:label></td>
 											<td><form:input path="urlImage" /></td>
-										</tr>
+										</tr> --%>
 										<tr>
 											<td></td>
 											<td>
