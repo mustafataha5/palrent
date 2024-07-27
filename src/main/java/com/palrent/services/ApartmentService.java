@@ -81,7 +81,7 @@ public class ApartmentService {
 //	        }
 //	        return new ArrayList<>(result);
 	}
-	public List<Department> search3(Long id ,Date start ,Date end){
-		return apartmentRepository.myquery3(id,start,end);
+	public List<Department> search3(Long userid , Long id ,Date start ,Date end){
+		return apartmentRepository.myquery3(userid,id,start,end);
 	}
 }

@@ -12,7 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/css/apartmentstyle.css">
+<link rel="stylesheet" type="text/css" href="/css/apartmentstyle2.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link rel="stylesheet"
@@ -23,7 +23,7 @@
 <title>User Apartment</title>
 
 </head>
-<body>
+<body class ="">
 
 	<div class="navbar">
 		<div class="logo">
@@ -96,9 +96,9 @@
 		</div>
 	</div>
 
-	<div class="row mx-5 ">
+	<div class="row mx-5  min-vh-100">
 		<c:forEach var="apartment" items="${user.ownedDeparment}">
-			<div class="col-3 my-3">
+			<div class="col-md-3 my-3">
 				<div class="card" style="width: 18rem;">
 
 					<img alt="not work" src="${ apartment.images[0].url}">
